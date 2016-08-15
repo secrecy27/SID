@@ -138,19 +138,19 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class="active"><a href="index.jsp">Notice</a></li>
 					<li class="dropdown yamm-fw"><a href="Apage.jsp"
-						class="dropdown-toggle" >Apage <b class="caret"></b></a>
+						class="dropdown-toggle" >Apage </a>
 					</li>
 					<li class="dropdown yamm-fw"><a href="Bpage.jsp"
-						class="dropdown-toggle">Bpage <b class="caret"></b></a>
+						class="dropdown-toggle">Bpage</a>
 					</li>
 					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
-						class="dropdown-toggle">Cpage <b class="caret"></b></a>
+						class="dropdown-toggle">Cpage </a>
 					</li>
 					<li class="dropdown yamm-fw"><a href="Dpage.jsp"
-						class="dropdown-toggle" >Dpage <b class="caret"></b></a>
+						class="dropdown-toggle" >Dpage </a>
 					</li>
 					<li class="dropdown yamm-fw"><a href="Hpage.jsp"
-						class="dropdown-toggle" >Hpage <b class="caret"></b></a>
+						class="dropdown-toggle" >Hpage </a>
 					</li>
 				</ul>
 

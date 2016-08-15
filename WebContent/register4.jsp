@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <head>
 
 <meta content="text/jsp; charset=UTF-8" http-equiv="Content-Type">
@@ -205,110 +206,182 @@
 
 		<div id="content">
 			<div class="container">
+
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li>회원가입 안내</li>
-					</ul>
-
-				</div>
-				<div class="col-md-12">
-					<ul class="breadcrumb">
-						<h1>이미지 등록</h1>
-						<form id="form1">
-							<input type='file' id="imgInp" /><br /> <img id="blah" src="#"
-								alt="your image" />
-						</form>
-					</ul>
-				</div>
-
-
-				<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-				<script>
-
-        $(document).ready(function(){
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-                    reader.onload = function (e) { 
-                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-                        $('#blah').attr('src', e.target.result);
-                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-                        //(아래 코드에서 읽어들인 dataURL형식)
-                    }                    
-                    reader.readAsDataURL(input.files[0]);
-                    //File내용을 읽어 dataURL형식의 문자열로 저장
-                }
-            }//readURL()--
-            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-            $("#imgInp").change(function(){
-               // alert(this.value); //선택한 이미지 경로 표시
-                readURL(this);
-            });
-         });
-   
-  </script>
-				<div class="col-md-12">
-
-					<ul class="breadcrumb">
-						<h2>지시사항</h2>
-						<h3>
-							핵심포인트
-							<button type="button">?</button>
-						</h3>
-						<textarea cols="80" rows="5" name="description">
-						</textarea>
-						<h3>전체적인 느낌</h3>
-						<textarea cols="80" rows="5" name="description">
-						</textarea>
-					</ul>
-				</div>
-				<div class="col-md-12">
-
-					<ul class="breadcrumb">
-						<h3>기간 선택</h3>
-						<button type="button" id="autoChoice">자동선택</button>
-						<button type="button" id="menualChoice">직접선택</button>
-						<div id="select1">선택조건</div> <div id="select2">마감일자</div>
-						<script>
-						$("#autoChice").click(function(){
-							$("#select2").hide();
-						})
-
+						<li><a href="#">회원가입 안내</a></li>
+						<li><a href="#">정보동의</a></li>
+						<li><a href="#">정보입력</a></li>
+						<li>일반 회원 가입완료</li>
 						
-						</script>
 					</ul>
+				</div>
+
+				<div class="col-md-12">
+					<div class="breadcrumb">
+						<h1>회원가입</h1>
+						${message}
+						<h2>판매가 가능한 디자이너로 가입하시려면 다음을 눌러주세요</h2>
+						<button type="button"></button>
+				</div>
+
+
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /#content -->
+
+
+		<!-- *** FOOTER ***
+ _________________________________________________________ -->
+		<div id="footer" data-animate="fadeInUp">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<h4>Pages</h4>
+
+						<ul>
+							<li><a href="text.jsp">About us</a></li>
+							<li><a href="text.jsp">Terms and conditions</a></li>
+							<li><a href="faq.jsp">FAQ</a></li>
+							<li><a href="contact.jsp">Contact us</a></li>
+						</ul>
+
+						<hr>
+
+						<h4>User section</h4>
+
+						<ul>
+							<li><a href="#" data-toggle="modal"
+								data-target="#login-modal">Login</a></li>
+							<li><a href="register.jsp">Regiter</a></li>
+						</ul>
+
+						<hr class="hidden-md hidden-lg hidden-sm">
+
+					</div>
+					<!-- /.col-md-3 -->
+
+					<div class="col-md-3 col-sm-6">
+
+						<h4>Top categories</h4>
+
+						<h5>Men</h5>
+
+						<ul>
+							<li><a href="category.jsp">T-shirts</a></li>
+							<li><a href="category.jsp">Shirts</a></li>
+							<li><a href="category.jsp">Accessories</a></li>
+						</ul>
+
+						<h5>Ladies</h5>
+						<ul>
+							<li><a href="category.jsp">T-shirts</a></li>
+							<li><a href="category.jsp">Skirts</a></li>
+							<li><a href="category.jsp">Pants</a></li>
+							<li><a href="category.jsp">Accessories</a></li>
+						</ul>
+
+						<hr class="hidden-md hidden-lg">
+
+					</div>
+					<!-- /.col-md-3 -->
+
+					<div class="col-md-3 col-sm-6">
+
+						<h4>Where to find us</h4>
+
+						<p>
+							<strong>Obaju Ltd.</strong> <br>13/25 New Avenue <br>New
+							Heaven <br>45Y 73J <br>England <br> <strong>Great
+								Britain</strong>
+						</p>
+
+						<a href="contact.jsp">Go to contact page</a>
+
+						<hr class="hidden-md hidden-lg">
+
+					</div>
+					<!-- /.col-md-3 -->
+
+
+
+					<div class="col-md-3 col-sm-6">
+
+						<h4>Get the news</h4>
+
+						<p class="text-muted">Pellentesque habitant morbi tristique
+							senectus et netus et malesuada fames ac turpis egestas.</p>
+
+						<form>
+							<div class="input-group">
+
+								<input type="text" class="form-control"> <span
+									class="input-group-btn">
+
+									<button class="btn btn-default" type="button">Subscribe!</button>
+
+								</span>
+
+							</div>
+							<!-- /input-group -->
+						</form>
+
+						<hr>
+
+						<h4>Stay in touch</h4>
+
+						<p class="social">
+							<a href="#" class="facebook external" data-animate-hover="shake"><i
+								class="fa fa-facebook"></i></a> <a href="#" class="twitter external"
+								data-animate-hover="shake"><i class="fa fa-twitter"></i></a> <a
+								href="#" class="instagram external" data-animate-hover="shake"><i
+								class="fa fa-instagram"></i></a> <a href="#" class="gplus external"
+								data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="email external" data-animate-hover="shake"><i
+								class="fa fa-envelope"></i></a>
+						</p>
+
+
+					</div>
+					<!-- /.col-md-3 -->
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /#footer -->
+
+		<!-- *** FOOTER END *** -->
+
+
+
+
+		<!-- *** COPYRIGHT ***
+ _________________________________________________________ -->
+		<div id="copyright">
+			<div class="container">
+				<div class="col-md-6">
+					<p class="pull-left">Â© 2015 Your name goes here.</p>
+
+				</div>
+				<div class="col-md-6">
+					<p class="pull-right">
+						Template by <a
+							href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
+						with support from <a href="https://kakusei.cz">Kakusei</a>
+						<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
+					</p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- /.container -->
-	<!-- /#content -->
+		<!-- *** COPYRIGHT END *** -->
 
 
 
-	<!-- *** COPYRIGHT ***
- _________________________________________________________ -->
-	<div id="copyright">
-		<div class="container">
-			<div class="col-md-6">
-				<p class="pull-left">Â© 2015 Your name goes here.</p>
-
-			</div>
-			<div class="col-md-6">
-				<p class="pull-right">
-					Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
-					with support from <a href="https://kakusei.cz">Kakusei</a>
-					<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
-				</p>
-			</div>
-		</div>
-	</div>
-	<!-- *** COPYRIGHT END *** -->
-
-
-
-	</div>
 	<!-- /#all -->
 
 

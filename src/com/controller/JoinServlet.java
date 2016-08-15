@@ -29,7 +29,7 @@ public class JoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	request.setCharacterEncoding("UTF-8");
 	
-	String name=request.getParameter("name");
+	String nickname=request.getParameter("nickname");
 	String pwd=request.getParameter("pwd");
 	String email=request.getParameter("email");
 	String address=request.getParameter("address");
@@ -38,7 +38,7 @@ public class JoinServlet extends HttpServlet {
 	int admin_n=Integer.parseInt(admin);
 	
 	MemberVO mVo=new MemberVO();
-	mVo.setName(name);
+	mVo.setNickname(nickname);
 	mVo.setPwd(pwd);
 	mVo.setEmail(email);
 	mVo.setAddress(address);
@@ -52,12 +52,12 @@ public class JoinServlet extends HttpServlet {
 	HttpSession session=request.getSession();
 	if(result==1){
 		session.setAttribute("email", mVo.getEmail());
-		request.setAttribute("message", "회원 가입에 성공했습니다.");
+		request.setAttribute("message", "축하합니다! 회원 가입에 성공했습니다.");
 	}else{
 		request.setAttribute("message", "회원 가입에 실패했습니다.");
 	}
 	
-	RequestDispatcher dispatcher =request.getRequestDispatcher("register.html");
+	RequestDispatcher dispatcher =request.getRequestDispatcher("register4.jsp");
 	dispatcher.forward(request, response);
 	}
 

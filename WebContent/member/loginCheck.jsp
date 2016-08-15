@@ -10,12 +10,12 @@
 <body>
 			<div><form action method="get" name="login">
 			<input type="text" name="message">
-				${message}
+				${messages}
 			</form>
 			</div>
 			
 			<script type="text/javascript">
-			function message(){
+			function messages(){
 			}
 			</script>
 </body>

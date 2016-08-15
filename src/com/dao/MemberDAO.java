@@ -83,7 +83,7 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				mVo=new MemberVO();
-				mVo.setName(rs.getString("name"));
+				mVo.setNickname(rs.getString("nickname"));
 				mVo.setPwd(rs.getString("pwd"));
 				mVo.setEmail(rs.getString("email"));
 			}
@@ -142,7 +142,7 @@ public class MemberDAO {
 			conn=getConnection();
 			pstmt=conn.prepareStatement(sql);
 			
-			pstmt.setString(1, mVo.getName());
+			pstmt.setString(1, mVo.getNickname());
 			pstmt.setString(2, mVo.getEmail());
 			pstmt.setString(3, mVo.getPwd());
 			pstmt.setString(4, mVo.getAddress());

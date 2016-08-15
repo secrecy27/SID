@@ -2,19 +2,19 @@ package com.dto;
 
 public class MemberVO {
 
-	private String name;
+	private String nickname;
 	private String address;
 	private String pwd;
 	private String email;
 	private String phone;
 	private int admin;
-
-	public String getName() {
-		return name;
+	
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getAddress() {
@@ -59,7 +59,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [name=" + name + ", email=" + email + ", pwd=" + pwd
+		return "MemberVO [nickname=" + nickname + ", email=" + email + ", pwd=" + pwd
 				+ ", address=" + address + ", phone=" + phone + ", admin=" + admin
 				+ "]";
 	}
