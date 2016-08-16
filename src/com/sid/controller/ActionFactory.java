@@ -1,5 +1,6 @@
 package com.sid.controller;
 
+import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.ContractAction;
 import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
@@ -30,6 +31,8 @@ public class ActionFactory {
 			action=new EmailCheckFormAction();
 		}else if(command.equals("join")){
 			action=new JoinAction();
+		}else if(command.equals("cart_insert")){
+			action=new CartInsertAction();
 		}
 		
 		return action;

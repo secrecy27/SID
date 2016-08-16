@@ -37,21 +37,21 @@ public class CartDAO {
 		}
 	}
 
-	public ArrayList<CartVO> listCart(String userId) {
+	public ArrayList<CartVO> listCart(String email) {
 		ArrayList<CartVO> cartList = new ArrayList<CartVO>();
-		String sql = "select * from cart_view where id=? order by cseq desc";
+		String sql = "select * from cart_view where email=? order by cseq desc";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CartVO cartVO = new CartVO();
 				cartVO.setCseq(rs.getInt(1));
-				cartVO.setId(rs.getString(2));
+				cartVO.setEmail(rs.getString(2));
 				cartVO.setPseq(rs.getInt(3));
 				cartVO.setMname(rs.getString(4));
 				cartVO.setPname(rs.getString(5));
