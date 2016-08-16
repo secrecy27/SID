@@ -218,36 +218,34 @@
 						<form id="form1">
 							<input type='file' id="imgInp" /><br /> <img id="blah" src="#"
 								alt="your image" />
-						</form>
 					</ul>
 				</div>
 
 
 				<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 				<script>
-
-        $(document).ready(function(){
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-                    reader.onload = function (e) { 
-                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-                        $('#blah').attr('src', e.target.result);
-                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-                        //(아래 코드에서 읽어들인 dataURL형식)
-                    }                    
-                    reader.readAsDataURL(input.files[0]);
-                    //File내용을 읽어 dataURL형식의 문자열로 저장
-                }
-            }//readURL()--
-            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-            $("#imgInp").change(function(){
-               // alert(this.value); //선택한 이미지 경로 표시
-                readURL(this);
-            });
-         });
-   
-  </script>
+			        $(document).ready(function(){
+			            function readURL(input) {
+			                if (input.files && input.files[0]) {
+			                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+			                    reader.onload = function (e) { 
+			                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+			                        $('#blah').attr('src', e.target.result);
+			                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+			                        //(아래 코드에서 읽어들인 dataURL형식)
+			                    }                    
+			                    reader.readAsDataURL(input.files[0]);
+			                    //File내용을 읽어 dataURL형식의 문자열로 저장
+			                }
+			            }//readURL()--
+			            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+			            $("#imgInp").change(function(){
+			               // alert(this.value); //선택한 이미지 경로 표시
+			                readURL(this);
+			            });
+			         });
+			   
+				  </script>
 				<div class="col-md-12">
 
 					<ul class="breadcrumb">
@@ -269,14 +267,12 @@
 						<h3>기간 선택</h3>
 						<button type="button" id="autoChoice">자동선택</button>
 						<button type="button" id="menualChoice">직접선택</button>
-						<div id="select1">선택조건</div> <div id="select2">마감일자</div>
+						<div id="select1">선택조건</div>
+						<div id="select2">마감일자</div>
 						<script>
-						$("#autoChice").click(function(){
-							$("#select2").hide();
-						})
 
 						
-						</script>
+						</form>
 					</ul>
 				</div>
 			</div>

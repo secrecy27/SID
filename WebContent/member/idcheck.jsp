@@ -8,18 +8,18 @@
 <title>회원 관리</title>
 </head>
 <body>
-	<h2>이메일 중복확인</h2>
-	<form method="get" action="idCheck.do" name="frm3">
-	이메일<input type="text" name="email">
-		<input type="submit" name="중복 체크">
+	<h2>E-mail 중복확인</h2>
+	<form method="post" action="SidServlet?command=email_check_form" name="frm">
+	E-mail<input type="text" name="email">
+		<input type="submit" name="검색" class="submit">
 	<br>
-		<c:if test="${result==1}">
+		<c:if test="${message==1}">
 			<script type="text/javascript">
 				opener.document.frm.reemail.value="";
 			</script>
 			${email}는 이미 사용 중인 이메일입니다.
 		</c:if>
-		<c:if test="${result==-1}">
+		<c:if test="${message==-1}">
 			${email}는 사용 가능한 이메일입니다.
 			<input type="button" value="사용" class="cancel"	 onclick="idok()">
 		</c:if>	
@@ -28,6 +28,7 @@
 	<script type="text/javascript">
 	function idok(){
 		opener.frm.reemail.value= "${email}";
+		opener.frm.email.value= "${email}";
 		self.close();
 	}
 	</script>
