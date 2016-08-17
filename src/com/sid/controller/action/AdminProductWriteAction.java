@@ -17,7 +17,7 @@ import com.sid.dto.ProductVO;
 public class AdminProductWriteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "NonageServlet?command=admin_product_list";
+		String url = "SidServlet?command=admin_product_list";
 		HttpSession session = request.getSession();
 		int sizeLimit = 10 * 1024 * 1024;
 		String savePath = "product_images";

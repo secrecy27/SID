@@ -20,7 +20,7 @@ public class CartInsertAction implements Action {
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
-			url = "NonageServlet?command=login_form";
+			url = "SidServlet?command=login_form";
 		} else {
 			CartVO cartVO = new CartVO();
 			cartVO.setEmail(loginUser.getEmail());

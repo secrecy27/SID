@@ -52,7 +52,7 @@ public class ActionFactory {
 			action = new ContractAction();
 		} else if (command.equals("join_form")) {
 			action = new JoinFormAction();
-		} else if (command.equals("id_check_form")) {
+		} else if (command.equals("email_check_form")) {
 			action = new EmailCheckFormAction();
 		} else if (command.equals("join")) {
 			action = new JoinAction();

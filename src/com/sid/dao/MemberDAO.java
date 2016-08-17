@@ -5,10 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
 import com.sid.dto.MemberVO;
 import com.sid.util.DBManager;
 
@@ -24,14 +20,6 @@ public class MemberDAO {
 		return instance;
 	}
 
-	public Connection getConnection() throws Exception {
-		Connection conn = null;
-		Context initContext = new InitialContext();
-		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
-		conn = ds.getConnection();
-		return conn;
-	}
 
 	public int confirmID(String email) {
 		int result = -1;
@@ -64,7 +52,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
+			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
@@ -135,7 +123,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			conn = getConnection();
+			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, mVo.getNickname());
@@ -161,7 +149,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			conn = getConnection();
+			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, mVo.getPwd());

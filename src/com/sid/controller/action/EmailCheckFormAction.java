@@ -14,7 +14,7 @@ public class EmailCheckFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url="/member/emailcheck.jsp";
+		String url="/member/idcheck.jsp";
 		
 		String email=request.getParameter("email").trim();
 		
@@ -23,6 +23,7 @@ public class EmailCheckFormAction implements Action {
 		
 		request.setAttribute("message", message);
 		request.setAttribute("email",email );
+		
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

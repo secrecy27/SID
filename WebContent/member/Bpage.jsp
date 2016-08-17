@@ -23,24 +23,22 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
+<link href="../css/font-awesome.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/owl.carousel.css" rel="stylesheet">
+<link href="../css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
+<link href="../css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 
-<script src="js/respond.min.js"></script>
+<script src="../js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
-
-
 
 </head>
 
@@ -208,20 +206,18 @@
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li>회원가입 안내</li>
+						<li>D-Write</li>
 					</ul>
 
 				</div>
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<h1>이미지 등록</h1>
-						<form id="form1">
-							<input type='file' id="imgInp" /><br /> <img id="blah" src="#"
-								alt="your image" />
+						<form id="form1" method="post" action="SidServlet?command=DWrite" name=formm>
+							<input type='file' id="imgInp" /><br /> <img id="image" src="#"
+								alt="이미지" />
 					</ul>
 				</div>
-
-
 				<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 				<script>
 			        $(document).ready(function(){
@@ -230,7 +226,7 @@
 			                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
 			                    reader.onload = function (e) { 
 			                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-			                        $('#blah').attr('src', e.target.result);
+			                        $('#image').attr('src', e.target.result);
 			                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
 			                        //(아래 코드에서 읽어들인 dataURL형식)
 			                    }                    
@@ -269,9 +265,7 @@
 						<button type="button" id="menualChoice">직접선택</button>
 						<div id="select1">선택조건</div>
 						<div id="select2">마감일자</div>
-						<script>
 
-						
 						</form>
 					</ul>
 				</div>

@@ -215,10 +215,9 @@
 				</div>
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-						<li>정보동의</li>>
-						<li>이용약관</li>>
-						
-						<form id="join" action="../SidServlet?command=join_form" method="post" name="formm">
+						<li>정보동의</li>
+						<li>이용약관</li>
+						<form method="post" name="formm" id="join">
 							<textarea rows="6" cols="140" readonly="readonly">제1장 총칙 
 제 1조 목적
  이 약관은 정부(보건복지부) 산하기관인 사회보장정보원(이하 SSIS)에서 운영하는 전자바우처 포털사이트(이하 "당 사이트")가 온라인으로 제공하는 디지털 콘텐츠(이하 "콘텐츠"라고 한다) 및 제반서비스의 이용에 관한 조건 및 절차와 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -519,8 +518,8 @@
 							<script>
 							function go_next(){
 								 if(document.formm.agreement.value=="yes"){
-								//	 document.formm.action="SidServlet?command=join_form";
-									 //document.formm.submit();
+									 document.formm.action="../SidServlet?command=join_form";
+									 document.formm.submit();
 									 return true;
 									 
 								 }else if(document.formm.agreement.value=="no"){
@@ -532,8 +531,9 @@
 							</script>
 
 							<div class="text-center">
-								<button type="submit" class="btn btn-primary" onclick="return go_next()">
-								<i class="fa fa-sign-in"></i> 가입 시작하기
+								<button type="submit" class="btn btn-primary"
+									onclick="return go_next()">
+									<i class="fa fa-sign-in"></i> 가입 시작하기
 								</button>
 							</div>
 						</form>
