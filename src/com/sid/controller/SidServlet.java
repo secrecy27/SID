@@ -23,6 +23,10 @@ public class SidServlet extends HttpServlet {
 		
 		ActionFactory af=ActionFactory.getInstance();
 		Action action=af.getAction(command);
+		
+		if(action!=null){
+			action.execute(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

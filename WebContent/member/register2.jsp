@@ -23,20 +23,20 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
+<link href="../css/font-awesome.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/owl.carousel.css" rel="stylesheet">
+<link href="../css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
+<link href="../css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 
-<script src="js/respond.min.js"></script>
+<script src="../js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 
@@ -215,10 +215,10 @@
 				</div>
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-						<h1>정보동의</h1>
-						<h3>이용약관</h3>
-						<form id="join" action="SidServlet?command=join_form"
-							method="post" name="formm">
+						<li>정보동의</li>>
+						<li>이용약관</li>>
+						
+						<form id="join" action="../SidServlet?command=join_form" method="post" name="formm">
 							<textarea rows="6" cols="140" readonly="readonly">제1장 총칙 
 제 1조 목적
  이 약관은 정부(보건복지부) 산하기관인 사회보장정보원(이하 SSIS)에서 운영하는 전자바우처 포털사이트(이하 "당 사이트")가 온라인으로 제공하는 디지털 콘텐츠(이하 "콘텐츠"라고 한다) 및 제반서비스의 이용에 관한 조건 및 절차와 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -512,21 +512,28 @@
 게시일 2011년 11월 10
 </textarea>
 							<p>동의하십니까?</p>
-							<label><input type="radio" value="yes" name="agreement[0]">동의함</label>
-							<label><input type="radio" value="no" name="agreement[1]"
-							checked="checked">동의하지 않음</label>
-							<script type="text/javascript">
+							<label><input type="radio" value="yes" name="agreement">동의함</label>
+							<label><input type="radio" value="no" name="agreement"
+								checked="checked">동의하지 않음</label>
+
+							<script>
 							function go_next(){
-								if(document.formm.agreement[0].checked==true){
-									document.formm.action="SidServlet?command=join_form";
-									document.formm.submit();
-								}else if(document.agreement.agreement[1].checked==true){
-								alert("약관에 동의하셔야만 합니다.");
+								 if(document.formm.agreement.value=="yes"){
+								//	 document.formm.action="SidServlet?command=join_form";
+									 //document.formm.submit();
+									 return true;
+									 
+								 }else if(document.formm.agreement.value=="no"){
+									 alert("약관에 동의하셔야만 합니다.");
+									 return false;
+								 }
+								 
 							}
 							</script>
+
 							<div class="text-center">
-								<button type="submit" class="btn btn-primary" onclick="go_next()">
-									<i class="fa fa-sign-in"></i> 가입 시작하기
+								<button type="submit" class="btn btn-primary" onclick="return go_next()">
+								<i class="fa fa-sign-in"></i> 가입 시작하기
 								</button>
 							</div>
 						</form>
@@ -540,7 +547,7 @@
 
 		<!-- *** FOOTER ***
  _________________________________________________________ -->
-		<div id="footer" data-animate="fadeInUp">
+		<div id="footer" data-animation="fadeInUp">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-6">

@@ -51,7 +51,7 @@
 		<div class="clear"></div>
 		<div id="buttons" style="float: right">
 			<input type="button" value="쇼핑 계속하기" class="cancel"
-				onclick="location.href='NonageServlet?command=index'">
+				onclick="location.href='SidServlet?command=index'">
 			<c:if test="${cartList.size() != 0}">
 				<input type="button" value="주문하기" class="submit"
 					onclick="go_order_insert()">
