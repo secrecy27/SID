@@ -23,6 +23,8 @@ import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
 import com.sid.controller.action.JoinFormAction;
+import com.sid.controller.action.JoinFormAction2;
+import com.sid.controller.action.JoinFormAction3;
 import com.sid.controller.action.MyPageAction;
 import com.sid.controller.action.OrderAllAction;
 import com.sid.controller.action.OrderDetailAction;
@@ -56,6 +58,10 @@ public class ActionFactory {
 			action = new EmailCheckFormAction();
 		} else if (command.equals("join")) {
 			action = new JoinAction();
+		} else if (command.equals("join_form2")){
+			action=new JoinFormAction2();
+		} else if (command.equals("join_form3")){
+			action=new JoinFormAction3();
 		} else if (command.equals("cart_insert")) {
 			action = new CartInsertAction();
 		} else if (command.equals("cart_list")) {

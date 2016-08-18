@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sid.controller.Action;
 
-public class JoinFormAction implements Action {
+public class JoinFormAction2 implements Action{
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url="member/register3.jsp";
+		String url="member/register5.jsp";
 		
 		RequestDispatcher dispatcher =request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -23,18 +23,18 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
+<link href="../css/font-awesome.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/owl.carousel.css" rel="stylesheet">
+<link href="../css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
+<link href="../css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="../css/custom.css" rel="stylesheet">
 
 <script src="js/respond.min.js"></script>
 
@@ -207,182 +207,187 @@
 			<div class="container">
 
 				<div class="col-md-12">
+
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">회원가입 안내</a></li>
-						<li><a href="#">정보동의</a></li>
-						<li><a href="#">정보입력</a></li>
-						<li>일반 회원 가입완료</li>
-
+						<li>회원가입 안내</li>
 					</ul>
+
 				</div>
 
-				<div class="col-md-12">
-					<div class="breadcrumb">
-						<h1>회원가입</h1>
-						<h2>축하합니다! 일반회원 가입에 성공했습니다.</h2>
-						<form method="post" action="member/register5.jsp">
+				<div class="col-md-6">
+					<div class="box">
+						<h1>일반 회원가입</h1>
 
-							<h2>판매가 가능한 디자이너로 가입하시려면 다음을 눌러주세요</h2>
-							<button type="submit" class="btn btn-primary">디자이너로 가입하기</button>
-						</form>
+						<p class="lead">Not our registered customer yet?</p>
+						<p>With registration with us new world of fashion, fantastic
+							discounts and much more opens to you! The whole process will not
+							take you more than a minute!</p>
+						<p class="text-muted">
+							If you have any questions, please feel free to <a
+								href="contact.jsp">contact us</a>, our customer service center
+							is working for you 24/7.
+						</p>
+
 					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="box">
+						<h1>디자이너 회원가입</h1>
+
+						<p class="lead">Already our customer?</p>
+						<p class="text-muted">Pellentesque habitant morbi tristique
+							senectus et netus et malesuada fames ac turpis egestas.
+							Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit
+							amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+							ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+						<hr>
+
+					</div>
+				</div>
+						<form action="register2.jsp" method="post">
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary">
+									<i class="fa fa-sign-in"></i> 가입 시작하기
+								</button>
+							</div>
+						</form>
+
+
 			</div>
+			<!-- /.container -->
 		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#content -->
+		<!-- /#content -->
 
 
-	<!-- *** FOOTER ***
+		<!-- *** FOOTER ***
  _________________________________________________________ -->
-	<div id="footer" data-animate="fadeInUp">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<h4>Pages</h4>
+		<div id="footer" data-animate="fadeInUp">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6">
+						<h4>Pages</h4>
 
-					<ul>
-						<li><a href="text.jsp">About us</a></li>
-						<li><a href="text.jsp">Terms and conditions</a></li>
-						<li><a href="faq.jsp">FAQ</a></li>
-						<li><a href="contact.jsp">Contact us</a></li>
-					</ul>
+						<ul>
+							<li><a href="text.jsp">About us</a></li>
+							<li><a href="text.jsp">Terms and conditions</a></li>
+							<li><a href="faq.jsp">FAQ</a></li>
+							<li><a href="contact.jsp">Contact us</a></li>
+						</ul>
 
-					<hr>
+						<hr>
 
-					<h4>User section</h4>
+						<h4>User section</h4>
 
-					<ul>
-						<li><a href="#" data-toggle="modal"
-							data-target="#login-modal">Login</a></li>
-						<li><a href="register.jsp">Regiter</a></li>
-					</ul>
+						<ul>
+							<li><a href="#" data-toggle="modal"
+								data-target="#login-modal">Login</a></li>
+							<li><a href="register.jsp">Regiter</a></li>
+						</ul>
 
-					<hr class="hidden-md hidden-lg hidden-sm">
+						<hr class="hidden-md hidden-lg hidden-sm">
 
-				</div>
-				<!-- /.col-md-3 -->
+					</div>
+					<!-- /.col-md-3 -->
 
-				<div class="col-md-3 col-sm-6">
+					
 
-					<h4>Top categories</h4>
+					<div class="col-md-3 col-sm-6">
 
-					<h5>Men</h5>
+						<h4>Where to find us</h4>
 
-					<ul>
-						<li><a href="category.jsp">T-shirts</a></li>
-						<li><a href="category.jsp">Shirts</a></li>
-						<li><a href="category.jsp">Accessories</a></li>
-					</ul>
+						<p>
+							<strong>Obaju Ltd.</strong> <br>13/25 New Avenue <br>New
+							Heaven <br>45Y 73J <br>England <br> <strong>Great
+								Britain</strong>
+						</p>
 
-					<h5>Ladies</h5>
-					<ul>
-						<li><a href="category.jsp">T-shirts</a></li>
-						<li><a href="category.jsp">Skirts</a></li>
-						<li><a href="category.jsp">Pants</a></li>
-						<li><a href="category.jsp">Accessories</a></li>
-					</ul>
+						<a href="contact.jsp">Go to contact page</a>
 
-					<hr class="hidden-md hidden-lg">
+						<hr class="hidden-md hidden-lg">
 
-				</div>
-				<!-- /.col-md-3 -->
-
-				<div class="col-md-3 col-sm-6">
-
-					<h4>Where to find us</h4>
-
-					<p>
-						<strong>Obaju Ltd.</strong> <br>13/25 New Avenue <br>New
-						Heaven <br>45Y 73J <br>England <br> <strong>Great
-							Britain</strong>
-					</p>
-
-					<a href="contact.jsp">Go to contact page</a>
-
-					<hr class="hidden-md hidden-lg">
-
-				</div>
-				<!-- /.col-md-3 -->
+					</div>
+					<!-- /.col-md-3 -->
 
 
 
-				<div class="col-md-3 col-sm-6">
+					<div class="col-md-3 col-sm-6">
 
-					<h4>Get the news</h4>
+						<h4>Get the news</h4>
 
-					<p class="text-muted">Pellentesque habitant morbi tristique
-						senectus et netus et malesuada fames ac turpis egestas.</p>
+						<p class="text-muted">Pellentesque habitant morbi tristique
+							senectus et netus et malesuada fames ac turpis egestas.</p>
 
-					<form>
-						<div class="input-group">
+						<form>
+							<div class="input-group">
 
-							<input type="text" class="form-control"> <span
-								class="input-group-btn">
+								<input type="text" class="form-control"> <span
+									class="input-group-btn">
 
-								<button class="btn btn-default" type="button">Subscribe!</button>
+									<button class="btn btn-default" type="button">Subscribe!</button>
 
-							</span>
+								</span>
 
-						</div>
-						<!-- /input-group -->
-					</form>
+							</div>
+							<!-- /input-group -->
+						</form>
 
-					<hr>
+						<hr>
 
-					<h4>Stay in touch</h4>
+						<h4>Stay in touch</h4>
 
-					<p class="social">
-						<a href="#" class="facebook external" data-animate-hover="shake"><i
-							class="fa fa-facebook"></i></a> <a href="#" class="twitter external"
-							data-animate-hover="shake"><i class="fa fa-twitter"></i></a> <a
-							href="#" class="instagram external" data-animate-hover="shake"><i
-							class="fa fa-instagram"></i></a> <a href="#" class="gplus external"
-							data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-						<a href="#" class="email external" data-animate-hover="shake"><i
-							class="fa fa-envelope"></i></a>
-					</p>
+						<p class="social">
+							<a href="#" class="facebook external" data-animate-hover="shake"><i
+								class="fa fa-facebook"></i></a> <a href="#" class="twitter external"
+								data-animate-hover="shake"><i class="fa fa-twitter"></i></a> <a
+								href="#" class="instagram external" data-animate-hover="shake"><i
+								class="fa fa-instagram"></i></a> <a href="#" class="gplus external"
+								data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="email external" data-animate-hover="shake"><i
+								class="fa fa-envelope"></i></a>
+						</p>
 
+
+					</div>
+					<!-- /.col-md-3 -->
 
 				</div>
-				<!-- /.col-md-3 -->
+				<!-- /.row -->
 
 			</div>
-			<!-- /.row -->
-
+			<!-- /.container -->
 		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#footer -->
+		<!-- /#footer -->
 
-	<!-- *** FOOTER END *** -->
+		<!-- *** FOOTER END *** -->
 
 
 
 
-	<!-- *** COPYRIGHT ***
+		<!-- *** COPYRIGHT ***
  _________________________________________________________ -->
-	<div id="copyright">
-		<div class="container">
-			<div class="col-md-6">
-				<p class="pull-left">Â© 2015 Your name goes here.</p>
+		<div id="copyright">
+			<div class="container">
+				<div class="col-md-6">
+					<p class="pull-left">Â© 2015 Your name goes here.</p>
 
-			</div>
-			<div class="col-md-6">
-				<p class="pull-right">
-					Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
-					with support from <a href="https://kakusei.cz">Kakusei</a>
-					<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
-				</p>
+				</div>
+				<div class="col-md-6">
+					<p class="pull-right">
+						Template by <a
+							href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
+						with support from <a href="https://kakusei.cz">Kakusei</a>
+						<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
+					</p>
+				</div>
 			</div>
 		</div>
+		<!-- *** COPYRIGHT END *** -->
+
+
+
 	</div>
-	<!-- *** COPYRIGHT END *** -->
-
-
-
 	<!-- /#all -->
 
 
