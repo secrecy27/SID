@@ -1,7 +1,7 @@
 package com.sid.dto;
 
 public class ImageVO {
-	private String image;
+	private String imageUrl;
 	private int year;
 	private int month;
 	private int day;
@@ -11,11 +11,11 @@ public class ImageVO {
 	private String point;
 	private String expl;
 	
-	public String getImage() {
-		return image;
+	public String getImageUrl() {
+		return imageUrl;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	public int getYear() {
 		return year;

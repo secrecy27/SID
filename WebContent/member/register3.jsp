@@ -232,7 +232,7 @@
 
 						<hr>
 
-						<form action="SidServlet?command=join" method="post" name="frm" id="join">
+						<form method="post" name="frm" id="join">
 							<div class="form-group">
 								<label for="name">닉네임</label> <input type="text"
 									class="form-control" name="nickname">
@@ -251,14 +251,13 @@
 									class="form-control" name="pwd_check">
 							</div>
 							<div class="form-group">
-								<label for="name">등급</label><br> <input type="radio"
-									name="admin" value="0" checked="checked">일반 <input
-									type="radio" name="admin" value="1" disabled="disabled">판매자
+								<label for="phone">연락처</label> <input type="text"
+									class="form-control" name="phone">
 							</div>
 							<div class="form-group">
-								<label for="ZipNo">우편번호</label> <input type="hidden"
+								<label for="ZipNum">우편번호</label> <input type="hidden"
 									id="confmKey" name="confmKey"> <input type="text"
-									class="form-control" name="ZipNo" id="ZipNo" readonly
+									class="form-control" name="ZipNum" id="ZipNum" readonly
 									style="width: 100px"> <input type="button" value="검색"
 									onclick="goPopup()">
 							</div>
@@ -275,6 +274,11 @@
 									class="form-control" name="addrDetail" id="roadAddrPart2"
 									style="width: 40%">
 
+							</div>
+							<div class="form-group">
+								<label for="grade">등급</label><br> <input type="radio"
+									name="admin" value="0" checked="checked">일반 <input
+									type="radio" name="admin" value="1" disabled="disabled">판매자
 							</div>
 							<div class="text-center">
 								<button type="button" class="btn btn-primary"
@@ -314,8 +318,8 @@
 			    	alert("잘못된 이메일 형식입니다")
 			    	return;
 			    }
-				
-				var url="SidServlet?command=email_check_form & email="+document.frm.email.value;
+				var url="SidServlet?command=email_check_form&email="
+						+document.frm.email.value;
 				window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
 			}
 
@@ -369,14 +373,12 @@
 					frm.roadAddrPart2.focus();
 					return false;
 				}
-				return true;
+				document.frm.action="SidServlet?command=join";
+				 document.frm.submit();
+				 return true;
 			}
 			</script>
-
-
 			</div>
-
-
 		</div>
 		<!-- /.container -->
 	</div>
@@ -413,30 +415,7 @@
 				</div>
 				<!-- /.col-md-3 -->
 
-				<div class="col-md-3 col-sm-6">
-
-					<h4>Top categories</h4>
-
-					<h5>Men</h5>
-
-					<ul>
-						<li><a href="category.jsp">T-shirts</a></li>
-						<li><a href="category.jsp">Shirts</a></li>
-						<li><a href="category.jsp">Accessories</a></li>
-					</ul>
-
-					<h5>Ladies</h5>
-					<ul>
-						<li><a href="category.jsp">T-shirts</a></li>
-						<li><a href="category.jsp">Skirts</a></li>
-						<li><a href="category.jsp">Pants</a></li>
-						<li><a href="category.jsp">Accessories</a></li>
-					</ul>
-
-					<hr class="hidden-md hidden-lg">
-
-				</div>
-				<!-- /.col-md-3 -->
+				
 
 				<div class="col-md-3 col-sm-6">
 

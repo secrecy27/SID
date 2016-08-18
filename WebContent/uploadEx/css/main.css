@@ -1,0 +1,31 @@
+@CHARSET "EUC-KR";
+body {
+	font-family: sans-serif;
+	font-size:12px;
+}
+
+th{
+	border: none;
+	padding: 2px;
+	font-size: 12px;
+	color: #444444;
+	font-family: µ¸À½; 
+}
+
+td
+ {	
+ 	border: 1px solid #aaa;
+	padding: 2px;
+	font-size: 12px;
+	color: #444444;
+	font-family: µ¸À½; 
+ }
+
+img {
+	border: 0px;
+}
+
+a:link{color:#454545; text-decoration:none }
+a:visited{color:#666666; text-decoration:none}
+a:hover{color:#b0b0b0; text-decoration:none}
+a:active{color:#666666; text-decoration:none}

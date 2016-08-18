@@ -20,10 +20,33 @@ public class MemberDAO {
 		return instance;
 	}
 
-
+	public int insertMember(MemberVO mVo) {
+		int result = -1;
+		String sql = "insert into member2 values(?,?,?,?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mVo.getNickname());
+			pstmt.setString(2, mVo.getEmail());
+			pstmt.setString(3, mVo.getPwd());
+			pstmt.setString(4, mVo.getZipNum());
+			pstmt.setString(5, mVo.getAddress());
+			pstmt.setString(6, mVo.getPhone());
+			pstmt.setInt(7, mVo.getAdmin());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
 	public int confirmID(String email) {
 		int result = -1;
-		String sql = "select * from member where email=?";
+		String sql = "select * from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -47,7 +70,7 @@ public class MemberDAO {
 
 	public int userCheck(String email, String pwd) {
 		int result = -1;
-		String sql = "select pwd from member where email=?";
+		String sql = "select pwd from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -86,7 +109,7 @@ public class MemberDAO {
 
 	public MemberVO getMember(String email) {
 		com.sid.dto.MemberVO mVo = null;
-		String sql = "select * from member where email=?";
+		String sql = "select * from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -99,14 +122,14 @@ public class MemberDAO {
 			if (rs.next()) {
 				mVo = new MemberVO();
 				mVo.setNickname(rs.getString("nickname"));
-				mVo.setPwd(rs.getString("pwd"));
 				mVo.setEmail(rs.getString("email"));
+				mVo.setPwd(rs.getString("pwd"));
+				mVo.setZipNum(rs.getString("zipNum"));
 				mVo.setAddress(rs.getString("address"));
 				mVo.setPhone(rs.getString("phone"));
-				mVo.setUseyn(rs.getString("useyn"));
-				mVo.setZipNum(rs.getString("zipNum"));
-				mVo.setIndate(rs.getTimestamp("indate"));
 				mVo.setAdmin(rs.getInt("admin"));
+				mVo.setUseyn(rs.getString("useyn"));
+				mVo.setIndate(rs.getTimestamp("indate"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,34 +140,11 @@ public class MemberDAO {
 		return mVo;
 	}
 
-	public int insertMember(MemberVO mVo) {
-		int result = -1;
-		String sql = "insert into member values(?,?,?,?,?,?)";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, mVo.getNickname());
-			pstmt.setString(2, mVo.getEmail());
-			pstmt.setString(3, mVo.getPwd());
-			pstmt.setString(4, mVo.getAddress());
-			pstmt.setString(5, mVo.getPhone());
-			pstmt.setInt(6, mVo.getAdmin());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-		return result;
-	}
 
 	public int updateMember(MemberVO mVo) {
 		int result = -1;
-		String sql = "update member set pwd=?,address=?,zipNum=?,phone=?,"
-				+ "admin=?,  where email=?";
+		String sql = "update member2 set pwd=?,zipNum=?,address=?,phone=?,"
+				+ " where email=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -153,12 +153,10 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, mVo.getPwd());
-			pstmt.setString(2, mVo.getAddress());
-			pstmt.setString(3, mVo.getZipNum());
+			pstmt.setString(2, mVo.getZipNum());
+			pstmt.setString(3, mVo.getAddress());
 			pstmt.setString(4, mVo.getPhone());
-			pstmt.setInt(5, mVo.getAdmin());
-			;
-			pstmt.setString(6, mVo.getEmail());
+			pstmt.setString(5, mVo.getEmail());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -171,6 +169,8 @@ public class MemberDAO {
 
 	/*
 	 * 관리자 모드에서 사용
+
+아직 수정안함
 	 */
 
 	public ArrayList<MemberVO> listMember(String email) {

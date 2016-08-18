@@ -14,14 +14,14 @@ public class EmailCheckFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url="/member/idcheck.jsp";
+		String url="member/idcheck.jsp";
 		
 		String email=request.getParameter("email").trim();
 		
 		MemberDAO memberDAO=MemberDAO.getInstance();
-		int message=memberDAO.confirmID(email);
+		int result=memberDAO.confirmID(email);
 		
-		request.setAttribute("message", message);
+		request.setAttribute("result", result);
 		request.setAttribute("email",email );
 		
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+  <sqlMap namespace="Upload">
+
+	<resultMap id="Upload_Image" class="co.kr.vo.UploadImageVO">
+		<result property="num" column="NUM"/>
+		<result property="title" column="TITLE"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="content" column="CONTENT" jdbcType="Blob" javaType="[B"/>
+		<result property="contentName" column="CONTENTNAME"/>
+		<result property="contentType" column="CONTENTTYPE"/>
+		<result property="date" column="DATE"/>
+	</resultMap>
+	
+	<select id="Paging" resultMap="Upload_Image" parameterClass="co.kr.vo.UploadImageVO" resultClass="co.kr.vo.UploadImageVO">
+	SELECT SQL_CALC_FOUND_ROWS * FROM Image_Upload ORDER BY NUM DESC LIMIT  #record# , #block#
+	</select>
+	
+	<insert id="boardAdd" parameterClass="co.kr.vo.UploadImageVO">
+		INSERT INTO Image_Upload(TITLE, DESCRIPTION, CONTENT, CONTENTNAME, CONTENTTYPE, DATE) VALUES (#title#, #description#, #content:BLOB#, #contentName# ,#contentType#, now()) 
+	</insert>
+	
+	<delete id="boardDelete" parameterClass="String">
+	  	DELETE FROM Image_Upload WHERE NUM=#num#
+	</delete>
+	
+	<select id="boardDetail" resultMap="Upload_Image" parameterClass="String" resultClass="co.kr.vo.UploadImageVO">
+		SELECT * FROM Image_Upload WHERE NUM=#num#
+	</select>
+	
+	<update id="boardUpdate" parameterClass="co.kr.vo.UploadImageVO">
+        UPDATE Image_Upload SET TITLE=#title#, DESCRIPTION=#description#, CONTENT=#content:BLOB#, CONTENTNAME=#contentName#, CONTENTTYPE=#contentType# WHERE NUM=#num#
+  	</update>
+	
+	<resultMap class="java.lang.Integer" id="TotalCount">
+	<result property="total" column="TOTAL" />
+	</resultMap>
+	
+	<select id="TotalCount" resultMap="TotalCount">
+	SELECT COUNT(*) AS TOTAL FROM Image_Upload
+	</select>
+  	
+</sqlMap>

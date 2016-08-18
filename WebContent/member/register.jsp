@@ -291,30 +291,7 @@
 					</div>
 					<!-- /.col-md-3 -->
 
-					<div class="col-md-3 col-sm-6">
-
-						<h4>Top categories</h4>
-
-						<h5>Men</h5>
-
-						<ul>
-							<li><a href="category.jsp">T-shirts</a></li>
-							<li><a href="category.jsp">Shirts</a></li>
-							<li><a href="category.jsp">Accessories</a></li>
-						</ul>
-
-						<h5>Ladies</h5>
-						<ul>
-							<li><a href="category.jsp">T-shirts</a></li>
-							<li><a href="category.jsp">Skirts</a></li>
-							<li><a href="category.jsp">Pants</a></li>
-							<li><a href="category.jsp">Accessories</a></li>
-						</ul>
-
-						<hr class="hidden-md hidden-lg">
-
-					</div>
-					<!-- /.col-md-3 -->
+					
 
 					<div class="col-md-3 col-sm-6">
 
