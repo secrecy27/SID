@@ -210,15 +210,15 @@
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
 						<li><a href="#">회원가입 안내</a></li>
-						<li><a href="#">정보동의</a></li>
+						<li><a href="#">일반회원 정보동의</a></li>
 						<li><a href="#">정보입력</a></li>
 						<li><a href="#">일반 회원 가입완료</a></li>
-						<li>정보동의</li>
+						<li>디자이너 정보동의</li>
 					</ul>
 				</div>
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-						<li>정보동의</li>
+						<li>디자이너 정보동의</li>
 						<li>이용약관</li>
 						<form method="post" name="formm" id="join">
 							<textarea rows="6" cols="140" readonly="readonly">제1장 총칙 

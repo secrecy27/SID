@@ -213,32 +213,18 @@
 						<li><a href="#">회원가입 안내</a></li>
 						<li><a href="#">일반회원 정보동의</a></li>
 						<li><a href="#">일반회원 정보입력</a></li>
-						<li><a href="#">일반 회원 가입완료</a></li>
+						<li><a href="#">일반회원 가입완료</a></li>
 						<li><a href="#">디자이너 정보동의</a></li>
-						<li>디자이너 정보입력</li>
+						<li><a href="#">디자이너 정보입력</a></li>
+						<li>디자이너 회원가입완료
 					</ul>
 
 				</div>
-
-
 				<div class="col-md-6">
 					<div class="box">
-						<h1>본인 포트폴리오 등록</h1>
-
-						<p class="lead">Already our customer?</p>
-						<p class="text-muted">디자이너의 경우 포트폴리오만 등록하면 됩니다.</p>
-
-						<hr>
-
+						<h1>축하합니다. 디자이너 회원가입이 완료되었습니다!</h1>
 					</div>
 				</div>
-				<form method="post" action="upload.do" enctype="multipart/form-data">
-					1.파일 지정하기 : <input type="file" name="uploadFile01"><br>
-					2.파일 지정하기 : <input type="file" name="uploadFile02"><br>
-					3.파일 지정하기 : <input type="file" name="uplaodFile03"><br>
-					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
-					<input type="submit" value="전송">
-				</form>
 				<form action="../SidServlet?commnad=join_form4" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,11 +38,9 @@
 <!-- your stylesheet with modifications -->
 <link href="../css/custom.css" rel="stylesheet">
 
-<script src="js/respond.min.js"></script>
+<script src="../js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
-
-
 
 </head>
 
@@ -200,181 +200,107 @@
 	<!-- /#navbar -->
 
 	<!-- *** NAVBAR END *** -->
-
 	<div id="all">
-
 		<div id="content">
 			<div class="container">
 
 				<div class="col-md-12">
-
 					<ul class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">회원가입 안내</a></li>
-						<li><a href="#">일반회원 정보동의</a></li>
-						<li><a href="#">일반회원 정보입력</a></li>
-						<li><a href="#">일반 회원 가입완료</a></li>
-						<li><a href="#">디자이너 정보동의</a></li>
-						<li>디자이너 정보입력</li>
-					</ul>
-
-				</div>
-
-
-				<div class="col-md-6">
-					<div class="box">
-						<h1>본인 포트폴리오 등록</h1>
-
-						<p class="lead">Already our customer?</p>
-						<p class="text-muted">디자이너의 경우 포트폴리오만 등록하면 됩니다.</p>
-
-						<hr>
-
-					</div>
-				</div>
-				<form method="post" action="upload.do" enctype="multipart/form-data">
-					1.파일 지정하기 : <input type="file" name="uploadFile01"><br>
-					2.파일 지정하기 : <input type="file" name="uploadFile02"><br>
-					3.파일 지정하기 : <input type="file" name="uplaodFile03"><br>
-					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
-					<input type="submit" value="전송">
-				</form>
-				<form action="../SidServlet?commnad=join_form4" method="post">
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">
-							<i class="fa fa-sign-in"></i> 가입 시작하기
-						</button>
-					</div>
-				</form>
-			</div>
-			<!-- /.container -->
-		</div>
-		<!-- /#content -->
-
-
-		<!-- *** FOOTER ***
- _________________________________________________________ -->
-		<div id="footer" data-animate="fadeInUp">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<h4>Pages</h4>
-
-						<ul>
-							<li><a href="text.jsp">About us</a></li>
-							<li><a href="text.jsp">Terms and conditions</a></li>
-							<li><a href="faq.jsp">FAQ</a></li>
-							<li><a href="contact.jsp">Contact us</a></li>
+						<ul class="nav nav-tabs">
+							<li><h3>
+									<a href="" class="on">진행중인 작업 &nbsp;&nbsp;</a>
+								</h3></li>
+							<li><h3>
+									<a href="#">대기중인 작업 &nbsp;&nbsp;</a>
+								</h3></li>
+							<li><h3>
+									<a href="#">완료된 작업 &nbsp; &nbsp;</a>
+								</h3></li>
+							<li><h3>
+									<a href="#">실패한 작업 </a>
+								</h3></li>
 						</ul>
+						<ul id="worklist">
+							<div id="pettabs" class="indentmenu">
+								<ul>
+									<li><a href="external1.htm" rel="#iframe" class="selected">Tab
+											1</a></li>
+									<li><a href="external2.htm" rel="#iframe">Tab 2</a></li>
+									<li><a href="external3.htm" rel="#iframe">Tab 3</a></li>
+									<li><a href="external4.htm" rel="#iframe">Tab 4</a></li>
+								</ul>
+								<br style="clear: left" />
+							</div>
 
-						<hr>
+							<div id="petsdivcontainer"
+								style="border: 1px solid gray; width: 550px; height: 150px; padding: 5px; margin-bottom: 1em">
+							</div>
+							<link href="../css/ajaxtabs.css" rel="stylesheet">
 
-						<h4>User section</h4>
+							<script type="text/javascript">
 
-						<ul>
-							<li><a href="#" data-toggle="modal"
-								data-target="#login-modal">Login</a></li>
-							<li><a href="register.jsp">Regiter</a></li>
-						</ul>
+								var mypets=new ddajaxtabs("pettabs", "petsdivcontainer")
+								mypets.setpersist(false)
+								mypets.setselectedClassTarget("link")
+								mypets.init()
 
-						<hr class="hidden-md hidden-lg hidden-sm">
-
-					</div>
-					<!-- /.col-md-3 -->
-
-
-
-					<div class="col-md-3 col-sm-6">
-
-						<h4>Where to find us</h4>
-
-						<p>
-							<strong>Obaju Ltd.</strong> <br>13/25 New Avenue <br>New
-							Heaven <br>45Y 73J <br>England <br> <strong>Great
-								Britain</strong>
-						</p>
-
-						<a href="contact.jsp">Go to contact page</a>
-
-						<hr class="hidden-md hidden-lg">
-
-					</div>
-					<!-- /.col-md-3 -->
+								</script>
 
 
 
-					<div class="col-md-3 col-sm-6">
+							<ul id="countrytabs" class="shadetabs">
+								<li><a href="#" rel="#default" class="selected">Tab 1</a></li>
+								<li><a href="external2.htm" rel="countrycontainer">Tab
+										2</a></li>
+								<li><a href="external3.htm" rel="countrycontainer">Tab
+										3</a></li>
+								<li><a href="external4.htm" rel="#iframe">Tab 4</a></li>
+								<li><a href="http://www.dynamicdrive.com">Dynamic Drive</a></li>
+							</ul>
 
-						<h4>Get the news</h4>
-
-						<p class="text-muted">Pellentesque habitant morbi tristique
-							senectus et netus et malesuada fames ac turpis egestas.</p>
-
-						<form>
-							<div class="input-group">
-
-								<input type="text" class="form-control"> <span
-									class="input-group-btn">
-
-									<button class="btn btn-default" type="button">Subscribe!</button>
-
-								</span>
+							<div id="countrydivcontainer"
+								style="border: 1px solid gray; width: 450px; margin-bottom: 1em; padding: 10px">
 
 							</div>
-							<!-- /input-group -->
-						</form>
+							<script src="js/ajaxtabs.js">
+							<script type="text/javascript">
 
-						<hr>
+var countries=new ddajaxtabs("countrytabs", "countrydivcontainer")
+countries.setpersist(true)
+countries.setselectedClassTarget("link") //"link" or "linkparent"
+countries.init()
 
-						<h4>Stay in touch</h4>
+</script>
 
-						<p class="social">
-							<a href="#" class="facebook external" data-animate-hover="shake"><i
-								class="fa fa-facebook"></i></a> <a href="#" class="twitter external"
-								data-animate-hover="shake"><i class="fa fa-twitter"></i></a> <a
-								href="#" class="instagram external" data-animate-hover="shake"><i
-								class="fa fa-instagram"></i></a> <a href="#" class="gplus external"
-								data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-							<a href="#" class="email external" data-animate-hover="shake"><i
-								class="fa fa-envelope"></i></a>
-						</p>
-
-
-					</div>
-					<!-- /.col-md-3 -->
-
+						</ul>
+					</ul>
 				</div>
-				<!-- /.row -->
-
 			</div>
-			<!-- /.container -->
 		</div>
-		<!-- /#footer -->
-
-		<!-- *** FOOTER END *** -->
-
-
+	</div>
+	<!-- /.container -->
+	<!-- /#content -->
 
 
-		<!-- *** COPYRIGHT ***
+
+	<!-- *** COPYRIGHT ***
  _________________________________________________________ -->
-		<div id="copyright">
-			<div class="container">
-				<div class="col-md-6">
-					<p class="pull-left">Â© 2015 Your name goes here.</p>
+	<div id="copyright">
+		<div class="container">
+			<div class="col-md-6">
+				<p class="pull-left">Â© 2015 Your name goes here.</p>
 
-				</div>
-				<div class="col-md-6">
-					<p class="pull-right">
-						Template by <a
-							href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
-						with support from <a href="https://kakusei.cz">Kakusei</a>
-						<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
-					</p>
-				</div>
+			</div>
+			<div class="col-md-6">
+				<p class="pull-right">
+					Template by <a href="http://bootstrapious.com/e-commerce-templates">Bootstrapious</a>
+					with support from <a href="https://kakusei.cz">Kakusei</a>
+					<!-- Not removing these links is part of the licence conditions of the template. Thanks for understanding :) -->
+				</p>
 			</div>
 		</div>
-		<!-- *** COPYRIGHT END *** -->
+	</div>
+	<!-- *** COPYRIGHT END *** -->
 
 
 

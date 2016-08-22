@@ -25,6 +25,7 @@ import com.sid.controller.action.JoinAction;
 import com.sid.controller.action.JoinFormAction;
 import com.sid.controller.action.JoinFormAction2;
 import com.sid.controller.action.JoinFormAction3;
+import com.sid.controller.action.JoinFormAction4;
 import com.sid.controller.action.MyPageAction;
 import com.sid.controller.action.OrderAllAction;
 import com.sid.controller.action.OrderDetailAction;
@@ -58,10 +59,12 @@ public class ActionFactory {
 			action = new EmailCheckFormAction();
 		} else if (command.equals("join")) {
 			action = new JoinAction();
-		} else if (command.equals("join_form2")){
-			action=new JoinFormAction2();
-		} else if (command.equals("join_form3")){
-			action=new JoinFormAction3();
+		} else if (command.equals("join_form2")) {
+			action = new JoinFormAction2();
+		} else if (command.equals("join_form3")) {
+			action = new JoinFormAction3();
+		} else if (command.equals("join_form4")) {
+			action = new JoinFormAction4();
 		} else if (command.equals("cart_insert")) {
 			action = new CartInsertAction();
 		} else if (command.equals("cart_list")) {
@@ -98,22 +101,22 @@ public class ActionFactory {
 			action = new AdminProductWriteAction();
 		} else if (command.equals("admin_product_detail")) {
 			action = new AdminProductDetailAction();
-		}else if(command.equals("admin_product_update_form")){
-			action=new AdminProductUpdateFormAction();
-		}else if(command.equals("admin_product_update")){
-			action=new AdminProductUpdateAction();
-		}else if(command.equals("admin_order_list")){
-			action=new AdminOrderListAction();
-		}else if(command.equals("admin_order_save")){
-			action=new AdminOrderSaveAction();
-		}else if(command.equals("admin_member_list")){
-			action=new AdminMemberListAction();
-		}else if(command.equals("admin_qna_list")){
-			action=new AdminQnaListAction();
-		}else if(command.equals("admin_qna_detail")){
-			action=new AdminQnaDetailAction();
-		}else if(command.equals("admin_qna_repsave")){
-			action=new AdminQnaResaveAction();
+		} else if (command.equals("admin_product_update_form")) {
+			action = new AdminProductUpdateFormAction();
+		} else if (command.equals("admin_product_update")) {
+			action = new AdminProductUpdateAction();
+		} else if (command.equals("admin_order_list")) {
+			action = new AdminOrderListAction();
+		} else if (command.equals("admin_order_save")) {
+			action = new AdminOrderSaveAction();
+		} else if (command.equals("admin_member_list")) {
+			action = new AdminMemberListAction();
+		} else if (command.equals("admin_qna_list")) {
+			action = new AdminQnaListAction();
+		} else if (command.equals("admin_qna_detail")) {
+			action = new AdminQnaDetailAction();
+		} else if (command.equals("admin_qna_repsave")) {
+			action = new AdminQnaResaveAction();
 		}
 
 		return action;
