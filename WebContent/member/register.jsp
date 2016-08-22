@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="../include/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <html>
@@ -151,10 +150,11 @@
 							amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
 							ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
-						<hr>
+					<hr>
 
 					</div>
 				</div>
+				<br><br><br>
 				<form action="register2.jsp" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
@@ -162,15 +162,14 @@
 						</button>
 					</div>
 				</form>
-
+				<br><br><br><br>
+				<br><br>
 
 			</div>
 			<!-- /.container -->
 		</div>
 		<!-- /#content -->
-
 <%@ include file="../include/footer.jsp"%>
-
 </body>
 
 </html>

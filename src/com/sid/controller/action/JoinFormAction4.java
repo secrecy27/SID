@@ -12,7 +12,7 @@ import com.sid.controller.Action;
 public class JoinFormAction4 implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url="member/register7.jsp";
+		String url="member/index.jsp";
 		
 		RequestDispatcher dispatcher =request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
