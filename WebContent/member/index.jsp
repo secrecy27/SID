@@ -48,7 +48,7 @@
 						class="dropdown-toggle">Bpage</a></li>
 					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
 						class="dropdown-toggle">Cpage </a></li>
-					<li class="dropdown yamm-fw"><a href="Dpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_dpage"
 						class="dropdown-toggle">Dpage </a></li>
 					<li class="dropdown yamm-fw"><a href="Hpage.jsp"
 						class="dropdown-toggle">Hpage </a></li>
