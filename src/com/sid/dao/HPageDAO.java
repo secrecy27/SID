@@ -8,21 +8,21 @@ import java.util.ArrayList;
 import com.sid.dto.MemberVO;
 import com.sid.util.DBManager;
 
-public class MemberDAO {
-	private MemberDAO() {
+public class HPageDAO {
+	private HPageDAO() {
 
 	}
 
-	private static MemberDAO instance = new MemberDAO() {
+	private static HPageDAO instance = new HPageDAO() {
 	};
 
-	public static MemberDAO getInstance() {
+	public static HPageDAO getInstance() {
 		return instance;
 	}
 
 	public int insertMember(MemberVO mVo) {
 		int result = -1;
-		String sql = "insert into user values(?,?,?,?,?,?,?)";
+		String sql = "insert into member2 values(?,?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -46,7 +46,7 @@ public class MemberDAO {
 	}
 	public int confirmID(String email) {
 		int result = -1;
-		String sql = "select * from user where email=?";
+		String sql = "select * from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -70,7 +70,7 @@ public class MemberDAO {
 
 	public int userCheck(String email, String pwd) {
 		int result = -1;
-		String sql = "select pwd from user where email=?";
+		String sql = "select pwd from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -109,7 +109,7 @@ public class MemberDAO {
 
 	public MemberVO getMember(String email) {
 		com.sid.dto.MemberVO mVo = null;
-		String sql = "select * from user where email=?";
+		String sql = "select * from member2 where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -143,7 +143,7 @@ public class MemberDAO {
 
 	public int updateMember(MemberVO mVo) {
 		int result = -1;
-		String sql = "update user set pwd=?,zipNum=?,address=?,phone=?,"
+		String sql = "update member2 set pwd=?,zipNum=?,address=?,phone=?,"
 				+ " where email=?";
 
 		Connection conn = null;
@@ -175,7 +175,7 @@ public class MemberDAO {
 
 	public ArrayList<MemberVO> listMember(String email) {
 		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
-		String sql = "select * from user where email like '%'||?||'%' "
+		String sql = "select * from member where email like '%'||?||'%' "
 				+ "  order by indate desc";
 		Connection conn = null;
 		PreparedStatement pstmt = null;

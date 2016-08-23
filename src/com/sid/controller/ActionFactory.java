@@ -25,10 +25,10 @@ import com.sid.controller.action.DpageReadAction;
 import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
-import com.sid.controller.action.JoinFormAction;
-import com.sid.controller.action.JoinFormAction2;
-import com.sid.controller.action.JoinFormAction3;
-import com.sid.controller.action.JoinFormAction4;
+import com.sid.controller.action.JoinDesignerAction;
+import com.sid.controller.action.JoinDesignerAction;
+import com.sid.controller.action.JoinDesignerAction;
+import com.sid.controller.action.JoinDesignerAction;
 import com.sid.controller.action.MyPageAction;
 import com.sid.controller.action.OrderAllAction;
 import com.sid.controller.action.OrderDetailAction;
@@ -56,18 +56,12 @@ public class ActionFactory {
 			action = new IndexAction();
 		} else if (command.equals("contract")) {
 			action = new ContractAction();
-		} else if (command.equals("join_form")) {
-			action = new JoinFormAction();
 		} else if (command.equals("email_check_form")) {
 			action = new EmailCheckFormAction();
-		} else if (command.equals("join")) {
+		} else if (command.equals("join_form")) {
 			action = new JoinAction();
-		} else if (command.equals("join_form2")) {
-			action = new JoinFormAction2();
-		} else if (command.equals("join_form3")) {
-			action = new JoinFormAction3();
-		} else if (command.equals("join_form4")) {
-			action = new JoinFormAction4();
+		} else if (command.equals("join_design")) {
+			action = new JoinDesignerAction();
 		} else if (command.equals("cart_insert")) {
 			action = new CartInsertAction();
 		} else if (command.equals("cart_list")) {
@@ -125,6 +119,8 @@ public class ActionFactory {
 		}else if(command.equals("list_dpage")){
 			action=new DpageListAction();
 		}else if(command.equals("read_dpage")){
+			action=new DpageReadAction();
+		}else if(command.equals("hpage")){
 			action=new DpageReadAction();
 		}
 

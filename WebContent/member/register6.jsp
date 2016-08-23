@@ -143,7 +143,7 @@
 					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
 					<input type="submit" value="전송">
 				</form>
-				<form action="../SidServlet?commnad=join_form4" method="post">
+				<form action="../SidServlet?commnad=join_form2" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-sign-in"></i> 가입 시작하기
