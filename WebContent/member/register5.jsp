@@ -325,7 +325,7 @@
 							<script>
 							function go_next(){
 								 if(document.formm.agreement.value=="yes"){
-									 document.formm.action="../SidServlet?command=join_form3";
+									 document.formm.action="register6.jsp";
 									 document.formm.submit();
 									 return true;
 									 

@@ -7,6 +7,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
+	rel='stylesheet' type='text/css'>
+
+<!-- styles -->
+<link href="../css/font-awesome.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/owl.carousel.css" rel="stylesheet">
+<link href="../css/owl.theme.css" rel="stylesheet">
+
+<!-- theme stylesheet -->
+<link href="../css/style.default.css" rel="stylesheet"
+	id="theme-stylesheet">
+
+<!-- your stylesheet with modifications -->
+<link href="../css/custom.css" rel="stylesheet">
+
+<script src="../js/respond.min.js"></script>
+
+<link rel="shortcut icon" href="favicon.png">
 <meta content="text/jsp; charset=UTF-8" http-equiv="Content-Type">
 </head>
 <body>
@@ -126,7 +147,7 @@
 			    	alert("잘못된 이메일 형식입니다")
 			    	return;
 			    }
-				var url="SidServlet?command=email_check_form&email="
+				var url="../SidServlet?command=email_check_form&email="
 						+document.frm.email.value;
 				window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=300");
 			}
@@ -181,7 +202,7 @@
 					frm.roadAddrPart2.focus();
 					return false;
 				}
-				document.frm.action="SidServlet?command=join";
+				document.frm.action="../SidServlet?command=join_form";
 				 document.frm.submit();
 				 return true;
 			}
@@ -194,5 +215,12 @@
 	<!-- /#all -->
 <%@ include file="../include/footer.jsp"%>
 </body>
-
+<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/waypoints.min.js"></script>
+	<script src="../js/modernizr.js"></script>
+	<script src="../js/bootstrap-hover-dropdown.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/front.js"></script>
 </html>
