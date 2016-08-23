@@ -1,9 +1,10 @@
-package com.sid.controller;
+package  com.sid.controller;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class JDBCUtil {
 
@@ -37,7 +38,7 @@ public class JDBCUtil {
 	}
 	
 	//결과를 받아서 변환 후 닫아야 할 때
-	public static void close(ResultSet rst, PreparedStatement stmt, Connection conn) {
+	public static void close(ResultSet rst, PreparedStatement stmt, java.sql.Connection conn) {
 		try {
 			if(rst != null)
 				rst.close();

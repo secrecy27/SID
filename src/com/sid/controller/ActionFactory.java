@@ -15,13 +15,11 @@ import com.sid.controller.action.AdminProductWriteFormAction;
 import com.sid.controller.action.AdminQnaDetailAction;
 import com.sid.controller.action.AdminQnaListAction;
 import com.sid.controller.action.AdminQnaResaveAction;
+import com.sid.controller.action.ApageAction;
 import com.sid.controller.action.CartDeleteAction;
 import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.CartListAction;
 import com.sid.controller.action.ContractAction;
-import com.sid.controller.action.DWriteAction;
-import com.sid.controller.action.DpageListAction;
-import com.sid.controller.action.DpageReadAction;
 import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
@@ -120,12 +118,8 @@ public class ActionFactory {
 			action = new AdminQnaDetailAction();
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
-		}else if(command.equals("dWrite")){
-			action=new DWriteAction();
-		}else if(command.equals("list_dpage")){
-			action=new DpageListAction();
-		}else if(command.equals("read_dpage")){
-			action=new DpageReadAction();
+		} else if (command.equals("apage")) {
+			action = new ApageAction();
 		}
 
 		return action;

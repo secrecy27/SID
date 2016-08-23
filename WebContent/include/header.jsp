@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,7 +39,7 @@
 <link rel="shortcut icon" href="favicon.png">
 </head>
 <body>
-<div id="top">
+	<div id="top">
 		<div class="container">
 			<div class="col-md-6" data-animation="fadeInDown">
 				<ul class="menu">
@@ -86,11 +87,51 @@
 						</p>
 
 					</div>
+
 				</div>
 			</div>
 		</div>
-
 	</div>
+		<!-- *** NAVBAR ***
+ _________________________________________________________ -->
+
+		<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+			<div class="container">
+				<div class="navbar-header">
+
+					<a class="navbar-brand home" href="index.jsp"
+						data-animate-hover="bounce"> <img src="img/logo.png"
+						alt="Obaju logo" class="hidden-xs"> <img
+						src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span
+						class="sr-only">Snow In Dawn</span>
+					</a>
+				</div>
+				<!--/.navbar-header -->
+
+				<div class="navbar-collapse collapse" id="navigation">
+
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="index.jsp">Home</a></li>
+						<li class="dropdown yamm-fw"><a href="Apage.jsp"
+							class="dropdown-toggle">Apage</a></li>
+						<li class="dropdown yamm-fw"><a href="Bpage.jsp"
+							class="dropdown-toggle">Bpage</b></a></li>
+						<li class="dropdown yamm-fw"><a href="Cpage.jsp"
+							class="dropdown-toggle">Cpage</b></a></li>
+						<li class="dropdown yamm-fw"><a href="Dpage.jsp"
+							class="dropdown-toggle">Dpage</a></li>
+						<li class="dropdown yamm-fw"><a href="Hpage.jsp"
+							class="dropdown-toggle">Hpage</a></li>
+					</ul>
+
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /#navbar -->
+
+		<!-- *** NAVBAR END *** -->
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
 	<script src="../js/jquery-1.11.0.min.js"></script>
