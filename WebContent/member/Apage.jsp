@@ -51,8 +51,6 @@
 
 					<div class="box">
 						<h1>Apage</h1>
-						<p>In our Ladies department we offer wide selection of the
-							best products we have found and carefully selected worldwide.</p>
 					</div>
 
 					<div class="row products">

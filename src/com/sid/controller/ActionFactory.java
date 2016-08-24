@@ -26,6 +26,7 @@ import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
 import com.sid.controller.action.JoinDesignerAction;
+import com.sid.controller.action.LoginAction;
 import com.sid.controller.action.MyPageAction;
 import com.sid.controller.action.OrderAllAction;
 import com.sid.controller.action.OrderDetailAction;
@@ -119,6 +120,8 @@ public class ActionFactory {
 			action=new DpageReadAction();
 		}else if(command.equals("hpage")){
 			action=new DpageReadAction();
+		}else if(command.equals("login")){
+			action=new LoginAction();
 		}
 
 		return action;

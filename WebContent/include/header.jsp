@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +12,7 @@
 <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
 <meta name="keywords" content="">
 
-<title>SID - Snow in Dawn</title>
+<title>SID - Snow In Dawn</title>
 
 <meta name="keywords" content="">
 
@@ -50,6 +50,7 @@
 				</ul>
 			</div>
 		</div>
+
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 			aria-labelledby="Login" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
@@ -60,15 +61,16 @@
 							aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="Login">Customer login</h4>
 					</div>
+
 					<div class="modal-body">
-						<form action="customer-orders.jsp" method="post">
+						<form action="../SidServlet?command=login" method="post">
 							<div class="form-group">
 								<input type="text" class="form-control" id="email-modal"
-									placeholder="email">
+									name="email" value="${email }" placeholder="email">
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" id="password-modal"
-									placeholder="password">
+									name="pwd" value="${pwd}" placeholder="password">
 							</div>
 
 							<p class="text-center">
@@ -78,60 +80,52 @@
 							</p>
 
 						</form>
-
-						<p class="text-center text-muted">Not registered yet?</p>
-						<p class="text-center text-muted">
-							<a href="register.jsp"><strong>Register now</strong></a>! It is
-							easy and done in 1&nbsp;minute and gives you access to special
-							discounts and much more!
-						</p>
-
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-		<!-- *** NAVBAR ***
+	<!-- *** NAVBAR ***
  _________________________________________________________ -->
 
-		<div class="navbar navbar-default yamm" role="navigation" id="navbar">
-			<div class="container">
-				<div class="navbar-header">
+	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+		<div class="container">
+			<div class="navbar-header">
 
-					<a class="navbar-brand home" href="index.jsp"
-						data-animate-hover="bounce"> <img src="img/logo.png"
-						alt="Obaju logo" class="hidden-xs"> <img
-						src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span
-						class="sr-only">Snow In Dawn</span>
-					</a>
-				</div>
-				<!--/.navbar-header -->
-
-				<div class="navbar-collapse collapse" id="navigation">
-
-					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="index.jsp">Home</a></li>
-						<li class="dropdown yamm-fw"><a href="Apage.jsp"
-							class="dropdown-toggle">Apage</a></li>
-						<li class="dropdown yamm-fw"><a href="Bpage.jsp"
-							class="dropdown-toggle">Bpage</b></a></li>
-						<li class="dropdown yamm-fw"><a href="Cpage.jsp"
-							class="dropdown-toggle">Cpage</b></a></li>
-						<li class="dropdown yamm-fw"><a href="Dpage.jsp"
-							class="dropdown-toggle">Dpage</a></li>
-						<li class="dropdown yamm-fw"><a href="Hpage.jsp"
-							class="dropdown-toggle">Hpage</a></li>
-					</ul>
-
-				</div>
-				<!--/.nav-collapse -->
+				<a class="navbar-brand home" href="index.jsp"
+					data-animate-hover="bounce"> <img src="img/logo.png"
+					alt="Obaju logo" class="hidden-xs"> <img
+					src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span
+					class="sr-only">Snow In Dawn</span>
+				</a>
 			</div>
-			<!-- /.container -->
-		</div>
-		<!-- /#navbar -->
+			<!--/.navbar-header -->
 
-		<!-- *** NAVBAR END *** -->
+			<div class="navbar-collapse collapse" id="navigation">
+
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active"><a href="#">INFO</a></li>
+					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
+						class="dropdown-toggle">Cpage</a></li>
+					<li class="dropdown yamm-fw"><a href="Bpage.jsp"
+						class="dropdown-toggle">Bpage</b></a></li>
+					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
+						class="dropdown-toggle">Apage</b></a></li>
+					<li class="dropdown yamm-fw"><a href="Apage.jsp"
+						class="dropdown-toggle">Dpage</a></li>
+					<li class="dropdown yamm-fw"><a href="Hpage.jsp"
+						class="dropdown-toggle">Hpage</a></li>
+				</ul>
+
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#navbar -->
+
+	<!-- *** NAVBAR END *** -->
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
 	<script src="../js/jquery-1.11.0.min.js"></script>

@@ -24,12 +24,8 @@
 				<div class="col-md-6">
 					<div class="box">
 						<h1>본인 포트폴리오 등록</h1>
-
-						<p class="lead">Already our customer?</p>
 						<p class="text-muted">디자이너의 경우 포트폴리오만 등록하면 됩니다.</p>
-
 						<hr>
-
 					</div>
 				</div>
 				<form method="post" action="upload.do" enctype="multipart/form-data">
@@ -39,7 +35,7 @@
 					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
 					<input type="submit" value="전송">
 				</form>
-				<form action="../SidServlet?commnad=join_form2" method="post">
+				<form action="../SidServlet?commnad=join_design" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-sign-in"></i> 가입 시작하기
