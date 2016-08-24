@@ -50,38 +50,47 @@
 					<ul class="breadcrumb">
 						<ul class="nav nav-tabs" role="tablist" id="myTab">
 							<li role="presentation" class="active"><a href="#ongoing"
-								aria-controls="ongoing" role="tab" data-toggle="tab"
-								id="ongoing"><input type="button" id="btn1"
-									onclick="javascript:newPageLoad();">
-									<h3>진행중인 작업</h3></a></li>
+								aria-controls="ongoing" role="tab" data-toggle="tab">진행중인 작업</a></li>
 							<li role="presentation"><a href="#waiting"
-								aria-controls="waiting" role="tab" data-toggle="tab"
-								id="waiting"><h3>대기중인 작업 &nbsp;&nbsp;</h3></a></li>
+								aria-controls="waiting" role="tab" data-toggle="tab">대기중인 작업</a></li>
 							<li role="presentation"><a href="#completion"
-								aria-controls="completion" role="tab" data-toggle="tab"
-								id="completion"><h3>완료된 작업 &nbsp; &nbsp;</h3></a></li>
+								aria-controls="completion" role="tab" data-toggle="tab">완료된	작업</a></li>
 							<li role="presentation"><a href="#failure"
-								aria-controls="failure" role="tab" data-toggle="tab"
-								id="failure"><h3>실패한 작업</h3></a></li>
+								aria-controls="failure" role="tab" data-toggle="tab">실패한 작업</a></li>
 						</ul>
 
 						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="ongoing2">1</div>
-							<div role="tabpanel" class="tab-pane" id="waiting2">2</div>
-							<div role="tabpanel" class="tab-pane" id="completion2">3</div>
-							<div role="tabpanel" class="tab-pane" id="failure2">4</div>
+							<div role="tabpanel" class="tab-pane active" id="ongoing"></div>
+							<div role="tabpanel" class="tab-pane" id="waiting">2</div>
+							<div role="tabpanel" class="tab-pane" id="completion">3</div>
+							<div role="tabpanel" class="tab-pane" id="failure">4</div>
 						</div>
 
 						<script>
-						$.ajax({;;;;
-							 url: urlString,
-							 param: paramValue,
-							 success: function(data) {
-							 $("#ongoing2").empty().append(data);
-							 }
+							$(function() {
+								$('#myTab a:first').tab('show')
+							})
+						
+							$.ajax({
+								url : url, //sidservlet
+								param : paramValue, //보낼  파라미터
+								success : function(data) {
+									$("#ongoing").empty().append(data);
+								}
 							});
-
-							}); 
+						
+							var newPageLoad = function() {
+						
+								$.ajax({
+									url : urlString,
+									param : paramValue,
+									success : function(data) {
+										// newPage 에 뿌려줄 data
+										$("#newPage").empty().append(data);
+									}
+								});
+						
+							}
 						</script>
 					</ul>
 				</div>

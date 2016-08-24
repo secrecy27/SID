@@ -19,12 +19,6 @@
 <meta name="description" content="Obaju e-commerce template">
 <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
 <meta name="keywords" content="">
-
-<title>SID - Snow in Dawn</title>
-
-<meta name="keywords" content="">
-
-<link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
 
@@ -65,6 +59,7 @@
 	<script src="../js/owl.carousel.min.js"></script>
 	<script src="../js/front.js"></script>
 <body>
+	
  <div id="all">
         <div id="content">
             <div class="container">
@@ -80,7 +75,7 @@
                             <div class="col-sm-6">
                                 <div class="box">
                                     <div id="mainImage">
-                                        <img id="image" name="imageUrl" src="#"	alt="이미지" style='display:none'/>
+                                        <img id="image" name="imageUrl" src="${dpage.imageUrl}"style="width:100%; max-width:100%;"/>
                                     </div>
                                 </div>
                             </div>
@@ -184,6 +179,11 @@
             </div>
         </div>
     </div>
+
+
+	</div>
+	<!-- /#all -->
+			
 <script>
 				function as(){
 					console.log("asd");
@@ -234,7 +234,7 @@
 
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
-	<%@ include file="../include/footer.jsp"%>
+<%@ include file="../include/footer.jsp"%>
 </body>
 
 </html>

@@ -30,7 +30,7 @@ function go_cart_delete() {
 	  document.formm.action = "SidServlet?command=cart_delete";  
 	  document.formm.submit();
 	  }
-  }
+  
   
 function go_order_insert() {
 	document.formm.action = "SidServlet?command=order_insert";

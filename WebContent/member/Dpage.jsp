@@ -6,7 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../include/header.jsp"%>
-
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
@@ -60,14 +59,18 @@
 								<!-- a href 버튼 -->
 								<div class="col-md-2 col-sm-6">
 	                            	<div class="product">
-		                                <div>
-		                                    <div>
-		                                    	<a href="../SidServlet?command=read_dpage&num=${dpage.dWriteId}">asdasd</a>
-		                                        <img src="" value="">
+	                            	
+		                                <div style="max-width:100%; width:100%;">
+		                                    	<a href="../SidServlet?command=read_dpage&num=${dpage.dWriteId}" >
+		                                        <img src="${dpage.imageUrl}" id="imageFile" style="max-width:100%; width:100%; height: 150px;">
 		                                        <!-- ${dpage.imageUrl} -->
-		                                        
-		                                    </div>
+		                                        </a>
+		                                    
 		                                </div>
+		                                
+		                                <script>
+		                             
+		                                </script>
 	
 		                                <div class="text">
 		                                    <p>기준시간 ${dpage.standardDate}</p>

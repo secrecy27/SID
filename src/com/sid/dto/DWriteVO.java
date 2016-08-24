@@ -9,11 +9,11 @@ public class DWriteVO {
 	private int condition;
 	private String point;
 	private String expl;
-	
+	private String imageName;
 	public int getdWriteId() {
 		return dWriteId;
 	}
-	public void setDWriteId(int dWriteId) {
+	public void setdWriteId(int dWriteId) {
 		this.dWriteId = dWriteId;
 	}
 	public String getImageUrl() {
@@ -58,7 +58,14 @@ public class DWriteVO {
 	public void setExpl(String expl) {
 		this.expl = expl;
 	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 	
+
 	
 	
 }

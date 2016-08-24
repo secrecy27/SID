@@ -21,7 +21,7 @@ public class DPageDAO {
  }
  public int insertImage(DWriteVO dVo){
 	 int result= -1;
-	 String sql="INSERT INTO dwrite(imageUrl, standardDate, endDate, cost, condi, point, expl) VALUES(?, ?, ?, ?, ?, ?, ?)";
+	 String sql="INSERT INTO dwrite(imageUrl, standardDate, endDate, cost, condi, point, expl,imageName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 	 Connection conn=null;
 	 PreparedStatement pstmt=null;
 	 
@@ -36,6 +36,7 @@ public class DPageDAO {
 		pstmt.setInt(5, dVo.getCondition());
 		pstmt.setString(6, dVo.getPoint());
 		pstmt.setString(7, dVo.getExpl());
+		pstmt.setString(8, dVo.getImageName());
 		
 		result = pstmt.executeUpdate();
 	} catch (Exception e) {
@@ -63,7 +64,7 @@ public class DPageDAO {
 			
 			
 			if(rst.next()){
-				vo.setDWriteId(rst.getInt("dWriteId"));
+				vo.setdWriteId(rst.getInt("dWriteId"));
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setStandardDate(rst.getString("standardDate"));
 				vo.setEndDate(rst.getString("endDate"));
@@ -96,7 +97,7 @@ public class DPageDAO {
 			rst = stmt.executeQuery();
 			while(rst.next()){
 				vo = new DWriteVO();
-				vo.setDWriteId(rst.getInt("dWriteId"));
+				vo.setdWriteId(rst.getInt("dWriteId"));
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setStandardDate(rst.getString("standardDate"));
 				vo.setEndDate(rst.getString("endDate"));

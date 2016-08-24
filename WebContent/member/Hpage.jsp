@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="../include/header.jsp"%>
+<%@ include file="../include/header.jsp"%>
 <!DOCTYPE>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
@@ -26,7 +27,7 @@
 <link href="../css/animate.min.css" rel="stylesheet">
 <link href="../css/owl.carousel.css" rel="stylesheet">
 <link href="../css/owl.theme.css" rel="stylesheet">
-<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">a
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
@@ -51,14 +52,24 @@ position:relative;
 	position:absolute; top:20px; left:30px;
 	z-index:1;
 }
+#selectingUi{
+	position:absolute; top:20px; left:30px;
+	z-index:1;
+	
+}
 #hCanvas{
   	
 }
+#baseUi{
+	margin:10px;
+}
+
 .barOne{
+	margin:10px;
 	display:block;
 	text-align:center;
 	float:left;
-	width:12%;
+	width:8%;
 	padding:2px;
 	overflow:scroll;
 	overflow-x: hidden;
@@ -80,10 +91,12 @@ input{
 
 
 .barTwo{
+	position:absolute; top:20px; left:30px;
 	display:block;
 	float:right;
 	text-align:center;
-	width:12%;
+	width:8%;
+	margin:10px;
 	padding:5px;	
 	overflow:scroll;
 	overflow-x: hidden;
@@ -93,15 +106,37 @@ input{
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
+
 <body>
    <div id="all">
 <!-- main -->
+
       <div id="container">
+      	
         		 <div id="hPageContainer">
         			<div id="moveGui"></div>
+        			
+        			<div id="selectingUi">
+        				
+        				<button type="button" class="btn btn-default btn-circle" id="controlOne">1</button>
+        				
+        				<button type="button" class="btn btn-default btn-circle" id="controlTwo">2</button>
+        			
+        			</div>
+			
 					<div class="barOne"> 	
+						<div id="baseUI">
+						
+                                            <select class="form-control" name="condition">
+                                                <option value="0">주머니1</option>
+                                                <option value="1">주머니2</option>
+                                                <option value="2">주머니3</option>
+                                            </select>
+
+						</div>
+					
 						<div id="baseButton">
-							<input type="image" class="img-circle"" onclick="createEntity('a')" src="../img/img1.png"> 
+							<input type="image" class="img-circle" onclick="createEntity('a')" src="../img/img1.png"> 
 						</div>
 						<br>
 						<div id="baseButton">
@@ -113,9 +148,21 @@ input{
 						</div>
 						<br>
 					</div>
+				
+				
 					<canvas id="hCanvas">  
 					</canvas>
-					<div class="barTwo">
+					
+					<div class="barTwo" id="barTwo">
+					<div id="baseUI">
+						
+                                            <select class="form-control" name="condition">
+                                                <option value="0">주머니1</option>
+                                                <option value="1">주머니2</option>
+                                                <option value="2">주머니3</option>
+                                            </select>
+
+						</div>
 						<div id="mapButton">
 							<input type="image" onclick="mapping('aaa')" src="../img/pattern.png" id="aaa" value="off">
 							<button type="button" id="ccButton" class="btn btn-default" style="display:none;" onclick="changeController('aaa')">ㅇ</button>
@@ -123,12 +170,14 @@ input{
 						</div>
 						<br>
 						<!-- id를 이미지 고유번호로 둠 -->
+					
 						<div class="mapButton">
 							<input type="image" onclick="mapping('bbb')" src="../img/pattern2.jpg" id="bbb" value="off">
 							<button type="button" id="ccButton" class="btn btn-default" style="display:none;" onclick="changeController('bbb')" value="bbb">ㅇ</button>
 							<p id="mapCheck" >0</p>
 						</div>
 						<br>
+						
 						<div class="mapButton">
 							<input type="image" onclick="mapping('ccc')" src="../img/UV_Grid_Sm.jpg" id="ccc" value="off">
 							<button type="button" id="ccButton" class="btn btn-default" style="display:none;" onclick="changeController('ccc')" value="ccc">ㅇ</button>
@@ -144,6 +193,15 @@ input{
 
 
       <!-- /#content -->
+
+
+
+
+
+   </div>
+   <!-- /#all -->
+
+
 
 
    <!-- *** SCRIPTS TO INCLUDE ***
@@ -271,11 +329,24 @@ function changeController(img){
 	mapController.FrontBack=fb[curMap-1];
 	mapController.LR=geomX[curMap-1];
 	mapController.UD=geomY[curMap-1];
+	
+	if(curMap==1){
+		
+		$("#controlOne").removeClass("btn btn-default btn-circle").addClass("btn btn-primary btn-circle");
+		$("#controlTwo").removeClass("btn btn-primary btn-circle").addClass("btn btn-default btn-circle");
+		
+	}else{
+		$("#controlOne").removeClass("btn btn-primary btn-circle").addClass("btn btn-default btn-circle");
+		$("#controlTwo").removeClass("btn btn-default btn-circle").addClass("btn btn-primary btn-circle");
+	}
 
-	$('[id="ccButton"]').css("border","");
+	/* $('[id="ccButton"]').css("border","");
 
 	$("#"+img).siblings("button").css("border","1px solid red");
-	
+	 */
+	 
+	 
+	 
 	
 }
 //맵핑 
@@ -614,10 +685,20 @@ function onGUIResize(){
 	var position = element.getBoundingClientRect();
 	var x = position.left;
 	var y = position.top;
+	var x2 = position.right;
 	
 	var element=document.getElementById('moveGui');
 	element.style.top=y-130+'px';
 	element.style.left=x+20+'px';
+	
+	element=document.getElementById('barTwo');
+	element.style.top=y-130+'px';
+	element.style.left=x2+20+'px';
+	
+	element=document.getElementById('selectingUi');
+	element.style.top=y-130+'px';
+	element.style.left=x2-100+'px';
+	
 }
 
 function animateH() {
@@ -641,8 +722,8 @@ function renderH() {
 	}
 
 }
+
 </script>
 <%@ include file="../include/footer.jsp"%>
-
 </body>
 </html>
