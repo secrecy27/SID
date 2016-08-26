@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../include/header_for_board.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,33 +23,32 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="../css/font-awesome.css" rel="stylesheet">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/animate.min.css" rel="stylesheet">
-<link href="../css/owl.carousel.css" rel="stylesheet">
-<link href="../css/owl.theme.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/owl.carousel.css" rel="stylesheet">
+<link href="css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="../css/style.default.css" rel="stylesheet"
+<link href="css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="../css/custom.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
 
-<script src="../js/respond.min.js"></script>
+<script src="js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 <link rel="stylesheet" type="text/css" href="../css/shopping.css">
 </head>
 <body>
-	<div>
-		<tr>
-			<th><a href=>Notice</a></th>
-			<th><a href="#">Event</a></th>
-			<th>Guide</th>
-		</tr>
-
+	<div class="panel-body">
+		<ul class="nav nav-pills nav-stacked category-menu">
+			<li><a href="category.jsp">Guide</a>
+			<li><a href="category.jsp">Notice</a>
+			<li><a href="category.jsp">Event</a>
 		</ul>
+
 	</div>
 	<div id="wrap" align="center">
 		<h1>게시판</h1>

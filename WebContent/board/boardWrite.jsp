@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../include/header2.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -74,7 +74,7 @@
 			<br> <input type="submit" value="등록"
 				onclick="return boardCheck()"> <input type="reset"
 				value="다시 작성"> <input type="button" value="목록"
-				onclick="location.href='BoardServlet?command=board_list'">
+				onclick="location.href='board/boardList.jsp'">
 		</form>
 	</div>
 		<%@ include file="../include/footer.jsp"%>
