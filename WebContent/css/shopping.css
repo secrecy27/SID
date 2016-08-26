@@ -1,0 +1,44 @@
+#wrap {
+	width: 971px;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	color: #777; 
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+	line-height: 24px; 
+}
+th{
+	color: #bbb;
+}
+
+table td,th {
+	border: #777777 solid 1px; 
+	padding: 5px; 
+}
+
+th {
+	background: #333;
+}
+
+img {
+	width: 220px; 
+	height: 300px; 
+}
+
+a {
+	text-decoration: none; 
+	color: #777; 
+}
+
+a:HOVER {
+	text-decoration: underline; 
+	color: green; s
+}

@@ -89,10 +89,10 @@
 			<div class="navbar-header">
 
 				<a class="navbar-brand home" href="index.jsp"
-					data-animate-hover="bounce"> <img src="img/logo.png"
-					alt="Obaju logo" class="hidden-xs"> <img
-					src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span
-					class="sr-only">Obaju - go to homepage</span>
+					data-animate-hover="bounce"> <img src="../img/SIDlogo.png"
+					alt="SID" class="hidden-xs"> <img
+					src="../img/SIDlogo.png" alt="SID" class="visible-xs"><span
+					class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->

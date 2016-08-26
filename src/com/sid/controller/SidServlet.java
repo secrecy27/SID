@@ -19,7 +19,7 @@ public class SidServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
-		System.out.println("요청받는거 확인"+command);
+		System.out.println("Test Check"+command);
 		
 		ActionFactory af=ActionFactory.getInstance();
 		Action action=af.getAction(command);

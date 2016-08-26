@@ -105,19 +105,18 @@
 			<div class="navbar-collapse collapse" id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="#">INFO</a></li>
-					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
+					<li class="active"><a href="../board/boardList.jsp">INFO</a></li>
+					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
-					<li class="dropdown yamm-fw"><a href="Bpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"
 						class="dropdown-toggle">Bpage</b></a></li>
-					<li class="dropdown yamm-fw"><a href="Cpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_dpage"
 						class="dropdown-toggle">Dpage</a></li>
-					<li class="dropdown yamm-fw"><a href="Hpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../member/Hpage.jsp"
 						class="dropdown-toggle">Hpage</a></li>
 				</ul>
-
 			</div>
 			<!--/.nav-collapse -->
 		</div>

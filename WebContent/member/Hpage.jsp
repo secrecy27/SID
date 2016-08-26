@@ -472,7 +472,7 @@ function createEntity(num){// NUM 임의로 설정
 		scene.add( mesh );
 	}else if(num=='c'){
 		var loader = new THREE.OBJLoader();
-		loader.load( '../models/male02.obj', function ( object ) {
+		loader.load( '../models/3mt1.obj', function ( object ) {
 
 			object.traverse( function ( child ) {
 
