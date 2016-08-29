@@ -35,6 +35,14 @@ import com.sid.controller.action.OrderListAction;
 import com.sid.controller.action.QnaListAction;
 import com.sid.controller.action.QnaViewAction;
 import com.sid.controller.action.QnaWriteFormAction;
+import com.sid.controller.action.customer.Customer_Accountchange_Action;
+import com.sid.controller.action.customer.Customer_All_Action;
+import com.sid.controller.action.customer.Customer_Basket_Action;
+import com.sid.controller.action.customer.Customer_Buylist_Action;
+import com.sid.controller.action.customer.Customer_Coupon_Action;
+import com.sid.controller.action.customer.Customer_Cplan_Action;
+import com.sid.controller.action.customer.Customer_Dplan_Action;
+import com.sid.controller.action.customer.Customer_Pocket_Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -122,6 +130,22 @@ public class ActionFactory {
 			action=new DpageReadAction();
 		}else if(command.equals("login")){
 			action=new LoginAction();
+		}else if(command.equals("customer_all")){
+			action=new Customer_All_Action();
+		}else if(command.equals("customer_dplan")){
+			action=new Customer_Dplan_Action();
+		}else if(command.equals("customer_cplan")){
+			action=new Customer_Cplan_Action();
+		}else if(command.equals("customer_buylist")){
+			action=new Customer_Buylist_Action();
+		}else if(command.equals("customer_coupon")){
+			action=new Customer_Coupon_Action();
+		}else if(command.equals("customer_basket")){
+			action=new Customer_Basket_Action();
+		}else if(command.equals("customer_pocket")){
+			action=new Customer_Pocket_Action();
+		}else if(command.equals("customer_accountchange")){
+			action=new Customer_Accountchange_Action();
 		}
 
 		return action;

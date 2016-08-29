@@ -93,11 +93,10 @@
 		<div class="container">
 			<div class="navbar-header">
 
-				<a class="navbar-brand home" href="member/index.jsp"
-					data-animate-hover="bounce"> <img src="img/logo.png"
-					alt="Obaju logo" class="hidden-xs"> <img
-					src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span
-					class="sr-only">Snow In Dawn</span>
+				<a class="navbar-brand home"
+					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
+					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px">
+					<span class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->
@@ -112,8 +111,8 @@
 						class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
-					<li class="dropdown yamm-fw"><a href="SidServlet?command=list_dpage"
-						class="dropdown-toggle">Dpage</a></li>
+					<li class="dropdown yamm-fw"><a
+						href="SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>
 					<li class="dropdown yamm-fw"><a href="member/Hpage.jsp"
 						class="dropdown-toggle">Hpage</a></li>
 				</ul>
