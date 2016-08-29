@@ -21,20 +21,20 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="../css/font-awesome.css" rel="stylesheet">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/animate.min.css" rel="stylesheet">
-<link href="../css/owl.carousel.css" rel="stylesheet">
-<link href="../css/owl.theme.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/owl.carousel.css" rel="stylesheet">
+<link href="css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="../css/style.default.css" rel="stylesheet"
+<link href="css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="../css/custom.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
 
-<script src="../js/respond.min.js"></script>
+<script src="js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 </head>
@@ -47,8 +47,6 @@
 					</li>
 					<li><a href="register.jsp">Register</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
-					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
-					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
 				</ul>
 			</div>
 		</div>
@@ -94,27 +92,27 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
 		<div class="container">
 			<div class="navbar-header">
+
 				<a class="navbar-brand home"
 					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
-					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px">
+					<img src="../img/SIDlogo.png" style="width: 120px">
 					<span class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->
 
-			<div class="navbar-collapse collapse" style="padding-left: 0px"
-				id="navigation">
+			<div class="navbar-collapse collapse" id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw"><a href="../board/boardList.jsp">INFO</a></li>
+					<li class="active"><a href="boardList.jsp">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"
 						class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
-					<li class="dropdown yamm-fw"><a
-						href="../SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_dpage"
+						class="dropdown-toggle">Dpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Hpage.jsp"
 						class="dropdown-toggle">Hpage</a></li>
 				</ul>

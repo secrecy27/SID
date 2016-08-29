@@ -45,7 +45,6 @@ public class JoinMultiUploadServlet extends HttpServlet {
 			MultipartRequest multi = new MultipartRequest(request,
 					uploadFilePath, uploadFileSizeLimit, encType,
 					new DefaultFileRenamePolicy());
-
 			Enumeration files = multi.getFileNames();
 			while (files.hasMoreElements()) {
 				String file = (String) files.nextElement();

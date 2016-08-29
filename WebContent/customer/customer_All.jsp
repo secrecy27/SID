@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../include/header_for_customer.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,12 +21,12 @@
 
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li><a href="customer_Dplan.jsp">D 관리 </a></li>
-								<li><a href="customer_Cplan.jsp">C 관리</a></li>
-								<li><a href="customer_Buylist.jsp">주문목록</a></li>
-								<li><a href="customer_Coupon.jsp">쿠폰목록</a></li>
-								<li><a href="customer_Basket.jsp">장바구니</a></li>
-								<li><a href="customer_Pocket.jsp">주머니관리</a></li>
+								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
+								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
+								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
+								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
+								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
+								<li><a href="SidServlet?command=customer_pocket">주머니관리</a></li>
 								<hr>
 								<li><a href="customer_Accountchange.jsp">회원정보변경</a></li>
 							</ul>

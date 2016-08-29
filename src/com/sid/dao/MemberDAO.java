@@ -108,7 +108,7 @@ public class MemberDAO {
 	}
 
 	public MemberVO getMember(String email) {
-		com.sid.dto.MemberVO mVo = null;
+		MemberVO mVo = null;
 		String sql = "select * from user where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -208,5 +208,32 @@ public class MemberDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return memberList;
+	}
+	
+	public MemberVO getAddress(String email){
+		MemberVO mVo = null;
+		String sql = "select zipNum, address, phone from user where email=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				mVo = new MemberVO();
+				mVo.setZipNum(rs.getString("zipNum"));
+				mVo.setAddress(rs.getString("address"));
+				mVo.setPhone(rs.getString("phone"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+
+		return mVo;
 	}
 }

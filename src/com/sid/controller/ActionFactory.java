@@ -43,6 +43,10 @@ import com.sid.controller.action.customer.Customer_Coupon_Action;
 import com.sid.controller.action.customer.Customer_Cplan_Action;
 import com.sid.controller.action.customer.Customer_Dplan_Action;
 import com.sid.controller.action.customer.Customer_Pocket_Action;
+import com.sid.controller.action.designer.Designer_All_Action;
+import com.sid.controller.action.designer.Designer_Bplan_Action;
+import com.sid.controller.action.designer.Designer_Cplan_Action;
+import com.sid.controller.action.designer.Designer_Dplan_Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -60,6 +64,7 @@ public class ActionFactory {
 		System.out.println("ActionFactory  :" + command);
 		if (command.equals("index")) {
 			action = new IndexAction();
+			
 		} else if (command.equals("contract")) {
 			action = new ContractAction();
 		} else if (command.equals("email_check_form")) {
@@ -68,6 +73,8 @@ public class ActionFactory {
 			action = new JoinAction();
 		} else if (command.equals("join_design")) {
 			action = new JoinDesignerAction();
+			//회원가입페이지
+			
 		} else if (command.equals("cart_insert")) {
 			action = new CartInsertAction();
 		} else if (command.equals("cart_list")) {
@@ -120,6 +127,7 @@ public class ActionFactory {
 			action = new AdminQnaDetailAction();
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
+			
 		}else if(command.equals("dWrite")){
 			action=new DWriteAction();
 		}else if(command.equals("list_dpage")){
@@ -130,6 +138,7 @@ public class ActionFactory {
 			action=new DpageReadAction();
 		}else if(command.equals("login")){
 			action=new LoginAction();
+			
 		}else if(command.equals("customer_all")){
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
@@ -146,7 +155,19 @@ public class ActionFactory {
 			action=new Customer_Pocket_Action();
 		}else if(command.equals("customer_accountchange")){
 			action=new Customer_Accountchange_Action();
+			//구매자 관리 페이지
+		}else if(command.equals("designer_all")){
+			action=new Designer_All_Action();
+		}else if(command.equals("designer_bplan")){
+			action=new Designer_Bplan_Action();
+		}else if(command.equals("designer_cplan")){
+			action=new Designer_Cplan_Action();
+		}else if(command.equals("designer_dplan")){
+			action=new Designer_Dplan_Action();
+			//디자이너 관리 페이지
 		}
+		
+		
 
 		return action;
 	}

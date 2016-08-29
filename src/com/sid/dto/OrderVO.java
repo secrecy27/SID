@@ -16,6 +16,7 @@ public class OrderVO {
 	private int quantity;
 	private int price2;
 	private String result;
+	
 	public int getOdseq() {
 		return odseq;
 	}
