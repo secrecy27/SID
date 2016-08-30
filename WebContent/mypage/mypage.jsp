@@ -28,7 +28,7 @@
 					<td><fmt:formatNumber value="${orderVO.price2}"
 							type="currency" /></td>
 					<td><a
-						href="NonageServlet?command=order_detail&oseq=${orderVO.oseq}">
+						href="SidServlet?command=order_detail&oseq=${orderVO.oseq}">
 							조회 </a></td>
 				</tr>
 			</c:forEach>
@@ -36,7 +36,7 @@
 		<div class="clear"></div>
 		<div id="buttons" style="float: right">
 			<input type="button" value="쇼핑 계속하기" class="cancel"
-				onclick="location.href='NonageServlet?command=index'">
+				onclick="location.href='SidServlet?command=index'">
 		</div>
 	</form>
 </body>

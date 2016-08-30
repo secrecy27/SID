@@ -20,22 +20,21 @@
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
 
-
 <!-- styles -->
-<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/animate.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.carousel.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.theme.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/owl.carousel.css" rel="stylesheet">
+<link href="css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="${pageContext.request.contextPath}/css/style.default.css" rel="stylesheet"
+<link href="css/style.default.css" rel="stylesheet"
 	id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
 
-<script src="${pageContext.request.contextPath}/js/respond.min.js"></script>
+<script src="js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 </head>
@@ -44,18 +43,10 @@
 		<div class="container">
 			<div class="col-md-6" data-animation="fadeInDown">
 				<ul class="menu">
-					
-					 <%if(session.getAttribute("email")==null){ %>
-                  	<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-					</li><li><a href="register.jsp">Register</a></li>
-                  <%}else{%>
-                  <li><a href="../SidServlet?command=logout">logout</a></li>
-					
-					
-					<%} %>
+					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+					</li>
+					<li><a href="register.jsp">Register</a></li>
 					<li><a href="contact.jsp">Contact</a></li>
-					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
-					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
 				</ul>
 			</div>
 		</div>
@@ -101,27 +92,27 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
 		<div class="container">
 			<div class="navbar-header">
+
 				<a class="navbar-brand home"
 					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
-					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px; max-height:100%;">
+					<img src="../img/SIDlogo.png" style="width: 120px">
 					<span class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->
 
-			<div class="navbar-collapse collapse" style="padding-left: 0px"
-				id="navigation">
+			<div class="navbar-collapse collapse" id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw"><a href="../BoardServlet?command=board_list">INFO</a></li>
+					<li class="active"><a href="boardList.jsp">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"
 						class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
-					<li class="dropdown yamm-fw"><a
-						href="../SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_dpage"
+						class="dropdown-toggle">Dpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Hpage.jsp"
 						class="dropdown-toggle">Hpage</a></li>
 				</ul>
@@ -135,13 +126,13 @@
 	<!-- *** NAVBAR END *** -->
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
-<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
-	<script src="${pageContext.request.contextPath}/js/waypoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/modernizr.js"></script>
-	<script src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
-	<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/front.js"></script>
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/waypoints.min.js"></script>
+	<script src="../js/modernizr.js"></script>
+	<script src="../js/bootstrap-hover-dropdown.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/front.js"></script>
 </body>
 </html>
