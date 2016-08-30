@@ -27,6 +27,7 @@ import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
 import com.sid.controller.action.JoinDesignerAction;
 import com.sid.controller.action.LoginAction;
+import com.sid.controller.action.LogoutAction;
 import com.sid.controller.action.MyPageAction;
 import com.sid.controller.action.OrderAllAction;
 import com.sid.controller.action.OrderDetailAction;
@@ -146,8 +147,9 @@ public class ActionFactory {
 			action=new Customer_Pocket_Action();
 		}else if(command.equals("customer_accountchange")){
 			action=new Customer_Accountchange_Action();
+		}else if(command.equals("logout")){
+			action=new LogoutAction();
 		}
-
 		return action;
 	}
 }

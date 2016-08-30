@@ -95,7 +95,7 @@
 
 				<a class="navbar-brand home"
 					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
-					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px">
+					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px; max-height:100%;">
 					<span class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
@@ -104,7 +104,7 @@
 			<div class="navbar-collapse collapse" id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="boardList.jsp">INFO</a></li>
+					<li class="active"><a href="../BoardServlet?command=board_list">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"

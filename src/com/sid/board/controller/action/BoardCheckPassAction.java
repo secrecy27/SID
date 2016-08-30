@@ -17,15 +17,15 @@ public class BoardCheckPassAction implements Action {
 			throws ServletException, IOException {
 		String url = null;
 		String num = request.getParameter("num");
-		String pass = request.getParameter("pass");
+		/*String pass = request.getParameter("pass");
 		BoardDAO bDao = BoardDAO.getInstance();
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
-		if (bVo.getPass().equals(pass)) { // ?„±ê³?
+		if (bVo.getPass().equals(pass)) { // ?ï¿½ï¿½ï¿½?
 			url = "board/checkSuccess.jsp";
-		} else {// ?‹¤?Œ¨
+		} else {// ?ï¿½ï¿½?ï¿½ï¿½
 			url = "board/boardCheckPass.jsp";
-			request.setAttribute("message", "ë¹„ë?ë²ˆí˜¸ê°? ??? ¸?Šµ?‹ˆ?‹¤.");
-		}
+			request.setAttribute("message", "ë¹„ï¿½?ë²ˆí˜¸ï¿½? ???ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.");
+		}*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

@@ -80,13 +80,13 @@ public class MemberDAO {
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString("pwd") != null
+				if (rs.getString("pwd") != null //비밀번호 맞으면
 						&& rs.getString("pwd").equals(pwd)) {
 					result = 1;
-				} else {
+				} else { //비밀 번호 틀리면
 					result = 0;
 				}
-			} else {
+			} else {//결과가 없으면
 				result = -1;
 			}
 
@@ -139,7 +139,6 @@ public class MemberDAO {
 
 		return mVo;
 	}
-
 
 	public int updateMember(MemberVO mVo) {
 		int result = -1;

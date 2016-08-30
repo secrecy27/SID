@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="../include/header_for_board.jsp"%>
+<%@ include file="../include/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,41 +42,44 @@
 <link rel="stylesheet" type="text/css" href="../css/shopping.css">
 </head>
 <body>
-	<div class="panel-body">
-		<ul class="nav nav-pills nav-stacked category-menu">
-			<li><a href="category.jsp">Guide</a>
-			<li><a href="category.jsp">Notice</a>
-			<li><a href="category.jsp">Event</a>
-		</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="category.jsp" class="list-group-item">Notice</a>
+				<a href="category.jsp" class="list-group-item">Event</a>
+				<a href="category.jsp" class="list-group-item">Guide</a>
+			</div>
+		</div>
 
+		<div class="col-md-9">
+        	<div class="row carousel-holder">
+            	<div class="col-md-12">
+                	<h1>게시판</h1>
+					<table class="list">	
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>게시일</th>
+						</tr>
+						<c:forEach var="board" items="${boardList}">
+							<tr class="record">
+								<td><a
+									href="../BoardServlet?command=board_view&num=${board.contentNum}">
+										${board.contentNum}</a></td>
+								<td>${board.title}</td>
+								<td>${board.date}</td>
+							</tr>
+						</c:forEach>
+					</table>
+                </div>
+            </div>
+				<!-- /#main-slider -->
+		</div>
 	</div>
-	<div id="wrap" align="center">
-		<h1>게시판</h1>
-		<table class="list">
-			<tr>
-				<td colspan="5" style="border: white; text-align: right"><a
-					href="../BoardServlet?command=board_write_form">게시글 등록</a></td>
-			</tr>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
-			</tr>
-			<c:forEach var="board" items="${boardList }">
-				<tr class="record">
-					<td>${board.num }</td>
-					<td><a
-						href="../BoardServlet?command=board_view&num=${board.num}">
-							${board.title } </a></td>
-					<td>${board.name}</td>
-					<td><fmt:formatDate value="${board.writedate }" /></td>
-					<td>${board.readcount}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
+
+		<!-- /#content -->
+</div>
 	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>

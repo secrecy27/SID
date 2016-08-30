@@ -6,16 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<script>
-<%if (request.getAttribute("login") == "success") {%>
-//true
-
-alert("success");
-<%} else {%>
-	alert("failed");
-<%}%>
-%>
-</script>
 <body>
 	<div id="all">
 		<div class="container">

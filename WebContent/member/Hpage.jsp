@@ -44,50 +44,44 @@
 <style>
 #hPageContainer {
 	position: relative;
+	
 }
-
 #moveGui {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
-
 #selectingUi {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
+	
 }
-
 .mb {
 	max-width: 50%;
 	height: auto;
 }
-
 #saveLoad {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
-
 #showCost {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
-
 #hCanvas {
 	
 }
-
-#baseUi {
+.baseUi {
 	margin: 10px;
 	margin-bottom: 20px;
 }
-
 .barOne {
 	top: 20px;
 	left: 30px;
@@ -96,16 +90,15 @@
 	text-align: center;
 	width: 8%;
 	height: 100%;
+	max-height:100%;
 	margin: 10px;
 	padding: 5px;
 	overflow: scroll;
 	overflow-x: hidden;
 }
-
 input {
 	height: 80px;
 }
-
 .outerButton {
 	display: block;
 	text-align: center;
@@ -113,31 +106,25 @@ input {
 	max-width: 100%;
 	height: 130px;
 }
-
 .mapButton {
-	margin: 0 auto;
+	
 	vertical-align: middle
 }
-
 #baseButton {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
-
 #controlOne {
 	margin: 5px;
 }
-
 #controlTwo {
 	margin: 5px;
 }
-
 .selMap {
 	width: 60px;
 	height: 60px;
 }
-
 .barTwo {
 	position: absolute;
 	top: 20px;
@@ -223,7 +210,7 @@ input {
 				</div>
 
 				<div class="box barOne">
-					<div id="baseUI">
+					<div class="baseUI">
 						<select class="form-control" name="condition">
 							<option value="0">주머니1</option>
 							<option value="1">주머니2</option>
@@ -232,18 +219,53 @@ input {
 					</div>
 
 					<div id="baseButton">
-						<input type="image" class="baseImage img-circle"
-							onclick="createEntity('a')" src="../img/img1.png">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/i.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage img-circle"
-							onclick="createEntity('b')" src="../img/img2.png">
+						<input type="image" class="baseImage"
+							onclick="createEntity('b')" src="../img/a.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage img-circle"
-							onclick="createEntity('c')" src="../img/img3.png">
+						<input type="image" class="baseImage"
+							onclick="createEntity('c')" src="../img/b.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/c.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/d.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/e.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/f.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/g.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/h.jpg">
+					</div>
+					<br>
+					<div id="baseButton">
+						<input type="image" class="baseImage"
+							onclick="createEntity('a')" src="../img/j.jpg">
 					</div>
 					<br>
 				</div>
@@ -252,7 +274,7 @@ input {
 					</canvas>
 
 				<div class="box barTwo" id="barTwo">
-					<div id="baseUI">
+					<div class="baseUI">
 						<select class="form-control" name="condition">
 							<option value="0">주머니1</option>
 							<option value="1">주머니2</option>
@@ -272,7 +294,7 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pattern2.jpg" class="mb"
+							<input type="image" src="../img/bb.jpg" class="mb"
 								value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
@@ -280,7 +302,7 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/UV_Grid_Sm.jpg" class="mb"
+							<input type="image" src="../img/aa.jpg" class="mb"
 								value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
@@ -288,21 +310,21 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pat1.png" class="mb" value="off">
+							<input type="image" src="../img/cc.jpg" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pat2.png" class="mb" value="off">
+							<input type="image" src="../img/dd.jpg" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pat3.png" class="mb" value="off">
+							<input type="image" src="../img/ee.jpg" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
@@ -992,9 +1014,11 @@ input {
 			element.style.top = y - 130 + 'px';
 			element.style.left = x + 20 + 'px';
 	
+			
+			
 			element = document.getElementById('barTwo');
 			element.style.top = y - 130 + 'px';
-			element.style.left = x2 + 20 + 'px';
+			element.style.left = x2 + 5 + 'px';
 	
 			element = document.getElementById('selectingUi');
 			element.style.top = y - 130 + 'px';
@@ -1007,7 +1031,9 @@ input {
 			element = document.getElementById('showCost');
 			element.style.top = y2 - 200 + 'px';
 			element.style.left = x2 - 150 + 'px';
-	
+			element = document.getElementById('hPageContainer');
+			element.style.height=y2-152+'px';
+		
 	
 		}
 	

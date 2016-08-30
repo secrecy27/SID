@@ -11,16 +11,16 @@ import com.sid.dao.BoardDAO;
 import com.sid.dto.BoardVO;
 
 
-public class BoardViewAction implements Action {
-
+public class BoardUpdateFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "board/boardView.jsp";
+		String url = "board/boardUpdate.jsp";
 		String num = request.getParameter("num");
-		BoardDAO bDao = BoardDAO.getInstance();
+	/*	BoardDAO bDao = BoardDAO.getInstance();
+		bDao.updateReadCount(num);
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
-		request.setAttribute("board", bVo);
+		request.setAttribute("board", bVo);*/
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

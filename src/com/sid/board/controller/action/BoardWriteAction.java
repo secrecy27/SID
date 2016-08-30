@@ -14,11 +14,8 @@ public class BoardWriteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BoardVO bVo = new BoardVO();
-		bVo.setName(request.getParameter("name"));
-		bVo.setPass(request.getParameter("pass"));
-		bVo.setEmail(request.getParameter("email"));
-		bVo.setTitle(request.getParameter("title"));
-		bVo.setContent(request.getParameter("content"));
+		bVo.setTitle(request.getParameter("name"));
+		bVo.setContent(request.getParameter("pass"));
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.insertBoard(bVo);
 		new BoardListAction().execute(request, response);

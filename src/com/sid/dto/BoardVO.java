@@ -1,39 +1,22 @@
 package com.sid.dto;
 
-import java.sql.Timestamp;
-
 public class BoardVO {
-	private int num;
-	private String name;
-	private String email;
-	private String pass;
+	private int contentNum;
+	private String date;
 	private String title;
 	private String content;
-	private int readcount;
-	private Timestamp writedate;
-	public int getNum() {
-		return num;
+	
+	public int getContentNum() {
+		return contentNum;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setContentNum(int contentNum) {
+		this.contentNum = contentNum;
 	}
-	public String getName() {
-		return name;
+	public String getDate() {
+		return date;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getTitle() {
 		return title;
@@ -47,18 +30,5 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
-	}
-	public Timestamp getWritedate() {
-		return writedate;
-	}
-	public void setWritedate(Timestamp writedate) {
-		this.writedate = writedate;
-	}
-	
 	
 }
