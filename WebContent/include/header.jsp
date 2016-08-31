@@ -22,71 +22,122 @@
 
 
 <!-- styles -->
-<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/animate.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.carousel.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font-awesome.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.carousel.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.theme.css"
+	rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="${pageContext.request.contextPath}/css/style.default.css" rel="stylesheet"
-	id="theme-stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.default.css"
+	rel="stylesheet" id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/custom.css"
+	rel="stylesheet">
 
 <script src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 </head>
+<!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
+<script src="${pageContext.request.contextPath}/js/waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/modernizr.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/front.js"></script>
 <body>
 	<div id="top">
 		<div class="container">
 			<div class="col-md-6" data-animation="fadeInDown">
 				<ul class="menu">
-					
-					 <%if(session.getAttribute("email")==null){ %>
-                  	<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-					</li><li><a href="../member/register.jsp">Register</a></li>
-					
-                  <%}else{%>
-                  
-                  <li><a><%=session.getAttribute("email") %>님 환영합니다.</a></li>
-                  <li><a href="../SidServlet?command=logout">logout</a></li>
-                  	<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
-					
-					 <%if(session.getAttribute("admin")!=null&&session.getAttribute("admin").equals('1')){ %>
+
+					<%
+						if (session.getAttribute("email") == null) {
+					%>
+					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+					</li>
+					<li><a href="../member/register.jsp">Register</a></li>
+
+					<%
+						} else {
+					%>
+
+					<li><a><%=session.getAttribute("email")%>님 환영합니다.</a></li>
+					<li><a href="" onclick=logout()>logout</a></li>
+
+
+
+					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
+
+					<%
+						if (session.getAttribute("admin") != null && session.getAttribute("admin").equals('1')) {
+					%>
 					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
-					<%}else{ %>
+					<%
+						} else {
+					%>
 					<li><a href="../member/register6.jsp">디자이너 가입</a></li>
-					<%} %>
-					<%} %>
-						<li><a href="contact.jsp">Contact</a></li>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+					<li><a href="contact.jsp">Contact</a></li>
+					<script>
+				function logout(){
+					$.ajax({
+			            type: "POST",
+			            url: '../SidServlet?command=logout',
+			            
+			            success: function(data)
+			            {
+			                alert("logOut!");
+			            },
+			            error:function(request,status,error){
+			                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			           	}
+			        });
+				}
 				
-				
+				</script>
+
 				</ul>
 			</div>
 		</div>
 
 
-		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
+			aria-labelledby="Login" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
 
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="Login">Customer login</h4>
 					</div>
 
 					<div class="modal-body">
 						<form action="" method="post">
 							<div class="form-group">
-								<input type="text" class="form-control" id="email-modal"
-									name="email" placeholder="email">
+								<input type="text" class="form-control" id="email" name="email"
+									placeholder="email">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="password-modal"
-									name="pwd"  placeholder="password">
+								<input type="password" class="form-control" id="password"
+									name="pwd" placeholder="password">
 							</div>
 
 							<p class="text-center">
@@ -95,28 +146,29 @@
 								</button>
 							</p>
 							<script>
-						/* 	 $("#btnSubmit").click(function()
+							 	 
+							 
+						 	 $("#btnSubmit").click(function()
 							    {	
-								 alert("btn submit "+ $("#email-modal").text());
 							        $.ajax({
-							        	
-							        
-							          url:"../SidServlet?command=login&email=" + $("#email-modal").text() + "&pwd=" +$("#password-modal").text(),
-							          success: function(result)
-							                 {
-							                    if(result == "Authenticated")
-							                     {
-							                         $("#yourID").submit();
-							                     }
-							                    else 
-							                     {
-							                         alert("Login Failed");
-							                     }
-							                   }
-							         })
-							    }
-							 });
-							 */
+							        	type: "POST",
+							        	url:"../SidServlet?command=login&email=" + $("#email").val() + "&pwd=" +$("#password").val(),
+							        	 	 
+								        success: function(result){
+								        	  	if(result==1){
+								        	  		alert("로그인 성공")
+								        	  	}else{
+								        	  		alert("로그인 실패")
+								        	  	}
+								         },
+								         error:function(request,status,error){
+								             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+								            }
+								         
+									});
+							    })
+						 	 
+						 
 							</script>
 						</form>
 					</div>
@@ -133,8 +185,9 @@
 			<div class="navbar-header">
 				<a class="navbar-brand home"
 					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
-					<img src="../img/SIDlogo.png" alt="Obaju logo" style="width: 120px; max-height:100%;">
-					<span class="sr-only">Snow In Dawn</span>
+					<img src="../img/SIDlogo.png" alt="Obaju logo"
+					style="width: 120px; max-height: 100%;"> <span
+					class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->
@@ -143,11 +196,12 @@
 				id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw"><a href="../BoardServlet?command=board_list">INFO</a></li>
+					<li class="dropdown yamm-fw"><a
+						href="../BoardServlet?command=board_list">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
-					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_bpage"
-						class="dropdown-toggle">Bpage</b></a></li>
+					<li class="dropdown yamm-fw"><a
+						href="../SidServlet?command=list_bpage" class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
 					<li class="dropdown yamm-fw"><a
@@ -163,15 +217,6 @@
 	<!-- /#navbar -->
 
 	<!-- *** NAVBAR END *** -->
-	<!-- *** SCRIPTS TO INCLUDE ***
- _________________________________________________________ -->
-<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
-	<script src="${pageContext.request.contextPath}/js/waypoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/modernizr.js"></script>
-	<script src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
-	<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/front.js"></script>
+
 </body>
 </html>

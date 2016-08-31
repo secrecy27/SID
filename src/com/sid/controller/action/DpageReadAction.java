@@ -27,6 +27,7 @@ public class DpageReadAction implements Action{
 		 	dVo=dao.readItem(Integer.parseInt(request.getParameter("num")));
 
 			request.setAttribute("dpage", dVo);
+			request.setAttribute("re","asd");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

@@ -105,7 +105,6 @@ public class MemberDAO {
 				if (rs.getString("pwd") != null //비밀번호 맞으면
 						&& rs.getString("pwd").equals(pwd)) {
 					result=rs.getInt("admin");
-					System.out.println("usercheck result="+result);
 					//권한을 가져옴 (2 or 1 or 0)
 				} else { //비밀 번호 틀리면
 					result = -1;

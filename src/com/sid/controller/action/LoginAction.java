@@ -23,6 +23,7 @@ public class LoginAction implements Action {
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 
+		System.out.println("email : "+email+"pwd : "+pwd);
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		int result= memberDAO.userCheck(email,pwd);
 
