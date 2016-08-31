@@ -18,25 +18,26 @@ import com.sid.dto.RPocketVO;
 public class ListRPocketAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="customer/customer_Pocket.jsp";
+		String url = "customer/customer_Pocket.jsp";
+
+		RPocketDAO rpDao = RPocketDAO.getInstance();
+		RPocketVO rpVo = new RPocketVO();
+		BPageDAO bDao = BPageDAO.getInstance();
+		HttpSession session = request.getSession();
+
+		System.out.println("list rpocket action");
+		ArrayList<Integer> rlist = new ArrayList<Integer>();
+		ArrayList<BWriteVO> blist = new ArrayList<BWriteVO>();
 		
-		
-		RPocketDAO rpDao=RPocketDAO.getInstance();
-		RPocketVO rpVo=new RPocketVO();
-		BPageDAO bDao=BPageDAO.getInstance();
-		HttpSession session=request.getSession();
-	
-		ArrayList<Integer> rlist=new ArrayList<Integer>();
-		ArrayList<BWriteVO> blist=new ArrayList<BWriteVO>();
-		
-		rlist=rpDao.list(Integer.parseInt(request.getParameter("num")),(String)session.getAttribute("email"));
-		
-		for(int i=0; i<rlist.size(); i++){
+		rlist = rpDao.list((String)session.getAttribute("email"));
+
+		for (int i = 0; i < rlist.size(); i++) {
+			System.out.println(" rlist "+rlist.get(i));
 			blist.add(bDao.readItem(rlist.get(i)));
 		}
 		request.setAttribute("blist", blist);
 		request.setAttribute("rlist", rlist);
-		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 }

@@ -2,7 +2,7 @@ package com.sid.dto;
 
 public class RPocketVO2 {
 	private int pocketId;
-	private int bwriteId;
+	private int bWriteId;
 
 	public int getPocketId() {
 		return pocketId;
@@ -12,12 +12,12 @@ public class RPocketVO2 {
 		this.pocketId = pocketId;
 	}
 
-	public int getBwriteId() {
-		return bwriteId;
+	public int getBWriteId() {
+		return bWriteId;
 	}
 
 	public void setBwriteId(int bwriteId) {
-		this.bwriteId = bwriteId;
+		this.bWriteId = bwriteId;
 	}
 
 }

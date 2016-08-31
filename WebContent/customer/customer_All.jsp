@@ -26,7 +26,7 @@
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
-								<li><a href="SidServlet?command=customer_pocket">주머니관리</a></li>
+								<li><a href="SidServlet?command=customer_rpocket_list">주머니관리</a></li>
 								<hr>
 								<li><a href="customer_Accountchange.jsp">회원정보변경</a></li>
 							</ul>

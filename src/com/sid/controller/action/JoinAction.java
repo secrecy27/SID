@@ -34,8 +34,11 @@ public class JoinAction implements Action {
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		int result=memberDAO.insertMember(memberVO);
 		if(result>0){
+			System.out.println("success");
 			memberDAO.insertPocket(request.getParameter("email"));
 			
+		}else{
+			System.out.println("fail");
 		}
 		
 		session.setAttribute("email", request.getParameter("email"));

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.RPocketVO;
+import com.sid.dto.RPocketVO2;
 
 public class RPocketDAO {
 	private static RPocketDAO instance = new RPocketDAO();
@@ -28,7 +29,7 @@ public class RPocketDAO {
 
 			pstmt.setString(1, pVo.getEmail());
 			pstmt.setInt(2, pVo.getPocketId());
-			
+
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,30 +94,31 @@ public class RPocketDAO {
 		return list;
 	}
 
-	public ArrayList<Integer> list(int num, String email) {
+	public ArrayList<Integer> list(String email) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
-		String sql = "select bwriteId from rpocket,rpocket2 where rpocket.pocketId=? and email=? and rpocket.pocketId=rpocket2.pocketId";
-		
+		String sql = "select * from rpocket a LEFT JOIN rpocket2 b ON (a.pocketId=b.pocketId) where a.email=?";
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
-		RPocketVO pVo = null;
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, num);
-			stmt.setString(2, email);
+			stmt.setString(1, email);
 			rst = stmt.executeQuery();
-			
-			list.add(rst.getInt("bwriteId"));
-		
+			while (rst.next()) {
+				System.out.println("get from list bwriteid : "+rst.getInt("bwriteId"));
+				list.add(rst.getInt("bwriteId"));
+			}
 		} catch (SQLException e) {
-			System.out.println("list error : " + e);
+			System.out.println("rpocket list error : " + e);
 		} finally {
 			JDBCUtil.close(rst, stmt, conn);
 		}
 		return list;
 
 	}
+
+	
 }

@@ -25,12 +25,37 @@
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
-								<li><a href="SidServlet?command=customer_pocket">주머니관리</a></li>
+								<li><a href="SidServlet?command=customer_rpocket_list">주머니관리</a></li>
 								<hr>
 								<li><a href="customer_Accountchange.jsp">회원정보변경</a></li>
 							</ul>
 
 						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div>
+					<p>hihihihi</p>
+						<c:forEach items="${blist}" var="bwrite">
+							<div class="col-md-2 col-sm-6">
+								<div class="product">
+									<div style="max-width: 100%; width: 100%;">
+										<a
+											href="../SidServlet?command=customer_rpocket_list&num=${bwrite.bWriteId}">
+											<img src="${bwrite.imageUrl}" id="imageFile"
+											style="max-width: 100%; width: 100%; height: 150px;"> <!-- ${dpage.imageUrl} -->
+										</a>
+									</div>
+									<div class="text">
+									<p>asdasdasd</p>
+										<p class="buttons">
+											<a href="" class="btn btn-default"></a>
+										</p>
+									</div>
+									<!-- /.text -->
+								</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="col-md-9">
@@ -48,13 +73,13 @@
 						<div class="row">
 							<div class="col-sm-12 col-md-4 products-showing">
 								<select class="tab" name="condition" id="sel_pocket">
-									<c:forEach items="${rlist}">
+									<%-- <c:forEach items="${rlist}">
 										<li>
 											<ul>
 												<option value="${rlist.pocketId }" id="pocket1">${rlist.pocketId}주머니</option>
 											</ul>
 										</li>
-									</c:forEach>
+									</c:forEach> --%>
 								</select>
 							</div>
 
@@ -76,29 +101,7 @@
 					<div class="row products">
 						<div class="col-md-4 col-sm-6">
 							<div class="tabcontent" id="left">
-								<h3>
-									0
-									<c:forEach items="${blist}">
-										<div class="col-md-2 col-sm-6">
-											<div class="product">
-												<div style="max-width: 100%; width: 100%;">
-													<a
-														href="../SidServlet?command=customer_rpocket_list&num=${blist.bwriteId}">
-														<img src="${blist.imageUrl}" id="imageFile"
-														style="max-width: 100%; width: 100%; height: 150px;">
-														<!-- ${dpage.imageUrl} -->
-													</a>
-												</div>
-												<div class="text">
-													<p class="buttons">
-														<a href="" class="btn btn-default"></a>
-													</p>
-												</div>
-												<!-- /.text -->
-											</div>
-										</div>
-									</c:forEach>
-								</h3>
+								<h3>0</h3>
 							</div>
 							<div class="tabcontent" id="right1">
 								<h3>1</h3>
@@ -113,25 +116,26 @@
 					<!-- /.products -->
 					<script>
 						function openPocket(event, direction) {
-							var i,
-								tabcontent,
-								tablinks;
-					
+							var i, tabcontent, tablinks;
+
 							console.log(direction);
-					
-							tabcontent = document.getElementsByClassName("tabcontent");
+
+							tabcontent = document
+									.getElementsByClassName("tabcontent");
 							for (i = 0; i < tabcontent.length; i++) {
 								tabcontent[i].style.display = "none";
 							}
-							tablinks = document.getElementsByClassName("tablinks");
+							tablinks = document
+									.getElementsByClassName("tablinks");
 							for (i = 0; i < tablinks.length; i++) {
-								tablinks[i].className = tablinks[i].className.replace("active", "");
+								tablinks[i].className = tablinks[i].className
+										.replace("active", "");
 							}
 							//document.getElementById(direction).style.display = "block";
 							event.currentTarget.className += " active";
-					
+
 						}
-					
+
 						$(document).ready(function() {
 							console.log("a");
 							$("#sel_pocket").on("click", function() {
