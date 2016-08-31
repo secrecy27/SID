@@ -1,17 +1,8 @@
 package com.sid.dto;
 
-public class RPocketVO {
-	private String email;
+public class RPocketVO2 {
 	private int pocketId;
-
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	private int bwriteId;
 
 	public int getPocketId() {
 		return pocketId;
@@ -21,5 +12,12 @@ public class RPocketVO {
 		this.pocketId = pocketId;
 	}
 
+	public int getBwriteId() {
+		return bwriteId;
+	}
+
+	public void setBwriteId(int bwriteId) {
+		this.bwriteId = bwriteId;
+	}
 
 }

@@ -11,33 +11,10 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
 
-<!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
-	id="theme-stylesheet">
-
-<!-- your stylesheet with modifications -->
-<link href="../css/custom.css" rel="stylesheet">
-
-<script src="../js/respond.min.js"></script>
-
-<link rel="shortcut icon" href="favicon.png">
 
 </head>
 
-<script src="../js/jquery-1.11.0.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.cookie.js"></script>
-<script src="../js/waypoints.min.js"></script>
-<script src="../js/modernizr.js"></script>
-<script src="../js/bootstrap-hover-dropdown.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/front.js"></script>
 <body>
 	<div id="all">
 		<div id="content">
@@ -50,8 +27,18 @@
 
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
-						<a href="member/DWrite.jsp" class="btn btn-primary"><i
+						<%if(session.getAttribute("email")==null){ %>
+		                  <a href="" onclick="fail()" class="btn btn-primary"><i
+									class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
+									<script>
+									function fail(){
+										alert("로그인 하세요");
+									}
+									</script>
+                 		<%}else{%>
+						<a href="member/Dwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
+							<%} %>
 					</ul>
 
 					<div class="dContainer">

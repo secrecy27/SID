@@ -10,6 +10,14 @@ public class DWriteVO {
 	private String point;
 	private String expl;
 	private String imageName;
+	private String userEmail;
+	
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 	public int getdWriteId() {
 		return dWriteId;
 	}

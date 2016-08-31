@@ -16,28 +16,27 @@ public class LoginAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "member/index.jsp";
-		
-		System.out.println("get r u"+request.getRequestURI().toString());
+		String url = "member/loginResult.jsp";
 		
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
-		System.out.println("로그인");
 
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		int result= memberDAO.userCheck(email,pwd);
 
 		
-		if (result==1) {
-				request.setAttribute("login", "success");
-				System.out.println("login success");
-				session.setAttribute("email", email);
-		}else {
-			request.setAttribute("login", "fail");
+		if (result==-1) {
 			System.out.println("login fail");
-		}		
+			request.setAttribute("result", "0");
+		}else {
+			System.out.println("login success");
+			request.setAttribute("result", "1");
+			session.setAttribute("email", email);
+			session.setAttribute("admin", result);
+		}
+		
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

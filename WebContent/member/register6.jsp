@@ -28,14 +28,14 @@
 						<hr>
 					</div>
 				</div>
-				<form method="post" action="upload.do" enctype="multipart/form-data">
+				<form method="post" enctype="multipart/form-data">
 					1.파일 지정하기 : <input type="file" name="uploadFile01"><br>
 					2.파일 지정하기 : <input type="file" name="uploadFile02"><br>
 					3.파일 지정하기 : <input type="file" name="uplaodFile03"><br>
 					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
 					<input type="submit" value="전송">
 				</form>
-				<form action="../SidServlet?commnad=join_design" method="post">
+				<form action="../SidServlet?command=join_design" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-sign-in"></i> 가입 시작하기

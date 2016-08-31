@@ -30,11 +30,16 @@ public class JoinAction implements Action {
 		memberVO.setPhone(request.getParameter("phone"));
 		memberVO.setAdmin(Integer.parseInt(request.getParameter("admin")));
 		
-		session.setAttribute("email", request.getParameter("email"));
 		
 		MemberDAO memberDAO = MemberDAO.getInstance();
-		memberDAO.insertMember(memberVO);
+		int result=memberDAO.insertMember(memberVO);
+		if(result>0){
+			memberDAO.insertPocket(request.getParameter("email"));
+			
+		}
 		
+		session.setAttribute("email", request.getParameter("email"));
+		session.setAttribute("admin", '0');
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

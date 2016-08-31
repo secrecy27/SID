@@ -21,7 +21,7 @@ public class DPageDAO {
  }
  public int insertImage(DWriteVO dVo){
 	 int result= -1;
-	 String sql="INSERT INTO dwrite(imageUrl, standardDate, endDate, cost, condi, point, expl,imageName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	 String sql="INSERT INTO dwrite(imageUrl, standardDate, endDate, cost, condi, point, expl,imageName,userEmail) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	 Connection conn=null;
 	 PreparedStatement pstmt=null;
 	 
@@ -37,6 +37,7 @@ public class DPageDAO {
 		pstmt.setString(6, dVo.getPoint());
 		pstmt.setString(7, dVo.getExpl());
 		pstmt.setString(8, dVo.getImageName());
+		pstmt.setString(9, dVo.getUserEmail());
 		
 		result = pstmt.executeUpdate();
 	} catch (Exception e) {

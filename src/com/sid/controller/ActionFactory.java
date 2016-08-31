@@ -15,6 +15,9 @@ import com.sid.controller.action.AdminProductWriteFormAction;
 import com.sid.controller.action.AdminQnaDetailAction;
 import com.sid.controller.action.AdminQnaListAction;
 import com.sid.controller.action.AdminQnaResaveAction;
+import com.sid.controller.action.BWriteAction;
+import com.sid.controller.action.BpageListAction;
+import com.sid.controller.action.BpageReadAction;
 import com.sid.controller.action.CartDeleteAction;
 import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.CartListAction;
@@ -142,6 +145,13 @@ public class ActionFactory {
 		}else if(command.equals("login")){
 			action=new LoginAction();
 			
+		}else if(command.equals("bWrite")){
+			action=new BWriteAction();
+		}else if(command.equals("list_bpage")){
+			action=new BpageListAction();
+		}else if(command.equals("read_bpage")){
+			action=new BpageReadAction();
+		
 		}else if(command.equals("customer_all")){
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
