@@ -48,17 +48,13 @@
 						<div class="row">
 							<div class="col-sm-12 col-md-4 products-showing">
 								<select class="tab" name="condition" id="sel_pocket">
-									<li>
-										<ul>
-											<option value="0" id="pocket1">주머니1</option>
-										</ul>
-										<ul>
-											<option value="1" id="pocket2">주머니2</option>
-										</ul>
-										<ul>
-											<option value="2" id="pocket3">주머니3</option>
-										</ul>
-								</li>
+									<c:forEach items="${rlist}">
+										<li>
+											<ul>
+												<option value="${rlist.pocketId }" id="pocket1">${rlist.pocketId}주머니</option>
+											</ul>
+										</li>
+									</c:forEach>
 								</select>
 							</div>
 
@@ -80,37 +76,29 @@
 					<div class="row products">
 						<div class="col-md-4 col-sm-6">
 							<div class="tabcontent" id="left">
-								<div class="dContainer">
-									<div class="row products">
-										<c:forEach items="${list}" var="dpage">
-											<div class="col-md-2 col-sm-6">
-												<div class="product">
-													<div style="max-width: 100%; width: 100%;">
-														<a
-															href="../SidServlet?command=read_dpage&num=${dpage.dWriteId}">
-															<img src="${dpage.imageUrl}" id="imageFile"
-															style="max-width: 100%; width: 100%; height: 150px;">
-															<!-- ${dpage.imageUrl} -->
-														</a>
-													</div>
-													<div class="text">
-														<p>기준시간 ${dpage.standardDate}</p>
-														<p>마감시간 ${dpage.endDate}</p>
-														<p>최대지불가능비용 ${dpage.cost}</p>
-														<p>조건 ${dpage.condition}</p>
-														<p class="buttons">
-															<a href="" class="btn btn-default">입</a>
-														</p>
-													</div>
-													<!-- /.text -->
+								<h3>
+									0
+									<c:forEach items="${blist}">
+										<div class="col-md-2 col-sm-6">
+											<div class="product">
+												<div style="max-width: 100%; width: 100%;">
+													<a
+														href="../SidServlet?command=customer_rpocket_list&num=${blist.bwriteId}">
+														<img src="${blist.imageUrl}" id="imageFile"
+														style="max-width: 100%; width: 100%; height: 150px;">
+														<!-- ${dpage.imageUrl} -->
+													</a>
 												</div>
+												<div class="text">
+													<p class="buttons">
+														<a href="" class="btn btn-default"></a>
+													</p>
+												</div>
+												<!-- /.text -->
 											</div>
-										</c:forEach>
-									</div>
-								</div>
-							</div>
-							<div class="tabcontent" id="left">
-								<h3>0</h3>
+										</div>
+									</c:forEach>
+								</h3>
 							</div>
 							<div class="tabcontent" id="right1">
 								<h3>1</h3>
@@ -130,7 +118,7 @@
 								tablinks;
 					
 							console.log(direction);
-							
+					
 							tabcontent = document.getElementsByClassName("tabcontent");
 							for (i = 0; i < tabcontent.length; i++) {
 								tabcontent[i].style.display = "none";
@@ -143,27 +131,26 @@
 							event.currentTarget.className += " active";
 					
 						}
-
-						$(document).ready(function(){
+					
+						$(document).ready(function() {
 							console.log("a");
-							$("#sel_pocket").on("click",function(){
-								if(this.value==0){
+							$("#sel_pocket").on("click", function() {
+								if (this.value == 0) {
 									$("#left").show();
 									$("#right1").hide();
 									$("#right2").hide();
-								}else if(this.value==1){
+								} else if (this.value == 1) {
 									$("#right1").show();
 									$("#right2").hide();
 									$("#left").hide();
-								}else{
+								} else {
 									$("#right2").show();
 									$("#left").hide();
 									$("#right1").hide();
 								}
 							})
 						})
-						
-						</script>
+					</script>
 				</div>
 			</div>
 		</div>

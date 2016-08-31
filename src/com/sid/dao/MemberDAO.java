@@ -28,7 +28,7 @@ public class MemberDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, mVo.getNickname());
 			pstmt.setString(2, mVo.getEmail());
 			pstmt.setString(3, mVo.getPwd());
@@ -44,8 +44,28 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
-	public int updateAdmin(String email){
+
+	public int insertPocket(String email) {
+		int result = -1;
+		int i=0;
+		String sql = "insert into rpocket (email) values(?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, email);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public int updateAdmin(String email) {
 		int result = -1;
 		String sql = "update user set admin=1 where email=?";
 
@@ -65,7 +85,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
+
 	public int confirmID(String email) {
 		int result = -1;
 		String sql = "select * from user where email=?";
@@ -102,14 +122,15 @@ public class MemberDAO {
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString("pwd") != null //비밀번호 맞으면
+				if (rs.getString("pwd") != null // 비밀번호 맞으면
 						&& rs.getString("pwd").equals(pwd)) {
 					result=rs.getInt("admin");
 					//권한을 가져옴 (2 or 1 or 0)
 				} else { //비밀 번호 틀리면
+
 					result = -1;
 				}
-			} else {//결과가 없으면
+			} else {// 결과가 없으면
 				result = -1;
 			}
 
@@ -165,8 +186,7 @@ public class MemberDAO {
 
 	public int updateMember(MemberVO mVo) {
 		int result = -1;
-		String sql = "update user set pwd=?,zipNum=?,address=?,phone=?,"
-				+ " where email=?";
+		String sql = "update user set pwd=?,zipNum=?,address=?,phone=?," + " where email=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -191,14 +211,13 @@ public class MemberDAO {
 
 	/*
 	 * 관리자 모드에서 사용
-
-아직 수정안함
+	 * 
+	 * 아직 수정안함
 	 */
 
 	public ArrayList<MemberVO> listMember(String email) {
 		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
-		String sql = "select * from user where email like '%'||?||'%' "
-				+ "  order by indate desc";
+		String sql = "select * from user where email like '%'||?||'%' " + "  order by indate desc";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -231,8 +250,8 @@ public class MemberDAO {
 		}
 		return memberList;
 	}
-	
-	public MemberVO getAddress(String email){
+
+	public MemberVO getAddress(String email) {
 		MemberVO mVo = null;
 		String sql = "select zipNum, address, phone from user where email=?";
 		Connection conn = null;
