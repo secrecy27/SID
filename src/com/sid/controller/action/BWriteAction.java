@@ -11,16 +11,16 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sid.controller.Action;
-import com.sid.dao.DPageDAO;
-import com.sid.dto.DWriteVO;
+import com.sid.dao.BPageDAO;
+import com.sid.dto.BWriteVO;
 
-public class DWriteAction implements Action{
+public class BWriteAction implements Action{
 	 @Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 	String url="/SidServlet?command=list_dpage";
+		 	String url="/SidServlet?command=list_bpage";
 		 	
-		 	System.out.println("dwrite");
+		 	System.out.println("bwrite action");
 		 	//-----------------------------
 		 	
 		 	String savePath="C:/Users/sid/git/SID/WebContent/img"; //저장 폴더명
@@ -37,31 +37,22 @@ public class DWriteAction implements Action{
 		 	String m_fileFullPath = "../img/" + fileName;
 		 	
 		 	//-----------------------------
-		 	DWriteVO dVo=new DWriteVO();
-		 	dVo.setImageName(fileName);
-		 	dVo.setImageUrl(m_fileFullPath);
-		 	dVo.setStandardDate(multi.getParameter("standardDate"));
-		 	dVo.setEndDate(multi.getParameter("endDate"));
-		 	if(multi.getParameter("condition")!=null)
-		 	{
-		 	   dVo.setCondition(Integer.parseInt(multi.getParameter("condition")));
-		 	}
-		 	System.out.println(multi.getParameter("cost")+"  "+multi.getParameter("standardDate"));
-		 	dVo.setCost(Integer.parseInt(multi.getParameter("cost")));
-		 	dVo.setPoint(multi.getParameter("point"));
-		 	dVo.setExpl(multi.getParameter("expl"));
+		 	BWriteVO bVo=new BWriteVO();
+		 	bVo.setImageUrl(m_fileFullPath);
+		 	
+		 	bVo.setCost(Integer.parseInt(multi.getParameter("cost")));
+		 	bVo.setExpl(multi.getParameter("expl"));
+			
 		 	HttpSession session = request.getSession();
 			
 		 	
 		 	String email=(String)session.getAttribute("email");
 		 	if(email!=null){
-		 		dVo.setUserEmail(email);
+		 		bVo.setUserEmail(email);
 		 	}
 		 	
-			
-		 	System.out.println();
-		 		DPageDAO dao = DPageDAO.getInstance();
-				dao.insertImage(dVo);
+		 	BPageDAO dao = BPageDAO.getInstance();
+			dao.insertImage(bVo);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

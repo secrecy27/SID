@@ -47,47 +47,77 @@
 					
 					 <%if(session.getAttribute("email")==null){ %>
                   	<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-					</li><li><a href="register.jsp">Register</a></li>
+					</li><li><a href="../member/register.jsp">Register</a></li>
+					
                   <%}else{%>
+                  
+                  <li><a><%=session.getAttribute("email") %>님 환영합니다.</a></li>
                   <li><a href="../SidServlet?command=logout">logout</a></li>
+                  	<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
 					
-					
-					<%} %>
-					<li><a href="contact.jsp">Contact</a></li>
-					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
+					 <%if(session.getAttribute("admin")!=null&&session.getAttribute("admin").equals('1')){ %>
 					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
+					<%}else{ %>
+					<li><a href="../member/register6.jsp">디자이너 가입</a></li>
+					<%} %>
+					<%} %>
+						<li><a href="contact.jsp">Contact</a></li>
+				
+				
 				</ul>
 			</div>
 		</div>
 
-		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
-			aria-labelledby="Login" aria-hidden="true">
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
 			<div class="modal-dialog modal-sm">
 
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="Login">Customer login</h4>
 					</div>
 
 					<div class="modal-body">
-						<form action="../SidServlet?command=login" method="post">
+						<form action="" method="post">
 							<div class="form-group">
 								<input type="text" class="form-control" id="email-modal"
-									name="email" value="${email }" placeholder="email">
+									name="email" placeholder="email">
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" id="password-modal"
-									name="pwd" value="${pwd}" placeholder="password">
+									name="pwd"  placeholder="password">
 							</div>
 
 							<p class="text-center">
-								<button class="btn btn-primary">
+								<button class="btn btn-primary" id="btnSubmit">
 									<i class="fa fa-sign-in"></i> Log in
 								</button>
 							</p>
-
+							<script>
+						/* 	 $("#btnSubmit").click(function()
+							    {	
+								 alert("btn submit "+ $("#email-modal").text());
+							        $.ajax({
+							        	
+							        
+							          url:"../SidServlet?command=login&email=" + $("#email-modal").text() + "&pwd=" +$("#password-modal").text(),
+							          success: function(result)
+							                 {
+							                    if(result == "Authenticated")
+							                     {
+							                         $("#yourID").submit();
+							                     }
+							                    else 
+							                     {
+							                         alert("Login Failed");
+							                     }
+							                   }
+							         })
+							    }
+							 });
+							 */
+							</script>
 						</form>
 					</div>
 
@@ -116,7 +146,7 @@
 					<li class="dropdown yamm-fw"><a href="../BoardServlet?command=board_list">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
-					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_bpage"
 						class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>

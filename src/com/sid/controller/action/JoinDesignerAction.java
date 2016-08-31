@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.sid.controller.Action;
 import com.sid.dao.MemberDAO;
-import com.sid.dto.MemberVO;
 
 public class JoinDesignerAction implements Action {
 	@Override
@@ -18,8 +17,18 @@ public class JoinDesignerAction implements Action {
 			throws ServletException, IOException {
 		String url="member/register7.jsp";
 
-	/*	HttpSession session = request.getSession();
-		MemberVO memberVO = new MemberVO();
+		HttpSession session = request.getSession();
+		
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		int result=memberDAO.updateAdmin((String)session.getAttribute("email"));
+		if(result>0){
+			System.out.println("update admin O");
+			session.setAttribute("admin", '1');
+		}else{
+			System.out.println("update admin X");
+			session.setAttribute("admin", '0');
+		}
+		/*	MemberVO memberVO = new MemberVO();
 		memberVO.setNickname(request.getParameter("nickname"));
 		memberVO.setEmail(request.getParameter("email"));
 		memberVO.setPwd(request.getParameter("pwd"));

@@ -19,6 +19,10 @@
 
 <meta name="keywords" content="">
 
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
+	rel='stylesheet' type='text/css'>
+
 </head>
 
 <style>
@@ -27,7 +31,14 @@
 	max-height: 100%;
 }
 </style>
-
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/waypoints.min.js"></script>
+<script src="../js/modernizr.js"></script>
+<script src="../js/bootstrap-hover-dropdown.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/front.js"></script>
 <body>
 	<div id="all">
 		<div id="content">
@@ -35,10 +46,10 @@
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li>D-Write</li>
+						<li>B-Write</li>
 					</ul>
 				</div>
-				<form action="../SidServlet?command=dWrite" method="post" name='frm'
+				<form action="../SidServlet?command=bWrite" method="post" name='frm'
 					enctype="multipart/form-data">
 					<div class="col-md-12">
 
@@ -59,59 +70,31 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="box">
-									<h3>직접선정</h3>
 									<hr>
 									<div class="form-group row">
-										<label class="col-sm-10 control-label">기준시각</label>
+										<label class="col-sm-10 control-label">hashtag</label>
 										<div class="col-sm-10">
 											<input class="form-control" type="datetime-local"
-												value="0000-00-00AMT00:00:01" name="standardDate">
+												value="0000-00-00AMT00:00:01" name="">
 										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">마감시각</label>
-										<div class="col-sm-10">
-											<input class="form-control" type="datetime-local"
-												value="0000-00-00T00:00:01" name="endDate">
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">최대지불가능 비용</label>
-										<div class="col-sm-10">
-											<input class="form-control" type="number" name="cost"
-												s="원">
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">선택조건</label>
-										<div class="col-sm-10">
-											<select class="form-control" name="condition">
-												<option value="0">최고가</option>
-												<option value="1">평점</option>
-												<option value="2">등급</option>
-											</select>
-										</div>
-
 									</div>
 								</div>
-
+								<div class="box">
+									<div class="form-group row">
+										<label class="col-sm-10 control-label">저작료</label>
+										<div class="col-sm-10">
+											<input class="form-control" type="number" name="cost"
+												 hint="원">
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
 
 						<div class="box" id="details">
 
-							<h3>지시사항</h3>
-							<hr>
-							<h4>
-								핵심포인트
-								<button type="button" class="btn btn-default btn-circle">?</button>
-							</h4>
-							<textarea class="form-control" rows="5" name="point"></textarea>
-							<h4>전체적인 느낌</h4>
+							<h4>설명</h4>
 							<textarea class="form-control" rows="5" name="expl"></textarea>
 
 						</div>

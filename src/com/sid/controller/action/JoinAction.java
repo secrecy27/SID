@@ -31,7 +31,7 @@ public class JoinAction implements Action {
 		memberVO.setAdmin(Integer.parseInt(request.getParameter("admin")));
 		
 		session.setAttribute("email", request.getParameter("email"));
-		
+		session.setAttribute("admin", '0');
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.insertMember(memberVO);
 		

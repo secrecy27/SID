@@ -152,7 +152,7 @@ input {
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">불러오기</h4>
+					<h4 class="modal-title">바로구매</h4>
 				</div>
 				<div class="modal-body">
 					<p>Some text in the modal.</p>
@@ -170,7 +170,7 @@ input {
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">저장하기</h4>
+					<h4 class="modal-title">업로드</h4>
 				</div>
 				<div class="modal-body">
 					<p>Some text in the modal.</p>

@@ -44,6 +44,28 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	public int updateAdmin(String email){
+		int result = -1;
+		String sql = "update user set admin=1 where email=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, email);
+
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+	
 	public int confirmID(String email) {
 		int result = -1;
 		String sql = "select * from user where email=?";
@@ -70,7 +92,7 @@ public class MemberDAO {
 
 	public int userCheck(String email, String pwd) {
 		int result = -1;
-		String sql = "select pwd from user where email=?";
+		String sql = "select pwd,admin from user where email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -82,9 +104,11 @@ public class MemberDAO {
 			if (rs.next()) {
 				if (rs.getString("pwd") != null //비밀번호 맞으면
 						&& rs.getString("pwd").equals(pwd)) {
-					result = 1;
+					result=rs.getInt("admin");
+					System.out.println("usercheck result="+result);
+					//권한을 가져옴 (2 or 1 or 0)
 				} else { //비밀 번호 틀리면
-					result = 0;
+					result = -1;
 				}
 			} else {//결과가 없으면
 				result = -1;

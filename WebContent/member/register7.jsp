@@ -26,7 +26,7 @@
 						<h1>축하합니다. 디자이너 회원가입이 완료되었습니다!</h1>
 					</div>
 				</div>
-				<form action="../SidServlet?commnad=join_form4" method="post">
+				<form action="../member/index.jsp" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-sign-in"></i> 메인으로 가기
