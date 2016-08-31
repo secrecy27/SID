@@ -18,6 +18,7 @@ public class LogoutAction implements Action {
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
+		
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

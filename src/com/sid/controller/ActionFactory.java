@@ -150,7 +150,7 @@ public class ActionFactory {
 		}else if(command.equals("read_bpage")){
 			action=new BpageReadAction();
 		
-/*		}else if(command.equals("customer_all")){
+		}else if(command.equals("customer_all")){
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
 			action=new Customer_Dplan_Action();
@@ -178,7 +178,7 @@ public class ActionFactory {
 		}else if(command.equals("designer_dplan")){
 			action=new Designer_Dplan_Action();
 			//디자이너 관리 페이지
-		}*/
+		}
 		return action;
 	}
 }
