@@ -18,8 +18,6 @@ public class LoginAction implements Action {
 			throws ServletException, IOException {
 		String url = "member/loginResult.jsp";
 		
-		System.out.println("get r u"+request.getRequestURI().toString());
-		
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("email");
