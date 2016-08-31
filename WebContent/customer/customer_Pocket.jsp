@@ -47,10 +47,18 @@
 					<div class="box info-bar">
 						<div class="row">
 							<div class="col-sm-12 col-md-4 products-showing">
-								<select class="form-control" name="condition">
-									<option value="0">주머니1</option>
-									<option value="1">주머니2</option>
-									<option value="2">주머니3</option>
+								<select class="tab" name="condition" id="sel_pocket">
+									<li>
+										<ul>
+											<option value="0" id="pocket1">주머니1</option>
+										</ul>
+										<ul>
+											<option value="1" id="pocket2">주머니2</option>
+										</ul>
+										<ul>
+											<option value="2" id="pocket3">주머니3</option>
+										</ul>
+								</li>
 								</select>
 							</div>
 
@@ -72,10 +80,43 @@
 					<div class="row products">
 						<div class="col-md-4 col-sm-6">
 							<div class="tabcontent" id="left">
-								<h3>london</h3>
+								<div class="dContainer">
+									<div class="row products">
+										<c:forEach items="${list}" var="dpage">
+											<div class="col-md-2 col-sm-6">
+												<div class="product">
+													<div style="max-width: 100%; width: 100%;">
+														<a
+															href="../SidServlet?command=read_dpage&num=${dpage.dWriteId}">
+															<img src="${dpage.imageUrl}" id="imageFile"
+															style="max-width: 100%; width: 100%; height: 150px;">
+															<!-- ${dpage.imageUrl} -->
+														</a>
+													</div>
+													<div class="text">
+														<p>기준시간 ${dpage.standardDate}</p>
+														<p>마감시간 ${dpage.endDate}</p>
+														<p>최대지불가능비용 ${dpage.cost}</p>
+														<p>조건 ${dpage.condition}</p>
+														<p class="buttons">
+															<a href="" class="btn btn-default">입</a>
+														</p>
+													</div>
+													<!-- /.text -->
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+								</div>
 							</div>
-							<div class="tabcontent" id="right">
-								<h3>sfd</h3>
+							<div class="tabcontent" id="left">
+								<h3>0</h3>
+							</div>
+							<div class="tabcontent" id="right1">
+								<h3>1</h3>
+							</div>
+							<div class="tabcontent" id="right2">
+								<h3>2</h3>
 							</div>
 							<!-- /.product -->
 						</div>
@@ -88,23 +129,41 @@
 								tabcontent,
 								tablinks;
 					
-							// Get all elements with class="tabcontent" and hide them
+							console.log(direction);
+							
 							tabcontent = document.getElementsByClassName("tabcontent");
 							for (i = 0; i < tabcontent.length; i++) {
 								tabcontent[i].style.display = "none";
 							}
-							// Get all elements with class="tablinks" and remove the class "active"
 							tablinks = document.getElementsByClassName("tablinks");
 							for (i = 0; i < tablinks.length; i++) {
 								tablinks[i].className = tablinks[i].className.replace("active", "");
 							}
-					
-							// Show the current tab, and add an "active" class to the link that opened the tab
-							document.getElementById(direction).style.display = "block";
-							eventt.currentTarget.className += " active";
+							//document.getElementById(direction).style.display = "block";
+							event.currentTarget.className += " active";
 					
 						}
-					</script>
+
+						$(document).ready(function(){
+							console.log("a");
+							$("#sel_pocket").on("click",function(){
+								if(this.value==0){
+									$("#left").show();
+									$("#right1").hide();
+									$("#right2").hide();
+								}else if(this.value==1){
+									$("#right1").show();
+									$("#right2").hide();
+									$("#left").hide();
+								}else{
+									$("#right2").show();
+									$("#left").hide();
+									$("#right1").hide();
+								}
+							})
+						})
+						
+						</script>
 				</div>
 			</div>
 		</div>

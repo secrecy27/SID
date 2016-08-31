@@ -6,7 +6,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -50,14 +49,6 @@ public class DWriteAction implements Action{
 		 	dVo.setCost(Integer.parseInt(multi.getParameter("cost")));
 		 	dVo.setPoint(multi.getParameter("point"));
 		 	dVo.setExpl(multi.getParameter("expl"));
-		 	HttpSession session = request.getSession();
-			
-		 	
-		 	String email=(String)session.getAttribute("email");
-		 	if(email!=null){
-		 		dVo.setUserEmail(email);
-		 	}
-		 	
 			
 		 	System.out.println();
 		 		DPageDAO dao = DPageDAO.getInstance();
