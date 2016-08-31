@@ -82,12 +82,12 @@
 							<div class="tabcontent" id="left">
 								<div class="dContainer">
 									<div class="row products">
-										<c:forEach items="${list}" var="dpage">
+										<c:forEach items="${list}" var="pocket">
 											<div class="col-md-2 col-sm-6">
 												<div class="product">
 													<div style="max-width: 100%; width: 100%;">
 														<a
-															href="../SidServlet?command=read_dpage&num=${dpage.dWriteId}">
+															href="../SidServlet?command=read_pocket&num=${pocket.bwriteId}">
 															<img src="${dpage.imageUrl}" id="imageFile"
 															style="max-width: 100%; width: 100%; height: 150px;">
 															<!-- ${dpage.imageUrl} -->
@@ -99,7 +99,7 @@
 														<p>최대지불가능비용 ${dpage.cost}</p>
 														<p>조건 ${dpage.condition}</p>
 														<p class="buttons">
-															<a href="" class="btn btn-default">입</a>
+															<a href="" class="btn btn-default"></a>
 														</p>
 													</div>
 													<!-- /.text -->

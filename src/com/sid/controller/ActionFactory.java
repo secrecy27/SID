@@ -44,6 +44,8 @@ import com.sid.controller.action.customer.Customer_Coupon_Action;
 import com.sid.controller.action.customer.Customer_Cplan_Action;
 import com.sid.controller.action.customer.Customer_Dplan_Action;
 import com.sid.controller.action.customer.Customer_Pocket_Action;
+import com.sid.controller.action.customer.ListLPocketAction;
+import com.sid.controller.action.customer.ListRPocketAction;
 import com.sid.controller.action.designer.Designer_All_Action;
 import com.sid.controller.action.designer.Designer_Bplan_Action;
 import com.sid.controller.action.designer.Designer_Cplan_Action;
@@ -152,8 +154,15 @@ public class ActionFactory {
 			action=new Customer_Coupon_Action();
 		}else if(command.equals("customer_basket")){
 			action=new Customer_Basket_Action();
+			
+		
 		}else if(command.equals("customer_pocket")){
 			action=new Customer_Pocket_Action();
+		}else if(command.equals("customer_rpocket_list")){
+			action=new ListRPocketAction();
+		}else if(command.equals("customer_lpocket_list")){
+			action=new ListLPocketAction();
+			
 		}else if(command.equals("customer_accountchange")){
 			action=new Customer_Accountchange_Action();
 		}else if(command.equals("logout")){
