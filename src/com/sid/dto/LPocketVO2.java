@@ -1,17 +1,9 @@
 package com.sid.dto;
 
-public class LPocketVO {
-	private String email;
+public class LPocketVO2 {
 	private int pocketId;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	private int imageId;
+	
 	public int getPocketId() {
 		return pocketId;
 	}
@@ -19,7 +11,12 @@ public class LPocketVO {
 	public void setPocketId(int pocketId) {
 		this.pocketId = pocketId;
 	}
-
 	
+	public int getImageId() {
+		return imageId;
+	}
 
+	public void setImageId(int imageId) {
+		this.imageId = imageId;
+	}
 }

@@ -1,6 +1,6 @@
 package com.sid.dto;
 
-public class ImageVO {
+public class imageVO {
 	private String imageUrl;
 	private int year;
 	private int month;

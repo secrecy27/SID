@@ -3,7 +3,7 @@ package com.sid.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import com.sid.dto.ImageVO;
+import com.sid.dto.imageVO;
 import com.sid.util.DBManager;
 
 public class ImageDAO {
@@ -16,7 +16,7 @@ public class ImageDAO {
  public static ImageDAO getInstance(){
 	 return instance;
  }
- public int insertImage(ImageVO imageVO){
+ public int insertImage(imageVO imageVO){
 	 int result= -1;
 	 String sql="insert into Image value(?,?,?,?,?,?,?,?,?)";
 	 Connection conn=null;
