@@ -27,18 +27,24 @@
 
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
-						<%if(session.getAttribute("email")==null){ %>
-		                  <a href="" onclick="fail()" class="btn btn-primary"><i
-									class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
-									<script>
-									function fail(){
-										alert("로그인 하세요");
-									}
-									</script>
-                 		<%}else{%>
+						<%
+							if (session.getAttribute("email") == null) {
+						%>
+						<a href="" onclick="fail()" class="btn btn-primary"><i
+							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
+						<script>
+							function fail() {
+								alert("로그인 하세요");
+							}
+						</script>
+						<%
+							} else {
+						%>
 						<a href="member/Dwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
-							<%} %>
+						<%
+							}
+						%>
 					</ul>
 
 					<div class="dContainer">
@@ -55,20 +61,29 @@
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
 											</a>
-
 										</div>
-
-										<script>
-		                             
-		                                </script>
-
 										<div class="text">
-											<p>기준시간 ${dpage.standardDate}</p>
-											<p>마감시간 ${dpage.endDate}</p>
-											<p>최대지불가능비용 ${dpage.cost}</p>
-											<p>조건 ${dpage.condition}</p>
+											<hr>
+											<p class="text-center" style="font-size: 90%">기준시간<br>
+												<strong>${dpage.standardDate}</strong></p>
+											<hr>
+											<p class="text-center" style="font-size: 90%">마감시간<br><strong> ${dpage.endDate}</strong></p>
+											<hr>
+											<p class="text-center" style="font-size: 90%">최대지불가능비용<br><strong> ${dpage.cost}
+											</strong></p>
+											<hr>
+											<p class="text-center" style="font-size: 90%">
+												조건 &nbsp<strong>
+												<c:if test="${dpage.condition eq '0'}">
+												최고가 우선</c:if>
+												<c:if test="${dpage.condition eq '1'}">
+												평점 우선</c:if>
+												<c:if test="${dpage.condition eq '2'}">
+												등급 우선</c:if>
+																						</strong></p>
+											<hr>
 											<p class="buttons">
-												<a href="" class="btn btn-default">입</a>
+												<a href="" class="btn btn-primary">입</a>
 											</p>
 										</div>
 										<!-- /.text -->

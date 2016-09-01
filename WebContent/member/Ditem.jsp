@@ -54,37 +54,28 @@
 
 						<div class="col-sm-6">
 							<div class="box">
-								<form action="../SidServlet?command=ditem_suggest&num=${dpage.dWriteId}" method="post"
-									name='frm'>
+								<form
+									action="../SidServlet?command=ditem_suggest&num=${dpage.dWriteId}"
+									method="post" name='frm'>
 									<ul class="breadcrumb">
 										<div class="form-group row">
-											<label class="col-sm-10 control-label">기준시각</label>
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label">${dpage.standardDate}</label>
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-sm-10 control-label">마감시각</label>
-
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label">${dpage.endDate}</label>
-											</div>
+											<label class="col-sm-10 control-label">기준시각 :<strong>
+													${dpage.standardDate}</strong></label> <label
+												class="col-sm-10 control-label">마감시각 :<strong>
+													${dpage.endDate}</strong>
+											</label>
 										</div>
 									</ul>
 
 
 									<ul class="breadcrumb">
 										<div class="form-group row">
-											<label class="col-sm-10 control-label">선택조건</label>
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label"> <c:if
+											<label class="col-sm-10 control-label">선택조건 : <strong><c:if
 														test="${dpage.condition eq '0'}">
-												최고가</c:if> <c:if test="${dpage.condition eq '1'}">
-												평점</c:if> <c:if test="${dpage.condition eq '2'}">
-												등급</c:if>
-												</label>
-											</div>
+												최고가 우선</c:if> <c:if test="${dpage.condition eq '1'}">
+												평점 우선</c:if> <c:if test="${dpage.condition eq '2'}">
+												등급 우선</c:if> </strong>
+											</label>
 										</div>
 									</ul>
 
@@ -92,32 +83,27 @@
 
 									<ul class="breadcrumb">
 										<div class="form-group row">
-											<label class="col-sm-10 control-label">필요작업시간</label>
-											<div class="col-sm-6">
-												<input class="form-control" type="number" name="time"
-													placeholder="분">
-											</div>
+											<label class="col-sm-3 control-label">필요작업시간 <input
+												class="form-control" type="number" name="needTime"
+												placeholder="분">
+											</label>
 										</div>
 									</ul>
 
 
 									<ul class="breadcrumb">
 										<div class="form-group row">
-											<label class="col-sm-10 control-label">필요비용</label>
-											<div class="col-sm-6">
-												<input class="form-control" type="number" name="cost"
-													placeholder="원">
-											</div>
+											<label class="col-sm-3 control-label">필요비용 <input
+												class="form-control" type="number" name="needCost"
+												placeholder="원">
+											</label>
 										</div>
 									</ul>
 
 									<ul class="breadcrumb">
 										<div class="form-group row">
-											<label class="col-sm-10 control-label">최대지불가능 비용</label>
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label">
-													${dpage.cost}</label>
-											</div>
+											<label class="col-sm-10 control-label">최대지불가능 비용 : <strong>${dpage.cost}</strong></label>
+
 										</div>
 									</ul>
 
@@ -125,15 +111,13 @@
 										if (session.getAttribute("admin").equals(1)) {
 									%>
 									<p class="text-center buttons">
-										<button type="submit" class="btn btn-primary"><i
-											class="fa fa glyphicon-plus"></i>&nbsp제시하기</a>
+										<button type="submit" class="btn btn-primary">&nbsp제시하기</button>
 									</p>
 									<%
 										} else {
 									%>
 									<p class="text-center buttons">
-										<a href="#" onclick="noAdmin()"class="btn btn-primary"><i
-											class="fa fa glyphicon-plus"></i>&nbsp제시하기</a>
+										<a href="#" onclick="noAdmin()" class="btn btn-primary">&nbsp제시하기</a>
 									</p>
 									<%
 										}
@@ -145,10 +129,23 @@
 					</div>
 
 					<div class="box" id="details">
-						<h4>현재 지원한 디자이너</h4>
+						<h4>현재 지원한 디자이너 ${count}</h4>
 						<hr>
 						<ul class="breadcrumb">
-							<p>명, 닉네임</p>
+							<c:forEach items="${list}" var="dsuggest">
+								<div class="box">
+									<div class="text">
+										<p>
+											<button type="button" class="btn btn-primary btn-sm">
+												<i class="fa fa-file-text-o"></i>포트폴리오
+											</button>
+										</p>
+										<p>디자이너 이메일 ${dsuggest.designerEmail}</p>
+										<p>필요비용 ${dsuggest.needCost}</p>
+										<p>필요작업시간 ${dsuggest.needTime}</p>
+									</div>
+								</div>
+							</c:forEach>
 						</ul>
 					</div>
 

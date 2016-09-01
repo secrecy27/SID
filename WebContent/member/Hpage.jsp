@@ -44,44 +44,50 @@
 <style>
 #hPageContainer {
 	position: relative;
-	
 }
+
 #moveGui {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
+
 #selectingUi {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
-	
 }
+
 .mb {
 	max-width: 50%;
 	height: auto;
 }
+
 #saveLoad {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
+
 #showCost {
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
 }
+
 #hCanvas {
 	
 }
+
 .baseUi {
 	margin: 10px;
 	margin-bottom: 20px;
 }
+
 .barOne {
 	top: 20px;
 	left: 30px;
@@ -90,15 +96,17 @@
 	text-align: center;
 	width: 8%;
 	height: 100%;
-	max-height:100%;
+	max-height: 100%;
 	margin: 10px;
 	padding: 5px;
 	overflow: scroll;
 	overflow-x: hidden;
 }
+
 input {
 	height: 80px;
 }
+
 .outerButton {
 	display: block;
 	text-align: center;
@@ -106,25 +114,30 @@ input {
 	max-width: 100%;
 	height: 130px;
 }
+
 .mapButton {
-	
 	vertical-align: middle
 }
+
 #baseButton {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
 #controlOne {
 	margin: 5px;
 }
+
 #controlTwo {
 	margin: 5px;
 }
+
 .selMap {
 	width: 60px;
 	height: 60px;
 }
+
 .barTwo {
 	position: absolute;
 	top: 20px;
@@ -152,13 +165,13 @@ input {
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">바로구매</h4>
+					<h4 class="modal-title">payment</h4>
 				</div>
 				<div class="modal-body">
-					<p>Some text in the modal.</p>
+					<p id="totalCostModal"></p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">결제 화면으로</button>
 				</div>
 			</div>
 		</div>
@@ -169,14 +182,14 @@ input {
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">업로드</h4>
+					<button type="button" class="close"  data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">upload</h4>
 				</div>
 				<div class="modal-body">
-					<p>Some text in the modal.</p>
+					<p>업로드 내용</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-Info" data-dismiss="modal">Upload</button>
 				</div>
 			</div>
 		</div>
@@ -197,16 +210,16 @@ input {
 						id="controlTwo" />
 				</div>
 				<div id="saveLoad">
-					<button type="button" class="btn btn-default" data-toggle="modal"
-						data-target="#loadModal">불러오기</button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+						data-target="#loadModal">payment</button>
 
-					<button type="button" class="btn btn-default" data-toggle="modal"
-						data-target="#saveModal">저장하기</button>
+					<button type="button" class="btn btn-default btn-lg" data-toggle="modal"
+						data-target="#saveModal">upload</button>
 				</div>
 
 				<div id="showCost">
-					<button type="button" class="btn btn-default">미리 보기</button>
-					<button type="button" class="btn btn-default">가격</button>
+					<button type="button" class="btn btn-info btn-lg">preview</button>
+					<button type="button" class="btn btn-default btn-lg" id="totalCost">0</button>
 				</div>
 
 				<div class="box barOne">
@@ -219,53 +232,53 @@ input {
 					</div>
 
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/i.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/i.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('b')" src="../img/a.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('b')"
+							src="../img/a.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('c')" src="../img/b.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('c')"
+							src="../img/b.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/c.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/c.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/d.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/d.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/e.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/e.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/f.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/f.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/g.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/g.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/h.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/h.jpg">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage"
-							onclick="createEntity('a')" src="../img/j.jpg">
+						<input type="image" class="baseImage" onclick="createEntity('a')"
+							src="../img/j.jpg">
 					</div>
 					<br>
 				</div>
@@ -294,16 +307,14 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/bb.jpg" class="mb"
-								value="off">
+							<input type="image" src="../img/bb.jpg" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/aa.jpg" class="mb"
-								value="off">
+							<input type="image" src="../img/aa.jpg" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
@@ -625,6 +636,8 @@ input {
 					input.val("on");
 	
 					maxMap++;
+					
+					plusCost(3500);
 	
 				} else if (input.val() == "on") { //지우기
 	
@@ -663,6 +676,7 @@ input {
 					});*/
 					console.log(curMap);
 					maxMap--;
+					minusCost(3500);
 				} else {
 	
 				}
@@ -739,9 +753,10 @@ input {
 	
 		//옷 생성
 		function createEntity(num) { // NUM 임의로 설정
-			console.log(num);
+			clothCost(15000);
+
 			removeEntity();
-	
+			
 			if (num == 'a') {
 	
 	
@@ -1030,7 +1045,7 @@ input {
 	
 			element = document.getElementById('showCost');
 			element.style.top = y2 - 200 + 'px';
-			element.style.left = x2 - 150 + 'px';
+			element.style.left = x2 - 200 + 'px';
 			element = document.getElementById('hPageContainer');
 			element.style.height=y2-152+'px';
 		
@@ -1051,6 +1066,25 @@ input {
 			renderer.render(scene, camera);
 	
 		}
+		
+		var cost=0;
+		
+		function plusCost(num){
+			cost+=num;
+			$("#totalCost").text(cost);
+			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+		}
+		function clothCost(num){
+			cost=num;
+			$("#totalCost").text(cost);
+			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+		}
+		function minusCost(num){
+			cost-=num;
+			$("#totalCost").text(cost);
+			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+		}
+
 	</script>
 
 </body>
