@@ -75,44 +75,22 @@
 
 					<li><a><%=session.getAttribute("email")%>님 환영합니다.</a></li>
 					<li><a href="" onclick=logout()>logout</a></li>
-
-
-
 					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
-
-					<%
-						if (session.getAttribute("admin") != null && session.getAttribute("admin").equals('1')) {
-					%>
-					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
-					<%
-						} else {
-					%>
-					<li><a href="../member/register6.jsp">디자이너 가입</a></li>
-					<%
-						}
-					%>
+						<%
+							if (session.getAttribute("admin").equals(1)) {
+						%>
+						<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
+						<%
+							} else if(session.getAttribute("admin").equals(0)){
+						%>
+						<li><a href="../member/register6.jsp">디자이너 가입</a></li>
+						<%
+							}
+						%>
 					<%
 						}
 					%>
 					<li><a href="contact.jsp">Contact</a></li>
-					<script>
-				function logout(){
-					$.ajax({
-			            type: "POST",
-			            url: '../SidServlet?command=logout',
-			            
-			            success: function(data)
-			            {
-			                alert("logOut!");
-			            },
-			            error:function(request,status,error){
-			                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			           	}
-			        });
-				}
-				
-				</script>
-
 				</ul>
 			</div>
 		</div>
@@ -168,7 +146,20 @@
 									});
 							    })
 						 	 
-						 
+						 	function logout(){
+								$.ajax({
+						            type: "POST",
+						            url: '../SidServlet?command=logout',
+						            
+						            success: function(data)
+						            {
+						                alert("logOut!");
+						            },
+						            error:function(request,status,error){
+						                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						           	}
+						        });
+							}
 							</script>
 						</form>
 					</div>

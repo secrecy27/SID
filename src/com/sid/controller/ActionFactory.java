@@ -23,6 +23,7 @@ import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.CartListAction;
 import com.sid.controller.action.ContractAction;
 import com.sid.controller.action.DWriteAction;
+import com.sid.controller.action.DitemSuggestAction;
 import com.sid.controller.action.DpageListAction;
 import com.sid.controller.action.DpageReadAction;
 import com.sid.controller.action.EmailCheckFormAction;
@@ -136,6 +137,8 @@ public class ActionFactory {
 			
 		}else if(command.equals("dWrite")){
 			action=new DWriteAction();
+		}else if(command.equals("ditem_suggest")){
+			action=new DitemSuggestAction();
 		}else if(command.equals("list_dpage")){
 			action=new DpageListAction();
 		}else if(command.equals("read_dpage")){

@@ -32,7 +32,7 @@ public class LoginAction implements Action {
 			System.out.println("login fail");
 			request.setAttribute("result", "0");
 		}else {
-			System.out.println("login success");
+			System.out.println("login success admin = "+result);
 			request.setAttribute("result", "1");
 			session.setAttribute("email", email);
 			session.setAttribute("admin", result);

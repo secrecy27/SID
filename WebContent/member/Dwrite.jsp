@@ -48,56 +48,69 @@
 									<h3>이미지등록</h3>
 									<hr>
 									<div id="mainImage">
-										<input type='file' id="imgInp" name="imageFile" />
-										<button id="zoomButton" style='display: none'
-											onclick='zoomImg()' class="btn btn-primary btn-circle">+</button>
+										<input type='file' id="imgInp" name="imageFile"/>
+										
 										<br> <img id="image" src="#" alt="이미지"
 											style="display: none; width: 100%; max-width: 100%;" />
+											<button id="zoomButton" style='display: none'
+											onclick='zoomImg()' class="btn btn-primary btn-circle">+</button>
 									</div>
 
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="box">
-									<h3>직접선정</h3>
-									<hr>
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">기준시각</label>
-										<div class="col-sm-10">
-											<input class="form-control" type="datetime-local"
-												value="0000-00-00AMT00:00:01" name="standardDate">
-										</div>
-									</div>
+									<ul class="nav nav-tabs">
+										<li class="active"><a data-toggle="tab" href="#home">직접
+												선정</a></li>
+										<li><a data-toggle="tab" href="#menu1">자동 선정</a></li>
 
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">마감시각</label>
-										<div class="col-sm-10">
-											<input class="form-control" type="datetime-local"
-												value="0000-00-00T00:00:01" name="endDate">
-										</div>
-									</div>
+									</ul>
+									<div class="tab-content">
+										<div id="home" class="tab-pane fade in active">
+											<h3>직접 선정</h3>
+											<hr>
+											<div class="form-group row">
+												<label class="col-sm-10 control-label">기준시각</label>
+												<div class="col-sm-10">
+													<input class="form-control" type="datetime-local"
+														value="0000-00-00T12:00:00" name="standardDate">
+												</div>
+											</div>
 
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">최대지불가능 비용</label>
-										<div class="col-sm-10">
-											<input class="form-control" type="number" name="cost"
-												s="원">
-										</div>
-									</div>
+											<div class="form-group row">
+												<label class="col-sm-10 control-label">마감시각</label>
+												<div class="col-sm-10">
+													<input class="form-control" type="datetime-local"
+														value="0000-00-00T12:00:00" name="endDate">
+												</div>
+											</div>
 
-									<div class="form-group row">
-										<label class="col-sm-10 control-label">선택조건</label>
-										<div class="col-sm-10">
-											<select class="form-control" name="condition">
-												<option value="0">최고가</option>
-												<option value="1">평점</option>
-												<option value="2">등급</option>
-											</select>
-										</div>
+											<div class="form-group row">
+												<label class="col-sm-10 control-label">최대지불가능 비용</label>
+												<div class="col-sm-10">
+													<input class="form-control" type="number" name="cost" s="원">
+												</div>
+											</div>
 
+											<div class="form-group row">
+												<label class="col-sm-10 control-label">선택조건</label>
+												<div class="col-sm-10">
+													<select class="form-control" name="condition">
+														<option value="0">최고가</option>
+														<option value="1">평점</option>
+														<option value="2">등급</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div id="menu1" class="tab-pane fade">
+											<h3>자동 선정</h3>
+											<hr>
+											<p>자동으로 선정 됩니다</p>
+										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 
@@ -124,8 +137,6 @@
 							</p>
 						</div>
 					</div>
-
-
 				</form>
 			</div>
 		</div>
@@ -139,7 +150,7 @@
 
 	<script>
 		var flag = true;
-	
+
 		function zoomImg() {
 			if (flag) {
 				$('#zoomButton').text("-");
@@ -151,7 +162,7 @@
 				flag = true;
 			}
 		}
-	
+
 		$(document).ready(function() {
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -163,11 +174,11 @@
 						//(아래 코드에서 읽어들인 dataURL형식)
 						$('#image').addClass("zoomImg");
 						$('#image').css("display", "");
-						$('#zoomButton').css("display", "");
-	
+						//$('#zoomButton').css("display", "");
+
 					}
 					reader.readAsDataURL(input.files[0]);
-				//File내용을 읽어 dataURL형식의 문자열로 저장
+					//File내용을 읽어 dataURL형식의 문자열로 저장
 				}
 			} //readURL()--
 			//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
@@ -175,8 +186,8 @@
 				//alert(this.value); //선택한 이미지 경로 표시
 				readURL(this);
 				/* $('#imageUrl').val(this.value);
-		                         */
-	
+				 */
+
 			});
 		});
 	</script>
