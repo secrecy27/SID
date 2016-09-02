@@ -17,9 +17,9 @@ public class LPocketDAO {
 		return instance;
 	}
 
-	public int insertImage(LPocketVO pVo) {
+	public int insertPocket(LPocketVO pVo) {
 		int result = -1;
-		String sql = "INSERT INTO LPocket(email,LPocketId) VALUES(?,?)";
+		String sql = "INSERT INTO lpocket(email,LPocketId) VALUES(?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
@@ -41,7 +41,7 @@ public class LPocketDAO {
 
 	public LPocketVO readItem(int num) {
 		int result = -1;
-		String sql = "select * from LPocket where email=?";
+		String sql = "select * from lpocket where email=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -56,7 +56,7 @@ public class LPocketDAO {
 
 			if (rst.next()) {
 				pVo.setEmail(rst.getString("email"));
-				pVo.setPocketId(rst.getInt("RPocketId"));
+				pVo.setPocketId(rst.getInt("LPocketId"));
 			}
 
 		} catch (SQLException e) {
@@ -70,7 +70,7 @@ public class LPocketDAO {
 	public ArrayList<LPocketVO> listAll() {
 
 		ArrayList<LPocketVO> list = new ArrayList<LPocketVO>();
-		String sql = "select * from LPocket";
+		String sql = "select * from lpocket";
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -83,7 +83,7 @@ public class LPocketDAO {
 			while (rst.next()) {
 				pVo = new LPocketVO();
 				pVo.setEmail(rst.getString("email"));
-				pVo.setPocketId(rst.getInt("RPocketId"));
+				pVo.setPocketId(rst.getInt("LPocketId"));
 				list.add(pVo);
 			}
 		} catch (SQLException e) {
@@ -97,7 +97,6 @@ public class LPocketDAO {
 	public ArrayList<Integer> list(String email) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		String sql = "select * from lpocket a LEFT JOIN lpocket2 b ON(a.pocketId=b.pocketId) where a.email=?";
-
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -107,9 +106,9 @@ public class LPocketDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, email);
 			rst = stmt.executeQuery();
-			
 			while (rst.next()) {
-				list.add(rst.getInt("imageId"));
+				System.out.println("get from list awriteid : "+rst.getInt("awriteId"));
+				list.add(rst.getInt("awriteId"));
 			}
 		} catch (SQLException e) {
 			System.out.println("lpocket list error : " + e);

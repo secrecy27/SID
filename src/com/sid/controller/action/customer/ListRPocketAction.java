@@ -21,7 +21,6 @@ public class ListRPocketAction implements Action {
 		String url = "customer/customer_Pocket.jsp";
 
 		RPocketDAO rpDao = RPocketDAO.getInstance();
-		RPocketVO rpVo = new RPocketVO();
 		BPageDAO bDao = BPageDAO.getInstance();
 		HttpSession session = request.getSession();
 
@@ -36,7 +35,6 @@ public class ListRPocketAction implements Action {
 			blist.add(bDao.readItem(rlist.get(i)));
 		}
 		request.setAttribute("blist", blist);
-		request.setAttribute("rlist", rlist);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

@@ -25,27 +25,30 @@
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
-								<li><a href="SidServlet?command=customer_rpocket_list">주머니관리</a></li>
+								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
 								<hr>
-								<li><a href="customer_Accountchange.jsp">회원정보변경</a></li>
+								<li><a href="SidServlet?command=customer_accountchange">회원정보변경</a></li>
 							</ul>
 
 						</div>
 					</div>
 				</div>
-				<div class="col-md-9"></div>
 				<div class="col-md-9">
-					<ul class="nav nav-tabs" role="tablist" id="myTab">
-						<li><a href="#" onclick="openPocket(event,'left')"
-							class="tablinks">
-								<h2>좌주머니</h2>
-						</a></li>
-						<li><a href="#" onclick="openPocket(event,'right')"
-							class="tablinks">
-								<h2>우주머니</h2>
-						</a></li>
-					</ul>
 					<div class="box info-bar">
+						<ul class="nav nav-tabs" role="tablist" id="myTab">
+							<li><a
+								href="../SidServlet?command=customer_lpocket_list&num=${awrite.aWriteId}"
+								onclick="openPocket(event,'left')" class="tablinks">
+									<h2>티셔츠 보관함</h2>
+							</a></li>
+							<li><a
+								href="../SidServlet?command=customer_rpocket_list&num=${bwrite.bWriteId}"
+								onclick="openPocket(event,'right')" class="tablinks">
+									<h2>이미지 보관함</h2>
+							</a></li>
+						</ul>
+					</div>
+					<!-- <div class="box info-bar">
 						<div class="row">
 							<div class="col-sm-12 col-md-8  products-number-sort">
 								<div class="row">
@@ -62,21 +65,22 @@
 							</div>
 						</div>
 					</div>
+				주머니 개수 늘릴때 나중에 적용	 -->
 					<div class="row products">
 						<div class="tabcontent" id="left">
-							<c:forEach items="${blist}" var="bwrite">
+							<c:forEach items="${alist}" var="awrite">
 								<div class="col-md-2 col-sm-6">
 									<div class="product">
 										<div style="max-width: 100%; width: 100%;">
 											<a
-												href="../SidServlet?command=customer_rpocket_list&num=${bwrite.bWriteId}">
-												<img src="${bwrite.imageUrl}" id="imageFile"
+												href="../SidServlet?command=customer_lpocket_list&num=${awrite.aWriteId}">
+												<img src="${awrite.imageUrl}" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
 											</a>
 										</div>
 										<div class="text">
-											<p>asdasdasd</p>
+											<p>${awrite.expl}</p>
 											<p class="buttons">
 												<a href="" class="btn btn-default"></a>
 											</p>
@@ -100,7 +104,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<p>asdasdasd</p>
+											<p>${bwrite.expl }</p>
 											<p class="buttons">
 												<a href="" class="btn btn-default"></a>
 											</p>
@@ -113,19 +117,18 @@
 					</div>
 					<script>
 						function openPocket(event, direction) {
-							var i,
-								tabcontent,
-								tablinks;
-					
-					
-							tabcontent = document.getElementsByClassName("tabcontent");
+							var i, tabcontent, tablinks;
+
+							tabcontent = document
+									.getElementsByClassName("tabcontent");
 							for (i = 0; i < tabcontent.length; i++) {
 								tabcontent[i].style.display = "none";
 							}
-							tablinks = document.getElementsByClassName("tablinks");
+							tablinks = document
+									.getElementsByClassName("tablinks");
 							for (i = 0; i < tablinks.length; i++) {
 								tablinks[i].className = tablinks[i].className
-									.replace("active", "");
+										.replace("active", "");
 							}
 							console.log(direction);
 							document.getElementById(direction).style.display = "block";

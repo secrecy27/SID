@@ -209,11 +209,6 @@ public class MemberDAO {
 		return result;
 	}
 
-	/*
-	 * 관리자 모드에서 사용
-	 * 
-	 * 아직 수정안함
-	 */
 
 	public ArrayList<MemberVO> listMember(String email) {
 		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();

@@ -23,12 +23,11 @@
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
 								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
-								<li><a href="SidServlet?command=customer_cplan">C
-										관리</a></li>
+								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_coupon">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
-								<li><a href="SidServlet?command=customer_rpocket_list">주머니관리</a></li>
+								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
 								<hr>
 								<li><a href="SidServlet?command=customer_accountchange">회원정보변경</a></li>
 							</ul>
@@ -43,12 +42,14 @@
 
 				<div class="col-md-9" id="customer-orders">
 					<div class="box">
-						<h1>My orders</h1>
+						<h1>장바구니</h1>
 
 						<div class="form-group row">
 							<label class="col-sm-10 control-label">배송지 정보</label>
 							<div class="col-sm-10">
-								<label class="col-sm-10 control-label">${address.zipNum}</label>
+								<label class="col-sm-10 control-label">우편번호 : ${address.zipNum} </label>
+								<label class="col-sm-10 control-label">주소 : ${address.address }</label>
+								<label class="col-sm-10 control-label">연락처 : ${address.phone }</label>
 							</div>
 						</div>
 

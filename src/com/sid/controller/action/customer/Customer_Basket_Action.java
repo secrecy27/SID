@@ -25,6 +25,7 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 		mVo=mDao.getAddress(email);
 		
 		request.setAttribute("address", mVo);
+		
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 }

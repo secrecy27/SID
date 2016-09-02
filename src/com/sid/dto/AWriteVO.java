@@ -1,26 +1,18 @@
 package com.sid.dto;
 
-public class BWriteVO {
-	private int bWriteId;
+public class AWriteVO {
+	private int aWriteId;
 	private String imageUrl;
 	private int cost;
 	private String expl;
 	private String userEmail;
 
-	public String getUserEmail() {
-		return userEmail;
+	public int getaWriteId() {
+		return aWriteId;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-
-	public int getbWriteId() {
-		return bWriteId;
-	}
-
-	public void setbWriteId(int bWriteId) {
-		this.bWriteId = bWriteId;
+	public void setaWriteId(int aWriteId) {
+		this.aWriteId = aWriteId;
 	}
 
 	public String getImageUrl() {
@@ -45,6 +37,14 @@ public class BWriteVO {
 
 	public void setExpl(String expl) {
 		this.expl = expl;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 }

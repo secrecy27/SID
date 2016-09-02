@@ -154,7 +154,7 @@ public class ActionFactory {
 			action=new BpageListAction();
 		}else if(command.equals("read_bpage")){
 			action=new BpageReadAction();
-		
+	
 		}else if(command.equals("customer_all")){
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
@@ -175,12 +175,12 @@ public class ActionFactory {
 			action=new ListRPocketAction();
 		}else if(command.equals("customer_lpocket_list")){
 			action=new ListLPocketAction();
-			
+		//주머니관리
 		}else if(command.equals("customer_accountchange")){
 			action=new Customer_Accountchange_Action();
 		}else if(command.equals("logout")){
 			action=new LogoutAction();
-			//구매자 관리 페이지
+		//구매자 관리 페이지 
 		}else if(command.equals("designer_all")){
 			action=new Designer_All_Action();
 		}else if(command.equals("designer_bplan")){
