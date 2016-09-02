@@ -1,6 +1,9 @@
 package com.sid.controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +26,7 @@ public class BWriteAction implements Action{
 		 	System.out.println("bwrite action");
 		 	//-----------------------------
 		 	
-		 	String savePath="C:/Users/hs/git/SID/WebContent/img"; //저장 폴더명
+		 	String savePath="C:/Users/sid/git/SID/WebContent/img"; //저장 폴더명
 		 	int maxPostSize = 10 * 1024 * 1024; //10mb
 		 	String encoding = "utf-8";
 		 	
@@ -40,6 +43,7 @@ public class BWriteAction implements Action{
 		 	BWriteVO bVo=new BWriteVO();
 		 	bVo.setImageUrl(m_fileFullPath);
 		 	
+		 	
 		 	bVo.setCost(Integer.parseInt(multi.getParameter("cost")));
 		 	bVo.setExpl(multi.getParameter("expl"));
 			
@@ -52,7 +56,14 @@ public class BWriteAction implements Action{
 		 	}
 		 	
 		 	BPageDAO dao = BPageDAO.getInstance();
-			dao.insertImage(bVo);
+			int result=dao.insertImage(bVo);
+			System.out.println("last id = "+result);
+			
+			
+			String str[] = multi.getParameterValues("hashtag");
+			System.out.println("str : "+str);
+
+			dao.insertHashtag(result, str);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

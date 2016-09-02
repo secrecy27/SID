@@ -20,36 +20,81 @@
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
 
+
 <!-- styles -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/owl.carousel.css" rel="stylesheet">
-<link href="css/owl.theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font-awesome.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.carousel.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.theme.css"
+	rel="stylesheet">
 
 <!-- theme stylesheet -->
-<link href="css/style.default.css" rel="stylesheet"
-	id="theme-stylesheet">
+<link href="${pageContext.request.contextPath}/css/style.default.css"
+	rel="stylesheet" id="theme-stylesheet">
 
 <!-- your stylesheet with modifications -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/custom.css"
+	rel="stylesheet">
 
-<script src="js/respond.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
 </head>
+<!-- *** SCRIPTS TO INCLUDE ***
+ _________________________________________________________ -->
+<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
+<script src="${pageContext.request.contextPath}/js/waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/modernizr.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/front.js"></script>
 <body>
 	<div id="top">
 		<div class="container">
 			<div class="col-md-6" data-animation="fadeInDown">
 				<ul class="menu">
+
+					<%
+						if (session.getAttribute("email") == null) {
+					%>
 					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
 					</li>
-					<li><a href="register.jsp">Register</a></li>
+					<li><a href="../member/register.jsp">Register</a></li>
+
+					<%
+						} else {
+					%>
+
+					<li><a><%=session.getAttribute("email")%>님 환영합니다.</a></li>
+					<li><a href="" onclick=logout()>logout</a></li>
+					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
+						<%
+							if (session.getAttribute("admin").equals(1)) {
+						%>
+						<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
+						<%
+							} else if(session.getAttribute("admin").equals(0)){
+						%>
+						<li><a href="../member/register6.jsp">디자이너 가입</a></li>
+						<%
+							}
+						%>
+					<%
+						}
+					%>
 					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 			</div>
 		</div>
+
 
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 			aria-labelledby="Login" aria-hidden="true">
@@ -63,22 +108,59 @@
 					</div>
 
 					<div class="modal-body">
-						<form action="../SidServlet?command=login" method="post">
+						<form action="" method="post">
 							<div class="form-group">
-								<input type="text" class="form-control" id="email-modal"
-									name="email" value="${email }" placeholder="email">
+								<input type="text" class="form-control" id="email" name="email"
+									placeholder="email">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="password-modal"
-									name="pwd" value="${pwd}" placeholder="password">
+								<input type="password" class="form-control" id="password"
+									name="pwd" placeholder="password">
 							</div>
 
 							<p class="text-center">
-								<button class="btn btn-primary">
+								<button class="btn btn-primary" id="btnSubmit">
 									<i class="fa fa-sign-in"></i> Log in
 								</button>
 							</p>
-
+							<script>
+							 	 
+							 
+						 	 $("#btnSubmit").click(function()
+							    {	
+							        $.ajax({
+							        	type: "POST",
+							        	url:"../SidServlet?command=login&email=" + $("#email").val() + "&pwd=" +$("#password").val(),
+							        	 	 
+								        success: function(result){
+								        	  	if(result==1){
+								        	  		alert("로그인 성공")
+								        	  	}else{
+								        	  		alert("로그인 실패")
+								        	  	}
+								         },
+								         error:function(request,status,error){
+								             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+								            }
+								         
+									});
+							    })
+						 	 
+						 	function logout(){
+								$.ajax({
+						            type: "POST",
+						            url: '../SidServlet?command=logout',
+						            
+						            success: function(data)
+						            {
+						                alert("logOut!");
+						            },
+						            error:function(request,status,error){
+						                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						           	}
+						        });
+							}
+							</script>
 						</form>
 					</div>
 
@@ -92,27 +174,29 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
 		<div class="container">
 			<div class="navbar-header">
-
 				<a class="navbar-brand home"
 					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
-					<img src="../img/SIDlogo.png" style="width: 120px">
-					<span class="sr-only">Snow In Dawn</span>
+					<img src="../img/SIDlogo.png" alt="Obaju logo"
+					style="width: 120px; max-height: 100%;"> <span
+					class="sr-only">Snow In Dawn</span>
 				</a>
 			</div>
 			<!--/.navbar-header -->
 
-			<div class="navbar-collapse collapse" id="navigation">
+			<div class="navbar-collapse collapse" style="padding-left: 0px"
+				id="navigation">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="boardList.jsp">INFO</a></li>
+					<li class="dropdown yamm-fw"><a
+						href="../BoardServlet?command=board_list">INFO</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
 						class="dropdown-toggle">Cpage</a></li>
-					<li class="dropdown yamm-fw"><a href="../member/Bpage.jsp"
-						class="dropdown-toggle">Bpage</b></a></li>
+					<li class="dropdown yamm-fw"><a
+						href="../SidServlet?command=list_bpage" class="dropdown-toggle">Bpage</b></a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
 						class="dropdown-toggle">Apage</b></a></li>
-					<li class="dropdown yamm-fw"><a href="../SidServlet?command=list_dpage"
-						class="dropdown-toggle">Dpage</a></li>
+					<li class="dropdown yamm-fw"><a
+						href="../SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>
 					<li class="dropdown yamm-fw"><a href="../member/Hpage.jsp"
 						class="dropdown-toggle">Hpage</a></li>
 				</ul>
@@ -124,15 +208,35 @@
 	<!-- /#navbar -->
 
 	<!-- *** NAVBAR END *** -->
-	<!-- *** SCRIPTS TO INCLUDE ***
- _________________________________________________________ -->
-	<script src="../js/jquery-1.11.0.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/jquery.cookie.js"></script>
-	<script src="../js/waypoints.min.js"></script>
-	<script src="../js/modernizr.js"></script>
-	<script src="../js/bootstrap-hover-dropdown.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<script src="../js/front.js"></script>
+	<div id="all">
+
+		<div id="content">
+			<div class="container">
+				<div class="col-md-3">
+					<div class="panel panel-default sidebar-menu">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">전체보기</h3>
+						</div>
+
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked category-menu">
+								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
+								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
+								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
+								<li><a href="SidServlet?command=customer_customer_coupon" onclick='alert("준비중입니다")'>쿠폰목록</a></li>
+								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
+								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
+								<hr>
+								<li><a href="SidServlet?command=customer_accountchange">회원정보변경</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

@@ -165,13 +165,13 @@ input {
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">payment</h4>
+					<h4 class="modal-title">장바구니에 안전하게 담겼습니다.</h4>
 				</div>
 				<div class="modal-body">
 					<p id="totalCostModal"></p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">결제 화면으로</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">페이지 이동</button>
 				</div>
 			</div>
 		</div>
@@ -211,7 +211,7 @@ input {
 				</div>
 				<div id="saveLoad">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-						data-target="#loadModal">payment</button>
+						data-target="#loadModal">담기</button>
 
 					<button type="button" class="btn btn-default btn-lg" data-toggle="modal"
 						data-target="#saveModal">upload</button>
@@ -233,42 +233,44 @@ input {
 
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/i.jpg">
+							src="../img/a.gif">
 					</div>
+					<br>
+					
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('b')"
-							src="../img/a.jpg">
+							src="../img/b.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('c')"
-							src="../img/b.jpg">
+							src="../img/c.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/c.jpg">
+							src="../img/d.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/d.jpg">
+							src="../img/h.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/e.jpg">
+							src="../img/f.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/f.jpg">
+							src="../img/g.gif">
 					</div>
 					<br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/g.jpg">
+							src="../img/e.gif">
 					</div>
 					<br>
 					<div id="baseButton">
@@ -298,7 +300,7 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pattern.png" class="mb"
+							<input type="image" src="../img/test2.gif" class="mb"
 								value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
@@ -328,14 +330,14 @@ input {
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/dd.jpg" class="mb" value="off">
+							<input type="image" src="../img/back.png" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/ee.jpg" class="mb" value="off">
+							<input type="image" src="../img/front.gif" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
@@ -389,7 +391,7 @@ input {
 		var curMap = 0;
 		var assigned = [ 0, 0 ];
 		var rotate = [ 0, 0 ],
-			segments = [ 3, 3 ],
+			segments = [ 20, 20 ],
 			radius = [ 1, 1 ];
 		var geomX = [ 0, 0 ],
 			geomY = [ 0, 0 ];
@@ -475,7 +477,8 @@ input {
 							textureA.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
 	
 							textureA.image = image;
-	
+							textureA.repeat.set(1.5, 1.5);
+							textureA.offset.set(-0.23,-0.23);
 							textureA.needsUpdate = true;
 						} else {
 							textureB.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
@@ -630,24 +633,24 @@ input {
 	
 				});
 			} else if (num == 'b') {
-				var geometry = new THREE.SphereGeometry(7, 32, 32);
-				var material = new THREE.MeshBasicMaterial({
-					color : 0xffffff
-				});
-				var cylinder = new THREE.Mesh(geometry, material);
-				var mesh = new THREE.Mesh(geometry, material);
-				mesh.position.y = 10
-				mesh.name = "object";
-				mesh.traverse(function(child) {
+				var loader = new THREE.OBJLoader();
+				loader.load('../models/test2.obj', function(object) {
 	
-					if (child instanceof THREE.Mesh) {
-					}
+					object.traverse(function(child) {
 	
+						if (child instanceof THREE.Mesh) {
+							//	child.material.map = texture;
+						}
+	
+					});
+	
+					object.name = "object";
+					object.position.y = 0;
+					scene.add(object);
 				});
-				scene.add(mesh);
 			} else if (num == 'c') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/male02.obj', function(object) {
+				loader.load('../models/test.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
@@ -716,7 +719,7 @@ input {
 			mapController = new function() {
 				this.select = 'a';
 				this.radius = 2;
-				this.segments = 4;
+				this.segments = 20;
 				this.rotate = 0;
 				this.FrontBack = true;
 				this.LR = 0;

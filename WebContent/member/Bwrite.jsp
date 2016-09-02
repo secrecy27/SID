@@ -1,44 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
-
-<meta content="text/jsp; charset=UTF-8" http-equiv="Content-Type">
-<meta name="robots" content="all,follow">
-<meta name="googlebot" content="index,follow,snippet,archive">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Obaju e-commerce template">
-<meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
-<meta name="keywords" content="">
-
-<title>SID - Snow in Dawn</title>
-
-<meta name="keywords" content="">
-
-<link
-	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
-	rel='stylesheet' type='text/css'>
-
-</head>
 
 <style>
 .zoomImg {
 	max-width: 100%;
 	max-height: 100%;
 }
+
+ul#hashtag li {
+	display: inline;
+	margin: 5px;
+}
+
+ul#hashtag li:before {
+	content: "#";
+}
 </style>
-<script src="../js/jquery-1.11.0.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.cookie.js"></script>
-<script src="../js/waypoints.min.js"></script>
-<script src="../js/modernizr.js"></script>
-<script src="../js/bootstrap-hover-dropdown.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/front.js"></script>
+
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <body>
 	<div id="all">
 		<div id="content">
@@ -49,8 +30,8 @@
 						<li>B-Write</li>
 					</ul>
 				</div>
-				<form action="../SidServlet?command=bWrite" method="post" name='frm'
-					enctype="multipart/form-data">
+				<form method="post" name='frm' enctype="multipart/form-data"
+					id="bForm">
 					<div class="col-md-12">
 
 						<div class="row same-height-row" id="productMain">
@@ -70,21 +51,27 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="box">
-									<hr>
 									<div class="form-group row">
-										<label class="col-sm-10 control-label">hashtag</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="datetime-local"
-												value="0000-00-00AMT00:00:01" name="">
+											<input class="form-control" id="hashtagInput" />
+											<button id="asd" type="button">sdf</button>
 										</div>
+										<input style='display: none;' name='hashtag' id="ht">
 									</div>
 								</div>
+
+								<div class="box">
+									<blockquote>
+										<ul id="hashtag"></ul>
+									</blockquote>
+								</div>
+
 								<div class="box">
 									<div class="form-group row">
 										<label class="col-sm-10 control-label">저작료</label>
 										<div class="col-sm-10">
 											<input class="form-control" type="number" name="cost"
-												 hint="원">
+												hint="원">
 										</div>
 									</div>
 								</div>
@@ -101,13 +88,50 @@
 
 						<div>
 							<p class="text-center buttons">
-								<button type="submit" class="btn btn-primary">
+								<button type="button" onclick="return beforeSubmit()"
+									class="btn btn-primary">
 									<i class="fa fa glyphicon-plus"></i>&nbsp;등록하기
 								</button>
 							</p>
 						</div>
 					</div>
+					<script>
+						var arraylist;
+						var str;
+						$("#hashtagInput")
+								.keypress(
+										function(e) {
+											if (e.keyCode == 13) {
+												$("#hashtag")
+														.append(
+																"<li>"
+																		+ $(
+																				this)
+																				.val()
+																		+ '<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i>'
+																		+ "</li>");
+												$("#hashtagInput").val('');
+												var str = $("#hashtag").html();
+												str = str.substring(4);
+												str = str.substring(0,
+														str.length - 100);
 
+												arrayList = str
+														.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
+
+											}
+										});
+
+						function beforeSubmit() {
+							document.frm.action = "../SidServlet?command=bWrite";
+							document.frm.submit();
+							arrayList = str
+									.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
+
+							$("#ht").val(arrayList);
+							return true;
+						}
+					</script>
 
 				</form>
 			</div>
@@ -121,8 +145,17 @@
 	<!-- /#all -->
 
 	<script>
+		//enter로 submit 방지
+		$('#bForm').on('keyup keypress', function(e) {
+			var keyCode = e.keyCode || e.which;
+			if (keyCode === 13) {
+				e.preventDefault();
+				return false;
+			}
+		});
+
 		var flag = true;
-	
+
 		function zoomImg() {
 			if (flag) {
 				$('#zoomButton').text("-");
@@ -134,7 +167,7 @@
 				flag = true;
 			}
 		}
-	
+
 		$(document).ready(function() {
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -147,10 +180,10 @@
 						$('#image').addClass("zoomImg");
 						$('#image').css("display", "");
 						$('#zoomButton').css("display", "");
-	
+
 					}
 					reader.readAsDataURL(input.files[0]);
-				//File내용을 읽어 dataURL형식의 문자열로 저장
+					//File내용을 읽어 dataURL형식의 문자열로 저장
 				}
 			} //readURL()--
 			//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
@@ -158,8 +191,8 @@
 				//alert(this.value); //선택한 이미지 경로 표시
 				readURL(this);
 				/* $('#imageUrl').val(this.value);
-		                         */
-	
+				 */
+
 			});
 		});
 	</script>

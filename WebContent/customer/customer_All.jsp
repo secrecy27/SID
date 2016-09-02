@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ include file="../include/header.jsp"%>
+<%@ include file="../include/header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +24,8 @@
 								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
 								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
-								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
+								<li><a href="SidServlet?command=customer_customer_coupon"
+									onclick='alert("준비중")'>쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
 								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
 								<hr>
