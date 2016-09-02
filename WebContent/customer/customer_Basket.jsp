@@ -23,7 +23,6 @@
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
 								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
-								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_coupon">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
@@ -40,85 +39,78 @@
 					<!-- *** CUSTOMER MENU END *** -->
 				</div>
 
-				<div class="col-md-9" id="customer-orders">
-					<div class="box">
-						<h1>장바구니</h1>
+				<div class="col-md-9" id="basket">
+					<div class="box info-bar">
 
-						<div class="form-group row">
-							<label class="col-sm-10 control-label">배송지 정보</label>
-							<div class="col-sm-10">
-								<label class="col-sm-10 control-label">우편번호 : ${address.zipNum} </label>
-								<label class="col-sm-10 control-label">주소 : ${address.address }</label>
-								<label class="col-sm-10 control-label">연락처 : ${address.phone }</label>
-							</div>
-						</div>
-
-						<hr>
-
+						<h1>Shopping cart</h1>
 						<div class="table-responsive">
-							<table class="table table-hover">
+							<div class="form-group row">
+								<label class="col-sm-10 control-label">배송지 정보</label>
+								<div class="col-sm-10">
+									<label class="col-sm-10 control-label">우편번호 :
+										${address.zipNum} </label> <label class="col-sm-10 control-label">주소
+										: ${address.address }</label> <label class="col-sm-10 control-label">연락처
+										: ${address.phone }</label>
+								</div>
+							</div>
+							<table class="table">
 								<thead>
 									<tr>
-										<th>Order</th>
-										<th>Date</th>
-										<th>Total</th>
-										<th>Status</th>
-										<th>Action</th>
+										<th>선택</th>
+										<th colspan="2">상품정보</th>
+										<th>수량</th>
+										<th>판매가격</th>
+										<th>할인금액</th>
+										<th colspan="2">상품금액</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<th># 1735</th>
-										<td>22/06/2013</td>
-										<td>$ 150.00</td>
-										<td><span class="label label-info">Being prepared</span>
-										</td>
-										<td><a href="customer-order.jsp"
-											class="btn btn-primary btn-sm">View</a></td>
-									</tr>
-									<tr>
-										<th># 1735</th>
-										<td>22/06/2013</td>
-										<td>$ 150.00</td>
-										<td><span class="label label-info">Being prepared</span>
-										</td>
-										<td><a href="customer-order.jsp"
-											class="btn btn-primary btn-sm">View</a></td>
-									</tr>
-									<tr>
-										<th># 1735</th>
-										<td>22/06/2013</td>
-										<td>$ 150.00</td>
-										<td><span class="label label-success">Received</span></td>
-										<td><a href="customer-order.jsp"
-											class="btn btn-primary btn-sm">View</a></td>
-									</tr>
-									<tr>
-										<th># 1735</th>
-										<td>22/06/2013</td>
-										<td>$ 150.00</td>
-										<td><span class="label label-danger">Cancelled</span></td>
-										<td><a href="customer-order.jsp"
-											class="btn btn-primary btn-sm">View</a></td>
-									</tr>
-									<tr>
-										<th># 1735</th>
-										<td>22/06/2013</td>
-										<td>$ 150.00</td>
-										<td><span class="label label-warning">On hold</span></td>
-										<td><a href="customer-order.jsp"
-											class="btn btn-primary btn-sm">View</a></td>
+										<td><input type="checkbox" name="checkbox"></td>
+										<c:forEach var="list" items="${list }" >
+											<td><a href="#"> <img src=>
+											</a></td>
+											<td><a href="#">White Blouse Armani</a></td>
+											<td><input type="number" value="2" class="form-control"></td>
+											<td>17500원</td>
+											<td>2500원</td>
+											<td>2마논</td>
+										</c:forEach>
+										<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
 									</tr>
 								</tbody>
+								<tfoot>
+									<tr>
+										<th colspan="5">결제금액</th>
+										<th colspan="2">2마넌</th>
+									</tr>
+								</tfoot>
 							</table>
+
+						</div>
+						<!-- /.table-responsive -->
+						<div class="box-footer">
+							<div class="pull-left">
+								<a href="category.jsp" class="btn btn-default"><i
+									class="fa fa-chevron-left"></i> Continue shopping</a>
+							</div>
+							<div class="pull-right">
+								<button class="btn btn-default">
+									<i class="fa fa-refresh"></i> Update basket
+								</button>
+								<button type="submit" class="btn btn-primary">
+									Proceed to checkout <i class="fa fa-chevron-right"></i>
+								</button>
+							</div>
 						</div>
 					</div>
+					<!-- /.box -->
 				</div>
-
 			</div>
-			<!-- /.container -->
 		</div>
-		<!-- /#content -->
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
 	</div>
 
 </body>

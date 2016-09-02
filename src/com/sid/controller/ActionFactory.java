@@ -45,9 +45,9 @@ import com.sid.controller.action.customer.Customer_All_Action;
 import com.sid.controller.action.customer.Customer_Basket_Action;
 import com.sid.controller.action.customer.Customer_Buylist_Action;
 import com.sid.controller.action.customer.Customer_Coupon_Action;
-import com.sid.controller.action.customer.Customer_Cplan_Action;
 import com.sid.controller.action.customer.Customer_Dplan_Action;
 import com.sid.controller.action.customer.Customer_Pocket_Action;
+import com.sid.controller.action.customer.ListDplanOngoing_Action;
 import com.sid.controller.action.customer.ListLPocketAction;
 import com.sid.controller.action.customer.ListRPocketAction;
 import com.sid.controller.action.designer.Designer_All_Action;
@@ -159,16 +159,20 @@ public class ActionFactory {
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
 			action=new Customer_Dplan_Action();
-		}else if(command.equals("customer_cplan")){
-			action=new Customer_Cplan_Action();
+		}else if(command.equals("customer_dplan_ongoing")){
+			action=new ListDplanOngoing_Action();
+					
+			
 		}else if(command.equals("customer_buylist")){
 			action=new Customer_Buylist_Action();
+			
 		}else if(command.equals("customer_coupon")){
 			action=new Customer_Coupon_Action();
+			//나중에 제작
+			
 		}else if(command.equals("customer_basket")){
 			action=new Customer_Basket_Action();
 			
-		
 		}else if(command.equals("customer_pocket")){
 			action=new Customer_Pocket_Action();
 		}else if(command.equals("customer_rpocket_list")){

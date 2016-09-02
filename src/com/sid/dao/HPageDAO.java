@@ -3,8 +3,13 @@ package com.sid.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.sid.controller.JDBCUtil;
+import com.sid.dto.DSuggestVO;
+import com.sid.dto.DWriteVO;
+import com.sid.dto.HPageVO;
 import com.sid.dto.MemberVO;
 import com.sid.util.DBManager;
 
@@ -20,193 +25,97 @@ public class HPageDAO {
 		return instance;
 	}
 
-	public int insertMember(MemberVO mVo) {
+	public int insertImage(HPageVO hVo) {
 		int result = -1;
-		String sql = "insert into member2 values(?,?,?,?,?,?,?)";
+		String sql = "insert into hpage(hpageId,timageUrl,dimageUrl,tprice,dprice,price) values(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, hVo.getHpageId());
+			pstmt.setString(2, hVo.getTimageUrl());
+			pstmt.setString(3, hVo.getDimageUrl());
+			pstmt.setInt(4, hVo.getTprice());
+			pstmt.setInt(5, hVo.getDprice());
+			pstmt.setInt(6, hVo.getPrice());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public HPageVO readItem(int num) {
+		int result = -1;
+		String sql = "select * from hpage where hpageId=?";
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		HPageVO vo = new HPageVO();
+		System.out.println("readItem" + num);
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rst = stmt.executeQuery();
+
+			if (rst.next()) {
+				vo.setHpageId(rst.getInt("hpageId"));
+				vo.setTimageUrl(rst.getString("timageUrl"));
+				vo.setdimageUrl(rst.getString("dimageUrl"));
+				vo.setTprice(rst.getInt("tprice"));
+				vo.setDprice(rst.getInt("dprice"));
+				vo.setPrice(rst.getInt("price"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("read item error : " + e);
+		} finally {
+			JDBCUtil.close(rst, stmt, conn);
+		}
+		return vo;
+	}
+
+	public ArrayList<HPageVO> listAll() {
+
+		ArrayList<HPageVO> list = new ArrayList<HPageVO>();
+		String sql = "select * from hpage ";
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		HPageVO vo = null;
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			rst = stmt.executeQuery();
 			
-			pstmt.setString(1, mVo.getNickname());
-			pstmt.setString(2, mVo.getEmail());
-			pstmt.setString(3, mVo.getPwd());
-			pstmt.setString(4, mVo.getZipNum());
-			pstmt.setString(5, mVo.getAddress());
-			pstmt.setString(6, mVo.getPhone());
-			pstmt.setInt(7, mVo.getAdmin());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-		return result;
-	}
-	public int confirmID(String email) {
-		int result = -1;
-		String sql = "select * from member2 where email=?";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result = 1;
-			} else {
-				result = -1;
+			while (rst.next()) {
+				vo = new HPageVO();
+
+				vo.setHpageId(rst.getInt("hpageId"));
+				vo.setTimageUrl(rst.getString("timageUrl"));
+				vo.setdimageUrl(rst.getString("dimageUrl"));
+				vo.setTprice(rst.getInt("tprice"));
+				vo.setDprice(rst.getInt("dprice"));
+				vo.setPrice(rst.getInt("price"));
+				
+				list.add(vo);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("list error : " + e);
 		} finally {
-			DBManager.close(conn, pstmt, rs);
+			JDBCUtil.close(rst, stmt, conn);
 		}
-		return result;
+		return list;
 	}
 
-	public int userCheck(String email, String pwd) {
-		int result = -1;
-		String sql = "select pwd from member2 where email=?";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				if (rs.getString("pwd") != null
-						&& rs.getString("pwd").equals(pwd)) {
-					result = 1;
-				} else {
-					result = 0;
-				}
-			} else {
-				result = -1;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
-
-	public MemberVO getMember(String email) {
-		com.sid.dto.MemberVO mVo = null;
-		String sql = "select * from member2 where email=?";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				mVo = new MemberVO();
-				mVo.setNickname(rs.getString("nickname"));
-				mVo.setEmail(rs.getString("email"));
-				mVo.setPwd(rs.getString("pwd"));
-				mVo.setZipNum(rs.getString("zipNum"));
-				mVo.setAddress(rs.getString("address"));
-				mVo.setPhone(rs.getString("phone"));
-				mVo.setAdmin(rs.getInt("admin"));
-				mVo.setUseyn(rs.getString("useyn"));
-				mVo.setIndate(rs.getTimestamp("indate"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-
-		return mVo;
-	}
-
-
-	public int updateMember(MemberVO mVo) {
-		int result = -1;
-		String sql = "update member2 set pwd=?,zipNum=?,address=?,phone=?,"
-				+ " where email=?";
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, mVo.getPwd());
-			pstmt.setString(2, mVo.getZipNum());
-			pstmt.setString(3, mVo.getAddress());
-			pstmt.setString(4, mVo.getPhone());
-			pstmt.setString(5, mVo.getEmail());
-
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-		return result;
-	}
-
-	/*
-	 * 관리자 모드에서 사용
-
-아직 수정안함
-	 */
-
-	public ArrayList<MemberVO> listMember(String email) {
-		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
-		String sql = "select * from member where email like '%'||?||'%' "
-				+ "  order by indate desc";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			if (email == "") {
-				pstmt.setString(1, "%");
-			} else {
-				pstmt.setString(1, email);
-			}
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				MemberVO memberVO = new MemberVO();
-				memberVO.setEmail(rs.getString("email"));
-				memberVO.setPwd(rs.getString("pwd"));
-				memberVO.setNickname(rs.getString("nickname"));
-				memberVO.setEmail(rs.getString("email"));
-				memberVO.setZipNum(rs.getString("zip_num"));
-				memberVO.setAddress(rs.getString("address"));
-				memberVO.setPhone(rs.getString("phone"));
-				memberVO.setUseyn(rs.getString("useyn"));
-				memberVO.setIndate(rs.getTimestamp("indate"));
-				memberList.add(memberVO);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		return memberList;
-	}
 }

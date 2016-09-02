@@ -22,7 +22,6 @@ public class DpageListAction implements Action{
 		 	String url="member/Dpage.jsp";
 		 	
 		 	DPageDAO dao=DPageDAO.getInstance();
-		 	DWriteVO dVo=new DWriteVO();
 			ArrayList<DWriteVO> list = dao.listAll();
 
 			request.setAttribute("list", list);
