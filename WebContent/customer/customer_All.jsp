@@ -21,8 +21,7 @@
 
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
-								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
+								<li><a href="SidServlet?command=customer_dplan_ongoing">D 관리 </a></li>
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_customer_coupon"
 									onclick='alert("준비중")'>쿠폰목록</a></li>

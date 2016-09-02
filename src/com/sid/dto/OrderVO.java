@@ -3,19 +3,19 @@ package com.sid.dto;
 import java.sql.Timestamp;
 
 public class OrderVO {
-	private int odseq;
-	private int oseq;
+	private int odseq; //주문상세번호
+	private int oseq; //주문번호
 	private String email;
-	private Timestamp indate;
+	private Timestamp indate; //주문일
 	private String mname;
 	private String zipNum;
 	private String address;
 	private String phone;
-	private int pseq;
+	private int pseq;//상품번호
 	private String pname;
-	private int quantity;
+	private int quantity;//주문수량
 	private int price2;
-	private String result;
+	private String result;//처리여부
 	
 	public int getOdseq() {
 		return odseq;
