@@ -94,14 +94,13 @@ public class OrderDAO {
 				orderVO.setOseq(rs.getInt("OSEQ"));
 				orderVO.setEmail(rs.getString("EMAIL"));
 				orderVO.setIndate(rs.getTimestamp("INDATE"));
-				orderVO.setMname(rs.getString("MNAME"));
 				orderVO.setZipNum(rs.getString("ZIP_NUM"));
 				orderVO.setAddress(rs.getString("ADDRESS"));
 				orderVO.setPhone(rs.getString("PHONE"));
 				orderVO.setPseq(rs.getInt("PSEQ"));
 				orderVO.setQuantity(rs.getInt("QUANTITY"));
 				orderVO.setPname(rs.getString("PNAME"));
-				orderVO.setPrice2(rs.getInt("PRICE2"));
+				orderVO.setPrice(rs.getInt("PRICE"));
 				orderVO.setResult(rs.getString("RESULT"));
 				orderList.add(orderVO);
 			}
@@ -160,14 +159,13 @@ public class OrderDAO {
 					orderVO.setOseq(rs.getInt("OSEQ"));
 					orderVO.setEmail(rs.getString("EMAIL"));
 					orderVO.setPseq(rs.getInt("PSEQ"));
-					orderVO.setMname(rs.getString("MNAME"));
 					orderVO.setPname(rs.getString("PNAME"));
 					orderVO.setQuantity(rs.getInt("QUANTITY"));
 					orderVO.setZipNum(rs.getString("ZIP_NUM"));
 					orderVO.setAddress(rs.getString("ADDRESS"));
 					orderVO.setPhone(rs.getString("PHONE"));
 					orderVO.setIndate(rs.getTimestamp("INDATE"));
-					orderVO.setPrice2(rs.getInt("PRICE2"));
+					orderVO.setPrice(rs.getInt("PRICE"));
 					orderVO.setResult(rs.getString("RESULT"));
 					orderList.add(orderVO);
 				}

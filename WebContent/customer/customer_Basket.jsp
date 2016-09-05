@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header_for_customer.jsp"%>
+<%@ include file="../include/header.jsp"%>
+<%@ page import="com.sid.dto.CartVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +13,31 @@
 	<div id="all">
 		<div id="content">
 			<div class="container">
+				<div class="col-md-3">
+					<div class="panel panel-default sidebar-menu">
 
+						<div class="panel-heading">
+							<h3 class="panel-title">전체보기</h3>
+						</div>
+
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked category-menu">
+								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
+								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
+								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
+								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
+								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
+								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
+								<hr>
+								<li><a href="SidServlet?command=customer_accountchange">회원정보변경</a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
 
 				<div class="col-md-9" id="basket">
 					<div class="box info-bar">
-
 						<h1>Shopping cart</h1>
 						<div class="table-responsive">
 							<div class="form-group row">
@@ -40,23 +62,22 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="checkbox" name="checkbox"></td>
-										<c:forEach var="list" items="${list }" >
-											<td><a href="#"> <img src=>
-											</a></td>
-											<td><a href="#">White Blouse Armani</a></td>
+										<c:forEach items="${cartList}" var="cartVO">
+											<td><input type="checkbox" name="checkbox"></td>
+											<td></td>
+											<td><a href="#">${cartVO.pseq }</a></td>
 											<td><input type="number" value="2" class="form-control"></td>
-											<td>17500원</td>
-											<td>2500원</td>
-											<td>2마논</td>
+											<td>${cartVO.price }원</td>
+											<td>${cartVO.quantity }</td>
+											<td>${cartVO.price * cartVO.quantity }원</td>
+											<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
 										</c:forEach>
-										<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<th colspan="5">결제금액</th>
-										<th colspan="2">2마넌</th>
+										<th colspan="2">${totalPrice }</th>
 									</tr>
 								</tfoot>
 							</table>
@@ -64,21 +85,13 @@
 						</div>
 						<!-- /.table-responsive -->
 						<div class="box-footer">
-							<div class="pull-left">
-								<a href="category.jsp" class="btn btn-default"><i
-									class="fa fa-chevron-left"></i> Continue shopping</a>
-							</div>
 							<div class="pull-right">
-								<button class="btn btn-default">
-									<i class="fa fa-refresh"></i> Update basket
-								</button>
 								<button type="submit" class="btn btn-primary">
 									Proceed to checkout <i class="fa fa-chevron-right"></i>
 								</button>
 							</div>
 						</div>
 					</div>
-					<!-- /.box -->
 				</div>
 			</div>
 		</div>

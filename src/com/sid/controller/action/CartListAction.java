@@ -28,7 +28,7 @@ public class CartListAction implements Action {
 
 			int totalPrice = 0;
 			for (CartVO cartVO : cartList) {
-				totalPrice += cartVO.getPrice2() * cartVO.getQuantity();
+				totalPrice += cartVO.getPrice() * cartVO.getQuantity();
 			}
 			request.setAttribute("cartList", cartList);
 			request.setAttribute("totalPrice", totalPrice);

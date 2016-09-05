@@ -103,27 +103,29 @@
 				<!--  인기페이지 Bpage -->
 				<div class="col-md-12">
 					<div class="box">
-						<h1>인기페이지 -Bpage</h1>
+						<h1>인기페이지 - Cpage</h1>
 					</div>
 
 					<div class="row products">
 
 						<div class="col-md-3 col-sm-4">
 							<div class="product">
-								<div class="flip-container">
-									<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
-										alt="" class="img-responsive">
-									</a>
-								</div>
-								<div class="text">
-									<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-									<p class="price">2000원</p>
-									<p class="buttons">
-										<a href="basket.jsp" class="btn btn-primary"><i
-											class="fa fa-shopping-cart"></i>담기</a>
-									</p>
-								</div>
-								<!-- /.text -->
+								<c:forEach items="${list}" var="list">
+									<div class="flip-container">
+										<a href="detail.jsp"> <img src="${list.imageUrl }"
+											alt="" class="img-responsive">
+										</a>
+									</div>
+									<div class="text">
+										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+										<p class="price">${list.cost}원</p>
+										<p class="buttons">
+											<a href="basket.jsp" class="btn btn-primary"><i
+												class="fa fa-shopping-cart"></i>담기</a>
+										</p>
+									</div>
+									<!-- /.text -->
+								</c:forEach>
 							</div>
 							<!-- /.product -->
 						</div>

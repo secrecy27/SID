@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sid.controller.Action;
+import com.sid.dao.CartDAO;
 import com.sid.dao.HPageDAO;
 import com.sid.dao.MemberDAO;
+import com.sid.dto.CartVO;
 import com.sid.dto.HPageVO;
 import com.sid.dto.MemberVO;
 
@@ -30,6 +32,20 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 		HPageDAO hDao=HPageDAO.getInstance();
 		ArrayList<HPageVO> list=hDao.listAll();
 		
+		
+		System.out.println("email : "+email);
+		
+		CartDAO cartDAO = CartDAO.getInstance();
+		ArrayList<CartVO> cartList = cartDAO.listCart(email);
+
+		int totalPrice = 0;
+		for (CartVO cartVO : cartList) {
+			totalPrice += cartVO.getPrice() * cartVO.getQuantity();
+		}
+		
+		
+		request.setAttribute("cartList", cartList);
+		request.setAttribute("totalPrice", totalPrice);
 		
 		request.setAttribute("address", mVo);
 		request.setAttribute("list", list);
