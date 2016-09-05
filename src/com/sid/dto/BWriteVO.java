@@ -6,6 +6,7 @@ public class BWriteVO {
 	private int cost;
 	private String expl;
 	private String userEmail;
+	private String hashtag;
 
 	public String getUserEmail() {
 		return userEmail;
@@ -47,4 +48,12 @@ public class BWriteVO {
 		this.expl = expl;
 	}
 
+	public String getHashtag() {
+		return hashtag;
+	}
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+	
 }

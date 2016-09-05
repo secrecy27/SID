@@ -167,13 +167,12 @@ public class MemberDAO {
 				mVo = new MemberVO();
 				mVo.setNickname(rs.getString("nickname"));
 				mVo.setEmail(rs.getString("email"));
-				mVo.setPwd(rs.getString("pwd"));
 				mVo.setZipNum(rs.getString("zipNum"));
 				mVo.setAddress(rs.getString("address"));
 				mVo.setPhone(rs.getString("phone"));
 				mVo.setAdmin(rs.getInt("admin"));
-				mVo.setUseyn(rs.getString("useyn"));
-				mVo.setIndate(rs.getTimestamp("indate"));
+			//	mVo.setUseyn(rs.getString("useyn"));
+			//	mVo.setIndate(rs.getTimestamp("indate"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

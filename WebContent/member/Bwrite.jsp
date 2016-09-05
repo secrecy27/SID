@@ -31,6 +31,7 @@ ul#hashtag li:before {
 					</ul>
 				</div>
 				<form method="post" name='frm' enctype="multipart/form-data"
+					
 					id="bForm">
 					<div class="col-md-12">
 
@@ -88,8 +89,7 @@ ul#hashtag li:before {
 
 						<div>
 							<p class="text-center buttons">
-								<button type="button" onclick="return beforeSubmit()"
-									class="btn btn-primary">
+								<button type="button" onclick="return splitStr()"class="btn btn-primary">
 									<i class="fa fa glyphicon-plus"></i>&nbsp;등록하기
 								</button>
 							</p>
@@ -111,25 +111,25 @@ ul#hashtag li:before {
 																		+ '<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i>'
 																		+ "</li>");
 												$("#hashtagInput").val('');
-												var str = $("#hashtag").html();
-												str = str.substring(4);
-												str = str.substring(0,
-														str.length - 100);
-
-												arrayList = str
-														.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
 
 											}
 										});
-
-						function beforeSubmit() {
-							document.frm.action = "../SidServlet?command=bWrite";
-							document.frm.submit();
+						
+						function splitStr(){
+							var str = $("#hashtag").html();
+							str = str.substring(4);
+							str = str.substring(0,
+									str.length - 100);
 							arrayList = str
 									.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
 
+							
 							$("#ht").val(arrayList);
-							return true;
+							
+							document.frm.action="../SidServlet?command=bWrite";
+							 document.frm.submit();
+							 return true;
+							
 						}
 					</script>
 
@@ -137,11 +137,9 @@ ul#hashtag li:before {
 			</div>
 		</div>
 	</div>
-	</div>
 	<!-- /.container -->
 	<!-- /#content -->
 
-	</div>
 	<!-- /#all -->
 
 	<script>

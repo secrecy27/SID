@@ -640,7 +640,7 @@ input {
 				});
 			} else if (num == 'b') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/test4.obj', function(object) {
+				loader.load('../models/testtest.obj', function(object) {
 	
 					object.traverse(function(child) {
 	

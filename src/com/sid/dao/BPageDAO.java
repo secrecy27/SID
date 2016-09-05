@@ -10,6 +10,7 @@ import com.mysql.jdbc.Statement;
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.BWriteVO;
 import com.sid.dto.DWriteVO;
+import com.sid.dto.HashtagVO;
 
 public class BPageDAO {
 	private BPageDAO() {
@@ -60,7 +61,7 @@ public class BPageDAO {
 		PreparedStatement ps=null;
 			
 		try {
-			conn.prepareStatement(sql);
+			ps=conn.prepareStatement(sql);
 			
 			
 			for (int i=0;i<hashtag.length;i++) {
@@ -81,8 +82,8 @@ public class BPageDAO {
 	}
 
 	public BWriteVO readItem(int num) {
-		int result = -1;
 		String sql = "select * from bwrite where bWriteId=?";
+
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -100,16 +101,49 @@ public class BPageDAO {
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
+				vo.setUserEmail("userEmail");
 			}
-
+			
 		} catch (SQLException e) {
 			System.out.println("b read item error : " + e);
 		} finally {
 			JDBCUtil.close(rst, stmt, conn);
 		}
+		
+	
+	
 		return vo;
 	}
+	public ArrayList<HashtagVO> readHashtag(int num) {
+		String sql = "select * from hashtag where bWriteId=?";
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		HashtagVO hVo=null;
+		ArrayList<HashtagVO> list=new ArrayList<HashtagVO>();
+		System.out.println("b readhashtag" + num);
 
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rst = stmt.executeQuery();
+
+			while (rst.next()) {
+				hVo=new HashtagVO();
+				hVo.setHashtag(rst.getString("hashtag"));
+				list.add(hVo);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("b hashtag item error : " + e);
+		} finally {
+			JDBCUtil.close(rst, stmt, conn);
+		}
+		
+		return list;
+	}
+	
 	public ArrayList<BWriteVO> listAll() {
 
 		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();

@@ -57,13 +57,10 @@ public class BWriteAction implements Action{
 		 	
 		 	BPageDAO dao = BPageDAO.getInstance();
 			int result=dao.insertImage(bVo);
-			System.out.println("last id = "+result);
 			
-			
-			String str[] = multi.getParameterValues("hashtag");
-			System.out.println("str : "+str);
-
-			dao.insertHashtag(result, str);
+			String str = (String) multi.getParameter("hashtag");
+			String[] arr=str.split(",");
+			dao.insertHashtag(result, arr);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
