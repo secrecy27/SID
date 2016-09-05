@@ -305,7 +305,20 @@ input {
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
-
+					<div class="outerButton">
+						<div class="mapButton">
+							<button class="useMapButton btn btn-default btn-circle">use</button>
+							<input type="image" src="../img/back.png" class="mb" value="off">
+							<p class="mapCheck" style="display: none">0</p>
+						</div>
+					</div>
+					<div class="outerButton">
+						<div class="mapButton">
+							<button class="useMapButton btn btn-default btn-circle">use</button>
+							<input type="image" src="../img/sidt.gif" class="mb" value="off">
+							<p class="mapCheck" style="display: none">0</p>
+						</div>
+					</div>
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
@@ -327,20 +340,7 @@ input {
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/back.png" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/front.gif" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
+					
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
@@ -568,15 +568,19 @@ input {
 				} else {
 	
 					planeA.position.z = -4.47;
-	
+					planeA.scale.x=-1;
 				}
+				
 				planeA.position.x = geomX[curMap - 1];
 				planeA.position.y = geomY[curMap - 1];
 	
 				planeA.material.side = THREE.DoubleSide;
 				planeA.material.map = textureA;
+
+
 				planeA.name = "" + curMap - 1;
 	
+				//0903 texture flip x 
 				scene.add(planeA);
 			} else if (curMap == 2) {
 				var geometryB = new THREE.CircleGeometry(radius[curMap - 1], segments[curMap - 1], (Math.PI / 180) * rotate[curMap - 1]); //radius,segments,thetaStart
@@ -589,14 +593,16 @@ input {
 				} else {
 	
 					planeB.position.z = -4.47;
-	
+					planeB.scale.x=-1;
 				}
 				planeB.position.x = geomX[curMap - 1];
 				planeB.position.y = geomY[curMap - 1];
 	
-	
 				planeB.material.side = THREE.DoubleSide;
 				planeB.material.map = textureB;
+				if(!fb[curMap-1]){
+					textureB.flipX=false;
+				}
 				planeB.name = "" + curMap - 1;
 	
 				scene.add(planeB);
@@ -634,7 +640,7 @@ input {
 				});
 			} else if (num == 'b') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/test2.obj', function(object) {
+				loader.load('../models/test4.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
@@ -650,7 +656,7 @@ input {
 				});
 			} else if (num == 'c') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/test.obj', function(object) {
+				loader.load('../models/test2.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
