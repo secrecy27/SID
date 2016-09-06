@@ -28,7 +28,7 @@ public class OrderListAction implements Action {
 					loginUser.getEmail(), "1", oseq);
 			int totalPrice = 0;
 			for (OrderVO orderVO : orderList) {
-				totalPrice += orderVO.getPrice2() * orderVO.getQuantity();
+				totalPrice += orderVO.getPrice() * orderVO.getQuantity();
 			}
 			request.setAttribute("orderList", orderList);
 			request.setAttribute("totalPrice", totalPrice);

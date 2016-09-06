@@ -1,5 +1,7 @@
 package com.sid.controller;
 
+import com.sid.controller.action.AdminApageList;
+import com.sid.controller.action.AdminApageWrite;
 import com.sid.controller.action.AdminIndexAction;
 import com.sid.controller.action.AdminLoginAction;
 import com.sid.controller.action.AdminLogoutAction;
@@ -72,7 +74,6 @@ public class ActionFactory {
 		System.out.println("ActionFactory  :" + command);
 		if (command.equals("index")) {
 			action = new IndexAction();
-			
 		} else if (command.equals("contract")) {
 			action = new ContractAction();
 		} else if (command.equals("email_check_form")) {
@@ -105,6 +106,8 @@ public class ActionFactory {
 			action = new QnaWriteFormAction();
 		} else if (command.equals("qna_view")) {
 			action = new QnaViewAction();
+			
+			
 		} else if (command.equals("admin_login_form")) {
 			action = new AdminIndexAction();
 		} else if (command.equals("admin_login")) {
@@ -135,6 +138,12 @@ public class ActionFactory {
 			action = new AdminQnaDetailAction();
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
+		
+		} else if(command.equals("admin_apage_write")){
+			action=new AdminApageWrite();
+		} else if(command.equals("admin_apage_list")){
+			action=new AdminApageList();
+		
 			
 		}else if(command.equals("dWrite")){
 			action=new DWriteAction();

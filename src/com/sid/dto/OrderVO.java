@@ -7,15 +7,14 @@ public class OrderVO {
 	private int oseq; //주문번호
 	private String email;
 	private Timestamp indate; //주문일
-	private String mname;
 	private String zipNum;
 	private String address;
 	private String phone;
 	private int pseq;//상품번호
-	private String pname;
+	private String pname; //상품이름
 	private int quantity;//주문수량
-	private int price2;
-	private String result;//처리여부
+	private int price; //가격
+	private String result;//처리결과 0 미처리  1 처리
 	
 	public int getOdseq() {
 		return odseq;
@@ -40,12 +39,6 @@ public class OrderVO {
 	}
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
-	}
-	public String getMname() {
-		return mname;
-	}
-	public void setMname(String mname) {
-		this.mname = mname;
 	}
 	public String getZipNum() {
 		return zipNum;
@@ -83,16 +76,18 @@ public class OrderVO {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getPrice2() {
-		return price2;
+	public int getPrice() {
+		return price;
 	}
-	public void setPrice2(int price2) {
-		this.price2 = price2;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getResult() {
 		return result;
 	}
 	public void setResult(String result) {
 		this.result = result;
-	}
+	}//처리여부
+	
+	
 }

@@ -10,24 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sid.controller.Action;
 import com.sid.dao.AWriteDAO;
-import com.sid.dao.ProductDAO;
 import com.sid.dto.AWriteVO;
-import com.sid.dto.ProductVO;
 
-public class IndexAction implements Action {
+public class AdminApageList implements Action {
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String url = "/member/index.jsp";
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "member/Apage.jsp";
 
 		AWriteDAO aDao = AWriteDAO.getInstance();
 		ArrayList<AWriteVO> list = aDao.listAll();
+
 		request.setAttribute("list", list);
-		//인기페이지-a페이지
-		System.out.println("ffd");
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-
 	}
 }

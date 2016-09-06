@@ -76,17 +76,20 @@
 					<li><a><%=session.getAttribute("email")%>님 환영합니다.</a></li>
 					<li><a href="" onclick=logout()>logout</a></li>
 					<li><a href="../SidServlet?command=customer_all">구매자 관리</a></li>
-						<%
-							if (session.getAttribute("admin").equals(1)) {
-						%>
-						<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
-						<%
-							} else if(session.getAttribute("admin").equals(0)){
-						%>
-						<li><a href="../member/register6.jsp">디자이너 가입</a></li>
-						<%
-							}
-						%>
+					<%
+						if (session.getAttribute("admin").equals(1)) {
+					%>
+					<li><a href="../SidServlet?command=designer_all">판매자 관리</a></li>
+					<%
+						} else if (session.getAttribute("admin").equals(0)) {
+					%>
+					<li><a href="../member/register6.jsp">디자이너 가입</a></li>
+					<%
+						} else if (session.getAttribute("admin").equals(2)) {
+					%>
+					<li><a href="../admin/main.jsp">관리자 페이지</a> <%
+ 						}
+					%>
 					<%
 						}
 					%>
@@ -124,42 +127,41 @@
 								</button>
 							</p>
 							<script>
-							 	 
-							 
-						 	 $("#btnSubmit").click(function()
-							    {	
-							        $.ajax({
-							        	type: "POST",
-							        	url:"../SidServlet?command=login&email=" + $("#email").val() + "&pwd=" +$("#password").val(),
-							        	 	 
-								        success: function(result){
-								        	  	if(result==1){
-								        	  		alert("로그인 성공")
-								        	  	}else{
-								        	  		alert("로그인 실패")
-								        	  	}
-								         },
-								         error:function(request,status,error){
-								             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-								            }
-								         
+							
+							
+								$("#btnSubmit").click(function() {
+									$.ajax({
+										type : "POST",
+										url : "../SidServlet?command=login&email=" + $("#email").val() + "&pwd=" + $("#password").val(),
+							
+										success : function(result) {
+											if (result == 1) {
+												alert("로그인 성공")
+											} else {
+												alert("로그인 실패")
+											}
+										},
+										error : function(request, status, error) {
+											alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+										}
 									});
 							    });
-						 	 
-						 	function logout(){
-								$.ajax({
-						            type: "POST",
-						            url: '../SidServlet?command=logout',
-						            
-						            success: function(data)
-						            {
-						                alert("logOut!");
-						            },
-						            error:function(request,status,error){
-						                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-						           	}
-						        });
-							}
+
+							
+								function logout() {
+									$.ajax({
+										type : "POST",
+										url : '../SidServlet?command=logout',
+							
+										success : function(data) {
+											alert("logOut!");
+										},
+										error : function(request, status, error) {
+											alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+										}
+									});
+								}
+
 							</script>
 						</form>
 					</div>
@@ -175,7 +177,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand home"
-					style="padding: 2px; padding-right: 0px" href="../member/index.jsp">
+					style="padding: 2px; padding-right: 0px" href="../SidServlet?command=index">
 					<img src="../img/SIDlogo.png" alt="Obaju logo"
 					style="width: 120px; max-height: 100%;"> <span
 					class="sr-only">Snow In Dawn</span>
@@ -193,7 +195,7 @@
 						class="dropdown-toggle">Cpage</a></li>
 					<li class="dropdown yamm-fw"><a
 						href="../SidServlet?command=list_bpage" class="dropdown-toggle">Bpage</b></a></li>
-					<li class="dropdown yamm-fw"><a href="../member/Apage.jsp"
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=admin_apage_list"
 						class="dropdown-toggle">Apage</b></a></li>
 					<li class="dropdown yamm-fw"><a
 						href="../SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>

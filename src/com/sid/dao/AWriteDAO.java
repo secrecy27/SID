@@ -23,8 +23,9 @@ public class AWriteDAO {
 	}
 
 	public int insertImage(AWriteVO aVo) {
+		System.out.println("insertImage 에러");
 		int result = -1;
-		String sql = "insert into awrite(imageUrl,cost,expl,userEmail) VALUES(?,?,?,?)";
+		String sql = "insert into awrite(imageUrl,cost) VALUES(?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -33,8 +34,6 @@ public class AWriteDAO {
 
 			pstmt.setString(1, aVo.getImageUrl());
 			pstmt.setInt(2, aVo.getCost());
-			pstmt.setString(3, aVo.getExpl());
-			pstmt.setString(4, aVo.getUserEmail());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -65,7 +64,6 @@ public class AWriteDAO {
 					vo.setaWriteId(rst.getInt("aWriteId"));
 					vo.setImageUrl(rst.getString("imageUrl"));
 					vo.setCost(rst.getInt("cost"));
-					vo.setExpl(rst.getString("expl"));
 				}
 					
 			}catch(SQLException e){
@@ -79,7 +77,7 @@ public class AWriteDAO {
 	 public ArrayList<AWriteVO> listAll(){
 		 
 			ArrayList<AWriteVO> list = new ArrayList<AWriteVO>();
-			String sql="select * from awrite order by postDate desc";
+			String sql="select * from awrite order by indate desc";
 			 
 			Connection conn = null;
 			PreparedStatement stmt = null;
@@ -94,7 +92,6 @@ public class AWriteDAO {
 					vo.setaWriteId(rst.getInt("aWriteId"));
 					vo.setImageUrl(rst.getString("imageUrl"));
 					vo.setCost(rst.getInt("cost"));
-					vo.setExpl(rst.getString("expl"));
 					list.add(vo);
 				}
 			}catch(SQLException e){

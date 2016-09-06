@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="com.sid.dao.AWriteDAO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.sid.dto.AWriteVO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <html>
 <head>
@@ -86,14 +91,14 @@
 							</ul>
 
 						</div>
-						
 
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									<input type="text" method="post" action="#" placeholder="검색">
-								</h3>
-							</div>
-			
+
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<input type="text" method="post" action="#" placeholder="검색">
+							</h3>
+						</div>
+
 						<div class="panel panel-default sidebar-menu">
 
 							<div class="panel-heading">
@@ -186,33 +191,30 @@
 						</div>
 					</div>
 					<div class="row products">
-						<div class="col-md-4 col-sm-6">
-							<div class="product">
-								<div class="flip-container">
-									<div class="flipper">
-										<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
-											alt="" class="img-responsive">
-										</a>
-									</div>
-									<div class="text">
-										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-										<p class="price">2000원</p>
-										<p class="buttons">
-											<a href="basket.jsp" class="btn btn-primary"><i
-												class="fa fa-shopping-cart"></i>담기</a>
-										</p>
-									</div>
-									<!-- /.text -->
+						<c:forEach items="${list}" var="apage">
+							<div class="col-md-4 col-sm-6">
+								<div class="product">
+									<div class="flip-container">
+										<div class="flipper">
+											<a href="#"> <img src="${apage.imageUrl }" alt=""
+												class="img-responsive">
+											</a>
+										</div>
+										<div class="text">
+											<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+											<p class="price">${apage.cost} 원</p>
+											<p class="buttons">
+												<a href="basket.jsp" class="btn btn-primary"><i
+													class="fa fa-shopping-cart"></i>담기</a>
+											</p>
+										</div>
 
+									</div>
 								</div>
-								<!-- /.product -->
 							</div>
-						</div>
-						<!-- /.product -->
+						</c:forEach>
 					</div>
-					<!-- /.col-md-4 -->
 				</div>
-				<!-- /.products -->
 
 				<div class="pages">
 
