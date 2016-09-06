@@ -35,6 +35,7 @@ public class BpageReadAction implements Action{
 			request.setAttribute("bpage", bVo);
 			request.setAttribute("hashtag", list);
 			request.setAttribute("designer", mVo);
+			System.out.println("email : "+mVo.getEmail());
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 	}

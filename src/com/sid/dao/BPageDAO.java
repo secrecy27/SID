@@ -101,7 +101,7 @@ public class BPageDAO {
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
-				vo.setUserEmail("userEmail");
+				vo.setUserEmail(rst.getString("userEmail"));
 			}
 			
 		} catch (SQLException e) {
@@ -113,6 +113,49 @@ public class BPageDAO {
 	
 	
 		return vo;
+	}
+	public int addToCart(String email,int id){
+		int result = -1;
+		String sql="SELECT pocketId FROM rpocket where email=?";
+		Connection conn = null;
+		conn = JDBCUtil.getConnection();
+		PreparedStatement ps=null;
+		ResultSet rst=null;
+		int pocketId=-1;
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rst=ps.executeQuery();
+			
+			if(rst.next()){
+				pocketId=rst.getInt("pocketId");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+		
+		sql= "INSERT INTO rpocket2(pocketId, bwriteId) VALUES(?,?)";
+		conn = JDBCUtil.getConnection();
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, pocketId);
+			ps.setInt(2, id);
+
+			result = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+		
+		
+		System.out.println("addtocart result : "+result);
+		
+		return result;
 	}
 	public ArrayList<HashtagVO> readHashtag(int num) {
 		String sql = "select * from hashtag where bWriteId=?";

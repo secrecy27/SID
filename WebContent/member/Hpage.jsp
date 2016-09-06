@@ -373,6 +373,9 @@ input {
 
 	<script src="../js/three.js"></script>
 	<script src="../js/OBJLoader.js"></script>
+	<script src="../js/MTLLoader.js"></script>
+	
+	<script src="../js/FBXLoader.js"></script>
 	<script src="../js/OrbitControls.js"></script>
 	<script src="../js/jquery-1.11.0.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
@@ -640,7 +643,7 @@ input {
 				});
 			} else if (num == 'b') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/testtest.obj', function(object) {
+				loader.load('../models/t71.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
@@ -656,7 +659,7 @@ input {
 				});
 			} else if (num == 'c') {
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/test2.obj', function(object) {
+				loader.load('../models/ab.obj', function(object) {
 	
 					object.traverse(function(child) {
 	

@@ -125,7 +125,7 @@
 								</form>
 							</div>
 						</div>
-
+	
 					</div>
 
 					<div class="box" id="details">
@@ -168,10 +168,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-
-
 	</div>
 	<!-- /#all -->
 

@@ -144,7 +144,7 @@
 								            }
 								         
 									});
-							    })
+							    });
 						 	 
 						 	function logout(){
 								$.ajax({

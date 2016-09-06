@@ -39,51 +39,47 @@
 
 						<div class="col-sm-6">
 							<div class="box">
-								<div class="form-group row">
-									<div class="box">
-										<div class="text">
-											<label class="col-sm-10 control-label">해쉬태그</label>
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label"> <c:forEach
-														items="${hashtag}" var="hashtag">
+								<ul class="breadcrumb">
+									<div class="form-group row">
+										<label class="col-sm-10 control-label">해쉬태그</label> <label
+											class="col-sm-10 control-label"> <c:forEach
+												items="${hashtag}" var="hashtag">
 											#${hashtag.hashtag}&nbsp&nbsp
 										</c:forEach>
-												</label>
-											</div>
-										</div>
+										</label>
 									</div>
-								</div>
-								<div class="form-group row">
-									<div class="box">
-										<div class="text">
-											<label class="col-sm-10 control-label">저작료</label>
-											<div class="col-sm-10">
-												<label class="col-sm-10 control-label">${bpage.cost}</label>
-											</div>
-										</div>
-									</div>
-								</div>
+								</ul>
+								<ul class="breadcrumb">
+									<div class="form-group row">
 
-								<div class="form-group row">
-									<div class="box">
-										<div class="text">
-											<p>
-												<button type="button" class="btn btn-primary btn-sm">
-													<i class="fa fa-file-text-o"></i>포트폴리오
-												</button>
-											</p>
-											<p>디자이너 이메일 ${designer.email}</p>
-										</div>
+										<label class="col-sm-10 control-label">저작료</label> <label
+											class="col-sm-10 control-label">${bpage.cost}</label>
 									</div>
-								</div>
+								</ul>
 
+
+
+								<ul class="breadcrumb">
+									<div class="form-group row">
+										<p>
+											<button type="button" class="btn btn-primary btn-sm">
+												<i class="fa fa-file-text-o"></i>포트폴리오
+											</button>
+										</p>
+										<p>디자이너 이메일 ${designer.email}</p>
+									</div>
+								</ul>
 								<p class="text-center buttons">
-									<a href="" onclick="take()" class="btn btn-primary"><i
-										class="fa fa glyphicon-plus"></i>&nbsp담기</a>
-								</p>
+							<button type="button" id="tocart"onclick="toCart()" class="btn btn-primary">
+								<i class="fa fa glyphicon-plus"></i>&nbsp담기
+							</button>
+						</p>
 							</div>
+							
 						</div>
 
+						
+						
 					</div>
 
 
@@ -98,10 +94,35 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- /#all -->
 	<!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
 	<%@ include file="../include/footer.jsp"%>
 </body>
-
+<script>
+					 function toCart(){
+						  $.ajax({
+					        	type: "POST",
+					        	url:"../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${bpage.bWriteId}",							        	 	 
+						        success: function(result){
+						        	  	if(result==1){
+						        	  		alert("담기 성공")
+						        	  		$("#tocart").prop("disabled",true);
+						        	  	}else{
+						        	  		
+						        	  		alert("담기 실패 ( 이미 담긴 품목 )")
+						        	  	}
+						         },
+						         error:function(request,status,error){
+						             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						        }
+						         
+							});
+						 
+						
+					 }
+						 	 
+					
+					</script>
 </html>
