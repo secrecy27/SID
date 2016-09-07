@@ -3,9 +3,6 @@ package  com.sid.controller;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
 public class JDBCUtil {
 
 	public static java.sql.Connection getConnection() {

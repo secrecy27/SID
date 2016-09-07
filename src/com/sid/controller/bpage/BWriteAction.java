@@ -16,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sid.controller.Action;
 import com.sid.dao.BPageDAO;
 import com.sid.dto.BWriteVO;
+import com.sid.dto.HashtagVO;
 
 public class BWriteAction implements Action{
 	 @Override
@@ -61,6 +62,7 @@ public class BWriteAction implements Action{
 			String str = (String) multi.getParameter("hashtag");
 			String[] arr=str.split(",");
 			dao.insertHashtag(result, arr);
+			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

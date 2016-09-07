@@ -71,26 +71,27 @@
 					</div>
 
 					<div class="row products">
-
-						<div class="col-md-2 col-sm-6">
-							<div class="product">
-								<div class="flip-container">
-									<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
-										alt="" class="img-responsive">
-									</a>
+						<c:forEach items="${blist}" var="bpage">
+							<div class="col-md-2 col-sm-6">
+								<div class="product">
+									<div class="flip-container">
+										<a href="../SidServlet?command=read_bpage&num=${bpage.bWriteId }"> <img src="${bpage.imageUrl }"
+											style="max-width: 100%; width: 100%; height: 150px"
+											class="img-responsive">
+										</a>
+									</div>
+									<div class="text">
+										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+										<p class="price">${bpage.cost}원</p>
+										<p class="buttons">
+											<a href="basket.jsp" class="btn btn-primary"><i
+												class="fa fa-shopping-cart"></i>담기</a>
+										</p>
+									</div>
+									<!-- /.text -->
 								</div>
-								<div class="text">
-									<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-									<p class="price">2000원</p>
-									<p class="buttons">
-										<a href="basket.jsp" class="btn btn-primary"><i
-											class="fa fa-shopping-cart"></i>담기</a>
-									</p>
-								</div>
-								<!-- /.text -->
 							</div>
-							<!-- /.product -->
-						</div>
+						</c:forEach>
 					</div>
 					<!-- /.products -->
 					<div class="pages">
