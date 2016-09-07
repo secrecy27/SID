@@ -19,43 +19,48 @@
 
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
-						<%if(session.getAttribute("email")!=null&&session.getAttribute("admin").equals(1)||session.getAttribute("admin").equals(2)){ %>
+						<%
+							if (session.getAttribute("email") != null && (session.getAttribute("admin").equals(1))
+									|| (session.getAttribute("admin").equals(2))) {
+						%>
 						<a href="member/Bwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
-							
-                 		<%}else{%>
-						  <a href="" onclick="fail()" class="btn btn-primary"><i
-									class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
-									<script>
-									function fail(){
-										alert("권한이 없습니다");
-									}
-									</script>
-							<%}%>
+
+						<%
+							} else {
+						%>
+						<a href="" onclick="fail()" class="btn btn-primary"><i
+							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
+						<script>
+							function fail() {
+								alert("권한이 없습니다");
+							}
+						</script>
+						<%
+							}
+						%>
 					</ul>
 
 					<div class="dContainer">
 						<div class="row products">
+
 							<c:forEach items="${list}" var="bpage">
 								<!-- a href 버튼 -->
 								<div class="col-md-2 col-sm-6">
 									<div class="product">
 
 										<div style="max-width: 100%; width: 100%;">
-											<a href="../SidServlet?command=read_bpage&num=${bpage.bWriteId}">
+											<a
+												href="../SidServlet?command=read_bpage&num=${bpage.bWriteId}">
 												<img src="${bpage.imageUrl}" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
 											</a>
 
 										</div>
-
-										<div><c:forEach items="${hlist}" var="hlist">
-											<p>#${hlist.hashtag }</p>
-											</c:forEach>
-										</div>
 										<div class="text">
-											<p> ${bpage.cost} 원</p>
+											<a herf="#">${bpage.hashtag}</a>
+											<p>${bpage.cost} 원</p>
 											<p class="buttons">
 												<a href="" class="btn btn-default">담기</a>
 											</p>

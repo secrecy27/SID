@@ -24,7 +24,7 @@ public class BPageDAO {
 	public int insertImage(BWriteVO bVo) {
 		int result = -1;
 
-		String sql = "INSERT INTO bwrite(imageUrl, cost, expl,userEmail) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO bwrite(imageUrl, cost, expl,userEmail,hashtag) VALUES(?, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rst = null;
@@ -36,6 +36,7 @@ public class BPageDAO {
 			pstmt.setInt(2, bVo.getCost());
 			pstmt.setString(3, bVo.getExpl());
 			pstmt.setString(4, bVo.getUserEmail());
+			pstmt.setString(5, bVo.getHashtag());
 
 			int rownum = pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
@@ -160,7 +161,6 @@ public class BPageDAO {
 		ResultSet rst = null;
 		HashtagVO hVo = null;
 		ArrayList<HashtagVO> list = new ArrayList<HashtagVO>();
-		System.out.println("b readhashtag" + num);
 
 		try {
 			conn = JDBCUtil.getConnection();
@@ -182,29 +182,11 @@ public class BPageDAO {
 
 		return list;
 	}
-
-	/*
-	 * public ArrayList<HashtagVO> readAllHashtag() { String sql =
-	 * "select * from hashtag"; Connection conn = null; PreparedStatement stmt =
-	 * null; ResultSet rst = null; HashtagVO hVo=null; ArrayList<HashtagVO>
-	 * list=new ArrayList<HashtagVO>();
-	 * 
-	 * try { conn = JDBCUtil.getConnection(); stmt = conn.prepareStatement(sql);
-	 * rst = stmt.executeQuery();
-	 * 
-	 * while (rst.next()) { hVo=new HashtagVO();
-	 * hVo.setHashtag(rst.getString("hashtags")); list.add(hVo); }
-	 * 
-	 * } catch (SQLException e) { System.out.println("b hashtag item error : " +
-	 * e); } finally { JDBCUtil.close(rst, stmt, conn); }
-	 * 
-	 * return list; }
-	 */
 	public ArrayList<BWriteVO> listAll() {
 
 		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();
 		String sql = "select * from bwrite order by postDate desc";
-
+		String str="";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -219,6 +201,15 @@ public class BPageDAO {
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
+				try {
+					str=rst.getString("hashtag");
+					str=str.replace(",", " #");
+					str="#"+str;
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+				vo.setHashtag(str);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -228,54 +219,4 @@ public class BPageDAO {
 		}
 		return list;
 	}
-
-	public ArrayList<HashtagVO> list() {
-
-		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();
-		String sql = "select * from bwrite order by postDate desc";
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rst = null;
-		BWriteVO vo = null;
-		ArrayList<HashtagVO> hlist = new ArrayList<HashtagVO>();
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(sql);
-			rst = stmt.executeQuery();
-
-			while (rst.next()) {
-				vo = new BWriteVO();
-				vo.setbWriteId(rst.getInt("bWriteId"));
-				vo.setImageUrl(rst.getString("imageUrl"));
-				vo.setCost(rst.getInt("cost"));
-				vo.setExpl(rst.getString("expl"));
-				list.add(vo);
-
-			}
-
-			sql = "selset * from hashtag";
-				conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(sql);
-				rst = stmt.executeQuery();
-				while (rst.next()) {
-					vo.setHashtag("hashtag");
-					
-				for (int i = 0; i < list.size(); i++) {
-					for (int j = 0; j < hlist.size(); j++) {
-						if (list.get(i).getbWriteId() == hlist.get(i).getbWriteId()) {
-							return hlist;
-						}
-					}
-				}
-			}
-
-		} catch (SQLException e) {
-			System.out.println("b list error : " + e);
-		} finally {
-			JDBCUtil.close(rst, stmt, conn);
-		}
-		return hlist;
-	}
-
 }

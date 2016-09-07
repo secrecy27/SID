@@ -38,13 +38,10 @@ public class CpageWriteAction implements Action {
 		
 		CWriteDAO cDao=CWriteDAO.getInstance();
 		
-		int result=cDao.insertImage(cVO);
-		if (result > 0) {
-			System.out.println("c write success");
-		} else {
-			System.out.println("c write fail");
-		}
 		String str = (String) multi.getParameter("hashtag");
+		cVO.setHashtag(str);
+		int result=cDao.insertImage(cVO);
+		
 		String[] arr=str.split(",");
 		cDao.insertHashtag(result, arr);
 		

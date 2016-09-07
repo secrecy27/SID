@@ -25,7 +25,7 @@ public class AWriteDAO {
 
 	public int insertImage(AWriteVO aVo) {
 		int result = -1;
-		String sql = "insert into awrite(imageUrl,cost) VALUES(?,?)";
+		String sql = "insert into awrite(imageUrl,cost,hashtag) VALUES(?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rst = null;
@@ -35,6 +35,7 @@ public class AWriteDAO {
 
 			pstmt.setString(1, aVo.getImageUrl());
 			pstmt.setInt(2, aVo.getCost());
+			pstmt.setString(3,aVo.getHashtag());
 
 			int rownum = pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
@@ -123,7 +124,6 @@ public class AWriteDAO {
 				hVo = new HashtagVO();
 				hVo.setHashtag(rst.getString("hashtag"));
 				list.add(hVo);
-				System.out.println(rst.getString("hashtag"));
 			}
 
 		} catch (SQLException e) {
@@ -139,7 +139,7 @@ public class AWriteDAO {
 
 		ArrayList<AWriteVO> list = new ArrayList<AWriteVO>();
 		String sql = "select * from awrite order by indate desc";
-
+		String str="";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -153,6 +153,14 @@ public class AWriteDAO {
 				vo.setaWriteId(rst.getInt("aWriteId"));
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
+				try{
+					str=rst.getString("hashtag");
+					str=str.replace(","," #");
+					str="#"+str;
+				}catch(Exception e){
+					
+				}
+				vo.setHashtag(str);
 				list.add(vo);
 			}
 		} catch (SQLException e) {

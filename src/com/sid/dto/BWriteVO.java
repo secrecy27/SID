@@ -1,7 +1,5 @@
 package com.sid.dto;
 
-import java.util.ArrayList;
-
 public class BWriteVO {
 	private int bWriteId;
 	private String imageUrl;
@@ -9,16 +7,7 @@ public class BWriteVO {
 	private String expl;
 	private String userEmail;
 	private String hashtag;
-	private ArrayList<String> hashtags;
 	
-
-	public ArrayList<String> getHashtags() {
-		return hashtags;
-	}
-
-	public void setHashtags(ArrayList<String> hashtags) {
-		this.hashtags = hashtags;
-	}
 
 	public String getUserEmail() {
 		return userEmail;

@@ -1,9 +1,6 @@
 package com.sid.controller.bpage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +13,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sid.controller.Action;
 import com.sid.dao.BPageDAO;
 import com.sid.dto.BWriteVO;
-import com.sid.dto.HashtagVO;
 
 public class BWriteAction implements Action{
 	 @Override
@@ -27,7 +23,8 @@ public class BWriteAction implements Action{
 		 	System.out.println("bwrite action");
 		 	//-----------------------------
 		 	
-		 	String savePath="C:/Users/hs/git/SID_2/SID/WebContent/img"; //저장 폴더명
+		 	String savePath="C:/Users/hs/git/SID_2/SID/WebContent/img";
+		 			//저장 폴더명
 		 	int maxPostSize = 10 * 1024 * 1024; //10mb
 		 	String encoding = "utf-8";
 		 	
@@ -57,9 +54,11 @@ public class BWriteAction implements Action{
 		 	}
 		 	
 		 	BPageDAO dao = BPageDAO.getInstance();
-			int result=dao.insertImage(bVo);
-			
+
 			String str = (String) multi.getParameter("hashtag");
+			bVo.setHashtag(str);
+		 	int result=dao.insertImage(bVo);
+			
 			String[] arr=str.split(",");
 			dao.insertHashtag(result, arr);
 			

@@ -171,7 +171,8 @@ input {
 					<p id="totalCostModal"></p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">페이지 이동</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">페이지
+						이동</button>
 				</div>
 			</div>
 		</div>
@@ -182,14 +183,18 @@ input {
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close"  data-dismiss="modal">&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">upload</h4>
 				</div>
 				<div class="modal-body">
-					<p>업로드 내용</p>
+					<p>업로드 화면으로 이동합니다</p>
+					
+			<img id="myImage" style="width: 350px;" src=""><br>
+			<img id="myImage2" style="width: 350px;" src="">
+					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-Info" data-dismiss="modal">Upload</button>
+					<button type="button" class="btn btn-Info" data-dismiss="modal">페이지 이동</button>
 				</div>
 			</div>
 		</div>
@@ -210,14 +215,18 @@ input {
 						id="controlTwo" />
 				</div>
 				<div id="saveLoad">
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-						data-target="#loadModal">담기</button>
+					<button type="button" class="btn btn-primary btn-lg"
+						data-toggle="modal" data-target="#loadModal">담기</button>
 
-					<button type="button" class="btn btn-default btn-lg" data-toggle="modal"
-						data-target="#saveModal">upload</button>
+					<button type="button" class="btn btn-default btn-lg" onclick="screenshot()"
+						data-toggle="modal" data-target="#saveModal">upload</button>
 				</div>
 
 				<div id="showCost">
+
+					<button type="button" class="btn btn-info btn-lg"
+						onclick="cameraPos()">aa</button>
+
 					<button type="button" class="btn btn-info btn-lg">preview</button>
 					<button type="button" class="btn btn-default btn-lg" id="totalCost">0</button>
 				</div>
@@ -235,9 +244,7 @@ input {
 						<input type="image" class="baseImage" onclick="createEntity('a')"
 							src="../img/a.gif">
 					</div>
-					<br>
-					
-					<br>
+					<br> <br>
 					<div id="baseButton">
 						<input type="image" class="baseImage" onclick="createEntity('b')"
 							src="../img/b.gif">
@@ -249,8 +256,8 @@ input {
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage" onclick="createEntity('a')"
-							src="../img/d.gif">
+						<input type="image" class="baseImage"
+							onclick="createEntity('test')" src="../img/d.gif">
 					</div>
 					<br>
 					<div id="baseButton">
@@ -297,11 +304,50 @@ input {
 						</select>
 					</div>
 
+
+					<fieldset id="controls">
+						<legend>Circle</legend>
+						<div class="control">
+							WrapS : <select onchange="setwrapS(this)">
+								<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
+								<option value="RepeatWrapping" selected>RepeatWrapping</option>
+								<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
+							</select>
+						</div>
+						<div class="control">
+							WrapT : <select onchange="setwrapT(this)">
+								<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
+								<option value="RepeatWrapping" selected>RepeatWrapping</option>
+								<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
+							</select>
+						</div>
+						<div class="control">
+							매핑 : <select onchange="setFabric(this)">
+								<option value="../img/fab1.jpg" selected>1</option>
+								<option value="../img/fab2.jpg">2</option>
+								<option value="../img/fab3.jpg">3</option>
+								<option value="../img/fab4.jpg">4</option>
+								<option value="../img/fab5.jpg">5</option>
+							</select>
+						</div>
+						<div class="control">
+							Offset : X <input type="number" value="0" step="0.05"
+								onchange="setOffsetU(this)" /> Y <input type="number" value="0"
+								step="0.05" onchange="setOffsetV(this)" /><br />
+						</div>
+						<div class="control">
+							Repeat : X <input type="number" value="1" step="0.1"
+								onchange="setRepeatU(this)" /> Y <input type="number" value="1"
+								step="0.1" onchange="setRepeatV(this)" />
+						</div>
+					</fieldset>
+
+
+
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/test2.gif" class="mb"
-								value="off">
+							<input type="image" src="../img/test2.gif" class="mb" value="off">
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
@@ -340,7 +386,7 @@ input {
 							<p class="mapCheck" style="display: none">0</p>
 						</div>
 					</div>
-					
+
 					<div class="outerButton">
 						<div class="mapButton">
 							<button class="useMapButton btn btn-default btn-circle">use</button>
@@ -359,9 +405,6 @@ input {
 		<!-- /#content -->
 
 
-		
-
-
 	</div>
 	<!-- /#all -->
 
@@ -373,6 +416,9 @@ input {
 
 	<script src="../js/three.js"></script>
 	<script src="../js/OBJLoader.js"></script>
+	<script src="../js/MTLLoader.js"></script>
+
+	<script src="../js/FBXLoader.js"></script>
 	<script src="../js/OrbitControls.js"></script>
 	<script src="../js/jquery-1.11.0.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
@@ -403,6 +449,8 @@ input {
 		var mode = 1;
 		var mapController;
 	
+		var texture=new THREE.Texture();
+		var texture2=new THREE.Texture();
 		var textureA = new THREE.Texture();
 		var textureB = new THREE.Texture();
 	
@@ -470,6 +518,7 @@ input {
 					}else{
 						$('#'+img).text='on';	
 					} */
+					
 					var loader = new THREE.ImageLoader();
 					loader.load(imageSrc, function(image) {
 						if (curMap == 1) {
@@ -544,7 +593,62 @@ input {
 	
 		init();
 		animateH();
-	
+		function setwrapS( that ) {
+
+			texture.wrapS = THREE[ that.value ];
+			texture.needsUpdate = true;
+
+		};
+
+		function setwrapT( that ) {
+
+			texture.wrapT = THREE[ that.value ];
+			texture.needsUpdate = true;
+
+		};
+		function setFabric( that ) {
+
+			console.log("c 2 : "+that.value);
+			
+			var loader = new THREE.ImageLoader();
+			loader.load(that.value, function(image) {
+			
+					texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
+
+					texture.image = image;
+					//texture.offset.set(-0.23,-0.23);
+					texture.needsUpdate = true;
+				
+			});
+			
+			texture.needsUpdate = true;
+
+		};
+
+		function setOffsetU( that ) {
+
+			texture.offset.x = parseFloat( that.value );
+
+		};
+
+		function setOffsetV( that ) {
+
+			texture.offset.y = parseFloat( that.value );
+
+		};
+
+		function setRepeatU( that ) {
+
+			texture.repeat.x = parseFloat( that.value );
+
+		};
+
+		function setRepeatV( that ) {
+
+			texture.repeat.y = parseFloat( that.value );
+
+		};
+
 		function updateGUI() {
 			mapController.radius = radius[curMap - 1];
 			mapController.segments = segments[curMap - 1];
@@ -639,13 +743,38 @@ input {
 	
 				});
 			} else if (num == 'b') {
-				var loader = new THREE.OBJLoader();
-				loader.load('../models/model2.obj', function(object) {
+				
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/ang.png", function(image) {
+				
+						texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+
+						texture.image = image;
+						texture.wrapS = THREE.ClampToEdgeWrapping;
+						texture.wrapT = THREE.ClampToEdgeWrapping;
+						texture.offset.set(-3,-9.5);
+						texture.repeat.set(13,13);
+						texture.needsUpdate = true;
+					
+				}); 
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/fabric.jpg", function(image) {
+				
+						texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+						texture2.image = image;
+						//texture.offset.set(-0.23,-0.23);
+						texture2.needsUpdate = true;
+					
+				});
+		 		var loader = new THREE.OBJLoader();
+				loader.load('../models/ab.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							//	child.material.map = texture;
+							
+							child.material.map = texture;
+							
 						}
 	
 					});
@@ -654,41 +783,70 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
+				 
+				/* var loader = new THREE.FBXLoader();
+				loader.load( '../models/b.FBX', function( object ) {
+
+					object.traverse( function( child ) {
+
+						if ( child instanceof THREE.Mesh ) {
+
+							// pass
+							child.material.map = texture;
+							child.material.bumpMap=texture2;
+
+						}
+
+					} );
+					object.name = "object";
+					object.position.y = 0;
+					scene.add( object );
+
+
+				}); */
 			} else if (num == 'c') {
-				var loader = new THREE.OBJLoader();
-				loader.load('../models/test2.obj', function(object) {
+				/* var loader = new THREE.ImageLoader();
+				loader.load("../img/cc.jpg", function(image) {
+				
+						texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
+
+						texture.image = image;
+					 	texture.repeat.set(1.5, 1.5);
+						texture.offset.set(-0.23,-0.23); 
+						texture.wrapS = THREE.ClampToEdgeWrapping;
+						texture.wrapT = THREE.ClampToEdgeWrapping;
+						texture.needsUpdate = true;
+					
+				}); */
+				
+				var loader = new THREE.FBXLoader();
+				loader.load('../models/maptest.FBX', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							//	child.material.map = texture;
+
+							//child.material.map = texture;
+							
 						}
 	
 					});
 	
 					object.name = "object";
-					object.position.y = 0;
+					object.position.y = 0;		
 					scene.add(object);
 				});
 			} else if (num = 'test') {
 	
-				imageFile = "../img/pattern.png";
-				var loader = new THREE.ImageLoader();
-				loader.load(imageFile, function(image) {
-					texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
-					texture.image = image;
-	
-					texture.needsUpdate = true;
-	
-				});
-	
 				var loader = new THREE.OBJLoader();
-				loader.load('../models/ee.obj', function(object) {
+				loader.load('../models/naga.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							//		child.material.map = texture;
+							
+							child.material.map = texture;
+							
 						}
 	
 					});
@@ -697,6 +855,24 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
+				
+			 	loader = new THREE.OBJLoader();
+				loader.load('../models/nagb.obj', function(object) {
+	
+					object.traverse(function(child) {
+	
+						if (child instanceof THREE.Mesh) {
+							
+							child.material.map = texture;
+							
+						}
+	
+					});
+	
+					object.name = "object2";
+					object.position.y = 0;
+					scene.add(object);
+				}); 
 	
 			}
 		}
@@ -706,13 +882,85 @@ input {
 			var selectedObject = scene.getObjectByName("object");
 			scene.remove(selectedObject);
 		}
+		var strDownloadMime = "image/octet-stream";
+		function screenshot() {
+			camera.position.set(0,0,30);
+			animateH();
+	        var imgData, imgNode;
+
+	        try {
+	            var strMime = "image/jpeg";
+	            
+
+	            var myImage = document.getElementById('myImage');
+	            
+	           
+	            myImage.src = renderer.domElement.toDataURL(strMime);
+
+				camera.position.set(0,0,-30);
+				animateH();
+
+	            var myImage2 = document.getElementById('myImage2');
+	            
+		           
+	            myImage2.src = renderer.domElement.toDataURL(strMime);
+				
+	            
+/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
+
+	        } catch (e) {
+	            console.log(e);
+	            return;
+	        }
+
+	    }
+		function screenshot2() {
+			
+			console.log("shot");
+	        var imgData, imgNode;
+
+	        try {
+	            var strMime = "image/jpeg";
+	            
+
+	            var myImage = document.getElementById('myImage2');
+	            
+	            camera.position.z=-30;
+				camera.position.x = 0;
+				camera.position.y = 0;
+	            myImage2.src = renderer.domElement.toDataURL(strMime);
+	            
+/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
+
+	        } catch (e) {
+	            console.log(e);
+	            return;
+	        }
+	       
+
+	    }
+	    var saveFile = function (strData, filename) {
+	        var link = document.createElement('a');
+	        if (typeof link.download === 'string') {
+	            document.body.appendChild(link); //Firefox requires the link to be in the body
+	            link.download = filename;
+	            link.href = strData;
+	            link.click();
+	            document.body.removeChild(link); //remove the link when done
+	        } else {
+	            location.replace(uri);
+	        }
+	    }
+	    
 		//init
 		function init() {
 			scene = new THREE.Scene();
 			var canvas = document.getElementById('hCanvas');
-	
+			
 			renderer = new THREE.WebGLRenderer({
-				canvas : canvas
+				
+				canvas : canvas,
+				 preserveDrawingBuffer: true
 			});
 	
 			renderer.setPixelRatio(window.devicePixelRatio);
@@ -769,6 +1017,7 @@ input {
 			camera.position.z = 15;
 			camera.position.x = 0;
 			camera.position.y = 0;
+			
 			controls = new THREE.OrbitControls(camera, renderer.domElement);
 	
 			//controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
@@ -914,7 +1163,13 @@ input {
 		
 	
 		}
-	
+
+		function cameraPos(){
+			
+			console.log("x : "+camera.position.x +"y : "+camera.position.y +"z : "+camera.position.z);
+			
+		}
+		
 		function animateH() {
 			requestAnimationFrame(animateH);
 	

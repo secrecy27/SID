@@ -25,17 +25,22 @@ public class CWriteDAO {
 
 		public int insertImage(CWriteVO cVo) {
 			int result = -1;
-			String sql = "insert into cwrite(imageUrl,cost) VALUES(?,?)";
+			String sql = "insert into cwrite(imageUrl,cost,hashtag) VALUES(?,?,?)";
 			Connection conn = null;
 			PreparedStatement pstmt = null;
+			ResultSet rst=null;
 			try {
 				conn = JDBCUtil.getConnection();
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setString(1, cVo.getImageUrl());
 				pstmt.setInt(2, cVo.getCost());
+				pstmt.setString(3, cVo.getHashtag());
 
-				result = pstmt.executeUpdate();
+				rst = pstmt.getGeneratedKeys();
+				String autoInsertedKey = (rst.next()) ? rst.getString(1) : null;
+
+				result = Integer.parseInt(autoInsertedKey);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -115,13 +120,11 @@ public class CWriteDAO {
 				stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, num);
 				rst = stmt.executeQuery();
-				System.out.println("c readhashtag" + num);
 
 				while (rst.next()) {
 					hVo=new HashtagVO();
 					hVo.setHashtag(rst.getString("hashtag"));
 					list.add(hVo);
-					System.out.println(rst.getString("hashtag"));
 				}
 
 			} catch (SQLException e) {
@@ -137,7 +140,7 @@ public class CWriteDAO {
 			 
 				ArrayList<CWriteVO> list = new ArrayList<CWriteVO>();
 				String sql="select * from cwrite order by indate desc";
-				 
+				String str="";
 				Connection conn = null;
 				PreparedStatement stmt = null;
 				ResultSet rst = null;
@@ -151,6 +154,14 @@ public class CWriteDAO {
 						vo.setcWriteId(rst.getInt("cWriteId"));
 						vo.setImageUrl(rst.getString("imageUrl"));
 						vo.setCost(rst.getInt("cost"));
+						try {
+							str=rst.getString("hashtag");
+							str=str.replace(",", " #");
+							str="#"+str;
+						} catch (Exception e) {
+							
+						}
+						vo.setHashtag(str);
 						list.add(vo);
 					}
 				}catch(SQLException e){

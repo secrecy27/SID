@@ -38,13 +38,10 @@ public class AdminApageWriteAction implements Action{
 	
 	AWriteDAO aDao=AWriteDAO.getInstance();
 	
-	int result=aDao.insertImage(aVO);
-	if (result > 0) {
-		System.out.println("a write success");
-	} else {
-		System.out.println("a write fail");
-	}
 	String str = (String) multi.getParameter("hashtag");
+	aVO.setHashtag(str);
+	int result=aDao.insertImage(aVO);
+	
 	String[] arr=str.split(",");
 	aDao.insertHashtag(result, arr);
 	
