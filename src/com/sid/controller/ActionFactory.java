@@ -1,7 +1,5 @@
 package com.sid.controller;
 
-import com.sid.controller.action.AdminApageList;
-import com.sid.controller.action.AdminApageWrite;
 import com.sid.controller.action.AdminIndexAction;
 import com.sid.controller.action.AdminLoginAction;
 import com.sid.controller.action.AdminLogoutAction;
@@ -17,18 +15,10 @@ import com.sid.controller.action.AdminProductWriteFormAction;
 import com.sid.controller.action.AdminQnaDetailAction;
 import com.sid.controller.action.AdminQnaListAction;
 import com.sid.controller.action.AdminQnaResaveAction;
-import com.sid.controller.action.BItemToCartAction;
-import com.sid.controller.action.BWriteAction;
-import com.sid.controller.action.BpageListAction;
-import com.sid.controller.action.BpageReadAction;
 import com.sid.controller.action.CartDeleteAction;
 import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.CartListAction;
 import com.sid.controller.action.ContractAction;
-import com.sid.controller.action.DWriteAction;
-import com.sid.controller.action.DitemSuggestAction;
-import com.sid.controller.action.DpageListAction;
-import com.sid.controller.action.DpageReadAction;
 import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
@@ -57,6 +47,20 @@ import com.sid.controller.action.designer.Designer_All_Action;
 import com.sid.controller.action.designer.Designer_Bplan_Action;
 import com.sid.controller.action.designer.Designer_Cplan_Action;
 import com.sid.controller.action.designer.Designer_Dplan_Action;
+import com.sid.controller.apage.AdminApageListAction;
+import com.sid.controller.apage.AdminApageWriteAction;
+import com.sid.controller.apage.ApageReadAction;
+import com.sid.controller.bpage.BItemToCartAction;
+import com.sid.controller.bpage.BWriteAction;
+import com.sid.controller.bpage.BpageListAction;
+import com.sid.controller.bpage.BpageReadAction;
+import com.sid.controller.cpage.CpageListAction;
+import com.sid.controller.cpage.CpageReadAction;
+import com.sid.controller.cpage.CpageWriteAction;
+import com.sid.controller.dpage.DWriteAction;
+import com.sid.controller.dpage.DitemSuggestAction;
+import com.sid.controller.dpage.DpageListAction;
+import com.sid.controller.dpage.DpageReadAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -139,24 +143,14 @@ public class ActionFactory {
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
 		
-		} else if(command.equals("admin_apage_write")){
-			action=new AdminApageWrite();
-		} else if(command.equals("admin_apage_list")){
-			action=new AdminApageList();
-		
 			
-		}else if(command.equals("dWrite")){
-			action=new DWriteAction();
-		}else if(command.equals("ditem_suggest")){
-			action=new DitemSuggestAction();
-		}else if(command.equals("list_dpage")){
-			action=new DpageListAction();
-		}else if(command.equals("read_dpage")){
-			action=new DpageReadAction();
-		}else if(command.equals("hpage")){
-			action=new DpageReadAction();
-		}else if(command.equals("login")){
-			action=new LoginAction();
+		} else if(command.equals("admin_apage_write")){
+			action=new AdminApageWriteAction();
+		} else if(command.equals("admin_apage_list")){
+			action=new AdminApageListAction();
+		} else if(command.equals("read_apage")){
+			action=new ApageReadAction();
+		//a페이지
 			
 		}else if(command.equals("bWrite")){
 			action=new BWriteAction();
@@ -166,7 +160,33 @@ public class ActionFactory {
 			action=new BpageListAction();
 		}else if(command.equals("read_bpage")){
 			action=new BpageReadAction();
-	
+		//b페이지
+			
+		}else if(command.equals("cpage_write")){
+			action=new CpageWriteAction();
+		}else if(command.equals("cpage_list")){
+			action=new CpageListAction();
+		}else if(command.equals("read_cpage")){
+			action=new CpageReadAction();
+		//c페이지
+			
+		}else if(command.equals("dWrite")){
+			action=new DWriteAction();
+		}else if(command.equals("ditem_suggest")){
+			action=new DitemSuggestAction();
+		}else if(command.equals("list_dpage")){
+			action=new DpageListAction();
+		}else if(command.equals("read_dpage")){
+			action=new DpageReadAction();
+		//d페이지
+			
+		}else if(command.equals("hpage")){
+			action=new DpageReadAction();
+			
+			
+		}else if(command.equals("login")){
+			action=new LoginAction();
+			
 		}else if(command.equals("customer_all")){
 			action=new Customer_All_Action();
 		}else if(command.equals("customer_dplan")){
@@ -192,11 +212,13 @@ public class ActionFactory {
 		}else if(command.equals("customer_lpocket_list")){
 			action=new ListLPocketAction();
 		//주머니관리
+			
 		}else if(command.equals("customer_accountchange")){
 			action=new Customer_Accountchange_Action();
 		}else if(command.equals("logout")){
 			action=new LogoutAction();
 		//구매자 관리 페이지 
+			
 		}else if(command.equals("designer_all")){
 			action=new Designer_All_Action();
 		}else if(command.equals("designer_bplan")){

@@ -191,7 +191,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown yamm-fw"><a
 						href="../BoardServlet?command=board_list">INFO</a></li>
-					<li class="dropdown yamm-fw"><a href="../member/Cpage.jsp"
+					<li class="dropdown yamm-fw"><a href="../SidServlet?command=cpage_list"
 						class="dropdown-toggle">Cpage</a></li>
 					<li class="dropdown yamm-fw"><a
 						href="../SidServlet?command=list_bpage" class="dropdown-toggle">Bpage</b></a></li>

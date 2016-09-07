@@ -1,4 +1,4 @@
-package com.sid.controller.action;
+package com.sid.controller.bpage;
 
 import java.io.IOException;
 import java.util.ArrayList;

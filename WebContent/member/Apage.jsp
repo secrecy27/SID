@@ -192,17 +192,20 @@
 					</div>
 					<div class="row products">
 						<c:forEach items="${list}" var="apage">
-							<div class="col-md-4 col-sm-6">
+							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
 										<div class="flipper">
-											<a href="#"> <img src="${apage.imageUrl }" alt=""
+											<a
+												href="../SidServlet?command=read_apage&num=${apage.aWriteId }">
+												<img src="${apage.imageUrl }" id="imageFile"
+												style="max-width: 100%; width: 100%; height: 150px"
 												class="img-responsive">
 											</a>
 										</div>
 										<div class="text">
 											<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-											<p class="price">${apage.cost} 원</p>
+											<p class="price">${apage.cost}원</p>
 											<p class="buttons">
 												<a href="basket.jsp" class="btn btn-primary"><i
 													class="fa fa-shopping-cart"></i>담기</a>

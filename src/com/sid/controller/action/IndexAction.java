@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sid.controller.Action;
 import com.sid.dao.AWriteDAO;
-import com.sid.dao.ProductDAO;
+import com.sid.dao.CWriteDAO;
 import com.sid.dto.AWriteVO;
-import com.sid.dto.ProductVO;
+import com.sid.dto.CWriteVO;
 
 public class IndexAction implements Action {
 	@Override
@@ -21,10 +21,13 @@ public class IndexAction implements Action {
 		String url = "/member/index.jsp";
 
 		AWriteDAO aDao = AWriteDAO.getInstance();
-		ArrayList<AWriteVO> list = aDao.listAll();
-		request.setAttribute("list", list);
+		ArrayList<AWriteVO> alist = aDao.listAll();
+		request.setAttribute("alist", alist);
 		//인기페이지-a페이지
-		System.out.println("ffd");
+		CWriteDAO cDao = CWriteDAO.getInstance();
+		ArrayList<CWriteVO> clist = cDao.listAll();
+		request.setAttribute("clist", clist);
+		//인기페이지-c페이지
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

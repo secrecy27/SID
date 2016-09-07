@@ -1,12 +1,15 @@
-<%@ page import="com.sid.dao.DPageDAO"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="com.sid.dto.DWriteVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <style>
 .zoomImg {
 	max-width: 100%;
@@ -22,7 +25,7 @@
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li>B-item</li>
+						<li>A-item</li>
 					</ul>
 				</div>
 				<div class="col-md-12">
@@ -31,7 +34,7 @@
 						<div class="col-sm-6">
 							<div class="box">
 								<div id="mainImage">
-									<img id="image" name="imageUrl" src="${bpage.imageUrl}"
+									<img id="image" name="imageUrl" src="${apage.imageUrl}"
 										style="width: 100%; max-width: 100%;" />
 								</div>
 							</div>
@@ -53,9 +56,11 @@
 									<div class="form-group row">
 
 										<label class="col-sm-10 control-label">저작료</label> <label
-											class="col-sm-10 control-label">${bpage.cost}원</label>
+											class="col-sm-10 control-label">${apage.cost}원</label>
 									</div>
 								</ul>
+
+
 
 								<ul class="breadcrumb">
 									<div class="form-group row">
@@ -64,20 +69,21 @@
 												<i class="fa fa-file-text-o"></i>포트폴리오
 											</button>
 										</p>
-										<p>디자이너 이메일 ${designer.email}</p>
+										<p>디자이너 이메일</p>
 									</div>
 								</ul>
 								<p class="text-center buttons">
-							<button type="button" id="tocart"onclick="toCart()" class="btn btn-primary">
-								<i class="fa fa glyphicon-plus"></i>&nbsp담기
-							</button>
-						</p>
+									<button type="button" id="tocart" onclick="toCart()"
+										class="btn btn-primary">
+										<i class="fa fa glyphicon-plus"></i>&nbsp담기
+									</button>
+								</p>
 							</div>
-							
+
 						</div>
 
-						
-						
+
+
 					</div>
 
 
@@ -93,34 +99,27 @@
 		</div>
 	</div>
 
-	<!-- /#all -->
-	<!-- *** SCRIPTS TO INCLUDE ***
- _________________________________________________________ -->
-	<%@ include file="../include/footer.jsp"%>
 </body>
 <script>
-					 function toCart(){
-						  $.ajax({
-					        	type: "POST",
-					        	url:"../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${bpage.bWriteId}",							        	 	 
-						        success: function(result){
-						        	  	if(result==1){
-						        	  		alert("담기 성공")
-						        	  		$("#tocart").prop("disabled",true);
-						        	  	}else{
-						        	  		
-						        	  		alert("담기 실패 ( 이미 담긴 품목 )")
-						        	  	}
-						         },
-						         error:function(request,status,error){
-						             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-						        }
-						         
-							});
-						 
-						
-					 }
-						 	 
-					
-					</script>
+	function toCart() {
+		$.ajax({
+			type : "POST",
+			url : "../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${apage.aWriteId}",
+			success : function(result) {
+				if (result == 1) {
+					alert("담기 성공")
+					$("#tocart").prop("disabled", true);
+				} else {
+
+					alert("담기 실패 ( 이미 담긴 품목 )")
+				}
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+			}
+		});
+
+
+	}
+</script>
 </html>
