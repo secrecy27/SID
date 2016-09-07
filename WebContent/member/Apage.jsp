@@ -11,12 +11,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="robots" content="all,follow">
-<meta name="googlebot" content="index,follow,snippet,archive">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Obaju e-commerce template">
-<meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
-<meta name="keywords" content="">
 
 <title></title>
 
@@ -203,8 +197,14 @@
 												class="img-responsive">
 											</a>
 										</div>
+
+
+
+
+
+
 										<div class="text">
-											<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+											<a herf="#">${apage.hashtag }</a>
 											<p class="price">${apage.cost}원</p>
 											<p class="buttons">
 												<a href="basket.jsp" class="btn btn-primary"><i

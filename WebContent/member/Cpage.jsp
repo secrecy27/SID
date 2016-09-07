@@ -201,7 +201,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+											<a href="#">${cpage.hashtag }</a>
 											<p class="price">${cpage.cost}원</p>
 											<p class="buttons">
 												<a href="basket.jsp" class="btn btn-primary"><i

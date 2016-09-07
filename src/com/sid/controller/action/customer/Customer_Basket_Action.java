@@ -29,8 +29,8 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 		String email=(String)session.getAttribute("email");
 		mVo=mDao.getAddress(email);
 		
-		HPageDAO hDao=HPageDAO.getInstance();
-		ArrayList<HPageVO> list=hDao.listAll();
+	//	HPageDAO hDao=HPageDAO.getInstance();
+	//	ArrayList<HPageVO> list=hDao.listAll();
 		
 		
 		System.out.println("email : "+email);
@@ -48,7 +48,7 @@ public void execute(HttpServletRequest request, HttpServletResponse response) th
 		request.setAttribute("totalPrice", totalPrice);
 		
 		request.setAttribute("address", mVo);
-		request.setAttribute("list", list);
+	//	request.setAttribute("list", list);
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 }

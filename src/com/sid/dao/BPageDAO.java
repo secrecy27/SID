@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Statement;
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.BWriteVO;
-import com.sid.dto.DWriteVO;
 import com.sid.dto.HashtagVO;
 
 public class BPageDAO {
@@ -163,7 +161,6 @@ public class BPageDAO {
 		ResultSet rst = null;
 		HashtagVO hVo = null;
 		ArrayList<HashtagVO> list = new ArrayList<HashtagVO>();
-		System.out.println("b readhashtag" + num);
 
 		try {
 			conn = JDBCUtil.getConnection();
@@ -185,7 +182,6 @@ public class BPageDAO {
 
 		return list;
 	}
-
 	public ArrayList<BWriteVO> listAll() {
 
 		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();
@@ -223,5 +219,4 @@ public class BPageDAO {
 		}
 		return list;
 	}
-
 }

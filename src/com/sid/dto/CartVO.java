@@ -9,7 +9,30 @@ public class CartVO {
 	private int quantity;
 	private int price;
 	private Timestamp indate;
+	private int aWriteId;
+	private int cWriteId;
+	private int hWriteId;
 	
+	
+	
+	public int getaWriteId() {
+		return aWriteId;
+	}
+	public void setaWriteId(int aWriteId) {
+		this.aWriteId = aWriteId;
+	}
+	public int getcWriteId() {
+		return cWriteId;
+	}
+	public void setcWriteId(int cWriteId) {
+		this.cWriteId = cWriteId;
+	}
+	public int gethWriteId() {
+		return hWriteId;
+	}
+	public void sethWriteId(int hWriteId) {
+		this.hWriteId = hWriteId;
+	}
 	public int getCseq() {
 		return cseq;
 	}

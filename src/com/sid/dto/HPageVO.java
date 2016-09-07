@@ -75,5 +75,4 @@ public class HPageVO {
 		this.img2Repeat = img2Repeat;
 	}
 	
-	
 }

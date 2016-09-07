@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sid.controller.Action;
 import com.sid.dao.AWriteDAO;
+import com.sid.dao.BPageDAO;
 import com.sid.dao.CWriteDAO;
 import com.sid.dto.AWriteVO;
+import com.sid.dto.BWriteVO;
 import com.sid.dto.CWriteVO;
 
 public class IndexAction implements Action {
@@ -24,6 +26,12 @@ public class IndexAction implements Action {
 		ArrayList<AWriteVO> alist = aDao.listAll();
 		request.setAttribute("alist", alist);
 		//인기페이지-a페이지
+		
+		BPageDAO bDao = BPageDAO.getInstance();
+		ArrayList<BWriteVO> blist = bDao.listAll();
+		request.setAttribute("blist",blist);
+		//인기페이지-b페이지
+		
 		CWriteDAO cDao = CWriteDAO.getInstance();
 		ArrayList<CWriteVO> clist = cDao.listAll();
 		request.setAttribute("clist", clist);

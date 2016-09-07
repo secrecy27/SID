@@ -27,16 +27,18 @@ public class BpageReadAction implements Action{
 			MemberDAO mdao=MemberDAO.getInstance();
 		 	
 		 	ArrayList<HashtagVO> list=new ArrayList<>();
-					 	
 		 	bVo=dao.readItem(Integer.parseInt(request.getParameter("num")));
 		 	list=dao.readHashtag(Integer.parseInt(request.getParameter("num")));
+		 	
 		 	System.out.println("getUserEmail! : "+bVo.getUserEmail());
 		 	mVo=mdao.getMember(bVo.getUserEmail());
 			request.setAttribute("bpage", bVo);
 			request.setAttribute("hashtag", list);
 			request.setAttribute("designer", mVo);
 			System.out.println("email : "+mVo.getEmail());
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
+			
 	}
 }
