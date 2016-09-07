@@ -152,7 +152,6 @@ public class BPageDAO {
 			JDBCUtil.close(ps, conn);
 		}
 		
-		
 		System.out.println("addtocart result : "+result);
 		
 		return result;
