@@ -26,7 +26,7 @@ public class BPageDAO {
 	public int insertImage(BWriteVO bVo) {
 		int result = -1;
 
-		String sql = "INSERT INTO bwrite(imageUrl, cost, expl,userEmail) VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO bwrite(imageUrl, cost, expl,userEmail,hashtag) VALUES(?, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rst = null;
@@ -38,6 +38,7 @@ public class BPageDAO {
 			pstmt.setInt(2, bVo.getCost());
 			pstmt.setString(3, bVo.getExpl());
 			pstmt.setString(4, bVo.getUserEmail());
+			pstmt.setString(5, bVo.getHashtag());
 
 			int rownum = pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
@@ -58,20 +59,19 @@ public class BPageDAO {
 		String sql = "INSERT INTO hashtag(bWriteId, hashtag) VALUES(?,?)";
 		Connection conn = null;
 		conn = JDBCUtil.getConnection();
-		PreparedStatement ps=null;
-			
+		PreparedStatement ps = null;
+
 		try {
-			ps=conn.prepareStatement(sql);
-			
-			
-			for (int i=0;i<hashtag.length;i++) {
+			ps = conn.prepareStatement(sql);
+
+			for (int i = 0; i < hashtag.length; i++) {
 
 				ps.setInt(1, id);
 				ps.setString(2, hashtag[i]);
 				ps.addBatch();
 			}
 			ps.executeBatch();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -103,66 +103,66 @@ public class BPageDAO {
 				vo.setExpl(rst.getString("expl"));
 				vo.setUserEmail(rst.getString("userEmail"));
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("b read item error : " + e);
 		} finally {
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		
-	
-	
+
 		return vo;
 	}
-	public int addToCart(String email,int id){
+
+	public int addToCart(String email, int id) {
 		int result = -1;
-		String sql="SELECT pocketId FROM rpocket where email=?";
+		String sql = "SELECT pocketId FROM rpocket where email=?";
 		Connection conn = null;
 		conn = JDBCUtil.getConnection();
-		PreparedStatement ps=null;
-		ResultSet rst=null;
-		int pocketId=-1;
+		PreparedStatement ps = null;
+		ResultSet rst = null;
+		int pocketId = -1;
 		try {
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, email);
-			rst=ps.executeQuery();
-			
-			if(rst.next()){
-				pocketId=rst.getInt("pocketId");
+			rst = ps.executeQuery();
+
+			if (rst.next()) {
+				pocketId = rst.getInt("pocketId");
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(ps, conn);
 		}
-		
-		sql= "INSERT INTO rpocket2(pocketId, bwriteId) VALUES(?,?)";
+
+		sql = "INSERT INTO rpocket2(pocketId, bwriteId) VALUES(?,?)";
 		conn = JDBCUtil.getConnection();
 		try {
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setInt(1, pocketId);
 			ps.setInt(2, id);
 
 			result = ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(ps, conn);
 		}
-		
-		System.out.println("addtocart result : "+result);
-		
+
+		System.out.println("addtocart result : " + result);
+
 		return result;
 	}
+
 	public ArrayList<HashtagVO> readHashtag(int num) {
 		String sql = "select * from hashtag where bWriteId=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
-		HashtagVO hVo=null;
-		ArrayList<HashtagVO> list=new ArrayList<HashtagVO>();
+		HashtagVO hVo = null;
+		ArrayList<HashtagVO> list = new ArrayList<HashtagVO>();
 		System.out.println("b readhashtag" + num);
 
 		try {
@@ -172,7 +172,7 @@ public class BPageDAO {
 			rst = stmt.executeQuery();
 
 			while (rst.next()) {
-				hVo=new HashtagVO();
+				hVo = new HashtagVO();
 				hVo.setHashtag(rst.getString("hashtag"));
 				list.add(hVo);
 			}
@@ -182,15 +182,15 @@ public class BPageDAO {
 		} finally {
 			JDBCUtil.close(rst, stmt, conn);
 		}
-		
+
 		return list;
 	}
-	
+
 	public ArrayList<BWriteVO> listAll() {
 
 		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();
 		String sql = "select * from bwrite order by postDate desc";
-
+		String str="";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -205,6 +205,15 @@ public class BPageDAO {
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
+				try {
+					str=rst.getString("hashtag");
+					str=str.replace(",", " #");
+					str="#"+str;
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+				vo.setHashtag(str);
 				list.add(vo);
 			}
 		} catch (SQLException e) {

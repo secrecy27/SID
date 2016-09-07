@@ -57,6 +57,7 @@ import com.sid.controller.bpage.BpageReadAction;
 import com.sid.controller.cpage.CpageListAction;
 import com.sid.controller.cpage.CpageReadAction;
 import com.sid.controller.cpage.CpageWriteAction;
+import com.sid.controller.cpage.HpageUploadAction;
 import com.sid.controller.dpage.DWriteAction;
 import com.sid.controller.dpage.DitemSuggestAction;
 import com.sid.controller.dpage.DpageListAction;
@@ -168,6 +169,8 @@ public class ActionFactory {
 			action=new CpageListAction();
 		}else if(command.equals("read_cpage")){
 			action=new CpageReadAction();
+		}else if(command.equals("hpage_upload")){
+			action=new HpageUploadAction();
 		//c페이지
 			
 		}else if(command.equals("dWrite")){

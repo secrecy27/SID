@@ -19,7 +19,7 @@
 
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
-						<%if(session.getAttribute("email")!=null&&session.getAttribute("admin").equals(1)||session.getAttribute("admin").equals(2)){ %>
+						<%if(session.getAttribute("email")!=null&&(session.getAttribute("admin").equals(1))){ %>
 						<a href="member/Bwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
 							
@@ -35,7 +35,8 @@
 					</ul>
 
 					<div class="dContainer">
-						<div class="row products">
+						<div class="row products">	
+					
 							<c:forEach items="${list}" var="bpage">
 								<!-- a href 버튼 -->
 								<div class="col-md-2 col-sm-6">
@@ -49,10 +50,9 @@
 											</a>
 
 										</div>
-
-										<div><c:forEach items="${hlist}" var="hlist">
-											<p>#${hlist.hashtag }</p>
-											</c:forEach>
+										<div>
+											<h5>${bpage.hashtag}</h5>
+											
 										</div>
 										<div class="text">
 											<p> ${bpage.cost} 원</p>

@@ -22,20 +22,8 @@ public class BpageListAction implements Action {
 		 	BPageDAO dao=BPageDAO.getInstance();
 		 	BWriteVO vo=new BWriteVO();
 			ArrayList<BWriteVO> list = dao.listAll();
-			ArrayList<HashtagVO> hlist=new ArrayList<>(); //bwriteid, hashtag
 			
-			/*hlist=dao.readAllHashtag();
-			for(int i=0; i<list.size(); i++){
-				for(int j=0; j<hlist.size(); j++){
-				if(list.get(i).getbWriteId()==hlist.get(j).getbWriteId()){
-					for(int k=0;)
-				}
-			}
-			}
-			*/
-
 			request.setAttribute("list", list);
-			request.setAttribute("hashtag", hlist);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 	}
