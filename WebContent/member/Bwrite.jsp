@@ -18,8 +18,6 @@ ul#hashtag li:before {
 }
 </style>
 
-<link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <body>
 	<div id="all">
 		<div id="content">

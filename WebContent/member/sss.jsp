@@ -186,16 +186,21 @@ input {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">upload</h4>
 				</div>
-				<div class="modal-body">
-					<p>업로드 화면으로 이동합니다</p>
-					
-			<img id="myImage" style="width: 350px;" src=""><br>
-			<img id="myImage2" style="width: 350px;" src="">
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-Info" data-dismiss="modal">페이지 이동</button>
-				</div>
+				<form action="Hupload.jsp" method="post" name='frm'>
+					<div class="modal-body">
+						<p>업로드 화면으로 이동합니다</p>
+											
+						<input id="uploadCost" style="display:none" name="cost">
+						<input id="input1" style="display:none" name="imageSrc1">
+						<input id="input2" style="display:none" name="imageSrc2">
+						<input id="input3" style="display:none" name="imageSrc3">
+						<input id="input4" style="display:none" name="imageSrc4">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">페이지 이동</button>
+					</div>
+					</form>
 			</div>
 		</div>
 	</div>
@@ -218,8 +223,9 @@ input {
 					<button type="button" class="btn btn-primary btn-lg"
 						data-toggle="modal" data-target="#loadModal">담기</button>
 
-					<button type="button" class="btn btn-default btn-lg" onclick="screenshot()"
-						data-toggle="modal" data-target="#saveModal">upload</button>
+					<button type="button" class="btn btn-default btn-lg"
+						onclick="screenshot()" data-toggle="modal"
+						data-target="#saveModal">upload</button>
 				</div>
 
 				<div id="showCost">
@@ -449,8 +455,8 @@ input {
 		var mode = 1;
 		var mapController;
 	
-		var texture=new THREE.Texture();
-		var texture2=new THREE.Texture();
+		var texture = new THREE.Texture();
+		var texture2 = new THREE.Texture();
 		var textureA = new THREE.Texture();
 		var textureB = new THREE.Texture();
 	
@@ -518,7 +524,7 @@ input {
 					}else{
 						$('#'+img).text='on';	
 					} */
-					
+	
 					var loader = new THREE.ImageLoader();
 					loader.load(imageSrc, function(image) {
 						if (curMap == 1) {
@@ -527,7 +533,7 @@ input {
 	
 							textureA.image = image;
 							textureA.repeat.set(1.5, 1.5);
-							textureA.offset.set(-0.23,-0.23);
+							textureA.offset.set(-0.23, -0.23);
 							textureA.needsUpdate = true;
 						} else {
 							textureB.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
@@ -542,7 +548,7 @@ input {
 					input.val("on");
 	
 					maxMap++;
-					
+	
 					plusCost(3500);
 	
 				} else if (input.val() == "on") { //지우기
@@ -593,62 +599,62 @@ input {
 	
 		init();
 		animateH();
-		function setwrapS( that ) {
-
-			texture.wrapS = THREE[ that.value ];
+		function setwrapS(that) {
+			texture.wrapS = THREE[that.value];
 			texture.needsUpdate = true;
-
-		};
-
-		function setwrapT( that ) {
-
-			texture.wrapT = THREE[ that.value ];
+	
+		}
+		;
+	
+		function setwrapT(that) {
+			texture.wrapT = THREE[that.value];
 			texture.needsUpdate = true;
-
-		};
-		function setFabric( that ) {
-
-			console.log("c 2 : "+that.value);
-			
+	
+		}
+		;
+		function setFabric(that) {
+			console.log("c 2 : " + that.value);
+	
 			var loader = new THREE.ImageLoader();
 			loader.load(that.value, function(image) {
-			
-					texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
-
-					texture.image = image;
-					//texture.offset.set(-0.23,-0.23);
-					texture.needsUpdate = true;
-				
+	
+				texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
+	
+				texture.image = image;
+				//texture.offset.set(-0.23,-0.23);
+				texture.needsUpdate = true;
+	
 			});
-			
+	
 			texture.needsUpdate = true;
-
-		};
-
-		function setOffsetU( that ) {
-
-			texture.offset.x = parseFloat( that.value );
-
-		};
-
-		function setOffsetV( that ) {
-
-			texture.offset.y = parseFloat( that.value );
-
-		};
-
-		function setRepeatU( that ) {
-
-			texture.repeat.x = parseFloat( that.value );
-
-		};
-
-		function setRepeatV( that ) {
-
-			texture.repeat.y = parseFloat( that.value );
-
-		};
-
+	
+		}
+		;
+	
+		function setOffsetU(that) {
+			texture.offset.x = parseFloat(that.value);
+	
+		}
+		;
+	
+		function setOffsetV(that) {
+			texture.offset.y = parseFloat(that.value);
+	
+		}
+		;
+	
+		function setRepeatU(that) {
+			texture.repeat.x = parseFloat(that.value);
+	
+		}
+		;
+	
+		function setRepeatV(that) {
+			texture.repeat.y = parseFloat(that.value);
+	
+		}
+		;
+	
 		function updateGUI() {
 			mapController.radius = radius[curMap - 1];
 			mapController.segments = segments[curMap - 1];
@@ -672,16 +678,16 @@ input {
 				} else {
 	
 					planeA.position.z = -4.47;
-					planeA.scale.x=-1;
+					planeA.scale.x = -1;
 				}
-				
+	
 				planeA.position.x = geomX[curMap - 1];
 				planeA.position.y = geomY[curMap - 1];
 	
 				planeA.material.side = THREE.DoubleSide;
 				planeA.material.map = textureA;
-
-
+	
+	
 				planeA.name = "" + curMap - 1;
 	
 				//0903 texture flip x 
@@ -697,15 +703,15 @@ input {
 				} else {
 	
 					planeB.position.z = -4.47;
-					planeB.scale.x=-1;
+					planeB.scale.x = -1;
 				}
 				planeB.position.x = geomX[curMap - 1];
 				planeB.position.y = geomY[curMap - 1];
 	
 				planeB.material.side = THREE.DoubleSide;
 				planeB.material.map = textureB;
-				if(!fb[curMap-1]){
-					textureB.flipX=false;
+				if (!fb[curMap - 1]) {
+					textureB.flipX = false;
 				}
 				planeB.name = "" + curMap - 1;
 	
@@ -721,9 +727,9 @@ input {
 		//옷 생성
 		function createEntity(num) { // NUM 임의로 설정
 			clothCost(15000);
-
+	
 			removeEntity();
-			
+	
 			if (num == 'a') {
 	
 	
@@ -743,38 +749,38 @@ input {
 	
 				});
 			} else if (num == 'b') {
-				
+	
 				var loader = new THREE.ImageLoader();
 				loader.load("../img/ang.png", function(image) {
-				
-						texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-
-						texture.image = image;
-						texture.wrapS = THREE.ClampToEdgeWrapping;
-						texture.wrapT = THREE.ClampToEdgeWrapping;
-						texture.offset.set(-3,-9.5);
-						texture.repeat.set(13,13);
-						texture.needsUpdate = true;
-					
-				}); 
+	
+					texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+	
+					texture.image = image;
+					texture.wrapS = THREE.ClampToEdgeWrapping;
+					texture.wrapT = THREE.ClampToEdgeWrapping;
+					texture.offset.set(-3, -9.5);
+					texture.repeat.set(13, 13);
+					texture.needsUpdate = true;
+	
+				});
 				var loader = new THREE.ImageLoader();
 				loader.load("../img/fabric.jpg", function(image) {
-				
-						texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-						texture2.image = image;
-						//texture.offset.set(-0.23,-0.23);
-						texture2.needsUpdate = true;
-					
+	
+					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+					texture2.image = image;
+					//texture.offset.set(-0.23,-0.23);
+					texture2.needsUpdate = true;
+	
 				});
-		 		var loader = new THREE.OBJLoader();
+				var loader = new THREE.OBJLoader();
 				loader.load('../models/ab.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							
+	
 							child.material.map = texture;
-							
+	
 						}
 	
 					});
@@ -783,33 +789,33 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
-				 
-				/* var loader = new THREE.FBXLoader();
-				loader.load( '../models/b.FBX', function( object ) {
-
-					object.traverse( function( child ) {
-
-						if ( child instanceof THREE.Mesh ) {
-
-							// pass
-							child.material.map = texture;
-							child.material.bumpMap=texture2;
-
-						}
-
-					} );
-					object.name = "object";
-					object.position.y = 0;
-					scene.add( object );
-
-
-				}); */
+	
+			/* var loader = new THREE.FBXLoader();
+			loader.load( '../models/b.FBX', function( object ) {
+		
+				object.traverse( function( child ) {
+		
+					if ( child instanceof THREE.Mesh ) {
+		
+						// pass
+						child.material.map = texture;
+						child.material.bumpMap=texture2;
+		
+					}
+		
+				} );
+				object.name = "object";
+				object.position.y = 0;
+				scene.add( object );
+		
+		
+			}); */
 			} else if (num == 'c') {
 				/* var loader = new THREE.ImageLoader();
 				loader.load("../img/cc.jpg", function(image) {
 				
 						texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
-
+		
 						texture.image = image;
 					 	texture.repeat.set(1.5, 1.5);
 						texture.offset.set(-0.23,-0.23); 
@@ -818,22 +824,22 @@ input {
 						texture.needsUpdate = true;
 					
 				}); */
-				
+	
 				var loader = new THREE.FBXLoader();
 				loader.load('../models/maptest.FBX', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-
+	
 							//child.material.map = texture;
-							
+	
 						}
 	
 					});
 	
 					object.name = "object";
-					object.position.y = 0;		
+					object.position.y = 0;
 					scene.add(object);
 				});
 			} else if (num = 'test') {
@@ -844,9 +850,9 @@ input {
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							
+	
 							child.material.map = texture;
-							
+	
 						}
 	
 					});
@@ -855,16 +861,16 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
-				
-			 	loader = new THREE.OBJLoader();
+	
+				loader = new THREE.OBJLoader();
 				loader.load('../models/nagb.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							
+	
 							child.material.map = texture;
-							
+	
 						}
 	
 					});
@@ -872,7 +878,7 @@ input {
 					object.name = "object2";
 					object.position.y = 0;
 					scene.add(object);
-				}); 
+				});
 	
 			}
 		}
@@ -884,83 +890,104 @@ input {
 		}
 		var strDownloadMime = "image/octet-stream";
 		function screenshot() {
-			camera.position.set(0,0,30);
-			animateH();
-	        var imgData, imgNode;
-
-	        try {
-	            var strMime = "image/jpeg";
-	            
-
-	            var myImage = document.getElementById('myImage');
-	            
-	           
-	            myImage.src = renderer.domElement.toDataURL(strMime);
-
-				camera.position.set(0,0,-30);
-				animateH();
-
-	            var myImage2 = document.getElementById('myImage2');
-	            
-		           
-	            myImage2.src = renderer.domElement.toDataURL(strMime);
-				
-	            
-/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
-
-	        } catch (e) {
-	            console.log(e);
-	            return;
-	        }
-
-	    }
-		function screenshot2() {
 			
+			$("#uploadCost").val(cost);
+			
+			var imgData,
+				imgNode;
+	
+			try {
+				var strMime = "image/jpeg";
+	
+				camera.position.set(0, 0, 30);
+				animateH();
+				
+				var myImage = document.getElementById('myImage');
+				var a=renderer.domElement.toDataURL(strMime);
+				
+				$("#input1").val(a);
+				
+				camera.position.set(0, 0, -30);
+				animateH();
+	
+				myImage = document.getElementById('myImage2');
+	
+				a=renderer.domElement.toDataURL(strMime);
+				
+				$("#input2").val(a);
+				
+				camera.position.set(-30, 0, 0);
+				animateH();
+	
+				myImage = document.getElementById('myImage3');
+	
+				a=renderer.domElement.toDataURL(strMime);
+				
+				$("#input3").val(a);
+				
+				camera.position.set(30, 0, 0);
+				animateH();
+	
+				myImage = document.getElementById('myImage4');
+	
+				a=renderer.domElement.toDataURL(strMime);
+				
+				$("#input4").val(a);
+					
+				/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
+	
+			} catch (e) {
+				console.log(e);
+				return;
+			}
+	
+		}
+		function screenshot2() {
 			console.log("shot");
-	        var imgData, imgNode;
-
-	        try {
-	            var strMime = "image/jpeg";
-	            
-
-	            var myImage = document.getElementById('myImage2');
-	            
-	            camera.position.z=-30;
+			var imgData,
+				imgNode;
+	
+			try {
+				var strMime = "image/jpeg";
+	
+	
+				var myImage = document.getElementById('myImage2');
+	
+				camera.position.z = -30;
 				camera.position.x = 0;
 				camera.position.y = 0;
-	            myImage2.src = renderer.domElement.toDataURL(strMime);
-	            
-/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
-
-	        } catch (e) {
-	            console.log(e);
-	            return;
-	        }
-	       
-
-	    }
-	    var saveFile = function (strData, filename) {
-	        var link = document.createElement('a');
-	        if (typeof link.download === 'string') {
-	            document.body.appendChild(link); //Firefox requires the link to be in the body
-	            link.download = filename;
-	            link.href = strData;
-	            link.click();
-	            document.body.removeChild(link); //remove the link when done
-	        } else {
-	            location.replace(uri);
-	        }
-	    }
-	    
+				myImage2.src = renderer.domElement.toDataURL(strMime);
+	
+				/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
+	
+			} catch (e) {
+				console.log(e);
+				return;
+			}
+	
+	
+		}
+		var saveFile = function(strData, filename) {
+			var link = document.createElement('a');
+			if (typeof link.download === 'string') {
+				document.body.appendChild(link); //Firefox requires the link to be in the body
+				link.download = filename;
+				link.href = strData;
+				link.click();
+				document.body.removeChild(link); //remove the link when done
+			} else {
+				location.replace(uri);
+			}
+		}
+	
 		//init
 		function init() {
 			scene = new THREE.Scene();
 			var canvas = document.getElementById('hCanvas');
-			
+	
 			renderer = new THREE.WebGLRenderer({
-				
 				canvas : canvas,
-				 preserveDrawingBuffer: true
+				preserveDrawingBuffer : true
 			});
 	
 			renderer.setPixelRatio(window.devicePixelRatio);
@@ -1017,7 +1044,7 @@ input {
 			camera.position.z = 15;
 			camera.position.x = 0;
 			camera.position.y = 0;
-			
+	
 			controls = new THREE.OrbitControls(camera, renderer.domElement);
 	
 			//controls.addEventListener( 'change', render ); // add this only if there is no animation loop (requestAnimationFrame)
@@ -1141,8 +1168,8 @@ input {
 			element.style.top = y - 130 + 'px';
 			element.style.left = x + 20 + 'px';
 	
-			
-			
+	
+	
 			element = document.getElementById('barTwo');
 			element.style.top = y - 130 + 'px';
 			element.style.left = x2 + 5 + 'px';
@@ -1159,17 +1186,16 @@ input {
 			element.style.top = y2 - 200 + 'px';
 			element.style.left = x2 - 200 + 'px';
 			element = document.getElementById('hPageContainer');
-			element.style.height=y2-152+'px';
-		
+			element.style.height = y2 - 152 + 'px';
+	
 	
 		}
-
-		function cameraPos(){
-			
-			console.log("x : "+camera.position.x +"y : "+camera.position.y +"z : "+camera.position.z);
-			
+	
+		function cameraPos() {
+			console.log("x : " + camera.position.x + "y : " + camera.position.y + "z : " + camera.position.z);
+	
 		}
-		
+	
 		function animateH() {
 			requestAnimationFrame(animateH);
 	
@@ -1184,25 +1210,24 @@ input {
 			renderer.render(scene, camera);
 	
 		}
-		
-		var cost=0;
-		
-		function plusCost(num){
-			cost+=num;
+	
+		var cost = 0;
+	
+		function plusCost(num) {
+			cost += num;
 			$("#totalCost").text(cost);
-			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+			$("#totalCostModal").text("총 금액은 " + cost + " 원 입니다.");
 		}
-		function clothCost(num){
-			cost=num;
+		function clothCost(num) {
+			cost = num;
 			$("#totalCost").text(cost);
-			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+			$("#totalCostModal").text("총 금액은 " + cost + " 원 입니다.");
 		}
-		function minusCost(num){
-			cost-=num;
+		function minusCost(num) {
+			cost -= num;
 			$("#totalCost").text(cost);
-			$("#totalCostModal").text("총 금액은 "+cost+" 원 입니다.");
+			$("#totalCostModal").text("총 금액은 " + cost + " 원 입니다.");
 		}
-
 	</script>
 
 </body>
