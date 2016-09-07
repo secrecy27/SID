@@ -2,27 +2,20 @@ package com.sid.dto;
 
 import java.sql.Timestamp;
 
-public class AWriteVO {
-	private int aWriteId;
+public class CWriteVO {
+
+	private int cWriteId;
 	private String imageUrl;
 	private int cost;
 	private Timestamp indate;
 	private String hashtag;
 
-	public String getHashtag() {
-		return hashtag;
+	public int getcWriteId() {
+		return cWriteId;
 	}
 
-	public void setHashtag(String hashtag) {
-		this.hashtag = hashtag;
-	}
-
-	public int getaWriteId() {
-		return aWriteId;
-	}
-
-	public void setaWriteId(int aWriteId) {
-		this.aWriteId = aWriteId;
+	public void setcWriteId(int cWriteId) {
+		this.cWriteId = cWriteId;
 	}
 
 	public String getImageUrl() {
@@ -48,5 +41,14 @@ public class AWriteVO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
+
+	public String getHashtag() {
+		return hashtag;
+	}
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+
 
 }

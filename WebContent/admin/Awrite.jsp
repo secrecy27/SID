@@ -18,7 +18,8 @@
 <title>SID - Snow in Dawn</title>
 
 <meta name="keywords" content="">
-
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
@@ -48,7 +49,17 @@
 	max-width: 100%;
 	max-height: 100%;
 }
+
+ul#hashtag li {
+	display: inline;
+	margin: 5px;
+}
+
+ul#hashtag li:before {
+	content: "#";
+}
 </style>
+
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
@@ -70,8 +81,8 @@
 					</ul>
 				</div>
 
-				<form action="../SidServlet?command=admin_apage_write" method="post"
-					name='frm' enctype="multipart/form-data">
+				<form method="post" name='frm' enctype="multipart/form-data"
+					id="aForm">
 					<div class="col-md-12">
 
 						<div class="row same-height-row" id="productMain">
@@ -80,11 +91,10 @@
 									<h3>이미지등록</h3>
 									<hr>
 									<div id="mainImage">
-										<input type='file' id="imgInp" name="imageFile"/>
-										
-										<br> <img id="image" src="#" alt="이미지"
+										<input type='file' id="imgInp" name="imageFile" /> <br>
+										<img id="image" src="#" alt="이미지"
 											style="display: none; width: 100%; max-width: 100%;" />
-											<button id="zoomButton" style='display: none'
+										<button id="zoomButton" style='display: none'
 											onclick='zoomImg()' class="btn btn-primary btn-circle">+</button>
 									</div>
 
@@ -100,21 +110,71 @@
 											<input class="form-control" type="text" name="cost">
 										</div>
 									</div>
-
-
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="box">
+									<div class="form-group row">
+										<div class="col-sm-10">
+											해시태그 등록<input class="form-control" id="hashtagInput" />
+										</div>
+										<input style='display: none;' name='hashtag' id="ht">
+									</div>
 								</div>
 
+								<div class="box">
+									<blockquote>
+										<ul id="hashtag"></ul>
+									</blockquote>
+								</div>
 							</div>
 						</div>
 
 						<div>
 							<p class="text-center buttons">
-								<button type="submit" class="btn btn-primary">
-									<i class="fa fa glyphicon-plus"></i>&nbsp등록하기
+								<button type="button" onclick="return splitStr()"
+									class="btn btn-primary">
+									<i class="fa fa glyphicon-plus"></i>&nbsp;등록하기
 								</button>
 							</p>
 						</div>
 					</div>
+					<script>
+						var arraylist;
+						var str;
+						$("#hashtagInput")
+							.keypress(
+								function(e) {
+									if (e.keyCode == 13) {
+										$("#hashtag")
+											.append("<li>"
+												+ $(
+													this)
+													.val()
+												+ '<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i>'
+												+ "</li>");
+										$("#hashtagInput").val('');
+					
+									}
+								});
+					
+						function splitStr() {
+							var str = $("#hashtag").html();
+							str = str.substring(4);
+							str = str.substring(0,
+								str.length - 100);
+							arrayList = str
+								.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
+					
+					
+							$("#ht").val(arrayList);
+					
+							document.frm.action = "../SidServlet?command=admin_apage_write";
+							document.frm.submit();
+							return true;
+					
+						}
+					</script>
 				</form>
 			</div>
 		</div>
@@ -127,6 +187,13 @@
 
 
 	<script>
+		$('#aForm').on('keyup keypress', function(e) {
+			var keyCode = e.keyCode || e.which;
+			if (keyCode === 13) {
+				e.preventDefault();
+				return false;
+			}
+		});
 		var flag = true;
 	
 		function zoomImg() {
@@ -164,7 +231,7 @@
 				//alert(this.value); //선택한 이미지 경로 표시
 				readURL(this);
 				/* $('#imageUrl').val(this.value);
-		                         */
+				                         */
 	
 			});
 		});

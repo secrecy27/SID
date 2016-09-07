@@ -42,8 +42,7 @@
 									<div class="product">
 
 										<div style="max-width: 100%; width: 100%;">
-											<a
-												href="../SidServlet?command=read_bpage&num=${bpage.bWriteId}">
+											<a href="../SidServlet?command=read_bpage&num=${bpage.bWriteId}">
 												<img src="${bpage.imageUrl}" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
@@ -51,8 +50,9 @@
 
 										</div>
 
-										<div>
-											<p>해쉬태그</p>
+										<div><c:forEach items="${hlist}" var="hlist">
+											<p>#${hlist.hashtag }</p>
+											</c:forEach>
 										</div>
 										<div class="text">
 											<p> ${bpage.cost} 원</p>

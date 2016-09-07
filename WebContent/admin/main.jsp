@@ -11,7 +11,10 @@
 <body>
 	<div class="panel-body">
 		<ul class="nav nav-pills nav-stacked category-menu">
-			<li><a href="AWrite.jsp">Apage 추가 </a></li>
+			<li><a href="Awrite.jsp">Apage 추가 </a></li>
+		</ul>
+		<ul class="nav nav-pills nav-stacked category-menu">
+			<li><a href="../member/Cwrite.jsp">Cpage 추가 </a></li>
 		</ul>
 
 	</div>

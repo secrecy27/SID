@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.AWriteVO;
 import com.sid.dto.BWriteVO;
+import com.sid.dto.HashtagVO;
 import com.sid.util.DBManager;
 
 public class AWriteDAO {
@@ -23,19 +24,23 @@ public class AWriteDAO {
 	}
 
 	public int insertImage(AWriteVO aVo) {
-		System.out.println("insertImage 에러");
 		int result = -1;
 		String sql = "insert into awrite(imageUrl,cost) VALUES(?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rst = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			pstmt.setString(1, aVo.getImageUrl());
 			pstmt.setInt(2, aVo.getCost());
 
-			result = pstmt.executeUpdate();
+			int rownum = pstmt.executeUpdate();
+			rst = pstmt.getGeneratedKeys();
+			String autoInsertedKey = (rst.next()) ? rst.getString(1) : null;
+
+			result = Integer.parseInt(autoInsertedKey);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -43,63 +48,119 @@ public class AWriteDAO {
 		}
 		return result;
 	}
-	
-	public AWriteVO readItem(int num){
-		 int result= -1;
-		 String sql="select * from awrite where aWriteId=?";
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rst = null;
-			AWriteVO vo = new AWriteVO();
-			System.out.println("a readItem"+num);
-			
-			try{
-				conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, num);
-				rst = stmt.executeQuery();
-				
-				
-				if(rst.next()){
-					vo.setaWriteId(rst.getInt("aWriteId"));
-					vo.setImageUrl(rst.getString("imageUrl"));
-					vo.setCost(rst.getInt("cost"));
-				}
-					
-			}catch(SQLException e){
-				System.out.println("a read item error : " + e);
-			}finally{
-				JDBCUtil.close(rst, stmt, conn);
+
+	public int insertHashtag(int id, String[] hashtag) {
+		int result = -1;
+		String sql = "INSERT INTO hashtag(aWriteId, hashtag) VALUES(?,?)";
+		Connection conn = null;
+		conn = JDBCUtil.getConnection();
+		PreparedStatement ps = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			for (int i = 0; i < hashtag.length; i++) {
+
+				ps.setInt(1, id);
+				ps.setString(2, hashtag[i]);
+				ps.addBatch();
 			}
-			return vo;
-	 }
-	 
-	 public ArrayList<AWriteVO> listAll(){
-		 
-			ArrayList<AWriteVO> list = new ArrayList<AWriteVO>();
-			String sql="select * from awrite order by indate desc";
-			 
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			ResultSet rst = null;
-			AWriteVO vo = null;
-			try{
-				conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(sql);
-				rst = stmt.executeQuery();
-				while(rst.next()){
-					vo = new AWriteVO();
-					vo.setaWriteId(rst.getInt("aWriteId"));
-					vo.setImageUrl(rst.getString("imageUrl"));
-					vo.setCost(rst.getInt("cost"));
-					list.add(vo);
-				}
-			}catch(SQLException e){
-				System.out.println("a list error : " + e);
-			}finally{
-				JDBCUtil.close(rst, stmt, conn);
-			}
-			return list;
+			ps.executeBatch();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
 		}
-	 
+
+		return result;
+	}
+
+	public AWriteVO readItem(int num) {
+		String sql = "select * from awrite where aWriteId=?";
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		AWriteVO vo = new AWriteVO();
+		System.out.println("a readItem" + num);
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rst = stmt.executeQuery();
+
+			if (rst.next()) {
+				vo.setaWriteId(rst.getInt("aWriteId"));
+				vo.setImageUrl(rst.getString("imageUrl"));
+				vo.setCost(rst.getInt("cost"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("a read item error : " + e);
+		} finally {
+			JDBCUtil.close(rst, stmt, conn);
+		}
+		return vo;
+	}
+
+	public ArrayList<HashtagVO> readHashtag(int num) {
+		String sql = "select * from hashtag where aWriteId=?";
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		HashtagVO hVo = null;
+		ArrayList<HashtagVO> list = new ArrayList<HashtagVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rst = stmt.executeQuery();
+			System.out.println("a readhashtag" + num);
+
+			while (rst.next()) {
+				hVo = new HashtagVO();
+				hVo.setHashtag(rst.getString("hashtag"));
+				list.add(hVo);
+				System.out.println(rst.getString("hashtag"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("a hashtag item error : " + e);
+		} finally {
+			JDBCUtil.close(rst, stmt, conn);
+		}
+
+		return list;
+	}
+
+	public ArrayList<AWriteVO> listAll() {
+
+		ArrayList<AWriteVO> list = new ArrayList<AWriteVO>();
+		String sql = "select * from awrite order by indate desc";
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rst = null;
+		AWriteVO vo = null;
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			rst = stmt.executeQuery();
+			while (rst.next()) {
+				vo = new AWriteVO();
+				vo.setaWriteId(rst.getInt("aWriteId"));
+				vo.setImageUrl(rst.getString("imageUrl"));
+				vo.setCost(rst.getInt("cost"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("a list error : " + e);
+		} finally {
+			JDBCUtil.close(rst, stmt, conn);
+		}
+		return list;
+	}
+
 }

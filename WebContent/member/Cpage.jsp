@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN" "http://www.w3.org/TR/jsp4/loose.dtd">
 <html>
 <head>
@@ -186,32 +188,31 @@
 						</div>
 					</div>
 					<div class="row products">
-						<div class="col-md-4 col-sm-6">
-							<div class="product">
-								<div class="flip-container">
-									<div class="flipper">
-										<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
-											alt="" class="img-responsive">
-										</a>
-									</div>
-									<br>
-									<div>
-										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-									</div>
-									<div class="text">
-										<p class="price">2000원</p>
-										<p class="buttons">
-											<a href="basket.jsp" class="btn btn-primary"><i
-												class="fa fa-shopping-cart"></i>담기</a>
-										</p>
-									</div>
-									<!-- /.text -->
+						<c:forEach items="${list}" var="cpage">
+							<div class="col-md-2 col-sm-6">
+								<div class="product">
+									<div class="flip-container">
+										<div class="flipper">
+											<a
+												href="../SidServlet?command=read_apage&num=${cpage.cWriteId }">
+												<img src="${cpage.imageUrl }" id="imageFile"
+												style="max-width: 100%; width: 100%; height: 150px"
+												class="img-responsive">
+											</a>
+										</div>
+										<div class="text">
+											<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+											<p class="price">${cpage.cost}원</p>
+											<p class="buttons">
+												<a href="basket.jsp" class="btn btn-primary"><i
+													class="fa fa-shopping-cart"></i>담기</a>
+											</p>
+										</div>
 
+									</div>
 								</div>
-								<!-- /.product -->
 							</div>
-						</div>
-						<!-- /.product -->
+						</c:forEach>
 					</div>
 					<!-- /.col-md-4 -->
 				</div>

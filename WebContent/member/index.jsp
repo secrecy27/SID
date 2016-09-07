@@ -33,28 +33,28 @@
 					<div class="box">
 						<h1>인기페이지 -Apage</h1>
 					</div>
-
 					<div class="row products">
-
-						<div class="col-md-3 col-sm-4">
-							<div class="product">
-								<div class="flip-container">
-									<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
-										alt="" class="img-responsive">
-									</a>
+						<c:forEach items="${alist}" var="apage">
+							<div class="col-md-2 col-sm-6">
+								<div class="product">
+									<div class="flip-container">
+										<a href="../SidServlet?command=read_apage&num=${apage.aWriteId }"> <img src="${apage.imageUrl }"
+											style="max-width: 100%; width: 100%; height: 150px"
+											class="img-responsive">
+										</a>
+									</div>
+									<div class="text">
+										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
+										<p class="price">${apage.cost}원</p>
+										<p class="buttons">
+											<a href="basket.jsp" class="btn btn-primary"><i
+												class="fa fa-shopping-cart"></i>담기</a>
+										</p>
+									</div>
+									<!-- /.text -->
 								</div>
-								<div class="text">
-									<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-									<p class="price">2000원</p>
-									<p class="buttons">
-										<a href="basket.jsp" class="btn btn-primary"><i
-											class="fa fa-shopping-cart"></i>담기</a>
-									</p>
-								</div>
-								<!-- /.text -->
 							</div>
-							<!-- /.product -->
-						</div>
+						</c:forEach>
 					</div>
 					<!-- /.products -->
 					<div class="pages">
@@ -72,7 +72,7 @@
 
 					<div class="row products">
 
-						<div class="col-md-3 col-sm-4">
+						<div class="col-md-2 col-sm-6">
 							<div class="product">
 								<div class="flip-container">
 									<a href="detail.jsp"> <img src="../img/Dragon-Ball.jpg"
@@ -105,45 +105,45 @@
 					<div class="box">
 						<h1>인기페이지 - Cpage</h1>
 					</div>
-
 					<div class="row products">
-
-						<div class="col-md-3 col-sm-4">
-							<div class="product">
-								<c:forEach items="${list}" var="list">
+						<c:forEach items="${clist}" var="cpage">
+							<div class="col-md-2 col-sm-6">
+								<div class="product">
 									<div class="flip-container">
-										<a href="detail.jsp"> <img src="${list.imageUrl }"
-											alt="" class="img-responsive">
+										<a href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }"> <img src="${cpage.imageUrl }"
+											style="max-width: 100%; width: 100%; height: 150px"
+											class="img-responsive">
 										</a>
 									</div>
 									<div class="text">
 										<a href="#">#드래곤볼</a>&nbsp; <a href="#">#손오공</a>
-										<p class="price">${list.cost}원</p>
+										<p class="price">${cpage.cost}원</p>
 										<p class="buttons">
 											<a href="basket.jsp" class="btn btn-primary"><i
 												class="fa fa-shopping-cart"></i>담기</a>
 										</p>
 									</div>
 									<!-- /.text -->
-								</c:forEach>
+								</div>
 							</div>
-							<!-- /.product -->
-						</div>
-					</div>
-					<!-- /.products -->
-					<div class="pages">
-						<p class="loadMore">
-							<a href="Apage.jsp" class="btn btn-primary btn-lg"><i
-								class="fa fa-chevron-down"></i> Load more</a>
-						</p>
+						</c:forEach>
+						<!-- /.product -->
 					</div>
 				</div>
-				<!--  인기페이지 Cpage -->
-
+				<!-- /.products -->
+				<div class="pages">
+					<p class="loadMore">
+						<a href="Apage.jsp" class="btn btn-primary btn-lg"><i
+							class="fa fa-chevron-down"></i> Load more</a>
+					</p>
+				</div>
 			</div>
-			<!-- /.container -->
+			<!--  인기페이지 Cpage -->
+
 		</div>
-		<!-- /#content -->
+		<!-- /.container -->
+	</div>
+	<!-- /#content -->
 	</div>
 	<!-- /#content -->
 	<%@ include file="../include/footer.jsp"%>

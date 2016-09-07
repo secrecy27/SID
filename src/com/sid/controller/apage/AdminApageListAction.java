@@ -1,4 +1,4 @@
-package com.sid.controller.action;
+package com.sid.controller.apage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import com.sid.controller.Action;
 import com.sid.dao.AWriteDAO;
 import com.sid.dto.AWriteVO;
 
-public class AdminApageList implements Action {
+public class AdminApageListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member/Apage.jsp";
