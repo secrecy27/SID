@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.DSuggestVO;
 import com.sid.dto.DWriteVO;
-import com.sid.dto.HPageVO;
+import com.sid.dto.HUploadVO;
 import com.sid.dto.MemberVO;
 import com.sid.util.DBManager;
 
@@ -25,7 +25,7 @@ public class HPageDAO {
 		return instance;
 	}
 
-	public int insertImage(HPageVO hVo) {
+	public int insertImage(HUploadVO hVo) {
 		int result = -1;
 		String sql = "insert into hpage(hpageId,timageUrl,dimageUrl,tprice,dprice,price) values(?,?,?,?,?,?)";
 		Connection conn = null;
@@ -34,12 +34,7 @@ public class HPageDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, hVo.getHpageId());
-			pstmt.setString(2, hVo.getTimageUrl());
-			pstmt.setString(3, hVo.getDimageUrl());
-			pstmt.setInt(4, hVo.getTprice());
-			pstmt.setInt(5, hVo.getDprice());
-			pstmt.setInt(6, hVo.getPrice());
+		
 
 			result = pstmt.executeUpdate();
 
@@ -51,13 +46,13 @@ public class HPageDAO {
 		return result;
 	}
 
-	public HPageVO readItem(int num) {
+	public HUploadVO readItem(int num) {
 		int result = -1;
 		String sql = "select * from hpage where hpageId=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
-		HPageVO vo = new HPageVO();
+		HUploadVO vo = new HUploadVO();
 		System.out.println("readItem" + num);
 
 		try {
@@ -67,12 +62,7 @@ public class HPageDAO {
 			rst = stmt.executeQuery();
 
 			if (rst.next()) {
-				vo.setHpageId(rst.getInt("hpageId"));
-				vo.setTimageUrl(rst.getString("timageUrl"));
-				vo.setdimageUrl(rst.getString("dimageUrl"));
-				vo.setTprice(rst.getInt("tprice"));
-				vo.setDprice(rst.getInt("dprice"));
-				vo.setPrice(rst.getInt("price"));
+		
 			}
 
 		} catch (SQLException e) {
@@ -83,15 +73,15 @@ public class HPageDAO {
 		return vo;
 	}
 
-	public ArrayList<HPageVO> listAll() {
+	public ArrayList<HUploadVO> listAll() {
 
-		ArrayList<HPageVO> list = new ArrayList<HPageVO>();
+		ArrayList<HUploadVO> list = new ArrayList<HUploadVO>();
 		String sql = "select * from hpage ";
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
-		HPageVO vo = null;
+		HUploadVO vo = null;
 
 		try {
 			conn = JDBCUtil.getConnection();
@@ -99,14 +89,10 @@ public class HPageDAO {
 			rst = stmt.executeQuery();
 			
 			while (rst.next()) {
-				vo = new HPageVO();
+				vo = new HUploadVO();
 
-				vo.setHpageId(rst.getInt("hpageId"));
-				vo.setTimageUrl(rst.getString("timageUrl"));
-				vo.setdimageUrl(rst.getString("dimageUrl"));
-				vo.setTprice(rst.getInt("tprice"));
-				vo.setDprice(rst.getInt("dprice"));
-				vo.setPrice(rst.getInt("price"));
+		
+
 				
 				list.add(vo);
 			}

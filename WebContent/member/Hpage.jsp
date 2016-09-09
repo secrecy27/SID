@@ -646,7 +646,7 @@ input {
 				});
 			} else if (num == 'b') {
 				
-				var loader = new THREE.ImageLoader();
+			/* 	var loader = new THREE.ImageLoader();
 				loader.load("../img/fab1.jpg", function(image) {
 				
 						texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
@@ -654,10 +654,10 @@ input {
 						texture.image = image;
 						texture.needsUpdate = true;
 					
-				}); 
+				});  */
 				
 				loader = new THREE.OBJLoader();
-				loader.load('../models/na.obj', function(object) {
+				loader.load('../models/naga.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
@@ -671,7 +671,7 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
-				loader = new THREE.ImageLoader();
+			/* 	loader = new THREE.ImageLoader();
 				loader.load("../img/fab3.jpg", function(image) {
 				
 						texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
@@ -679,9 +679,9 @@ input {
 						texture2.image = image;
 						texture2.needsUpdate = true;
 					
-				}); 
+				});  */
 				loader = new THREE.OBJLoader();
-				loader.load('../models/nb.obj', function(object) {
+				loader.load('../models/nagb.obj', function(object) {
 	
 					object.traverse(function(child) {
 	

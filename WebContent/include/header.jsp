@@ -20,7 +20,8 @@
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
 
-
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <!-- styles -->
 <link href="${pageContext.request.contextPath}/css/font-awesome.css"
 	rel="stylesheet">

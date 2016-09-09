@@ -20,8 +20,8 @@
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
 						<%
-							if (session.getAttribute("email") != null && (session.getAttribute("admin").equals(1))
-									|| (session.getAttribute("admin").equals(2))) {
+							if (session.getAttribute("email") != null && ((session.getAttribute("admin").equals(1))
+									|| (session.getAttribute("admin").equals(2)))) {
 						%>
 						<a href="member/Bwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>

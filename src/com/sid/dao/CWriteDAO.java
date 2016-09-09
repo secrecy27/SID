@@ -23,6 +23,26 @@ public class CWriteDAO {
 			return instance;
 		}
 
+		public int test(String a,String b){
+			int result=-1;
+			String sql = "insert into test(src1,src2) VALUES(?,?)";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = JDBCUtil.getConnection();
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, a);
+				pstmt.setString(2, b);
+
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(pstmt, conn);
+			}
+			return result;
+		}
 		public int insertImage(CWriteVO cVo) {
 			int result = -1;
 			String sql = "insert into cwrite(imageUrl,cost,hashtag) VALUES(?,?,?)";
