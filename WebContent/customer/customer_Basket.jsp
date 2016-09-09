@@ -90,7 +90,7 @@
 								<tfoot>
 									<tr>
 										<th colspan="5">결제금액</th>
-										<th colspan="2" id="cost2">0</th>
+										<th colspan="2" id="cost2">0원</th>
 									</tr>
 								</tfoot>
 							</table>
@@ -120,11 +120,11 @@
 	
 		if(a.checked==true){
 			cost+=parseInt(b)
-			$("#cost2").text(cost);
+			$("#cost2").text(cost+"원");
 			
 		}else{
 			cost-=parseInt(b)
-			$("#cost2").text(cost);
+			$("#cost2").text(cost+"원");
 		}
 	}
 </script>

@@ -26,65 +26,62 @@
 					</ul>
 				</div>
 				<div class="col-md-12">
-					<form method="post"
-						action="../SidServlet?command=cItemtoCart&email=${sessionScope.email }&id=${cpage.cWriteId}">
-						<div class="row same-height-row" id="productMain">
-							<div class="col-sm-6">
-								<div class="box">
-									<div id="mainImage">
-										<img id="image" name="imageUrl" src="${cpage.imageUrl}"
-											style="width: 100%; max-width: 100%;" />
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-6">
-								<div class="box">
-									<ul class="breadcrumb">
-										<div class="form-group row">
-											<label class="col-sm-10 control-label">해쉬태그</label> <label
-												class="col-sm-10 control-label"> <c:forEach
-													items="${hashtag}" var="hashtag">
-											#${hashtag.hashtag}&nbsp;&nbsp;
-										</c:forEach>
-											</label>
-										</div>
-									</ul>
-									<ul class="breadcrumb">
-										<div class="form-group row">
-
-											<label class="col-sm-10 control-label">저작료</label> <label
-												class="col-sm-10 control-label">${cpage.cost}원</label>
-										</div>
-									</ul>
-
-
-
-									<ul class="breadcrumb">
-										<div class="form-group row">
-											<p>
-												<button type="button" class="btn btn-primary btn-sm">
-													<i class="fa fa-file-text-o"></i>포트폴리오
-												</button>
-											</p>
-											<p>디자이너 이메일</p>
-										</div>
-									</ul>
-									<p class="text-center buttons" style="display: inline">
-										<button type="button" id="tocart" onclick="toCart()"
-											class="btn btn-primary">
-											<i class="fa fa glyphicon-plus"></i>&nbsp담기
-										</button>
-									</p>
-									<p class="text-center buttons" style="display: inline">
-										<button type="submit" id="tocart" class="btn btn-primary">
-											<i class="fa fa glyphicon-plus"></i>&nbsp주머니
-										</button>
-									</p>
+					<div class="row same-height-row" id="productMain">
+						<div class="col-sm-6">
+							<div class="box">
+								<div id="mainImage">
+									<img id="image" name="imageUrl" src="${cpage.imageUrl}"
+										style="width: 100%; max-width: 100%;" />
 								</div>
 							</div>
 						</div>
-					</form>
+
+						<div class="col-sm-6">
+							<div class="box">
+								<ul class="breadcrumb">
+									<div class="form-group row">
+										<label class="col-sm-10 control-label">해쉬태그</label> <label
+											class="col-sm-10 control-label"> <c:forEach
+												items="${hashtag}" var="hashtag">
+											#${hashtag.hashtag}&nbsp;&nbsp;
+										</c:forEach>
+										</label>
+									</div>
+								</ul>
+								<ul class="breadcrumb">
+									<div class="form-group row">
+
+										<label class="col-sm-10 control-label">저작료</label> <label
+											class="col-sm-10 control-label">${cpage.cost}원</label>
+									</div>
+								</ul>
+
+
+
+								<ul class="breadcrumb">
+									<div class="form-group row">
+										<p>
+											<button type="button" class="btn btn-primary btn-sm">
+												<i class="fa fa-file-text-o"></i>포트폴리오
+											</button>
+										</p>
+										<p>디자이너 이메일</p>
+									</div>
+								</ul>
+								<p class="text-center buttons" style="display: inline">
+									<a type="button" id="tocart" class="btn btn-primary"
+										href="../SidServlet?command=cItemtoCart&email=${sessionScope.email }&id=${cpage.cWriteId}">
+										<i class="fa fa glyphicon-plus"></i>&nbsp;장바구니
+									</a>
+								</p>
+								<p class="text-center buttons" style="display: inline">
+									<a type="submit" id="tocart" class="btn btn-primary">
+										<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
 					<div class="box" id="details">
 						<ul class="breadcrumb">
 							<div class="panel panel-default">
