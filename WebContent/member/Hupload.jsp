@@ -65,7 +65,11 @@ ul#hashtag li:before {
 												onclick="toMainImg('4')"><img id="myImage4"
 												style="width: 24%;"
 												src="<%=request.getParameter("imageSrc4")%>"> </span>
-
+												<input style="display:none;"value="<%=request.getParameter("imageSrc1")%>" name="imageSrc1">
+												<input style="display:none;" value="<%=request.getParameter("imageSrc2")%>"name="imageSrc2">
+												<input style="display:none;" value="<%=request.getParameter("imageSrc3")%>"name="imageSrc3">
+												<input style="display:none;" value="<%=request.getParameter("imageSrc4")%>"name="imageSrc4">
+												
 										</div>
 									</div>
 

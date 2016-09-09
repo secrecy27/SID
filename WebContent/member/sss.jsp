@@ -423,6 +423,9 @@ input {
 	<script src="../js/three.js"></script>
 	<script src="../js/OBJLoader.js"></script>
 	<script src="../js/MTLLoader.js"></script>
+	<script src="../js/DDSLoader.js"></script>
+	<script src="../js/stats.min.js"></script>
+	<script src="../js/Detector.js"></script>
 
 	<script src="../js/FBXLoader.js"></script>
 	<script src="../js/OrbitControls.js"></script>
@@ -731,7 +734,19 @@ input {
 			removeEntity();
 	
 			if (num == 'a') {
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/ang.png", function(image) {
 	
+					texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+	
+					texture.image = image;
+					texture.wrapS = THREE.ClampToEdgeWrapping;
+					texture.wrapT = THREE.ClampToEdgeWrapping;
+					texture.offset.set(0, 0);
+					texture.repeat.set(1, 1);
+					texture.needsUpdate = true;
+	
+				});
 	
 				var loader = new THREE.OBJLoader();
 				loader.load('../models/originT.obj', function(object) {
@@ -739,6 +754,7 @@ input {
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
+							child.material.map = texture;
 						}
 	
 					});
@@ -811,28 +827,37 @@ input {
 		
 			}); */
 			} else if (num == 'c') {
-				/* var loader = new THREE.ImageLoader();
-				loader.load("../img/cc.jpg", function(image) {
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/ang.png", function(image) {
 				
 						texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
 		
 						texture.image = image;
-					 	texture.repeat.set(1.5, 1.5);
-						texture.offset.set(-0.23,-0.23); 
 						texture.wrapS = THREE.ClampToEdgeWrapping;
 						texture.wrapT = THREE.ClampToEdgeWrapping;
+					 	texture.repeat.set(1.5, 1.5);
+						texture.offset.set(-0.23,-0.23); 
 						texture.needsUpdate = true;
 					
-				}); */
+				});
 	
-				var loader = new THREE.FBXLoader();
-				loader.load('../models/maptest.FBX', function(object) {
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/fab1.jpg", function(image) {
+	
+					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+					texture2.image = image;
+					texture2.needsUpdate = true;
+	
+				});
+				var loader = new THREE.OBJLoader();
+				loader.load('../models/ab.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
 	
-							//child.material.map = texture;
+							child.material.map = texture2;
+							child.material.map=texture;
 	
 						}
 	
@@ -842,46 +867,41 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
+	
 			} else if (num = 'test') {
 	
-				var loader = new THREE.OBJLoader();
-				loader.load('../models/naga.obj', function(object) {
-	
-					object.traverse(function(child) {
-	
-						if (child instanceof THREE.Mesh) {
-	
-							child.material.map = texture;
-	
-						}
-	
-					});
-	
-					object.name = "object";
-					object.position.y = 0;
-					scene.add(object);
+				var onProgress = function ( xhr ) {
+						var percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+				};
+				
+
+				var onError = function ( xhr ) { };
+
+				THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath( '../models/' );
+				mtlLoader.load( 'maptest.mtl', function( materials ) {
+
+					materials.preload();
+
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials( materials );
+					objLoader.setPath( '../models/' );
+					objLoader.load( 'maptest.obj', function ( object ) {
+						
+						object.name = "object";
+						object.position.y = 0;
+						scene.add( object );
+
+					}, onProgress, onError );
+
 				});
-	
-				loader = new THREE.OBJLoader();
-				loader.load('../models/nagb.obj', function(object) {
-	
-					object.traverse(function(child) {
-	
-						if (child instanceof THREE.Mesh) {
-	
-							child.material.map = texture;
-	
-						}
-	
-					});
-	
-					object.name = "object2";
-					object.position.y = 0;
-					scene.add(object);
-				});
-	
+				
 			}
 		}
+		
 	
 		//옷 지우기
 		function removeEntity() {

@@ -24,7 +24,7 @@ public class HPageVO {
 		return imageSrc1;
 	}
 	public void setImageSrc1(String imageSrc1) {
-		this.imageSrc1 = imageSrc1;
+		this.imageSrc1 = imageSrc1;	
 	}
 	public String getImageSrc2() {
 		return imageSrc2;
