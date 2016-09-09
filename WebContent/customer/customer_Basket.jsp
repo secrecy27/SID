@@ -85,6 +85,7 @@
 											<td><a href="SidServlet?command=delete_product&num=${clist.cWriteId }" ><i class="fa fa-trash-o"></i></a></td>
 										</tr>
 									</c:forEach>
+									
 								</tbody>
 								<tfoot>
 									<tr>
@@ -111,6 +112,7 @@
 	</div>
 	<!-- /#content -->
 	</div>
+	
 	
 	<script>
 	var cost=0;
