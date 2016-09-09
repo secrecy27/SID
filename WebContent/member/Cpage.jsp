@@ -194,7 +194,7 @@
 									<div class="flip-container">
 										<div class="flipper">
 											<a
-												href="../SidServlet?command=read_apage&num=${cpage.cWriteId }">
+												href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }">
 												<img src="${cpage.imageUrl }" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px"
 												class="img-responsive">

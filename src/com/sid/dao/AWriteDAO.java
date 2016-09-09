@@ -76,6 +76,28 @@ public class AWriteDAO {
 
 		return result;
 	}
+	
+	public int addToCart(int aWriteId, String email) {
+		int result = -1;
+		String sql = "INSERT INTO acart(aWriteId,email) VALUES(?,?)";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = JDBCUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, aWriteId);
+			ps.setString(2, email);
+
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+
+		return result;
+	}
 
 	public AWriteVO readItem(int num) {
 		String sql = "select * from awrite where aWriteId=?";

@@ -117,7 +117,6 @@ public class RPocketDAO {
 			JDBCUtil.close(rst, stmt, conn);
 		}
 		return list;
-
 	}
 
 	

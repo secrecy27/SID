@@ -19,6 +19,7 @@ import com.sid.controller.action.CartDeleteAction;
 import com.sid.controller.action.CartInsertAction;
 import com.sid.controller.action.CartListAction;
 import com.sid.controller.action.ContractAction;
+import com.sid.controller.action.DeleteProductAction;
 import com.sid.controller.action.EmailCheckFormAction;
 import com.sid.controller.action.IndexAction;
 import com.sid.controller.action.JoinAction;
@@ -47,6 +48,7 @@ import com.sid.controller.action.designer.Designer_All_Action;
 import com.sid.controller.action.designer.Designer_Bplan_Action;
 import com.sid.controller.action.designer.Designer_Cplan_Action;
 import com.sid.controller.action.designer.Designer_Dplan_Action;
+import com.sid.controller.apage.AItemToCartAction;
 import com.sid.controller.apage.AdminApageListAction;
 import com.sid.controller.apage.AdminApageWriteAction;
 import com.sid.controller.apage.ApageReadAction;
@@ -54,6 +56,7 @@ import com.sid.controller.bpage.BItemToCartAction;
 import com.sid.controller.bpage.BWriteAction;
 import com.sid.controller.bpage.BpageListAction;
 import com.sid.controller.bpage.BpageReadAction;
+import com.sid.controller.cpage.CItemToCartAction;
 import com.sid.controller.cpage.CpageListAction;
 import com.sid.controller.cpage.CpageReadAction;
 import com.sid.controller.cpage.CpageWriteAction;
@@ -149,6 +152,8 @@ public class ActionFactory {
 			action=new AdminApageWriteAction();
 		} else if(command.equals("admin_apage_list")){
 			action=new AdminApageListAction();
+		}else if(command.equals("aItemtoCart")){
+			action=new AItemToCartAction();
 		} else if(command.equals("read_apage")){
 			action=new ApageReadAction();
 		//a페이지
@@ -171,6 +176,8 @@ public class ActionFactory {
 			action=new CpageReadAction();
 		}else if(command.equals("hpage_upload")){
 			action=new HpageUploadAction();
+		}else if(command.equals("cItemtoCart")){
+			action=new CItemToCartAction();
 		//c페이지
 			
 		}else if(command.equals("dWrite")){
@@ -201,12 +208,16 @@ public class ActionFactory {
 		}else if(command.equals("customer_buylist")){
 			action=new Customer_Buylist_Action();
 			
+			
 		}else if(command.equals("customer_coupon")){
 			action=new Customer_Coupon_Action();
-			//나중에 제작
+			//쿠폰 페이지 나중에 제작
 			
 		}else if(command.equals("customer_basket")){
 			action=new Customer_Basket_Action();
+		}else if(command.equals("delete_product")){
+			action=new DeleteProductAction();
+		//장바구니
 			
 		}else if(command.equals("customer_pocket")){
 			action=new Customer_Pocket_Action();

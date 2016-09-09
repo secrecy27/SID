@@ -198,11 +198,6 @@
 											</a>
 										</div>
 
-
-
-
-
-
 										<div class="text">
 											<a herf="#">${apage.hashtag }</a>
 											<p class="price">${apage.cost}원</p>

@@ -15,14 +15,13 @@
 			<div class="container">
 				<div class="col-md-3">
 					<div class="panel panel-default sidebar-menu">
-
 						<div class="panel-heading">
 							<h3 class="panel-title">전체보기</h3>
 						</div>
-
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li><a href="SidServlet?command=customer_dplan_ongoing">D 관리 </a></li>
+								<li><a href="SidServlet?command=customer_dplan_ongoing">D
+										관리 </a></li>
 								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
 								<li><a href="SidServlet?command=customer_customer_coupon"
 									onclick='alert("준비중")'>쿠폰목록</a></li>
@@ -52,32 +51,45 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th>선택</th>
+										<th>선택주문</th>
 										<th colspan="2">상품정보</th>
 										<th>수량</th>
 										<th>판매가격</th>
 										<th>할인금액</th>
-										<th colspan="2">상품금액</th>
+										<th>상품금액</th>
+										<th>상품삭제</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<c:forEach items="${cartList}" var="cartVO">
-											<td><input type="checkbox" name="checkbox"></td>
-											<td>$</td>
-											<td><a href="#">${cartVO.pseq }</a></td>
-											<td><input type="number" value="2" class="form-control"></td>
-											<td>${cartVO.price }원</td>
-											<td>${cartVO.quantity }</td>
-											<td>${cartVO.price * cartVO.quantity }원</td>
-											<td><a href="#"><i class="fa fa-trash-o"></i></a></td>
-										</c:forEach>
-									</tr>
+									<c:forEach items="${alist}" var="alist">
+										<tr>
+											<td><input type="checkbox" name="checkbox" id="checkbox" value="${alist.cost}" onclick='check(this,this.value)'></td>
+											<td><img src="${alist.imageUrl }"></td>
+											<td><a href="#"></a></td>
+											<td><input type="number" value="1" class="form-control"></td>
+											<td>${alist.cost}원</td>
+											<td>0원</td>
+											<td>${alist.cost}원</td>
+											<td><a href="SidServlet?command=delete_product&num=${alist.aWriteId }" ><i class="fa fa-trash-o"></i></a></td>
+										</tr>
+									</c:forEach>
+									<c:forEach items="${clist}" var="clist">
+										<tr>
+											<td><input type="checkbox" name="checkbox" id="checkbox" value="${clist.cost}" onclick='check(this,this.value)'></td>
+											<td><img src="${clist.imageUrl }"></td>
+											<td><a href="#"></a></td>
+											<td><input type="number" value="1" class="form-control"></td>
+											<td>${clist.cost}원</td>
+											<td>0원</td>
+											<td>${clist.cost}원</td>
+											<td><a href="SidServlet?command=delete_product&num=${clist.cWriteId }" ><i class="fa fa-trash-o"></i></a></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 								<tfoot>
 									<tr>
 										<th colspan="5">결제금액</th>
-										<th colspan="2">${totalPrice }</th>
+										<th colspan="2" id="cost2">0</th>
 									</tr>
 								</tfoot>
 							</table>
@@ -87,7 +99,7 @@
 						<div class="box-footer">
 							<div class="pull-right">
 								<button type="submit" class="btn btn-primary">
-									Proceed to checkout <i class="fa fa-chevron-right"></i>
+									결제하기 <i class="fa fa-chevron-right"></i>
 								</button>
 							</div>
 						</div>
@@ -99,6 +111,20 @@
 	</div>
 	<!-- /#content -->
 	</div>
-
+	
+	<script>
+	var cost=0;
+	function check(a,b){
+	
+		if(a.checked==true){
+			cost+=parseInt(b)
+			$("#cost2").text(cost);
+			
+		}else{
+			cost-=parseInt(b)
+			$("#cost2").text(cost);
+		}
+	}
+</script>
 </body>
 </html>

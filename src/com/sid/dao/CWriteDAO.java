@@ -31,7 +31,7 @@ public class CWriteDAO {
 			ResultSet rst=null;
 			try {
 				conn = JDBCUtil.getConnection();
-				pstmt = conn.prepareStatement(sql);
+				pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 				pstmt.setString(1, cVo.getImageUrl());
 				pstmt.setInt(2, cVo.getCost());
@@ -68,6 +68,28 @@ public class CWriteDAO {
 				}
 				ps.executeBatch();
 				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(ps, conn);
+			}
+
+			return result;
+		}
+		
+		public int addToCart(int cWriteId, String email) {
+			int result = -1;
+			String sql = "INSERT INTO ccart(cWriteId,email) VALUES(?,?)";
+			Connection conn = null;
+			PreparedStatement ps = null;
+			try {
+				conn = JDBCUtil.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, cWriteId);
+				ps.setString(2, email);
+
+				result = ps.executeUpdate();
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

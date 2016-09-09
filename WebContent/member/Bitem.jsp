@@ -68,16 +68,17 @@
 									</div>
 								</ul>
 								<p class="text-center buttons">
-							<button type="button" id="tocart"onclick="toCart()" class="btn btn-primary">
-								<i class="fa fa glyphicon-plus"></i>&nbsp담기
-							</button>
-						</p>
+									<button type="button" id="tocart" onclick="toCart()"
+										class="btn btn-primary">
+										<i class="fa fa glyphicon-plus"></i>&nbsp담기
+									</button>
+								</p>
 							</div>
-							
+
 						</div>
 
-						
-						
+
+
 					</div>
 
 
@@ -99,28 +100,25 @@
 	<%@ include file="../include/footer.jsp"%>
 </body>
 <script>
-					 function toCart(){
-						  $.ajax({
-					        	type: "POST",
-					        	url:"../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${bpage.bWriteId}",							        	 	 
-						        success: function(result){
-						        	  	if(result==1){
-						        	  		alert("담기 성공")
-						        	  		$("#tocart").prop("disabled",true);
-						        	  	}else{
-						        	  		
-						        	  		alert("담기 실패 ( 이미 담긴 품목 )")
-						        	  	}
-						         },
-						         error:function(request,status,error){
-						             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-						        }
-						         
-							});
-						 
-						
-					 }
-						 	 
-					
-					</script>
+	function toCart() {
+		$.ajax({
+			type : "POST",
+			url : "../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${bpage.bWriteId}",
+			success : function(result) {
+				if (result == 1) {
+					alert("담기 성공")
+					$("#tocart").prop("disabled", true);
+				} else {
+
+					alert("담기 실패 ( 이미 담긴 품목 )")
+				}
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+			}
+		});
+
+
+	}
+</script>
 </html>
