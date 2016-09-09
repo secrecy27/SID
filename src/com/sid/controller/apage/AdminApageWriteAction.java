@@ -21,7 +21,7 @@ public class AdminApageWriteAction implements Action{
 	String url = "/SidServlet?command=admin_apage_list";
 	
 	int sizeLimit = 10 * 1024 * 1024;
-	String savePath = "C:/Users/hs/git/SID_2/SID/WebContent/img";
+	String savePath = "C:/Users/sid/git/SID/WebContent/img";
 	
 	MultipartRequest multi = new MultipartRequest(
 			request, 

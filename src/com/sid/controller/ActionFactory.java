@@ -65,6 +65,7 @@ import com.sid.controller.dpage.DWriteAction;
 import com.sid.controller.dpage.DitemSuggestAction;
 import com.sid.controller.dpage.DpageListAction;
 import com.sid.controller.dpage.DpageReadAction;
+import com.sid.controller.hpage.HpageListAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -179,6 +180,10 @@ public class ActionFactory {
 		}else if(command.equals("cItemtoCart")){
 			action=new CItemToCartAction();
 		//c페이지
+			
+		}else if(command.equals("list_hpage")){
+			action=new HpageListAction();
+		//h페이지	
 			
 		}else if(command.equals("dWrite")){
 			action=new DWriteAction();

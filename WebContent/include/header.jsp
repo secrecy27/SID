@@ -188,20 +188,25 @@
 
 			<div class="navbar-collapse collapse" style="padding-left: 0px"
 				id="navigation">
-
+				<c:if
+														test="${dpage.condition eq '0'}">
+												최고가 우선</c:if> <c:if test="${dpage.condition eq '1'}">
+												평점 우선</c:if> <c:if test="${dpage.condition eq '2'}">
+												등급 우선</c:if> </strong>
+				
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw"><a
-						href="../BoardServlet?command=board_list">INFO</a></li>
-					<li class="dropdown yamm-fw"><a href="../SidServlet?command=cpage_list"
-						class="dropdown-toggle">Cpage</a></li>
-					<li class="dropdown yamm-fw"><a
-						href="../SidServlet?command=list_bpage" class="dropdown-toggle">Bpage</b></a></li>
-					<li class="dropdown yamm-fw"><a href="../SidServlet?command=admin_apage_list"
-						class="dropdown-toggle">Apage</b></a></li>
-					<li class="dropdown yamm-fw"><a
-						href="../SidServlet?command=list_dpage" class="dropdown-toggle">Dpage</a></li>
-					<li class="dropdown yamm-fw"><a href="../member/Hpage.jsp"
-						class="dropdown-toggle">Hpage</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/board/boardList.jsp")){%> active<%} %>"><a data-hover="dropdown"
+						href="../BoardServlet?command=board_list">게시판</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Cpage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=cpage_list"
+						class="dropdown-toggle">완성옷</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Bpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
+						href="../SidServlet?command=list_bpage" class="dropdown-toggle">프린트</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Apage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=admin_apage_list"
+						class="dropdown-toggle">기본옷</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Dpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
+						href="../SidServlet?command=list_dpage" class="dropdown-toggle">스케치</a></li>
+					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/sss.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=list_hpage"
+						class="dropdown-toggle">만들기</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
