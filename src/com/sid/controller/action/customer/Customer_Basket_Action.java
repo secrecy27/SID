@@ -14,7 +14,7 @@ import com.sid.dao.CartDAO;
 import com.sid.dao.HPageDAO;
 import com.sid.dao.MemberDAO;
 import com.sid.dto.CartVO;
-import com.sid.dto.HPageVO;
+import com.sid.dto.HUploadVO;
 import com.sid.dto.MemberVO;
 
 public class Customer_Basket_Action implements Action{

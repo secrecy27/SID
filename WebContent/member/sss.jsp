@@ -828,35 +828,23 @@ input {
 			}); */
 			} else if (num == 'c') {
 				var loader = new THREE.ImageLoader();
-				loader.load("../img/ang.png", function(image) {
+				loader.load("../img/fab2.jpg", function(image) {
 				
 						texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
 		
 						texture.image = image;
-						texture.wrapS = THREE.ClampToEdgeWrapping;
-						texture.wrapT = THREE.ClampToEdgeWrapping;
-					 	texture.repeat.set(1.5, 1.5);
-						texture.offset.set(-0.23,-0.23); 
 						texture.needsUpdate = true;
 					
 				});
 	
-				var loader = new THREE.ImageLoader();
-				loader.load("../img/fab1.jpg", function(image) {
-	
-					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-					texture2.image = image;
-					texture2.needsUpdate = true;
-	
-				});
-				var loader = new THREE.OBJLoader();
-				loader.load('../models/ab.obj', function(object) {
+				
+				loader = new THREE.OBJLoader();
+				loader.load('../models/na.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
 	
-							child.material.map = texture2;
 							child.material.map=texture;
 	
 						}
@@ -864,6 +852,33 @@ input {
 					});
 	
 					object.name = "object";
+					object.position.y = 0;
+					scene.add(object);
+				});
+				
+				loader = new THREE.ImageLoader();
+				loader.load("../img/fab1.jpg", function(image) {
+	
+					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+					texture2.image = image;
+					texture2.needsUpdate = true;
+	
+				});
+				
+				loader = new THREE.OBJLoader();
+				loader.load('../models/nb.obj', function(object) {
+	
+					object.traverse(function(child) {
+	
+						if (child instanceof THREE.Mesh) {
+	
+							child.material.map = texture2;
+	
+						}
+	
+					});
+	
+					object.name = "object2";
 					object.position.y = 0;
 					scene.add(object);
 				});
@@ -1187,8 +1202,6 @@ input {
 			var element = document.getElementById('moveGui');
 			element.style.top = y - 130 + 'px';
 			element.style.left = x + 20 + 'px';
-	
-	
 	
 			element = document.getElementById('barTwo');
 			element.style.top = y - 130 + 'px';

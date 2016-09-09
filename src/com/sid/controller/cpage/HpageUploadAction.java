@@ -22,7 +22,7 @@ import com.sid.dao.BPageDAO;
 import com.sid.dao.CWriteDAO;
 import com.sid.dto.BWriteVO;
 import com.sid.dto.CWriteVO;
-import com.sid.dto.HPageVO;
+import com.sid.dto.HUploadVO;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class HpageUploadAction implements Action {
