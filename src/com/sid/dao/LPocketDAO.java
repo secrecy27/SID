@@ -107,8 +107,8 @@ public class LPocketDAO {
 			stmt.setString(1, email);
 			rst = stmt.executeQuery();
 			while (rst.next()) {
-				System.out.println("get from list awriteid : "+rst.getInt("awriteId"));
-				list.add(rst.getInt("awriteId"));
+				System.out.println("get from list awriteid : "+rst.getInt("aWriteId"));
+				list.add(rst.getInt("aWriteId"));
 			}
 		} catch (SQLException e) {
 			System.out.println("lpocket list error : " + e);

@@ -98,6 +98,49 @@ public class AWriteDAO {
 
 		return result;
 	}
+	
+	public int addToLPocket(String email, int id) {
+		int result = -1;
+		String sql = "SELECT pocketId FROM lpocket where email=?";
+		Connection conn = null;
+		conn = JDBCUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rst = null;
+		int pocketId = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rst = ps.executeQuery();
+
+			if (rst.next()) {
+				pocketId = rst.getInt("pocketId");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+
+		sql = "INSERT INTO lpocket2(pocketId, aWriteId) VALUES(?,?)";
+		conn = JDBCUtil.getConnection();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, pocketId);
+			ps.setInt(2, id);
+
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+
+		System.out.println(" result : " + result);
+
+		return result;
+	}
 
 	public AWriteVO readItem(int num) {
 		String sql = "select * from awrite where aWriteId=?";

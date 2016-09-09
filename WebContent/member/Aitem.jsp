@@ -80,7 +80,7 @@
 								</p>
 								<p class="text-center buttons" style="display: inline">
 									<a type="button" id="tocart" class="btn btn-primary"
-									href="../SidServlet?command=customer_lpocket_list&email=${sessionScope.email }$id=${apage.aWriteId}">
+									href="../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id=${apage.aWriteId}">
 										<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
 									</a>
 								</p>

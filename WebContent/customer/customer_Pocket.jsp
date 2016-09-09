@@ -80,7 +80,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<p>${awrite.expl}</p>
+											<p></p>
 											<p class="buttons">
 												<a href="" class="btn btn-default"></a>
 											</p>

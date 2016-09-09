@@ -49,6 +49,7 @@ import com.sid.controller.action.designer.Designer_Bplan_Action;
 import com.sid.controller.action.designer.Designer_Cplan_Action;
 import com.sid.controller.action.designer.Designer_Dplan_Action;
 import com.sid.controller.apage.AItemToCartAction;
+import com.sid.controller.apage.AItemToLPocket;
 import com.sid.controller.apage.AdminApageListAction;
 import com.sid.controller.apage.AdminApageWriteAction;
 import com.sid.controller.apage.ApageReadAction;
@@ -154,6 +155,8 @@ public class ActionFactory {
 			action=new AdminApageListAction();
 		}else if(command.equals("aItemtoCart")){
 			action=new AItemToCartAction();
+		}else if(command.equals("aItemtoLpocket")){
+			action=new AItemToLPocket();
 		} else if(command.equals("read_apage")){
 			action=new ApageReadAction();
 		//a페이지
