@@ -111,7 +111,7 @@ public class BPageDAO {
 		return vo;
 	}
 
-	public int addToCart(String email, int id) {
+	public int addToRPocket(String email, int id) {
 		int result = -1;
 		String sql = "SELECT pocketId FROM rpocket where email=?";
 		Connection conn = null;

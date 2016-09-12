@@ -81,21 +81,35 @@ ul#hashtag li:before {
 					</ul>
 				</div>
 
-				<form method="post" name='frm' enctype="multipart/form-data"
-					id="aForm">
-					<div class="col-md-12">
+				<div class="col-md-12">
+					<form method="post" name='frm' enctype="multipart/form-data"
+						id="aForm">
 
 						<div class="row same-height-row" id="productMain">
 							<div class="col-sm-6">
 								<div class="box">
 									<h3>이미지등록</h3>
 									<hr>
-									<div id="mainImage">
-										<input type='file' id="imgInp" name="imageFile" /> <br>
-										<img id="image" src="#" alt="이미지"
-											style="display: none; width: 100%; max-width: 100%;" />
-										<button id="zoomButton" style='display: none'
-											onclick='zoomImg()' class="btn btn-primary btn-circle">+</button>
+									<div id="mainImage1">
+										<input type='file' id="imgInp1" name="imageFile1" /> <br>
+										<img id="image1" src="#" alt="이미지"
+											style="display: none; width: 25%; max-width: 100%;" />
+									</div>
+									<div id="mainImage2">
+										<input type='file' id="imgInp2" name="imageFile2" /> <br>
+										<img id="image2" src="#" alt="이미지"
+											style="display: none; width: 25%; max-width: 100%;" />
+									</div>
+
+									<div id="mainImage3">
+										<input type='file' id="imgInp3" name="imageFile3" /> <br>
+										<img id="image3" src="#" alt="이미지"
+											style="display: none; width: 25%; max-width: 100%;" />
+									</div>
+									<div id="mainImage4">
+										<input type='file' id="imgInp4" name="imageFile4" /> <br>
+										<img id="image4" src="#" alt="이미지"
+											style="display: none; width: 25%; max-width: 100%;" />
 									</div>
 
 								</div>
@@ -138,44 +152,45 @@ ul#hashtag li:before {
 								</button>
 							</p>
 						</div>
-					</div>
-					<script>
-						var arraylist;
-						var str;
-						$("#hashtagInput")
-							.keypress(
-								function(e) {
-									if (e.keyCode == 13) {
-										$("#hashtag")
-											.append("<li>"
-												+ $(
-													this)
-													.val()
-												+ '<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i>'
-												+ "</li>");
-										$("#hashtagInput").val('');
-					
-									}
-								});
-					
-						function splitStr() {
-							var str = $("#hashtag").html();
-							str = str.substring(4);
-							str = str.substring(0,
-								str.length - 100);
-							arrayList = str
-								.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
-					
-					
-							$("#ht").val(arrayList);
-					
-							document.frm.action = "../SidServlet?command=admin_apage_write";
-							document.frm.submit();
-							return true;
-					
-						}
-					</script>
-				</form>
+					</form>
+				</div>
+				<script>
+				
+					var arraylist;
+					var str;
+					$("#hashtagInput")
+						.keypress(
+							function(e) {
+								if (e.keyCode == 13) {
+									$("#hashtag")
+										.append("<li>"
+											+ $(
+												this)
+												.val()
+											+ '<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i>'
+											+ "</li>");
+									$("#hashtagInput").val('');
+				
+								}
+							});
+				
+					function splitStr() {
+						var str = $("#hashtag").html();
+						str = str.substring(4);
+						str = str.substring(0,
+							str.length - 100);
+						arrayList = str
+							.split('<i class="hashtagRemove fa fa-remove" style="color:red" onclick="this.parentNode.remove()"></i></li><li>');
+				
+				
+						$("#ht").val(arrayList);
+				
+						document.frm.action = "../SidServlet?command=admin_apage_write";
+						document.frm.submit();
+						return true;
+				
+					}
+				</script>
 			</div>
 		</div>
 	</div>
@@ -194,32 +209,18 @@ ul#hashtag li:before {
 				return false;
 			}
 		});
-		var flag = true;
 	
-		function zoomImg() {
-			if (flag) {
-				$('#zoomButton').text("-");
-				$('#image').removeClass("zoomImg");
-				flag = false;
-			} else {
-				$('#zoomButton').text("+");
-				$('#image').addClass("zoomImg");
-				flag = true;
-			}
-		}
 	
 		$(document).ready(function() {
-			function readURL(input) {
+			function readURL1(input) {
 				if (input.files && input.files[0]) {
 					var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
 					reader.onload = function(e) {
 						//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-						$('#image').attr('src', e.target.result);
+						$('#image1').attr('src', e.target.result);
 						//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
 						//(아래 코드에서 읽어들인 dataURL형식)
-						$('#image').addClass("zoomImg");
-						$('#image').css("display", "");
-						$('#zoomButton').css("display", "");
+						$('#image1').css("display", "");
 	
 					}
 					reader.readAsDataURL(input.files[0]);
@@ -227,12 +228,53 @@ ul#hashtag li:before {
 				}
 			} //readURL()--
 			//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-			$("#imgInp").change(function() {
+			$("#imgInp1").change(function() {
 				//alert(this.value); //선택한 이미지 경로 표시
-				readURL(this);
+				readURL1(this);
 				/* $('#imageUrl').val(this.value);
 				                         */
 	
+			});
+			function readURL2(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+					reader.onload = function(e) {
+						$('#image2').attr('src', e.target.result);
+						$('#image2').css("display", "");
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			} //readURL()--
+			$("#imgInp2").change(function() {
+				readURL2(this);
+			});
+	
+			function readURL3(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+					reader.onload = function(e) {
+						$('#image3').attr('src', e.target.result);
+						$('#image3').css("display", "");
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			} //readURL()--
+			$("#imgInp3").change(function() {
+				readURL3(this);
+			});
+	
+			function readURL4(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+					reader.onload = function(e) {
+						$('#image4').attr('src', e.target.result);
+						$('#image4').css("display", "");
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			} //readURL()--
+			$("#imgInp4").change(function() {
+				readURL4(this);
 			});
 		});
 	</script>
@@ -243,4 +285,4 @@ ul#hashtag li:before {
 </body>
 
 </html>
-l>
+

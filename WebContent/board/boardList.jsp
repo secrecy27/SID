@@ -42,44 +42,43 @@
 <link rel="stylesheet" type="text/css" href="../css/shopping.css">
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="list-group">
-				<a href="category.jsp" class="list-group-item">Notice</a>
-				<a href="category.jsp" class="list-group-item">Event</a>
-				<a href="category.jsp" class="list-group-item">Guide</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="list-group">
+					<a href="category.jsp" class="list-group-item">Notice</a> <a
+						href="category.jsp" class="list-group-item">Event</a> <a
+						href="category.jsp" class="list-group-item">Guide</a>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+				<div class="row carousel-holder">
+					<div class="col-md-12">
+						<h1>INFO</h1>
+						<table class="list">
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>게시일</th>
+							</tr>
+							<c:forEach var="board" items="${boardList}">
+								<tr class="record">
+									<td>${board.contentNum}</td>
+									<td><a
+										href="../BoardServlet?command=board_view&num=${board.contentNum}">${board.title}</a></td>
+									<td>${board.date}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+				</div>
+				<!-- /#main-slider -->
 			</div>
 		</div>
 
-		<div class="col-md-9">
-        	<div class="row carousel-holder">
-            	<div class="col-md-12">
-                	<h1>게시판</h1>
-					<table class="list">	
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>게시일</th>
-						</tr>
-						<c:forEach var="board" items="${boardList}">
-							<tr class="record">
-								<td><a
-									href="../BoardServlet?command=board_view&num=${board.contentNum}">
-										${board.contentNum}</a></td>
-								<td>${board.title}</td>
-								<td>${board.date}</td>
-							</tr>
-						</c:forEach>
-					</table>
-                </div>
-            </div>
-				<!-- /#main-slider -->
-		</div>
-	</div>
-
 		<!-- /#content -->
-</div>
+	</div>
 	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>

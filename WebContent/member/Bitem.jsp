@@ -68,9 +68,9 @@
 									</div>
 								</ul>
 								<p class="text-center buttons">
-									<button type="button" id="tocart" onclick="toCart()"
+									<button type="button" id="toRPocket" onclick="toRPocket()"
 										class="btn btn-primary">
-										<i class="fa fa glyphicon-plus"></i>&nbsp담기
+										<i class="fa fa glyphicon-plus"></i>&nbsp주머니
 									</button>
 								</p>
 							</div>
@@ -100,14 +100,14 @@
 	<%@ include file="../include/footer.jsp"%>
 </body>
 <script>
-	function toCart() {
+	function toRPocket() {
 		$.ajax({
 			type : "POST",
-			url : "../SidServlet?command=bItemtoCart&email=${sessionScope.email}&id=${bpage.bWriteId}",
+			url : "../SidServlet?command=bItemtoRpocket&email=${sessionScope.email}&id=${bpage.bWriteId}",
 			success : function(result) {
 				if (result == 1) {
 					alert("담기 성공")
-					$("#tocart").prop("disabled", true);
+					$("#toRPocket").prop("disabled", true);
 				} else {
 
 					alert("담기 실패 ( 이미 담긴 품목 )")

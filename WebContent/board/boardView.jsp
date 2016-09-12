@@ -45,7 +45,7 @@
 </head>
 <body>
 	<div id="wrap" align="center">
-		<h1>게시글 상세보기</h1>
+		<h1>INFO</h1>
 		<table>
 			<tr>
 				<th>작성일</th>

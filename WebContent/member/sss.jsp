@@ -186,21 +186,21 @@ input {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">upload</h4>
 				</div>
-				<form action="Hupload.jsp" method="post" name='frm'>
+				<form action="member/Hupload.jsp" method="post" name='frm'>
 					<div class="modal-body">
 						<p>업로드 화면으로 이동합니다</p>
-											
-						<input id="uploadCost" style="display:none" name="cost">
-						<input id="input1" style="display:none" name="imageSrc1">
-						<input id="input2" style="display:none" name="imageSrc2">
-						<input id="input3" style="display:none" name="imageSrc3">
-						<input id="input4" style="display:none" name="imageSrc4">
-						
+
+						<input id="uploadCost" style="display: none" name="cost">
+						<input id="input1" style="display: none" name="imageSrc1">
+						<input id="input2" style="display: none" name="imageSrc2">
+						<input id="input3" style="display: none" name="imageSrc3">
+						<input id="input4" style="display: none" name="imageSrc4">
+
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-primary">페이지 이동</button>
 					</div>
-					</form>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -310,100 +310,55 @@ input {
 						</select>
 					</div>
 
-
-					<fieldset id="controls">
-						<legend>Circle</legend>
-						<div class="control">
-							WrapS : <select onchange="setwrapS(this)">
-								<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
-								<option value="RepeatWrapping" selected>RepeatWrapping</option>
-								<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
-							</select>
+					<c:forEach items="${blist}" var="list">
+						<div class="outerButton">
+							<div class="mapButton">
+								<button class="useMapButton btn btn-default btn-circle">use</button>
+								<input type="image" src="${list.imageUrl}" class="mb"
+									value="off">
+								<p class="mapCheck" style="display: none">0</p>
+							</div>
 						</div>
-						<div class="control">
-							WrapT : <select onchange="setwrapT(this)">
-								<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
-								<option value="RepeatWrapping" selected>RepeatWrapping</option>
-								<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
-							</select>
-						</div>
-						<div class="control">
-							매핑 : <select onchange="setFabric(this)">
-								<option value="../img/fab1.jpg" selected>1</option>
-								<option value="../img/fab2.jpg">2</option>
-								<option value="../img/fab3.jpg">3</option>
-								<option value="../img/fab4.jpg">4</option>
-								<option value="../img/fab5.jpg">5</option>
-							</select>
-						</div>
-						<div class="control">
-							Offset : X <input type="number" value="0" step="0.05"
-								onchange="setOffsetU(this)" /> Y <input type="number" value="0"
-								step="0.05" onchange="setOffsetV(this)" /><br />
-						</div>
-						<div class="control">
-							Repeat : X <input type="number" value="1" step="0.1"
-								onchange="setRepeatU(this)" /> Y <input type="number" value="1"
-								step="0.1" onchange="setRepeatV(this)" />
-						</div>
-					</fieldset>
-
-
-
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/test2.gif" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/back.png" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/sidt.gif" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/bb.jpg" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/aa.jpg" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/cc.jpg" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
-
-					<div class="outerButton">
-						<div class="mapButton">
-							<button class="useMapButton btn btn-default btn-circle">use</button>
-							<input type="image" src="../img/pat4.png" class="mb" value="off">
-							<p class="mapCheck" style="display: none">0</p>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 			<!-- /#hPageContainer -->
-
+			<fieldset id="controls">
+				<legend>Circle</legend>
+				<div class="control">
+					WrapS : <select onchange="setwrapS(this)">
+						<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
+						<option value="RepeatWrapping" selected>RepeatWrapping</option>
+						<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
+					</select>
+				</div>
+				<div class="control">
+					WrapT : <select onchange="setwrapT(this)">
+						<option value="ClampToEdgeWrapping">ClampToEdgeWrapping</option>
+						<option value="RepeatWrapping" selected>RepeatWrapping</option>
+						<option value="MirroredRepeatWrapping">MirroredRepeatWrapping</option>
+					</select>
+				</div>
+				<div class="control">
+					매핑 : <select onchange="setFabric(this)">
+						<option value="../img/fab1.jpg" selected>1</option>
+						<option value="../img/fab2.jpg">2</option>
+						<option value="../img/fab3.jpg">3</option>
+						<option value="../img/fab4.jpg">4</option>
+						<option value="../img/fab5.jpg">5</option>
+					</select>
+				</div>
+				<div class="control">
+					Offset : X <input type="number" value="0" step="0.05"
+						onchange="setOffsetU(this)" /> Y <input type="number" value="0"
+						step="0.05" onchange="setOffsetV(this)" /><br />
+				</div>
+				<div class="control">
+					Repeat : X <input type="number" value="1" step="0.1"
+						onchange="setRepeatU(this)" /> Y <input type="number" value="1"
+						step="0.1" onchange="setRepeatV(this)" />
+				</div>
+			</fieldset>
 			<!-- /.container -->
 		</div>
 
@@ -808,36 +763,36 @@ input {
 	
 			/* var loader = new THREE.FBXLoader();
 			loader.load( '../models/b.FBX', function( object ) {
-		
+			
 				object.traverse( function( child ) {
-		
+			
 					if ( child instanceof THREE.Mesh ) {
-		
+			
 						// pass
 						child.material.map = texture;
 						child.material.bumpMap=texture2;
-		
+			
 					}
-		
+			
 				} );
 				object.name = "object";
 				object.position.y = 0;
 				scene.add( object );
-		
-		
+			
+			
 			}); */
 			} else if (num == 'c') {
 				var loader = new THREE.ImageLoader();
 				loader.load("../img/fab2.jpg", function(image) {
-				
-						texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
-		
-						texture.image = image;
-						texture.needsUpdate = true;
-					
+	
+					texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
+	
+					texture.image = image;
+					texture.needsUpdate = true;
+	
 				});
 	
-				
+	
 				loader = new THREE.OBJLoader();
 				loader.load('../models/na.obj', function(object) {
 	
@@ -845,7 +800,7 @@ input {
 	
 						if (child instanceof THREE.Mesh) {
 	
-							child.material.map=texture;
+							child.material.map = texture;
 	
 						}
 	
@@ -855,7 +810,7 @@ input {
 					object.position.y = 0;
 					scene.add(object);
 				});
-				
+	
 				loader = new THREE.ImageLoader();
 				loader.load("../img/fab1.jpg", function(image) {
 	
@@ -864,7 +819,7 @@ input {
 					texture2.needsUpdate = true;
 	
 				});
-				
+	
 				loader = new THREE.OBJLoader();
 				loader.load('../models/nb.obj', function(object) {
 	
@@ -885,38 +840,38 @@ input {
 	
 			} else if (num = 'test') {
 	
-				var onProgress = function ( xhr ) {
-						var percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+				var onProgress = function(xhr) {
+					var percentComplete = xhr.loaded / xhr.total * 100;
+					console.log(Math.round(percentComplete, 2) + '% downloaded');
 				};
-				
-
-				var onError = function ( xhr ) { };
-
-				THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-
+	
+	
+				var onError = function(xhr) {};
+	
+				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+	
 				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.setPath( '../models/' );
-				mtlLoader.load( 'maptest.mtl', function( materials ) {
-
+				mtlLoader.setPath('../models/');
+				mtlLoader.load('maptest.mtl', function(materials) {
+	
 					materials.preload();
-
+	
 					var objLoader = new THREE.OBJLoader();
-					objLoader.setMaterials( materials );
-					objLoader.setPath( '../models/' );
-					objLoader.load( 'maptest.obj', function ( object ) {
-						
+					objLoader.setMaterials(materials);
+					objLoader.setPath('../models/');
+					objLoader.load('maptest.obj', function(object) {
+	
 						object.name = "object";
 						object.position.y = 0;
-						scene.add( object );
-
-					}, onProgress, onError );
-
+						scene.add(object);
+	
+					}, onProgress, onError);
+	
 				});
-				
+	
 			}
 		}
-		
+	
 	
 		//옷 지우기
 		function removeEntity() {
@@ -925,9 +880,8 @@ input {
 		}
 		var strDownloadMime = "image/octet-stream";
 		function screenshot() {
-			
 			$("#uploadCost").val(cost);
-			
+	
 			var imgData,
 				imgNode;
 	
@@ -936,39 +890,39 @@ input {
 	
 				camera.position.set(0, 0, 30);
 				animateH();
-				
+	
 				var myImage = document.getElementById('myImage');
-				var a=renderer.domElement.toDataURL(strMime);
-				
+				var a = renderer.domElement.toDataURL(strMime);
+	
 				$("#input1").val(a);
-				
+	
 				camera.position.set(0, 0, -30);
 				animateH();
 	
 				myImage = document.getElementById('myImage2');
 	
-				a=renderer.domElement.toDataURL(strMime);
-				
+				a = renderer.domElement.toDataURL(strMime);
+	
 				$("#input2").val(a);
-				
+	
 				camera.position.set(-30, 0, 0);
 				animateH();
 	
 				myImage = document.getElementById('myImage3');
 	
-				a=renderer.domElement.toDataURL(strMime);
-				
+				a = renderer.domElement.toDataURL(strMime);
+	
 				$("#input3").val(a);
-				
+	
 				camera.position.set(30, 0, 0);
 				animateH();
 	
 				myImage = document.getElementById('myImage4');
 	
-				a=renderer.domElement.toDataURL(strMime);
-				
+				a = renderer.domElement.toDataURL(strMime);
+	
 				$("#input4").val(a);
-					
+	
 				/* 	            saveFile(imgData.replace(strMime, strDownloadMime), "hpage.jpg"); */
 	
 			} catch (e) {

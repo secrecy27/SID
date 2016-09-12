@@ -9,14 +9,35 @@
 <title>관리자 페이지</title>
 </head>
 <body>
-	<div class="panel-body">
-		<ul class="nav nav-pills nav-stacked category-menu">
-			<li><a href="Awrite.jsp">Apage 추가 </a></li>
-		</ul>
-		<ul class="nav nav-pills nav-stacked category-menu">
-			<li><a href="../member/Cwrite.jsp">Cpage 추가 </a></li>
-		</ul>
+<div id="all">
 
+		<div id="content">
+			<div class="container">
+				<div class="col-md-3">
+					<div class="panel panel-default sidebar-menu">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">전체보기</h3>
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked category-menu">
+									<li><a href="Awrite.jsp">Apage 추가 -기본 옷 </a></li>
+								</ul>
+								<ul class="nav nav-pills nav-stacked category-menu">
+									<li><a href="../member/Cwrite.jsp">Cpage 추가 - 완성 옷</a></li>
+								</ul>
+								<ul class="nav nav-pills nav-stacked category-menu">
+									<li><a href="../BoardServlet?command=board_write_form">게시판</a></li>
+								</ul>
+
+
+							</div>
+						</div>
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

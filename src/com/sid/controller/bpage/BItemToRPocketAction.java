@@ -12,16 +12,14 @@ import com.sid.controller.Action;
 import com.sid.dao.BPageDAO;
 import com.sid.dto.BWriteVO;
 
-public class BItemToCartAction implements Action{
+public class BItemToRPocketAction implements Action{
 	 @Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 	String url="member/toCartResult.jsp";
-		 	
-		 	System.out.println("Bitemtocart1");
+		 	String url="/SidServlet?command=customer_rpocket_list";
 		 	BPageDAO dao=BPageDAO.getInstance();
 
-		 	int result=dao.addToCart(request.getParameter("email"),Integer.parseInt(request.getParameter("id")));
+		 	int result=dao.addToRPocket(request.getParameter("email"),Integer.parseInt(request.getParameter("id")));
 		 	
 		 	System.out.println("result = " +result);
 		 	if(result>0){

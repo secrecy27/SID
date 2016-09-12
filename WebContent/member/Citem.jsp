@@ -74,11 +74,6 @@
 										<i class="fa fa glyphicon-plus"></i>&nbsp;장바구니
 									</a>
 								</p>
-								<p class="text-center buttons" style="display: inline">
-									<a type="submit" id="tocart" class="btn btn-primary">
-										<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
-									</a>
-								</p>
 							</div>
 						</div>
 					</div>
