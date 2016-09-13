@@ -22,8 +22,8 @@
 							<ul class="nav nav-pills nav-stacked category-menu">
 								<li><a href="SidServlet?command=customer_dplan">D 관리 </a></li>
 								<li><a href="SidServlet?command=customer_cplan">C 관리</a></li>
-								<li><a href="SidServlet?command=customer_buylist">주문목록</a></li>
-								<li><a href="SidServlet?command=customer_customer_coupon">쿠폰목록</a></li>
+								<li><a href="../member/error.jsp">주문목록</a></li>
+								<li><a href="../member/error.jsp">쿠폰목록</a></li>
 								<li><a href="SidServlet?command=customer_basket">장바구니</a></li>
 								<li><a href="SidServlet?command=customer_lpocket_list">주머니관리</a></li>
 								<hr>

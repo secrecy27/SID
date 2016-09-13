@@ -9,7 +9,6 @@ import com.sid.board.controller.action.BoardUpdateAction;
 import com.sid.board.controller.action.BoardUpdateFormAction;
 import com.sid.board.controller.action.BoardViewAction;
 import com.sid.board.controller.action.BoardWriteAction;
-import com.sid.board.controller.action.BoardWriteFormAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -28,8 +27,6 @@ public class ActionFactory {
 		
 		if (command.equals("board_list")) {
 			action = new BoardListAction();
-		} else if (command.equals("board_write_form")) {
-			action = new BoardWriteFormAction();
 		} else if (command.equals("board_write")) {
 			action = new BoardWriteAction();
 		} else if (command.equals("board_view")) {

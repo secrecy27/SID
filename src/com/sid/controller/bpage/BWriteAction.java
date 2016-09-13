@@ -23,7 +23,7 @@ public class BWriteAction implements Action{
 		 	System.out.println("bwrite action");
 		 	//-----------------------------
 		 	
-		 	String savePath= "C:/Users/hs/git/SID_2/SID/WebContent/img";
+		 	String savePath= "C:/Users/sid/git/SID/WebContent/img";
 		 			//저장 폴더명
 		 	int maxPostSize = 10 * 1024 * 1024; //10mb
 		 	String encoding = "utf-8";
@@ -58,9 +58,15 @@ public class BWriteAction implements Action{
 			String str = (String) multi.getParameter("hashtag");
 			bVo.setHashtag(str);
 		 	int result=dao.insertImage(bVo);
-			
+		 	
 			String[] arr=str.split(",");
-			dao.insertHashtag(result, arr);
+		 	if(result>0){
+		 		dao.insertHashtag(result, arr);
+				
+		 	}else{
+		 		System.out.println("bwrite action hashtag error");
+		 	}
+		
 			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);

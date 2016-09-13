@@ -26,7 +26,7 @@
 									<li><a href="../member/Cwrite.jsp">Cpage 추가 - 완성 옷</a></li>
 								</ul>
 								<ul class="nav nav-pills nav-stacked category-menu">
-									<li><a href="../BoardServlet?command=board_write_form">게시판</a></li>
+									<li><a href="../board/boardWrite.jsp">게시판</a></li>
 								</ul>
 
 

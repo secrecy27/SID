@@ -31,7 +31,7 @@
 <body>
 	<div id="all">
 		<div id="content">
-			<div class="container">
+			<div class="container" >
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
@@ -89,7 +89,7 @@
 											<div class="form-group row">
 												<label class="col-sm-10 control-label">최대지불가능 비용</label>
 												<div class="col-sm-10">
-													<input class="form-control" type="number" name="cost" s="원">
+													<input class="form-control" type="number" name="cost" hints="원">
 												</div>
 											</div>
 

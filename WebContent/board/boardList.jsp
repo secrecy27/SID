@@ -46,9 +46,9 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="list-group">
-					<a href="category.jsp" class="list-group-item">Notice</a> <a
-						href="category.jsp" class="list-group-item">Event</a> <a
-						href="category.jsp" class="list-group-item">Guide</a>
+					<a href="../BoardServlet?command=board_list" class="list-group-item">Notice</a> <a
+						href="../member/error.jsp" class="list-group-item">Event</a> <a
+						href="../member/error.jsp" class="list-group-item">Guide</a>
 				</div>
 			</div>
 

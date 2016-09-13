@@ -60,8 +60,10 @@ public class CWriteDAO {
 				pstmt.executeUpdate();
 				rst = pstmt.getGeneratedKeys();
 				String autoInsertedKey = (rst.next()) ? rst.getString(1) : null;
+				System.out.println("여기서 에런가");
 
 				result = Integer.parseInt(autoInsertedKey);
+				System.out.println("result : "+result);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

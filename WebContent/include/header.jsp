@@ -15,7 +15,8 @@
 <title>SID - Snow In Dawn</title>
 
 <meta name="keywords" content="">
-
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
@@ -85,7 +86,7 @@
 					<%
 						}
 					%>
-					<li><a href="contact.jsp">Contact</a></li>
+					<li><a href="../member/contact.jsp">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -179,11 +180,6 @@
 
 			<div class="navbar-collapse collapse" style="padding-left: 0px"
 				id="navigation">
-				<c:if
-														test="${dpage.condition eq '0'}">
-												최고가 우선</c:if> <c:if test="${dpage.condition eq '1'}">
-												평점 우선</c:if> <c:if test="${dpage.condition eq '2'}">
-												등급 우선</c:if> </strong>
 				
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/board/boardList.jsp")){%> active<%} %>"><a data-hover="dropdown"
