@@ -31,7 +31,7 @@
 <body>
 	<div id="all">
 		<div id="content">
-			<div class="container">
+			<div class="container" >
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>

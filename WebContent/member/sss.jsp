@@ -186,7 +186,7 @@ input {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">upload</h4>
 				</div>
-				<form action="Hupload.jsp" method="post" name='frm'>
+				<form action="member/Hupload.jsp" method="post" name='frm'>
 					<div class="modal-body">
 						<p>업로드 화면으로 이동합니다</p>
 
@@ -208,7 +208,7 @@ input {
 	<div id="all">
 		<!-- main -->
 
-		<div id="container">
+		<div id="container" style="width:60%">
 
 			<div id="hPageContainer">
 				<div id="moveGui"></div>
