@@ -18,6 +18,7 @@ public class CItemToCartAction implements Action {
 		String url = "member/ItemResult.jsp";
 		CWriteDAO cDao = CWriteDAO.getInstance();
 		HttpSession session = request.getSession();
+		System.out.println("id "+request.getParameter("id"));
 		int result = cDao.addToCart(Integer.parseInt(request.getParameter("id")),
 				(String) session.getAttribute("email"));
 		if (result > 0) {

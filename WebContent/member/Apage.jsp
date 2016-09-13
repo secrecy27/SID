@@ -208,13 +208,13 @@
 -->
 											<p class="text-center buttons" style="display: inline">
 												<a type="button" id="toCart" class="btn btn-primary"
-													onclick="toCart()" href="#"> <i
+													onclick="toCart(${apage.aWriteId})" href="#"> <i
 													class="fa fa glyphicon-plus"></i>&nbsp;장바구니
 												</a>
 											</p>
 											<p class="text-center buttons" style="display: inline">
 												<a type="button" id="toLPocket" class="btn btn-primary"
-													onclick="toLPocket()" href="#"> <i
+													onclick="toLPocket(${apage.aWriteId})" href="#"> <i
 													class="fa fa glyphicon-plus"></i>&nbsp;주머니
 												</a>
 											</p>
@@ -223,49 +223,6 @@
 									</div>
 								</div>
 							</div>
-							<script>
-								function toCart() {
-									$.ajax({
-										type : "POST",
-										url : "../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id=${apage.aWriteId}",
-										success : function(result) {
-											if (result == 1) {
-												alert("담기 성공")
-												$("#toCart").prop("disabled", true);
-											} else {
-							
-												alert("담기 실패 ( 이미 담긴 품목 )")
-											}
-										},
-										error : function(request, status, error) {
-											alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-										}
-									});
-							
-							
-								}
-							
-								function toLPocket() {
-									$.ajax({
-										type : "POST",
-										url : "../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id=${apage.aWriteId}",
-										success : function(result) {
-											if (result == 1) {
-												alert("담기 성공")
-												$("#toLPocket").prop("disabled", true);
-											} else {
-							
-												alert("담기 실패 ( 이미 담긴 품목 )")
-											}
-										},
-										error : function(request, status, error) {
-											alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-										}
-									});
-							
-							
-								}
-							</script>
 						</c:forEach>
 					</div>
 				</div>
@@ -309,7 +266,50 @@
 	<script src="js/front.js"></script>
 
 
-
+	<script>
+		function toCart(id) {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id="+id,
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toCart").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+	
+	
+		function toLPocket(id) {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id="+id,
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toLPocket").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+	</script>
 
 
 
