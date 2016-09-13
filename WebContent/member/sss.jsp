@@ -267,12 +267,12 @@ input {
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage" onclick="createEntity('a')"
+						<input type="image" class="baseImage" onclick="createEntity('test2')"
 							src="../img/h.gif">
 					</div>
 					<br>
 					<div id="baseButton">
-						<input type="image" class="baseImage" onclick="createEntity('a')"
+						<input type="image" class="baseImage" onclick="createEntity('test3')"
 							src="../img/f.gif">
 					</div>
 					<br>
@@ -852,14 +852,32 @@ input {
 	
 				var mtlLoader = new THREE.MTLLoader();
 				mtlLoader.setPath('../models/');
-				mtlLoader.load('maptest.mtl', function(materials) {
+				mtlLoader.load('dropbody.mtl', function(materials) {
 	
 					materials.preload();
 	
 					var objLoader = new THREE.OBJLoader();
 					objLoader.setMaterials(materials);
 					objLoader.setPath('../models/');
-					objLoader.load('maptest.obj', function(object) {
+					objLoader.load('dropbody.obj', function(object) {
+	
+						object.name = "object";
+						object.position.y = 0;
+						scene.add(object);
+	
+					}, onProgress, onError);
+	
+				});
+				mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath('../models/');
+				mtlLoader.load('droparm.mtl', function(materials) {
+	
+					materials.preload();
+	
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials(materials);
+					objLoader.setPath('../models/');
+					objLoader.load('droparm.obj', function(object) {
 	
 						object.name = "object";
 						object.position.y = 0;
@@ -869,6 +887,85 @@ input {
 	
 				});
 	
+			}else if (num = 'test2') {
+	
+				var onProgress = function(xhr) {
+					var percentComplete = xhr.loaded / xhr.total * 100;
+					console.log(Math.round(percentComplete, 2) + '% downloaded');
+				};
+	
+	
+				var onError = function(xhr) {};
+	
+				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+	
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath('../models/');
+				mtlLoader.load('nagbody.mtl', function(materials) {
+	
+					materials.preload();
+	
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials(materials);
+					objLoader.setPath('../models/');
+					objLoader.load('nagbody.obj', function(object) {
+	
+						object.name = "object";
+						object.position.y = 0;
+						scene.add(object);
+	
+					}, onProgress, onError);
+	
+				});
+				mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath('../models/');
+				mtlLoader.load('nagarm.mtl', function(materials) {
+	
+					materials.preload();
+	
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials(materials);
+					objLoader.setPath('../models/');
+					objLoader.load('nagarm.obj', function(object) {
+	
+						object.name = "object";
+						object.position.y = 0;
+						scene.add(object);
+	
+					}, onProgress, onError);
+	
+				});
+	
+			}else if (num = 'test3') {
+	
+				var onProgress = function(xhr) {
+					var percentComplete = xhr.loaded / xhr.total * 100;
+					console.log(Math.round(percentComplete, 2) + '% downloaded');
+				};
+	
+	
+				var onError = function(xhr) {};
+	
+				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+	
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath('../models/');
+				mtlLoader.load('body.mtl', function(materials) {
+	
+					materials.preload();
+	
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials(materials);
+					objLoader.setPath('../models/');
+					objLoader.load('body.obj', function(object) {
+	
+						object.name = "object";
+						object.position.y = 0;
+						scene.add(object);
+	
+					}, onProgress, onError);
+	
+				});
 			}
 		}
 	

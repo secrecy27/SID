@@ -41,7 +41,7 @@ public class AWriteDAO {
 			pstmt.setString(6,aVo.getHashtag());
 			
 			
-			int rownum = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
 			String autoInsertedKey = (rst.next()) ? rst.getString(1) : rst.getString(1) ;
 

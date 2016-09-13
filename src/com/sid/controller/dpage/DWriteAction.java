@@ -23,7 +23,7 @@ public class DWriteAction implements Action {
 		System.out.println("dwrite");
 		// -----------------------------
 
-		String savePath = "C:/Users/hs/git/SID_2/SID/WebContent/img"; // 저장 폴더명
+		String savePath = "C:/Users/sid/git/SID/WebContent/img"; // 저장 폴더명
 		int maxPostSize = 10 * 1024 * 1024; // 10mb
 		String encoding = "utf-8";
 

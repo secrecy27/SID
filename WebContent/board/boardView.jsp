@@ -49,7 +49,7 @@
 		<table>
 			<tr>
 				<th>작성일</th>
-				<td>${board.date}" /></td>
+				<td>${board.date}"</td>
 				<th>번호</th>
 				<td>${board.contentNum}</td>
 			</tr>
