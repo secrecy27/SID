@@ -57,6 +57,7 @@ public class CWriteDAO {
 				pstmt.setInt(2, cVo.getCost());
 				pstmt.setString(3, cVo.getHashtag());
 
+				pstmt.executeUpdate();
 				rst = pstmt.getGeneratedKeys();
 				String autoInsertedKey = (rst.next()) ? rst.getString(1) : null;
 

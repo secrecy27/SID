@@ -20,8 +20,8 @@
 					<ul class="breadcrumb">
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
 						<%
-							if (session.getAttribute("email") != null && ((session.getAttribute("admin").equals(1))
-									|| (session.getAttribute("admin").equals(2)))) {
+							if (session.getAttribute("email") != null
+									&& ((session.getAttribute("admin").equals(1)) || (session.getAttribute("admin").equals(2)))) {
 						%>
 						<a href="member/Bwrite.jsp" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
@@ -60,14 +60,39 @@
 										</div>
 										<div class="text">
 											<a herf="#">${bpage.hashtag}</a>
-											<p>${bpage.cost} 원</p>
-											<p class="buttons">
-												<a href="" class="btn btn-default">담기</a>
+											<p>${bpage.cost}원</p>
+											<p class="text-center buttons">
+												<button type="button" id="toRPocket" onclick="toRPocket()"
+													class="btn btn-primary">
+													<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
+												</button>
 											</p>
 										</div>
 										<!-- /.text -->
 									</div>
 								</div>
+								<script>
+									function toRPocket() {
+										$.ajax({
+											type : "POST",
+											url : "../SidServlet?command=bItemtoRpocket&email=${sessionScope.email}&id=${bpage.bWriteId}",
+											success : function(result) {
+												if (result == 1) {
+													alert("담기 성공")
+													$("#toRPocket").prop("disabled", true);
+												} else {
+								
+													alert("담기 실패 ( 이미 담긴 품목 )")
+												}
+											},
+											error : function(request, status, error) {
+												alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+											}
+										});
+								
+								
+									}
+								</script>
 							</c:forEach>
 						</div>
 					</div>

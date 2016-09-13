@@ -14,7 +14,7 @@ public class AItemToLPocketAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/SidServlet?command=customer_lpocket_list";
+		String url = "member/ItemResult.jsp";
 		AWriteDAO aDao = AWriteDAO.getInstance();
 
 		int result = aDao.addToLPocket(request.getParameter("email"), Integer.parseInt(request.getParameter("id")));

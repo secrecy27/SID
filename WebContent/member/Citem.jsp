@@ -68,9 +68,11 @@
 										<p>디자이너 이메일</p>
 									</div>
 								</ul>
+
 								<p class="text-center buttons" style="display: inline">
-									<a type="button" id="tocart" class="btn btn-primary"
-										href="../SidServlet?command=cItemtoCart&email=${sessionScope.email }&id=${cpage.cWriteId}">
+									<a type="button" id="toCart" class="btn btn-primary"
+										onclick="toCart()"
+										href="#">
 										<i class="fa fa glyphicon-plus"></i>&nbsp;장바구니
 									</a>
 								</p>
@@ -88,6 +90,27 @@
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+		function toCart() {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=cItemtoCart&email=${sessionScope.email }&id=${cpage.cWriteId}",
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toCart").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+	</script>
 </body>
 </html>

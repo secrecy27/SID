@@ -88,14 +88,14 @@
 							</ul>
 
 						</div>
-						
 
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									<input type="text" method="post" action="#" placeholder="검색">
-								</h3>
-							</div>
-			
+
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<input type="text" method="post" action="#" placeholder="검색">
+							</h3>
+						</div>
+
 						<div class="panel panel-default sidebar-menu">
 
 							<div class="panel-heading">
@@ -203,15 +203,40 @@
 										<div class="text">
 											<a href="#">${cpage.hashtag }</a>
 											<p class="price">${cpage.cost}원</p>
-											<p class="buttons">
-												<a href="basket.jsp" class="btn btn-primary"><i
-													class="fa fa-shopping-cart"></i>담기</a>
+											<p class="text-center buttons" style="display: inline">
+												<a type="button" id="toCart" class="btn btn-primary"
+													onclick="toCart()" href="#"> <i
+													class="fa fa glyphicon-plus"></i>&nbsp;장바구니
+												</a>
 											</p>
 										</div>
 
 									</div>
 								</div>
 							</div>
+
+							<script type="text/javascript">
+								function toCart() {
+									$.ajax({
+										type : "POST",
+										url : "../SidServlet?command=cItemtoCart&email=${sessionScope.email}&id=${cpage.cWriteId}",
+										success : function(result) {
+											if (result == 1) {
+												alert("담기 성공")
+												$("#toCart").prop("disabled", true);
+											} else {
+							
+												alert("담기 실패 ( 이미 담긴 품목 )")
+											}
+										},
+										error : function(request, status, error) {
+											alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+										}
+									});
+							
+							
+								}
+							</script>
 						</c:forEach>
 					</div>
 					<!-- /.col-md-4 -->

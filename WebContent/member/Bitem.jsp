@@ -70,7 +70,7 @@
 								<p class="text-center buttons">
 									<button type="button" id="toRPocket" onclick="toRPocket()"
 										class="btn btn-primary">
-										<i class="fa fa glyphicon-plus"></i>&nbsp주머니
+										<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
 									</button>
 								</p>
 							</div>
