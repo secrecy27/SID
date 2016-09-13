@@ -21,7 +21,7 @@ public class CpageWriteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		int sizeLimit = 10 * 1024 * 1024;
-		String savePath = "C:/Users/hs/git/SID_2/SID/WebContent/img";
+		String savePath =  "C:/Users/hs/git/SID_2/SID/WebContent/img";
 		
 		MultipartRequest multi = new MultipartRequest(
 				request, 

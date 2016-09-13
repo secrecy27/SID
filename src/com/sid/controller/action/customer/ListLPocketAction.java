@@ -37,5 +37,6 @@ public class ListLPocketAction implements Action {
 		request.setAttribute("alist", alist);
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
+		
 	}
 }

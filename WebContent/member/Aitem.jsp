@@ -33,9 +33,25 @@
 						<div class="col-sm-6">
 							<div class="box">
 								<div id="mainImage">
-									<img id="image" name="imageUrl" src="${apage.imageUrl}"
-										style="width: 100%; max-width: 100%;" />
+									<img id="mainImg" style="width: 100%;" src="${apage.imageUrl}">
+									<div>
+										<span onclick="toMainImg('1')"><img id="myImage1"
+											style="width: 24%;" src="${apage.imageUrl}"> </span> <span
+											onclick="toMainImg('2')"><img id="myImage2"
+											style="width: 24%;" src="${apage.imageUrl2}"> </span> <span
+											onclick="toMainImg('3')"><img id="myImage3"
+											style="width: 24%;" src="${apage.imageUrl3}"> </span> <span
+											onclick="toMainImg('4')"><img id="myImage4"
+											style="width: 24%;" src="${apage.imageUrl4}"> </span> <input
+											style="display: none;" value="${apage.imageUrl}"
+											name="imageSrc1"> <input style="display: none;"
+											value="${apage.imageUrl2}" name="imageSrc2"> <input
+											style="display: none;" value="${apage.imageUrl3}"
+											name="imageSrc3"> <input style="display: none;"
+											value="${apage.imageUrl4}" name="imageSrc4">
+									</div>
 								</div>
+
 							</div>
 						</div>
 
@@ -80,7 +96,7 @@
 								</p>
 								<p class="text-center buttons" style="display: inline">
 									<a type="button" id="tocart" class="btn btn-primary"
-									href="../SidServlet?command=customer_lpocket_list&email=${sessionScope.email }$id=${apage.aWriteId}">
+										href="../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id=${apage.aWriteId}">
 										<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
 									</a>
 								</p>
@@ -98,6 +114,23 @@
 			</div>
 		</div>
 	</div>
-
+	<script>
+		function toMainImg(num) {
+			switch (num) {
+			case '1':
+				$("#mainImg").attr("src", "${apage.imageUrl }");
+				break;
+			case '2':
+				$("#mainImg").attr("src", "${apage.imageUrl2 }");
+				break;
+			case '3':
+				$("#mainImg").attr("src", "${apage.imageUrl3 }");
+				break;
+			case '4':
+				$("#mainImg").attr("src", "${apage.imageUrl4 }");
+				break;
+			}
+		}
+	</script>
 </body>
 </html>

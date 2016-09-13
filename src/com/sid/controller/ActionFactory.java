@@ -16,8 +16,6 @@ import com.sid.controller.action.AdminQnaDetailAction;
 import com.sid.controller.action.AdminQnaListAction;
 import com.sid.controller.action.AdminQnaResaveAction;
 import com.sid.controller.action.CartDeleteAction;
-import com.sid.controller.action.CartInsertAction;
-import com.sid.controller.action.CartListAction;
 import com.sid.controller.action.ContractAction;
 import com.sid.controller.action.DeleteProductAction;
 import com.sid.controller.action.EmailCheckFormAction;
@@ -49,10 +47,11 @@ import com.sid.controller.action.designer.Designer_Bplan_Action;
 import com.sid.controller.action.designer.Designer_Cplan_Action;
 import com.sid.controller.action.designer.Designer_Dplan_Action;
 import com.sid.controller.apage.AItemToCartAction;
+import com.sid.controller.apage.AItemToLPocketAction;
 import com.sid.controller.apage.AdminApageListAction;
 import com.sid.controller.apage.AdminApageWriteAction;
 import com.sid.controller.apage.ApageReadAction;
-import com.sid.controller.bpage.BItemToCartAction;
+import com.sid.controller.bpage.BItemToRPocketAction;
 import com.sid.controller.bpage.BWriteAction;
 import com.sid.controller.bpage.BpageListAction;
 import com.sid.controller.bpage.BpageReadAction;
@@ -91,12 +90,7 @@ public class ActionFactory {
 			action = new JoinAction();
 		} else if (command.equals("join_design")) {
 			action = new JoinDesignerAction();
-			//회원가입페이지
-			
-		} else if (command.equals("cart_insert")) {
-			action = new CartInsertAction();
-		} else if (command.equals("cart_list")) {
-			action = new CartListAction();
+			// 회원가입페이지
 		} else if (command.equals("cart_delete")) {
 			action = new CartDeleteAction();
 		} else if (command.equals("order_insert")) {
@@ -115,8 +109,7 @@ public class ActionFactory {
 			action = new QnaWriteFormAction();
 		} else if (command.equals("qna_view")) {
 			action = new QnaViewAction();
-			
-			
+
 		} else if (command.equals("admin_login_form")) {
 			action = new AdminIndexAction();
 		} else if (command.equals("admin_login")) {
@@ -147,106 +140,104 @@ public class ActionFactory {
 			action = new AdminQnaDetailAction();
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
-		
-			
-		} else if(command.equals("admin_apage_write")){
-			action=new AdminApageWriteAction();
-		} else if(command.equals("admin_apage_list")){
-			action=new AdminApageListAction();
-		}else if(command.equals("aItemtoCart")){
-			action=new AItemToCartAction();
-		} else if(command.equals("read_apage")){
-			action=new ApageReadAction();
-		//a페이지
-			
-		}else if(command.equals("bWrite")){
-			action=new BWriteAction();
-		}else if(command.equals("bItemtoCart")){
-			action=new BItemToCartAction();
-		}else if(command.equals("list_bpage")){
-			action=new BpageListAction();
-		}else if(command.equals("read_bpage")){
-			action=new BpageReadAction();
-		//b페이지
-			
-		}else if(command.equals("cpage_write")){
-			action=new CpageWriteAction();
-		}else if(command.equals("cpage_list")){
-			action=new CpageListAction();
-		}else if(command.equals("read_cpage")){
-			action=new CpageReadAction();
-		}else if(command.equals("hpage_upload")){
-			action=new HpageUploadAction();
-		}else if(command.equals("cItemtoCart")){
-			action=new CItemToCartAction();
-		//c페이지
-			
-		}else if(command.equals("list_hpage")){
-			action=new HpageListAction();
-		//h페이지	
-			
-		}else if(command.equals("dWrite")){
-			action=new DWriteAction();
-		}else if(command.equals("ditem_suggest")){
-			action=new DitemSuggestAction();
-		}else if(command.equals("list_dpage")){
-			action=new DpageListAction();
-		}else if(command.equals("read_dpage")){
-			action=new DpageReadAction();
-		//d페이지
-			
-		}else if(command.equals("hpage")){
-			action=new DpageReadAction();
-			
-			
-		}else if(command.equals("login")){
-			action=new LoginAction();
-			
-		}else if(command.equals("customer_all")){
-			action=new Customer_All_Action();
-		}else if(command.equals("customer_dplan")){
-			action=new Customer_Dplan_Action();
-		}else if(command.equals("customer_dplan_ongoing")){
-			action=new ListDplanOngoing_Action();
-					
-			
-		}else if(command.equals("customer_buylist")){
-			action=new Customer_Buylist_Action();
-			
-			
-		}else if(command.equals("customer_coupon")){
-			action=new Customer_Coupon_Action();
-			//쿠폰 페이지 나중에 제작
-			
-		}else if(command.equals("customer_basket")){
-			action=new Customer_Basket_Action();
-		}else if(command.equals("delete_product")){
-			action=new DeleteProductAction();
-		//장바구니
-			
-		}else if(command.equals("customer_pocket")){
-			action=new Customer_Pocket_Action();
-		}else if(command.equals("customer_rpocket_list")){
-			action=new ListRPocketAction();
-		}else if(command.equals("customer_lpocket_list")){
-			action=new ListLPocketAction();
-		//주머니관리
-			
-		}else if(command.equals("customer_accountchange")){
-			action=new Customer_Accountchange_Action();
-		}else if(command.equals("logout")){
-			action=new LogoutAction();
-		//구매자 관리 페이지 
-			
-		}else if(command.equals("designer_all")){
-			action=new Designer_All_Action();
-		}else if(command.equals("designer_bplan")){
-			action=new Designer_Bplan_Action();
-		}else if(command.equals("designer_cplan")){
-			action=new Designer_Cplan_Action();
-		}else if(command.equals("designer_dplan")){
-			action=new Designer_Dplan_Action();
-			//디자이너 관리 페이지
+
+		} else if (command.equals("admin_apage_write")) {
+			action = new AdminApageWriteAction();
+		} else if (command.equals("admin_apage_list")) {
+			action = new AdminApageListAction();
+		} else if (command.equals("aItemtoCart")) {
+			action = new AItemToCartAction();
+		} else if (command.equals("aItemtoLpocket")) {
+			action = new AItemToLPocketAction();
+		} else if (command.equals("read_apage")) {
+			action = new ApageReadAction();
+			// a페이지
+
+		} else if (command.equals("bWrite")) {
+			action = new BWriteAction();
+		} else if (command.equals("list_bpage")) {
+			action = new BpageListAction();
+		} else if (command.equals("bItemtoRpocket")) {
+			action = new BItemToRPocketAction();
+		} else if (command.equals("read_bpage")) {
+			action = new BpageReadAction();
+			// b페이지
+
+		} else if (command.equals("cpage_write")) {
+			action = new CpageWriteAction();
+		} else if (command.equals("cpage_list")) {
+			action = new CpageListAction();
+		} else if (command.equals("read_cpage")) {
+			action = new CpageReadAction();
+		} else if (command.equals("hpage_upload")) {
+			action = new HpageUploadAction();
+		} else if (command.equals("cItemtoCart")) {
+			action = new CItemToCartAction();
+			// c페이지
+
+		} else if (command.equals("list_hpage")) {
+			action = new HpageListAction();
+			// h페이지
+
+		} else if (command.equals("dWrite")) {
+			action = new DWriteAction();
+		} else if (command.equals("ditem_suggest")) {
+			action = new DitemSuggestAction();
+		} else if (command.equals("list_dpage")) {
+			action = new DpageListAction();
+		} else if (command.equals("read_dpage")) {
+			action = new DpageReadAction();
+			// d페이지
+
+		} else if (command.equals("hpage")) {
+			action = new DpageReadAction();
+			// h페이지
+		} else if (command.equals("login")) {
+			action = new LoginAction();
+
+		} else if (command.equals("customer_all")) {
+			action = new Customer_All_Action();
+		} else if (command.equals("customer_dplan")) {
+			action = new Customer_Dplan_Action();
+		} else if (command.equals("customer_dplan_ongoing")) {
+			action = new ListDplanOngoing_Action();
+
+		} else if (command.equals("customer_buylist")) {
+			action = new Customer_Buylist_Action();
+
+		} else if (command.equals("customer_coupon")) {
+			action = new Customer_Coupon_Action();
+			// 쿠폰 페이지 나중에 제작
+
+		} else if (command.equals("customer_basket")) {
+			action = new Customer_Basket_Action();
+		} else if (command.equals("delete_product")) {
+			action = new DeleteProductAction();
+			// 장바구니
+
+		} else if (command.equals("customer_pocket")) {
+			action = new Customer_Pocket_Action();
+		} else if (command.equals("customer_rpocket_list")) {
+			action = new ListRPocketAction();
+		} else if (command.equals("customer_lpocket_list")) {
+			action = new ListLPocketAction();
+			// 주머니관리
+
+		} else if (command.equals("customer_accountchange")) {
+			action = new Customer_Accountchange_Action();
+		} else if (command.equals("logout")) {
+			action = new LogoutAction();
+			// 구매자 관리 페이지
+
+		} else if (command.equals("designer_all")) {
+			action = new Designer_All_Action();
+		} else if (command.equals("designer_bplan")) {
+			action = new Designer_Bplan_Action();
+		} else if (command.equals("designer_cplan")) {
+			action = new Designer_Cplan_Action();
+		} else if (command.equals("designer_dplan")) {
+			action = new Designer_Dplan_Action();
+			// 디자이너 관리 페이지
 		}
 		return action;
 	}

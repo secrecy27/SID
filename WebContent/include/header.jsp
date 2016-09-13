@@ -19,20 +19,11 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<!-- styles -->
-<link href="${pageContext.request.contextPath}/css/font-awesome.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/animate.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.carousel.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.theme.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.carousel.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.theme.css" rel="stylesheet">
 
 <!-- theme stylesheet -->
 <link href="${pageContext.request.contextPath}/css/style.default.css"
@@ -196,7 +187,7 @@
 				
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/board/boardList.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../BoardServlet?command=board_list">게시판</a></li>
+						href="../BoardServlet?command=board_list">INFO</a></li>
 					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Cpage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=cpage_list"
 						class="dropdown-toggle">완성옷</a></li>
 					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Bpage.jsp")){%> active<%} %>"><a data-hover="dropdown"

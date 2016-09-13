@@ -25,7 +25,7 @@ public class AWriteDAO {
 
 	public int insertImage(AWriteVO aVo) {
 		int result = -1;
-		String sql = "insert into awrite(imageUrl,cost,hashtag) VALUES(?,?,?)";
+		String sql = "insert into awrite(imageUrl,imageUrl2,imageUrl3,imageUrl4,cost,hashtag) VALUES(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rst = null;
@@ -34,14 +34,20 @@ public class AWriteDAO {
 			pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			pstmt.setString(1, aVo.getImageUrl());
-			pstmt.setInt(2, aVo.getCost());
-			pstmt.setString(3,aVo.getHashtag());
-
+			pstmt.setString(2, aVo.getImageUrl2());
+			pstmt.setString(3, aVo.getImageUrl3());
+			pstmt.setString(4, aVo.getImageUrl4());
+			pstmt.setInt(5, aVo.getCost());
+			pstmt.setString(6,aVo.getHashtag());
+			
+			
 			int rownum = pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
-			String autoInsertedKey = (rst.next()) ? rst.getString(1) : null;
+			String autoInsertedKey = (rst.next()) ? rst.getString(1) : rst.getString(1) ;
 
+			System.out.println(aVo.getImageUrl4());
 			result = Integer.parseInt(autoInsertedKey);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,6 +104,49 @@ public class AWriteDAO {
 
 		return result;
 	}
+	
+	public int addToLPocket(String email, int id) {
+		int result = -1;
+		String sql = "SELECT pocketId FROM lpocket where email=?";
+		Connection conn = null;
+		conn = JDBCUtil.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rst = null;
+		int pocketId = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rst = ps.executeQuery();
+
+			if (rst.next()) {
+				pocketId = rst.getInt("pocketId");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+
+		sql = "INSERT INTO lpocket2(pocketId, aWriteId) VALUES(?,?)";
+		conn = JDBCUtil.getConnection();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, pocketId);
+			ps.setInt(2, id);
+
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(ps, conn);
+		}
+
+		System.out.println(" result : " + result);
+
+		return result;
+	}
 
 	public AWriteVO readItem(int num) {
 		String sql = "select * from awrite where aWriteId=?";
@@ -116,6 +165,9 @@ public class AWriteDAO {
 			if (rst.next()) {
 				vo.setaWriteId(rst.getInt("aWriteId"));
 				vo.setImageUrl(rst.getString("imageUrl"));
+				vo.setImageUrl2(rst.getString("imageUrl2"));
+				vo.setImageUrl3(rst.getString("imageUrl3"));
+				vo.setImageUrl4(rst.getString("imageUrl4"));
 				vo.setCost(rst.getInt("cost"));
 			}
 
@@ -174,6 +226,9 @@ public class AWriteDAO {
 				vo = new AWriteVO();
 				vo.setaWriteId(rst.getInt("aWriteId"));
 				vo.setImageUrl(rst.getString("imageUrl"));
+				vo.setImageUrl2(rst.getString("imageUrl2"));
+				vo.setImageUrl3(rst.getString("imageUrl3"));
+				vo.setImageUrl4(rst.getString("imageUrl4"));
 				vo.setCost(rst.getInt("cost"));
 				try{
 					str=rst.getString("hashtag");

@@ -44,7 +44,7 @@
 </head>
 <body>
 	<div id="wrap" align="center">
-		<h1>게시글 등록</h1>
+		<h1>INFO 등록</h1>
 		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
 			<table>

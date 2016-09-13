@@ -201,9 +201,22 @@
 										<div class="text">
 											<a herf="#">${apage.hashtag }</a>
 											<p class="price">${apage.cost}원</p>
-											<p class="buttons">
+				<!--  							<p class="buttons">
 												<a href="basket.jsp" class="btn btn-primary"><i
 													class="fa fa-shopping-cart"></i>담기</a>
+											</p>
+-->
+											<p class="text-center buttons" style="display: inline">
+												<a type="button" id="tocart" class="btn btn-primary"
+													href="../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id=${apage.aWriteId}">
+													<i class="fa fa glyphicon-plus"></i>&nbsp;장바구니
+												</a>
+											</p>
+											<p class="text-center buttons" style="display: inline">
+												<a type="button" id="tocart" class="btn btn-primary"
+													href="../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id=${apage.aWriteId}">
+													<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
+												</a>
 											</p>
 										</div>
 
