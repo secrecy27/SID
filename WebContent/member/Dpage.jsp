@@ -11,7 +11,11 @@
 	rel='stylesheet' type='text/css'>
 
 <!-- styles -->
-
+<style>
+#content, #menu, #category, #all {
+	background-image: url(../css_sid/1.png);
+}
+</style>
 
 </head>
 

@@ -14,6 +14,9 @@
 	max-width: 100%;
 	max-height: 100%;
 }
+#content{
+	background-image: url(../css_sid/1.png);
+}
 </style>
 <body>
 	<div id="all">

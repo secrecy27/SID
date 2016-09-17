@@ -16,6 +16,9 @@ ul#hashtag li {
 ul#hashtag li:before {
 	content: "#";
 }
+#content{
+	background-image: url(../css_sid/1.png);
+}
 </style>
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">

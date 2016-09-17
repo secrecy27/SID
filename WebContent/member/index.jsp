@@ -5,13 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+#content, #menu, #category, #all {
+	background-image: url(../css_sid/1.png);
+}
+</style>
 
 </head>
 <body>
 	<div id="all">
-		<div class="container">
+		<div  class="container">
 			<div class="col-md-12">
-				<div id="main-slider">
+				<div id="main-slider" style="width:100%">
 					<div class="item">
 						<img src="../img/main-slider1.jpg" alt="" class="img-responsive">
 					</div>
@@ -39,7 +44,9 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_apage&num=${apage.aWriteId }"> <img src="${apage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_apage&num=${apage.aWriteId }">
+											<img src="${apage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>
@@ -65,7 +72,7 @@
 						</p>
 					</div>
 				</div>
-				
+
 				<!--  인기페이지 Apage -->
 				<div class="col-md-12">
 					<div class="box">
@@ -77,7 +84,9 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_bpage&num=${bpage.bWriteId }"> <img src="${bpage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_bpage&num=${bpage.bWriteId }">
+											<img src="${bpage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>
@@ -113,7 +122,9 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }"> <img src="${cpage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }">
+											<img src="${cpage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>

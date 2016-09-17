@@ -40,8 +40,11 @@
 <script src="js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
-
-
+<style>
+#content{
+	background-image: url(../css_sid/1.png);
+}
+</style>
 
 </head>
 

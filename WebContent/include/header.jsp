@@ -20,11 +20,16 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
-<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/animate.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.carousel.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font-awesome.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.carousel.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.theme.css"
+	rel="stylesheet">
 
 <!-- theme stylesheet -->
 <link href="${pageContext.request.contextPath}/css/style.default.css"
@@ -49,17 +54,100 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
 <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/front.js"></script>
+<style>
+#info {
+	background-image: url(../css_sid/9-info.png);
+	width: 185px;
+	height: 75px;
+}
+
+#info:active {
+	background-image: url(../css_sid/9-info_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#design {
+	background-image: url(../css_sid/9-design.png);
+	width: 185px;
+	height: 75px;
+}
+
+#design:active {
+	background-image: url(../css_sid/9-design_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#frame {
+	background-image: url(../css_sid/9-frame.png);
+	width: 185px;
+	height: 75px;
+}
+
+#frame:active {
+	background-image: url(../css_sid/9-frame_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#image {
+	background-image: url(../css_sid/9-image.png);
+	width: 185px;
+	height: 75px;
+}
+
+#image {
+	background-image: url(../css_sid/9-image_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#proxy {
+	background-image: url(../css_sid/9-proxy.png);
+	width: 185px;
+	height: 75px;
+}
+
+#proxy:active {
+	background-image: url(../css_sid/9-proxy_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#mix {
+	background-image: url(../css_sid/9-mix.png);
+	width: 185px;
+	height: 75px;
+}
+
+#mix:active {
+	background-image: url(../css_sid/9-mix_2.png);
+	width: 185px;
+	height: 75px;
+}
+
+#customerservice {
+	background-image: url(../css_sid/9-customerservice.png);
+	width: 330px;
+	height: 75px;
+}
+
+#logo {
+	background-image: url(../css_sid/2.png);
+}
+</style>
 <body>
 	<div id="top">
 		<div class="container">
+			<!--/.navbar-header -->
 			<div class="col-md-6" data-animation="fadeInDown">
 				<ul class="menu">
 
 					<%
 						if (session.getAttribute("email") == null) {
 					%>
-					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-					</li>
+					<li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
 					<li><a href="../member/register.jsp">Register</a></li>
 
 					<%
@@ -82,8 +170,7 @@
 					%>
 					<li><a href="../admin/main.jsp">관리자 페이지</a> <%
  						}
-					%>
-					<%
+					%> <%
 						}
 					%>
 					<li><a href="../member/contact.jsp">Contact</a></li>
@@ -167,33 +254,43 @@
  _________________________________________________________ -->
 
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand home"
-					style="padding: 2px; padding-right: 0px" href="../SidServlet?command=index">
-					<img src="../img/SIDlogo.png" alt="Obaju logo"
-					style="width: 120px; max-height: 100%;"> <span
-					class="sr-only">Snow In Dawn</span>
-				</a>
-			</div>
-			<!--/.navbar-header -->
+		<div class="container" style="width: 100%">
+
 
 			<div class="navbar-collapse collapse" style="padding-left: 0px"
 				id="navigation">
-				
-				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/board/boardList.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../BoardServlet?command=board_list">INFO</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Cpage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=cpage_list"
-						class="dropdown-toggle">완성옷</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Bpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../SidServlet?command=list_bpage" class="dropdown-toggle">프린트</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Apage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=admin_apage_list"
-						class="dropdown-toggle">기본옷</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Dpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../SidServlet?command=list_dpage" class="dropdown-toggle">스케치</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/sss.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=list_hpage"
-						class="dropdown-toggle">만들기</a></li>
+				<div id="logo" class="navbar-header">
+					<a class="navbar-brand home"
+						style="padding: 2px; padding-right: 0px"
+						href="../SidServlet?command=index"> <img
+						src="../img/SIDlogo.png"
+						style="width: 100px; height: 125px; max-height: 100%;"> <span
+						class="sr-only">Snow In Dawn</span>
+					</a>
+				</div>
+				<ul class="nav navbar-nav navbar-left" >
+					<li id="info"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/board/boardList.jsp")) {%> active<%}%>"><a
+						href="../BoardServlet?command=board_list"></a></li>
+					<li id="design"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Cpage.jsp")) {%> active<%}%>"><a
+						href="../SidServlet?command=cpage_list" ></a></li>
+					<li id="frame"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Bpage.jsp")) {%> active<%}%>"><a
+						href="../SidServlet?command=list_bpage" ></a></li>
+					<li id="image"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Apage.jsp")) {%> active<%}%>"><a
+						href="../SidServlet?command=admin_apage_list"
+						></a></li>
+					<li id="proxy"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Dpage.jsp")) {%> active<%}%>"><a
+						href="../SidServlet?command=list_dpage"></a></li>
+					<li id="mix"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/sss.jsp")) {%> active<%}%>"><a
+						href="../SidServlet?command=list_hpage"></a></li>
+					<li id="customerservice"
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/")) {%> active<%}%>"><a
+						href="../SidServlet?command="></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -201,7 +298,6 @@
 		<!-- /.container -->
 	</div>
 	<!-- /#navbar -->
-
 	<!-- *** NAVBAR END *** -->
 
 </body>

@@ -37,7 +37,47 @@
 <script src="js/respond.min.js"></script>
 
 <link rel="shortcut icon" href="favicon.png">
+<style>
+#content, #menu, #category {
+	background-image: url(../css_sid/1.png);
+}
 
+#menu #category {
+	background-image: url(../css_apage/2-1ALL.png);
+	width: 255px;
+	height: 40px;
+}
+
+#t-shirt {
+	background-image: url(../css_apage/2-2Tshirts.png);
+	width: 225px;
+	height: 40px;
+}
+
+#short-sleeve {
+	background-image: url(../css_apage/2-3shortsleeve.png);
+	width: 225px;
+	height: 40px;
+}
+
+#long-sleeve {
+	background-image: url(../css_apage/2-4Longsleeve.png);
+	width: 225px;
+	height: 40px;
+}
+
+#bottom {
+	background-image: url(../css_apage/2-5bottom.png);
+	width: 225px;
+	height: 40px;
+}
+
+#bags {
+	background-image: url(../css_apage/2-6bag.png);
+	width: 225px;
+	height: 40px;
+}
+</style>
 
 
 </head>
@@ -47,7 +87,7 @@
 	<div id="all">
 
 		<div id="content">
-			<div class="container">
+			<div id="con" class="container">
 
 				<div class="col-md-12">
 					<ul class="breadcrumb">
@@ -59,29 +99,25 @@
 				<div class="col-md-3">
 					<!-- *** MENUS AND FILTERS ***
  _________________________________________________________ -->
-					<div class="panel panel-default sidebar-menu">
+					<div id="menu" class="panel panel-default sidebar-menu">
 
-						<div class="panel-heading">
-							<h3 class="panel-title">카테고리</h3>
+						<div id="category" class="panel-heading">
+							<h3 class="panel-title"></h3>
 						</div>
 
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li><a href="category.jsp">티셔츠 </a>
-									<ul>
-										<li><a href="category.jsp">반팔 티셔츠</a></li>
-										<li><a href="category.jsp">긴팔 티셔츠</a></li>
-									</ul></li>
-								<li><a href="category.jsp">맨투맨</a>
-									<ul>
-										<li><a href="category.jsp">긴팔 맨투맨</a></li>
-										<li><a href="category.jsp">반팔 맨투맨</a></li>
-									</ul></li>
-								<li><a href="category.jsp">가방</a>
-									<ul>
-										<li><a href="category.jsp">에코백</a></li>
-										<li><a href="category.jsp">크로스백</a></li>
-									</ul></li>
+								<li id="t-shirt"><a href="category.jsp"></a></li>
+								<ul>
+									<li id="short-sleeve"><a href="category.jsp"></a></li>
+									<li id="long-sleeve"><a href="category.jsp"></a></li>
+								</ul>
+
+								<ul>
+									<li id="bottom"><a href="category.jsp"></a></li>
+									<li id="bags"><a href="category.jsp"></a></li>
+								</ul>
+
 							</ul>
 
 						</div>

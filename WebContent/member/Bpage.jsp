@@ -6,7 +6,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
-
+<style>
+#content{
+	background-image: url(../css_sid/1.png);
+}
+</style>
 <body>
 	<div id="all">
 		<div id="content">
