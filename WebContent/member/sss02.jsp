@@ -7,16 +7,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
 <style>
-#canvasContainer {
-	text-align: center;
+input {
+	height: 80%;
 }
-
-#canvasBox {
-	text-align: center;
-	overflow: hidden;
-	background-image: url(../img/hBackground.png);
+#canvasContainer{
+	text-align:center;
 }
-
+#canvasBox{
+	text-align:center;
+	overflow:hidden;
+}
 .arrowKey {
 	width: 40px;
 	height: 40px;
@@ -25,8 +25,6 @@
 #arrowDiv {
 	text-align: center;
 	padding: 10px;
-	position: absolute;
-	z-index: 1;
 }
 
 #dropDown {
@@ -35,53 +33,49 @@
 
 #leftBar {
 	text-align: center;
-	background-image: url(../img/hBackground.png);
-	margin: 0px;
-	padding: 0px;
+	padding: 10px;
+	overflow: auto;
+	overflow-x: hidden;
 }
 
 #rightBar {
 	text-align: center;
 	padding: 10px;
-	background-image: url(../img/hBackground.png);
-}
-
-input {
-	height: 120px;
-}
-
-.baseButton {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	width: 140px;
-	height: 140px;
-	margin: auto;
-}
-
-.box {
 	overflow: auto;
 	overflow-x: hidden;
 }
 
+#baseButton {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background-color:#5a5a5a;
+	width:140px;
+	height:140px;
+	margin:10px;
+}
+
 #saveLoad {
-	display: block;
-	padding: 5px;
-	position: absolute;
-	z-index: 1;
-}
-
-.saveLoadItem {
-	margin: 5px;
-}
-
-#toolButton {
-	margin: 5px;
-	padding: 10px;
+	display:block;
+	padding:5px;
 	position: absolute;
 	top: 20px;
 	left: 30px;
 	z-index: 1;
+}
+.saveLoadItem{
+	margin:5px;
+}
+
+#toolButton {
+	margin: 5px;
+	float: left;
+	padding: 10px;
+}
+
+#showCost {
+	margin: 5px;
+	float: right;
 }
 
 #hCanvas {
@@ -92,7 +86,7 @@ input {
 	margin-bottom: 15px;
 }
 </style>
-<body background="../img/hBackground.png">
+<body style="background-color:#424242">
 	<div class="modal fade" id="loadModal" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -165,103 +159,107 @@ input {
 							</div>
 
 						</div>
-						<div class="box" id="leftBar">
-
-							<div class="baseButton">
+						
+						<div id="leftBar">
+							<div>
+						
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('a')" src="../img/a.gif">a
+									onclick="createEntity('a')" src="../img/a.gif">
 							</div>
-
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('b')" src="../img/b.gif">b
+									onclick="createEntity('b')" src="../img/b.gif">
 							</div>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('c')" src="../img/c.gif">c
+									onclick="createEntity('c')" src="../img/c.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('d')" src="../img/d.gif">d
+									onclick="createEntity('test')" src="../img/d.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('e')" src="../img/h.gif">e
+									onclick="createEntity('test2')" src="../img/h.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('f')" src="../img/f.gif">f
+									onclick="createEntity('test3')" src="../img/f.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('g')" src="../img/g.gif">g
+									onclick="createEntity('a')" src="../img/g.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('test')" src="../img/e.gif">t
+									onclick="createEntity('a')" src="../img/e.gif">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('test2')" src="../img/h.jpg">t2
+									onclick="createEntity('a')" src="../img/h.jpg">
 							</div>
-							<br>
-							<div class="baseButton">
+							<div id="baseButton">
 								<input type="image" class="baseImage"
-									onclick="createEntity('test3')" src="../img/j.jpg">t3
+									onclick="createEntity('a')" src="../img/j.jpg">
 							</div>
-							<br>
 						</div>
+							</div>
 					</div>
 					<div id="saveLoad">
-
+					
 						<div class="saveLoadItem">
-							<button type="button" class="btn btn-primary btn-lg"
-								data-toggle="modal" data-target="#loadModal">담기</button>
+						<button type="button" class="btn btn-primary btn-lg"
+							data-toggle="modal" data-target="#loadModal">담기</button>
+						</div>
+						<div class="saveLoadItem">
+						<button type="button" class="btn btn-default btn-lg"
+							onclick="screenshot()" data-toggle="modal"
+							data-target="#saveModal">upload</button>
+						
 						</div>
 						<div class="saveLoadItem">
 							<button type="button" class="btn btn-default btn-lg"
-								onclick="screenshot()" data-toggle="modal"
-								data-target="#saveModal">upload</button>
-
+							id="totalCost">0</button>
 						</div>
-						<div class="saveLoadItem">
-							<button type="button" class="btn btn-default btn-lg"
-								id="totalCost">0</button>
-						</div>
-
+						
+					
 					</div>
-
-					<div id="toolButton">
-						<div style="margin-bottom: 3px">
-							<img class="arrowKey" src="../img/buttonB.png"> <img
-								class="arrowKey" src="../img/buttonA.png">
-						</div>
-						<div>
-							<img class="arrowKey" src="../img/zoomin.png"> <img
-								class="arrowKey" src="../img/zoomout.png">
-						</div>
-					</div>
-
-					<div id="arrowDiv">
-						<div style="margin-bottom: 3px">
-							<img class="arrowKey" src="../img/up.png">
-						</div>
-						<div>
-							<img class="arrowKey" src="../img/left.png"> <img
-								class="arrowKey" src="../img/down.png"> <img
-								class="arrowKey" src="../img/right.png">
-						</div>
-					</div>
+					
 					<div class="col-md-8">
-						<div class="box" id="canvasBox">
+						<div id="canvasBox">
 							<canvas id="hCanvas"></canvas>
+
+
+
+							<div id="toolButton">
+								<div style="margin-bottom: 3px">
+									<img class="arrowKey" src="../img/buttonB.png"> <img
+										class="arrowKey" src="../img/buttonA.png">
+								</div>
+								<div>
+									<img class="arrowKey" src="../img/zoomin.png"> <img
+										class="arrowKey" src="../img/zoomout.png">
+								</div>
+							</div>
+
+							<div id="showCost">
+								<div id="arrowDiv">
+									<div style="margin-bottom: 3px">
+										<img class="arrowKey" src="../img/up.png">
+									</div>
+									<div>
+										<img class="arrowKey" src="../img/left.png"> <img
+											class="arrowKey" src="../img/down.png"> <img
+											class="arrowKey" src="../img/right.png">
+									</div>
+
+								</div>
+							</div>
 						</div>
+
+
+
 					</div>
 
 					<div class="col-md-2">
@@ -284,16 +282,7 @@ input {
 
 						</div>
 
-						<div class="box" id="rightBar">
-
-							<div class="outerButton">
-								<div class="mapButton">
-									<button class="useMapButton btn btn-default btn-circle"
-										onclick="asd()">use</button>
-									<input type="image" src="../img/ang.png" class="mb" value="off">
-									<p class="mapCheck" style="display: none">0</p>
-								</div>
-							</div>
+						<div id="rightBar">
 							<c:forEach items="${blist}" var="list">
 								<div class="outerButton">
 									<div class="mapButton">
@@ -367,7 +356,7 @@ input {
 		$(document).ready(function() {
 	
 			var c = $("#hCanvas").height();
-			$(".box").height(c);
+			$(".box").height(c + 100);
 	
 			//왼쪽주머니
 			$(".baseImage").click(function() {
@@ -571,26 +560,6 @@ input {
 			mapController.LR = geomX[curMap - 1];
 			mapController.UD = geomY[curMap - 1];
 		}
-		
-		function asd(){
-			
-			var loader = new THREE.ImageLoader();
-			loader.load("../img/white2.jpg", function(image) {
-
-				texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-
-				texture.image = image;
-				 	texture.wrapS = THREE.ClampToEdgeWrapping;
-					texture.wrapT = THREE.ClampToEdgeWrapping;
-					texture.offset.set(1, 1);
-					texture.repeat.set(-2, -2); 
-				texture.needsUpdate = true;
-
-			});
-
-			
-		}
-		
 		function changeMappingFigure() {
 			removeMappingPlane(curMap - 1);
 	
@@ -658,10 +627,7 @@ input {
 	
 			removeEntity();
 	
-			console.log("num : " + num)
-	
 			if (num == 'a') {
-				console.log("a");
 				var loader = new THREE.ImageLoader();
 				loader.load("../img/fabric.jpg", function(image) {
 	
@@ -693,142 +659,38 @@ input {
 	
 				});
 			} else if (num == 'b') {
-				console.log("b");
-				var onProgress = function(xhr) {
-					var percentComplete = xhr.loaded / xhr.total * 100;
-					console.log(Math.round(percentComplete, 2) + '% downloaded');
-				};
-	
-	
-				var onError = function(xhr) {};
-	
-				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
 	
 				var loader = new THREE.ImageLoader();
 				loader.load("../img/ang.png", function(image) {
 	
-					texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남.
+					texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
 	
 					texture.image = image;
 					texture.wrapS = THREE.ClampToEdgeWrapping;
 					texture.wrapT = THREE.ClampToEdgeWrapping;
-					/* texture.offset.set(-3, -9.5);
-					texture.repeat.set(13, 13); */
+					texture.offset.set(-3, -9.5);
+					texture.repeat.set(13, 13);
 					texture.needsUpdate = true;
 	
-				}, onProgress, onError);
-				var material2 = new THREE.MeshBasicMaterial( { map: texture } );
-	
-				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.setPath('../models/');
-				mtlLoader.load('nag-green.mtl', function(materials) {
-	
-					materials.preload();
-					materials.name="nagmtl";
-	
-					var objLoader = new THREE.OBJLoader();
-					objLoader.setMaterials(materials);
-					objLoader.setPath('../models/');
-					objLoader.load('nag-green.obj', function(object) {
-	
-						object.traverse(function(child) {
-	
-							if (child instanceof THREE.Mesh) {
-								/* if(child.material != undefined){
-				                    if(child.material.name=="nagmtl"){
-				                    	console.log("its nagmtl2");
-				                      child.material.map = texture;
-				                    }else{
-				                    	console.log("no2");
-				                    }
-				                 }
-
-								 if ( child.material && child.material.name === 'nagmtl' ) {
-
-								        child.material.map=texture;
-								        console.log("its nagmtl");
-								    }else{
-								    	console.log(child.material.id);
-								    }
-								 
-								 
-								 if ( child.material && child.material.id === 20 ) {
-
-									 
-								       
-								 } */
-							}
-	
-							
-						});
-	
-						object.name = "object";
-						object.position.y = 0;
-						scene.add(object);
-	
-					}, onProgress, onError);
 				});
-	
-	
-			} else if (num == 'c') {
-				console.log("c");
 				var loader = new THREE.ImageLoader();
-				loader.load("../img/white.jpg", function(image) {
-	
-					texture.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-	
-					texture.image = image;
-					/* 	texture.wrapS = THREE.ClampToEdgeWrapping;
-						texture.wrapT = THREE.ClampToEdgeWrapping;
-						texture.offset.set(0, 0);
-						texture.repeat.set(1, 1); */
-					texture.needsUpdate = true;
-	
-				});
-	
-				var loader = new THREE.OBJLoader();
-				loader.load('../models/body.obj', function(object) {
-	
-					object.traverse(function(child) {
-
-						
-						if (child instanceof THREE.Mesh) {
-							child.material.map = texture;
-							child.material.side = THREE.DoubleSide;
-						}
-	
-					});
-	
-					object.name = "object";
-					object.position.y = 0;
-					scene.add(object);
-	
-				}, onProgress, onError);
-	
-				
-				
-	
-				loader = new THREE.ImageLoader();
-				loader.load("../img/yellow.jpg", function(image) {
+				loader.load("../img/fabric.jpg", function(image) {
 	
 					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
-	
 					texture2.image = image;
-					/* 	texture.wrapS = THREE.ClampToEdgeWrapping;
-						texture.wrapT = THREE.ClampToEdgeWrapping;
-						texture.offset.set(0, 0);
-						texture.repeat.set(1, 1); */
+					//texture.offset.set(-0.23,-0.23);
 					texture2.needsUpdate = true;
 	
-				}, onProgress, onError);
-	
-				loader = new THREE.OBJLoader();
-				loader.load('../models/arm.obj', function(object) {
+				});
+				var loader = new THREE.OBJLoader();
+				loader.load('../models/ab.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
 						if (child instanceof THREE.Mesh) {
-							child.material.map = texture2;
+	
+							child.material.map = texture;
+	
 						}
 	
 					});
@@ -836,121 +698,86 @@ input {
 					object.name = "object";
 					object.position.y = 0;
 					scene.add(object);
+				});
 	
-				}, onProgress, onError);
-				
+			/* var loader = new THREE.FBXLoader();
+			loader.load( '../models/b.FBX', function( object ) {
+			
+				object.traverse( function( child ) {
+			
+					if ( child instanceof THREE.Mesh ) {
+			
+						// pass
+						child.material.map = texture;
+						child.material.bumpMap=texture2;
+			
+					}
+			
+				} );
+				object.name = "object";
+				object.position.y = 0;
+				scene.add( object );
+			
+			
+			}); */
+			} else if (num == 'c') {
+				var loader = new THREE.ImageLoader();
+				loader.load("../img/fab2.jpg", function(image) {
+	
+					texture.minFilter = THREE.LinearFilter //이거 없애면 image is not power of two 에러남. 왜??
+	
+					texture.image = image;
+					texture.needsUpdate = true;
+	
+				});
+	
+	
 				loader = new THREE.OBJLoader();
-				loader.load('../models/ina.obj', function(object) {
+				loader.load('../models/na.obj', function(object) {
 	
 					object.traverse(function(child) {
 	
+						if (child instanceof THREE.Mesh) {
+	
+							child.material.map = texture;
+	
+						}
 	
 					});
 	
 					object.name = "object";
 					object.position.y = 0;
 					scene.add(object);
+				});
 	
-				}, onProgress, onError);
+				loader = new THREE.ImageLoader();
+				loader.load("../img/fab1.jpg", function(image) {
 	
-			} else if (num == 'd') {
-				console.log("d");
-				var onProgress = function(xhr) {
-					var percentComplete = xhr.loaded / xhr.total * 100;
-					console.log(Math.round(percentComplete, 2) + '% downloaded');
-				};
-	
-	
-				var onError = function(xhr) {};
-	
-				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
-	
-				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.setBaseUrl('../models/');
-				mtlLoader.setPath('../models/');
-				mtlLoader.load('male02.mtl', function(materials) {
-	
-					materials.preload();
-	
-					var objLoader = new THREE.OBJLoader();
-					objLoader.setMaterials(materials);
-					objLoader.setPath('../models/');
-					objLoader.load('male02.obj', function(object) {
-	
-						object.name = "object";
-						object.position.y = 0;
-						scene.add(object);
-	
-					}, onProgress, onError);
+					texture2.minFilter = THREE.LinearFilter; //이거 없애면 image is not power of two 에러남. 왜??
+					texture2.image = image;
+					texture2.needsUpdate = true;
 	
 				});
 	
-			} else if (num == 'e') {
-				console.log("e");
-				var onProgress = function(xhr) {
-					var percentComplete = xhr.loaded / xhr.total * 100;
-					console.log(Math.round(percentComplete, 2) + '% downloaded');
-				};
+				loader = new THREE.OBJLoader();
+				loader.load('../models/nb.obj', function(object) {
 	
+					object.traverse(function(child) {
 	
-				var onError = function(xhr) {};
+						if (child instanceof THREE.Mesh) {
 	
-				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+							child.material.map = texture2;
 	
-				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.setPath('../models/');
-				mtlLoader.load('male.mtl', function(materials) {
+						}
 	
-					materials.preload();
+					});
 	
-					var objLoader = new THREE.OBJLoader();
-					objLoader.setMaterials(materials);
-					objLoader.setPath('../models/');
-					objLoader.load('male.obj', function(object) {
-	
-						object.name = "object";
-						object.position.y = 0;
-						scene.add(object);
-	
-					}, onProgress, onError);
-	
-				});
-	
-	
-			} else if (num == 'f') {
-				console.log("f");
-				var onProgress = function(xhr) {
-					var percentComplete = xhr.loaded / xhr.total * 100;
-					console.log(Math.round(percentComplete, 2) + '% downloaded');
-				};
-	
-	
-				var onError = function(xhr) {};
-	
-				THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
-	
-				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.setBaseUrl('../models/');
-				mtlLoader.setPath('../models/');
-				mtlLoader.load('justcolor.mtl', function(materials) {
-	
-					materials.preload();
-	
-					var objLoader = new THREE.OBJLoader();
-					objLoader.setMaterials(materials);
-					objLoader.setPath('../models/');
-					objLoader.load('justcolor.obj', function(object) {
-	
-						object.name = "object";
-						object.position.y = 0;
-						scene.add(object);
-	
-					}, onProgress, onError);
-	
+					object.name = "object2";
+					object.position.y = 0;
+					scene.add(object);
 				});
 	
 			} else if (num = 'test') {
-				console.log("test");
 	
 				var onProgress = function(xhr) {
 					var percentComplete = xhr.loaded / xhr.total * 100;
@@ -1013,14 +840,14 @@ input {
 	
 				var mtlLoader = new THREE.MTLLoader();
 				mtlLoader.setPath('../models/');
-				mtlLoader.load('nm-black-maya.mtl', function(materials) {
+				mtlLoader.load('dropY.mtl', function(materials) {
 	
 					materials.preload();
 	
 					var objLoader = new THREE.OBJLoader();
 					objLoader.setMaterials(materials);
 					objLoader.setPath('../models/');
-					objLoader.load('nm-black-maya.obj', function(object) {
+					objLoader.load('dropY.obj', function(object) {
 	
 						object.name = "object";
 						object.position.y = 0;
@@ -1030,7 +857,7 @@ input {
 	
 				});
 	
-				console.log("test2 asdasdasd");
+				console.log("test2");
 	
 			} else if (num = 'test3') {
 	
@@ -1046,14 +873,14 @@ input {
 	
 				var mtlLoader = new THREE.MTLLoader();
 				mtlLoader.setPath('../models/');
-				mtlLoader.load('nm-black-maya.mtl', function(materials) {
+				mtlLoader.load('body.mtl', function(materials) {
 	
 					materials.preload();
 	
 					var objLoader = new THREE.OBJLoader();
 					objLoader.setMaterials(materials);
 					objLoader.setPath('../models/');
-					objLoader.load('nm-black-maya.obj', function(object) {
+					objLoader.load('body.obj', function(object) {
 	
 						object.name = "object";
 						object.position.y = 0;
@@ -1238,7 +1065,7 @@ input {
 			// 1-1. 컨트롤 제한
 			controls.maxPolarAngle = Math.PI * 0.5;
 			controls.minDistance = 12;
-			controls.maxDistance = 380;
+			controls.maxDistance = 80;
 	
 			// 2. 옷 밑의 원기둥
 			var geometry = new THREE.CylinderGeometry(20, 20, 5, 64);
@@ -1285,7 +1112,7 @@ input {
 			directionalLight.position.set(-15, 25, -20);
 			scene.add(directionalLight);
 	
-			var light1 = new THREE.PointLight(0xffffff, 0.4, 100);
+		 	var light1 = new THREE.PointLight(0xffffff, 0.4, 100);
 			light1.add(new THREE.Mesh(sphere, new THREE.MeshPhongMaterial({
 				color : 0xffffff
 			})));
@@ -1305,7 +1132,7 @@ input {
 			})));
 			light1.position.set(8, -12, -13);
 			scene.add(light1);
-	
+			
 			light1 = new THREE.PointLight(0xffffff, 0.4, 100);
 			light1.add(new THREE.Mesh(sphere, new THREE.MeshPhongMaterial({
 				color : 0xffffff
@@ -1326,7 +1153,7 @@ input {
 			})));
 			light1.position.set(-15, -12, 0);
 			scene.add(light1);
-	
+	 
 	
 			window.addEventListener('resize', onWindowResize, false);
 	
@@ -1348,18 +1175,12 @@ input {
 			var y2 = position.bottom;
 			var x2 = position.right;
 	
+			console.log("x: " + x + "y : " + y);
+	
 			var element = document.getElementById('saveLoad');
-			element.style.top = y - 110 + 'px';
-			element.style.left = x + 20 + 'px';
+			element.style.top = y -110 + 'px';
+			element.style.left = x +20+ 'px';
 	
-			element = document.getElementById('toolButton');
-			element.style.top = y + 350 + 'px';
-			element.style.left = x + 20 + 'px';
-	
-			element = document.getElementById('arrowDiv');
-			element.style.top = y + 350 + 'px';
-			element.style.left = x2 - 190 + 'px';
-			
 	
 		}
 	
