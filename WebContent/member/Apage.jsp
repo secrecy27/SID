@@ -39,9 +39,16 @@
 <link rel="shortcut icon" href="favicon.png">
 
 
-
 </head>
+<style>
+.cart, .pocket {
+	display:inline;
+	width: 30px;
+	height: 30px;
+}
 
+
+</style>
 <body>
 
 	<div id="all">
@@ -197,30 +204,27 @@
 												class="img-responsive">
 											</a>
 										</div>
-
 										<div class="text">
 											<a herf="#">${apage.hashtag }</a>
 											<p class="price">${apage.cost}원</p>
-											<!--  							<p class="buttons">
-												<a href="basket.jsp" class="btn btn-primary"><i
-													class="fa fa-shopping-cart"></i>담기</a>
-											</p>
--->
-											<p class="text-center buttons" style="display: inline">
-												<a type="button" id="toCart" class="btn btn-primary"
-													onclick="toCart(${apage.aWriteId})" href="#"> <i
-													class="fa fa glyphicon-plus"></i>&nbsp;장바구니
+											<p class="text-center buttons">
+												<a type="button" id="toCart" 
+													onclick="toCart(${apage.aWriteId})" href="#"> <img
+													class="cart" src="icon/cart.png">
 												</a>
-											</p>
-											<p class="text-center buttons" style="display: inline">
-												<a type="button" id="toLPocket" class="btn btn-primary"
-													onclick="toLPocket(${apage.aWriteId})" href="#"> <i
-													class="fa fa glyphicon-plus"></i>&nbsp;주머니
+												<a type="button" id="toLPocket" 
+													onclick="toLPocket(${apage.aWriteId})" href="#"> <img
+													class="pocket" src="icon/pocket.png">
 												</a>
+												<%
+												if(session.getAttribute("admin").equals(2)){
+												%>
+												<a href="SidServlet?command=admin_apage_delete&num=${apage.aWriteId }" ><i class="fa fa-trash-o"></i></a>
+												<%
+												}
+												%>
 											</p>
 										</div>
-										
-
 									</div>
 								</div>
 							</div>

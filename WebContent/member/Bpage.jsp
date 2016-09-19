@@ -6,7 +6,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
-
+<style>
+.pocket {
+	display: inline;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <body>
 	<div id="all">
 		<div id="content">
@@ -56,43 +62,24 @@
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
 											</a>
-
 										</div>
 										<div class="text">
 											<a herf="#">${bpage.hashtag}</a>
 											<p>${bpage.cost}원</p>
 											<p class="text-center buttons">
-												<button type="button" id="toRPocket" onclick="toRPocket()"
-													class="btn btn-primary">
-													<i class="fa fa glyphicon-plus"></i>&nbsp;주머니
-												</button>
-											</p>
+												<a type="button" id="toRPocket"
+													onclick="toRPocket(${bpage.bWriteId})"> <img
+													class="pocket" src="icon/pocket.png">
+												</a>
+												<c:if test="${sessionScope.email eq bpage.userEmail }">
+												<a href="SidServlet?command=bpage_delete&num=${bpage.bWriteId }" ><i class="fa fa-trash-o"></i></a>
+												</c:if>
+											</p> 
 										</div>
 										<!-- /.text -->
 									</div>
 								</div>
-								<script>
-									function toRPocket() {
-										$.ajax({
-											type : "POST",
-											url : "../SidServlet?command=bItemtoRpocket&email=${sessionScope.email}&id=${bpage.bWriteId}",
-											success : function(result) {
-												if (result == 1) {
-													alert("담기 성공")
-													$("#toRPocket").prop("disabled", true);
-												} else {
-								
-													alert("담기 실패 ( 이미 담긴 품목 )")
-												}
-											},
-											error : function(request, status, error) {
-												alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-											}
-										});
-								
-								
-									}
-								</script>
+
 							</c:forEach>
 						</div>
 					</div>
@@ -124,5 +111,27 @@
 
 
 </body>
+<script>
+									function toRPocket(id) {
+										$.ajax({
+											type : "POST",
+											url : "../SidServlet?command=bItemtoRpocket&email=${sessionScope.email}&id="+id,
+											success : function(result) {
+												if (result == 1) {
+													alert("담기 성공")
+													$("#toRPocket").prop("disabled", true);
+												} else {
+								
+													alert("담기 실패 ( 이미 담긴 품목 )")
+												}
+											},
+											error : function(request, status, error) {
+												alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+											}
+										});
+								
+								
+									}
+								</script>
 <%@ include file="../include/footer.jsp"%>
 </html>

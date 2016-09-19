@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
+<style>
+.cart, .pocket {
+	display: inline;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <body>
 	<div id="all">
 		<div class="container">
@@ -39,17 +46,23 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_apage&num=${apage.aWriteId }"> <img src="${apage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_apage&num=${apage.aWriteId }">
+											<img src="${apage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>
 									</div>
-									<div class="text" id="hash">
+									<div class="text" id="hash"
+										style="max-width: 100%; width: 100%; height: 110px">
 										<a href="#">${apage.hashtag }</a>
 										<p class="price">${apage.cost}원</p>
-										<p class="buttons">
-											<a href="basket.jsp" class="btn btn-primary"><i
-												class="fa fa-shopping-cart"></i>담기</a>
+										<p class="text-center buttons">
+											<a type="button" id="toCart"
+												onclick="toCart(${apage.aWriteId})" href="#"><img
+												class="cart" src="icon/cart.png"> </a> <a type="button"
+												id="toLPocket" onclick="toLPocket(${apage.aWriteId})"
+												href="#"><img class="pocket" src="icon/pocket.png"></a>
 										</p>
 									</div>
 									<!-- /.text -->
@@ -65,7 +78,7 @@
 						</p>
 					</div>
 				</div>
-				
+
 				<!--  인기페이지 Apage -->
 				<div class="col-md-12">
 					<div class="box">
@@ -77,7 +90,9 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_bpage&num=${bpage.bWriteId }"> <img src="${bpage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_bpage&num=${bpage.bWriteId }">
+											<img src="${bpage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>
@@ -85,9 +100,10 @@
 									<div class="text">
 										<a href="#">${bpage.hashtag }</a>
 										<p class="price">${bpage.cost}원</p>
-										<p class="buttons">
-											<a href="basket.jsp" class="btn btn-primary"><i
-												class="fa fa-shopping-cart"></i>담기</a>
+										<p class="text-center buttons">
+											<a type="button" id="toRPocket" onclick="toRPocket(${bpage.bWriteId})"> <img
+												class="pocket" src="icon/pocket.png">
+											</a>
 										</p>
 									</div>
 									<!-- /.text -->
@@ -113,7 +129,9 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<a href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }"> <img src="${cpage.imageUrl }"
+										<a
+											href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }">
+											<img src="${cpage.imageUrl }"
 											style="max-width: 100%; width: 100%; height: 150px"
 											class="img-responsive">
 										</a>
@@ -121,9 +139,11 @@
 									<div class="text">
 										<a href="#">${cpage.hashtag }</a>
 										<p class="price">${cpage.cost}원</p>
-										<p class="buttons">
-											<a href="basket.jsp" class="btn btn-primary"><i
-												class="fa fa-shopping-cart"></i>담기</a>
+										<p class="text-center buttons">
+											<a type="button" id="toCart"
+												onclick="toCart(${cpage.cWriteId})"> <img class="cart"
+												src="icon/cart.png">
+											</a>
 										</p>
 									</div>
 									<!-- /.text -->
@@ -150,6 +170,73 @@
 	</div>
 	<!-- /#content -->
 	<%@ include file="../include/footer.jsp"%>
+	<script>
+		function toCart(id) {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id="+id,
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toCart").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+	
+	
+		function toLPocket(id) {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id="+id,
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toLPocket").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+		
+		function toRPocket(id) {
+			$.ajax({
+				type : "POST",
+				url : "../SidServlet?command=bItemtoRpocket&email=${sessionScope.email}&id="+id,
+				success : function(result) {
+					if (result == 1) {
+						alert("담기 성공")
+						$("#toRPocket").prop("disabled", true);
+					} else {
+	
+						alert("담기 실패 ( 이미 담긴 품목 )")
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+	
+	
+		}
+	</script>
+
+
 </body>
 
 </html>

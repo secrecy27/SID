@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.sid.controller.JDBCUtil;
 import com.sid.dto.BWriteVO;
 import com.sid.dto.HashtagVO;
+import com.sid.util.DBManager;
 
 public class BPageDAO {
 	private BPageDAO() {
@@ -201,6 +202,8 @@ public class BPageDAO {
 				vo.setImageUrl(rst.getString("imageUrl"));
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
+				vo.setUserEmail(rst.getString("userEmail"));
+			
 				try {
 					str=rst.getString("hashtag");
 					str=str.replace(",", " #");
@@ -218,5 +221,21 @@ public class BPageDAO {
 			JDBCUtil.close(rst, stmt, conn);
 		}
 		return list;
+	}
+	
+	public void deleteProduct(int num) {
+		String sql = "delete from bwrite where bWriteId=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 }

@@ -48,11 +48,13 @@ import com.sid.controller.action.designer.Designer_Cplan_Action;
 import com.sid.controller.action.designer.Designer_Dplan_Action;
 import com.sid.controller.apage.AItemToCartAction;
 import com.sid.controller.apage.AItemToLPocketAction;
+import com.sid.controller.apage.AdminApageDeleteAction;
 import com.sid.controller.apage.AdminApageListAction;
 import com.sid.controller.apage.AdminApageWriteAction;
 import com.sid.controller.apage.ApageReadAction;
 import com.sid.controller.bpage.BItemToRPocketAction;
 import com.sid.controller.bpage.BWriteAction;
+import com.sid.controller.bpage.BpageDeleteAction;
 import com.sid.controller.bpage.BpageListAction;
 import com.sid.controller.bpage.BpageReadAction;
 import com.sid.controller.cpage.CItemToCartAction;
@@ -145,6 +147,8 @@ public class ActionFactory {
 			action = new AdminApageWriteAction();
 		} else if (command.equals("admin_apage_list")) {
 			action = new AdminApageListAction();
+		} else if (command.equals("admin_apage_delete")) {
+			action = new AdminApageDeleteAction();
 		} else if (command.equals("aItemtoCart")) {
 			action = new AItemToCartAction();
 		} else if (command.equals("aItemtoLpocket")) {
@@ -157,6 +161,8 @@ public class ActionFactory {
 			action = new BWriteAction();
 		} else if (command.equals("list_bpage")) {
 			action = new BpageListAction();
+		} else if (command.equals("bpage_delete")) {
+			action = new BpageDeleteAction();
 		} else if (command.equals("bItemtoRpocket")) {
 			action = new BItemToRPocketAction();
 		} else if (command.equals("read_bpage")) {

@@ -9,6 +9,15 @@ public class CWriteVO {
 	private int cost;
 	private Timestamp indate;
 	private String hashtag;
+	private String userEmail;
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
 	public int getcWriteId() {
 		return cWriteId;

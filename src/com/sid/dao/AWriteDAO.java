@@ -248,4 +248,19 @@ public class AWriteDAO {
 		return list;
 	}
 
+	public void deleteAProduct(int num) {
+		String sql = "delete from awrite where aWriteId=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 }

@@ -44,7 +44,13 @@
 
 
 </head>
-
+<style>
+.cart {
+	display: inline;
+	width: 30px;
+	height: 30px;
+}
+</style>
 <body>
 
 	<div id="all">
@@ -192,7 +198,7 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<div class="flipper">
+										<div class="flipper" >
 											<a
 												href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }">
 												<img src="${cpage.imageUrl }" id="imageFile"
@@ -203,10 +209,9 @@
 										<div class="text">
 											<a href="#">${cpage.hashtag }</a>
 											<p class="price">${cpage.cost}원</p>
-											<p class="text-center buttons" style="display: inline">
-												<a type="button" id="toCart" class="btn btn-primary"
-													onclick="toCart(${cpage.cWriteId})" href="#"> <i
-													class="fa fa glyphicon-plus"></i>&nbsp;장바구니
+											<p class="text-center buttons" >
+												<a type="button" id="toCart" onclick="toCart(${cpage.cWriteId})" > <img
+													class="cart" src="icon/cart.png">
 												</a>
 											</p>
 										</div>
