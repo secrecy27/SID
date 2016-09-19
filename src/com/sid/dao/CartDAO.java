@@ -21,26 +21,7 @@ public class CartDAO {
 	public static CartDAO getInstance() {
 		return instance;
 	}
-	//
-	// public void insertCart(CartVO cartVO) {
-	// String sql = "insert into cart(cseq, email, pseq, quantity)" + "
-	// values(cart_seq.nextval,?, ?, ?)";
-	// Connection conn = null;
-	// PreparedStatement pstmt = null;
-	// try {
-	// conn = DBManager.getConnection();
-	// pstmt = conn.prepareStatement(sql);
-	// pstmt.setString(1, cartVO.getEmail());
-	// pstmt.setInt(2, cartVO.getPseq());
-	// pstmt.setInt(3, cartVO.getQuantity());
-	// pstmt.executeUpdate();
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// } finally {
-	// DBManager.close(conn, pstmt);
-	// }
-	// }
-
+	
 	public CartVO readCart(String email) {
 		String sql = "select * from cart where email=?";
 		Connection conn = null;
