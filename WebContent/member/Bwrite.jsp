@@ -21,6 +21,9 @@ ul#hashtag li {
 ul#hashtag li:before {
 	content: "#";
 }
+#content{
+	background-image: url(../css_sid/1.png);
+}
 </style>
 <body>
 	<div id="all">

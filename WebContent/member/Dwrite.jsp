@@ -18,13 +18,22 @@
 <title>SID - Snow in Dawn</title>
 
 <meta name="keywords" content="">
-
 </head>
 
 <style>
 .zoomImg {
 	max-width: 100%;
 	max-height: 100%;
+}
+#content, #menu, #category, #all,#details {
+	background-image: url(../css_sid/1.png);
+}
+
+#instruction{
+	background-image: url(../css_d_write/3-instruction.png);
+	height:45px;
+	margin:0px;
+	padding:0px;
 }
 </style>
 
@@ -63,7 +72,7 @@
 									<ul class="nav nav-tabs">
 										<li class="active"><a data-toggle="tab" href="#home">직접
 												선정</a></li>
-										<li><a data-toggle="tab" href="#menu1">자동 선정</a></li>
+										<li ><a data-toggle="tab" href="#menu1">자동 선정</a></li>
 
 									</ul>
 									<div class="tab-content">
@@ -117,7 +126,7 @@
 
 						<div class="box" id="details">
 
-							<h3>지시사항</h3>
+							<div id="instruction"></div>
 							<hr>
 							<h4>
 								핵심포인트

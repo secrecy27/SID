@@ -16,9 +16,9 @@
 </style>
 <body>
 	<div id="all">
-		<div class="container">
+		<div  class="container">
 			<div class="col-md-12">
-				<div id="main-slider">
+				<div id="main-slider" style="width:100%">
 					<div class="item">
 						<img src="../img/main-slider1.jpg" alt="" class="img-responsive">
 					</div>

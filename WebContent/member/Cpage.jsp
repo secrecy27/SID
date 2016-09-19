@@ -41,8 +41,6 @@
 
 <link rel="shortcut icon" href="favicon.png">
 
-
-
 </head>
 <style>
 .cart {
