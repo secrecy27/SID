@@ -24,9 +24,10 @@
 				<div class="col-md-12">
 					<div class="box">
 						<h1>축하합니다. 디자이너 회원가입이 완료되었습니다!</h1>
+						메인에서 다시 로그인해주세요.
 					</div>
 				</div>
-				<form action="../member/index.jsp" method="post">
+				<form action="../SidServlet?command=index" method="post">
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">
 							<i class="fa fa-sign-in"></i> 메인으로 가기

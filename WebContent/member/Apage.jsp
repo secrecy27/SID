@@ -45,11 +45,18 @@
 	width: 30px;
 	height: 30px;
 }
+#hashtag {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+ .container{
+ width:70%;
+ }
 </style>
 <body>
 
 	<div id="all">
-
 		<div id="content">
 			<div id="con" class="container">
 
@@ -196,7 +203,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<a herf="#">${apage.hashtag }</a>
+											<div id="hashtag"><a herf="#">${apage.hashtag }</a></div>
 											<p class="price">${apage.cost}원</p>
 											<p class="text-center buttons">
 												<a type="button" id="toCart"

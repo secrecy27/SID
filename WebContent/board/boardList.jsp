@@ -41,6 +41,10 @@
 <link rel="shortcut icon" href="favicon.png">
 <link rel="stylesheet" type="text/css" href="../css/shopping.css">
 </head>
+<style>
+ .container{
+ width:70%;
+</style>
 <body>
 	<div class="container">
 		<div class="row">

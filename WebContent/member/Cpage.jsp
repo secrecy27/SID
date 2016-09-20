@@ -48,14 +48,19 @@
 	width: 30px;
 	height: 30px;
 }
+#hashtag {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+ .container{
+ width:70%;
+ }
 </style>
 <body>
-
 	<div id="all">
-
-		<div id="content">
-			<div class="container">
-
+		<div id="content" >
+			<div class="container" >
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="#">Home</a></li>
@@ -199,7 +204,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<a href="#">${cpage.hashtag }</a>
+											<div id="hashtag"><a href="#">${cpage.hashtag }</a></div>
 											<p class="price">${cpage.cost}원</p>
 											<p class="text-center buttons">
 												<a type="button" id="toCart"

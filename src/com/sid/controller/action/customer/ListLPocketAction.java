@@ -28,7 +28,7 @@ public class ListLPocketAction implements Action {
 		ArrayList<AWriteVO> alist=new ArrayList<AWriteVO>();
 		
 		ArrayList<Integer> a=new ArrayList<Integer>();
-		ArrayList<HashtagVO> hlist=new ArrayList<>();
+		ArrayList<HashtagVO> hlist=new ArrayList<HashtagVO>();
 		
 		llist=lpDao.list((String)session.getAttribute("email"));
 		a=lpDao.list((String)session.getAttribute("email"));
@@ -36,7 +36,7 @@ public class ListLPocketAction implements Action {
 		for(int i=0; i<llist.size(); i++){
 			System.out.println("llist"+llist.get(i));
 			alist.add(aDao.readItem(llist.get(i)));
-			hlist=aDao.readHashtag(a.get(i));
+			hlist.addAll(aDao.readHashtag(a.get(i)));
 		}
 		request.setAttribute("alist", alist);
 		request.setAttribute("hlist", hlist);

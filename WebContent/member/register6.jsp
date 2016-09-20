@@ -28,25 +28,35 @@
 						<hr>
 					</div>
 				</div>
-				<form method="post" enctype="multipart/form-data">
+				<form method="post" enctype="multipart/form-data" name="frm">
 					1.파일 지정하기 : <input type="file" name="uploadFile01"><br>
 					2.파일 지정하기 : <input type="file" name="uploadFile02"><br>
 					3.파일 지정하기 : <input type="file" name="uplaodFile03"><br>
 					4.파일 지정하기 : <input type="file" name="uplaodFile04"><br>
 					<input type="submit" value="전송">
 				</form>
-				<form action="../SidServlet?command=join_design" method="post">
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">
-							<i class="fa fa-sign-in"></i> 가입 시작하기
-						</button>
-					</div>
-				</form>
+				<div class="text-center">
+					<button type="button" class="btn btn-primary"
+						onclick="return Check()">
+						<i class="fa fa-sign-in"></i> 가입 시작하기
+					</button>
+				</div>
 			</div>
 			<!-- /.container -->
 		</div>
 		<!-- /#content -->
 		<%@ include file="../include/footer.jsp"%>
+		<script>
+		function Check(){
+			if(document.frm.uploadFile01.value.length==0){
+				alert("파일을 지정하세요")
+				return false;
+			}
+			document.frm.action="../SidServlet?command=join_design";
+			document.frm.submit();
+			return true;
+		}
+		</script>
 </body>
 
 </html>

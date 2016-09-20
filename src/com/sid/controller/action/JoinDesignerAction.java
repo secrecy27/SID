@@ -20,14 +20,22 @@ public class JoinDesignerAction implements Action {
 		HttpSession session = request.getSession();
 		
 		MemberDAO memberDAO = MemberDAO.getInstance();
+		
 		int result=memberDAO.updateAdmin((String)session.getAttribute("email"));
+		
+		
+		
 		if(result>0){
 			System.out.println("update admin O");
-			session.setAttribute("admin", '1');
+			session.setAttribute("admin", "1");
+			session.invalidate();
 		}else{
 			System.out.println("update admin X");
-			session.setAttribute("admin", '0');
+			session.setAttribute("admin", "0");
+			session.invalidate();
 		}
+		
+		
 		/*	MemberVO memberVO = new MemberVO();
 		memberVO.setNickname(request.getParameter("nickname"));
 		memberVO.setEmail(request.getParameter("email"));

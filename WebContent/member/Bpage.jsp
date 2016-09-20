@@ -1,6 +1,7 @@
 <%@ page import="com.sid.dao.DPageDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.sid.dto.DWriteVO"%>
+<%@ page import="java.lang.*"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -12,11 +13,19 @@
 	width: 30px;
 	height: 30px;
 }
+
+#hashtag {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+ .container{
+ width:70%;
 </style>
 <body>
 	<div id="all">
-		<div id="content">
-			<div class="container">
+		<div id="content" >
+			<div class="container" >
 				<div class="col-md-12">
 					<ul class="breadcrumb">
 						<li><a href="member/index.jsp">Home</a></li>
@@ -24,7 +33,9 @@
 					</ul>
 
 					<ul class="breadcrumb">
+					<p>${sessionScope.admin }</p>
 						<!-- if 세션이 있으면 바로 넘기고 없으면 함수 작동 -->
+					
 						<%
 							if (session.getAttribute("email") != null
 									&& ((session.getAttribute("admin").equals(1)) || (session.getAttribute("admin").equals(2)))) {
@@ -33,7 +44,7 @@
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
 
 						<%
-							} else {
+							} else{
 						%>
 						<a href="" onclick="fail()" class="btn btn-primary"><i
 							class="fa fa glyphicon-plus"></i>&nbsp글쓰기</a>
@@ -53,7 +64,7 @@
 							<c:forEach items="${list}" var="bpage">
 								<!-- a href 버튼 -->
 								<div class="col-md-2 col-sm-6">
-									<div class="product" >
+									<div class="product">
 
 										<div style="max-width: 100%; width: 100%;">
 											<a type="button"
@@ -63,18 +74,23 @@
 												<!-- ${dpage.imageUrl} -->
 											</a>
 										</div>
-										<div class="text" style=" width: 100%; height:100%">
-											<div style=""><a herf="#" >${bpage.hashtag}</a></div>
+										<div class="text" style="width: 100%; height: 100%">
+											<div id="hashtag">
+												<a herf="#">${bpage.hashtag}</a>
+											</div>
 											<p>${bpage.cost}원</p>
 											<p class="text-center buttons">
 												<a type="button" id="toRPocket" href="#"
 													onclick="toRPocket(${bpage.bWriteId})"> <img
 													class="pocket" src="icon/pocket.png">
 												</a>
-												<c:if test="${sessionScope.email eq bpage.userEmail  || sessionScope.admin eq 2 }">
-												<a href="SidServlet?command=bpage_delete&num=${bpage.bWriteId }" ><i class="fa fa-trash-o"></i></a>
+												<c:if
+													test="${sessionScope.email eq bpage.userEmail  || sessionScope.admin eq 2 }">
+													<a
+														href="SidServlet?command=bpage_delete&num=${bpage.bWriteId }"><i
+														class="fa fa-trash-o"></i></a>
 												</c:if>
-											</p> 
+											</p>
 										</div>
 										<!-- /.text -->
 									</div>
