@@ -38,16 +38,15 @@ public class AWriteDAO {
 			pstmt.setString(3, aVo.getImageUrl3());
 			pstmt.setString(4, aVo.getImageUrl4());
 			pstmt.setInt(5, aVo.getCost());
-			pstmt.setString(6,aVo.getHashtag());
-			
-			
+			pstmt.setString(6, aVo.getHashtag());
+
 			pstmt.executeUpdate();
 			rst = pstmt.getGeneratedKeys();
-			String autoInsertedKey = (rst.next()) ? rst.getString(1) : rst.getString(1) ;
+			String autoInsertedKey = (rst.next()) ? rst.getString(1) : rst.getString(1);
 
 			System.out.println(aVo.getImageUrl4());
 			result = Integer.parseInt(autoInsertedKey);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -82,7 +81,7 @@ public class AWriteDAO {
 
 		return result;
 	}
-	
+
 	public int addToCart(int aWriteId, String email) {
 		int result = -1;
 		String sql = "INSERT INTO acart(aWriteId,email) VALUES(?,?)";
@@ -104,7 +103,7 @@ public class AWriteDAO {
 
 		return result;
 	}
-	
+
 	public int addToLPocket(String email, int id) {
 		int result = -1;
 		String sql = "SELECT pocketId FROM lpocket where email=?";
@@ -128,21 +127,41 @@ public class AWriteDAO {
 			JDBCUtil.close(ps, conn);
 		}
 
-		sql = "INSERT INTO lpocket2(pocketId, aWriteId) VALUES(?,?)";
+		sql = "SELECT aWriteId FROM lpocket2 where aWriteId=? and pocketId=?";
 		conn = JDBCUtil.getConnection();
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, pocketId);
-			ps.setInt(2, id);
+			ps.setInt(1, id);
+			ps.setInt(2, pocketId);
+			rst = ps.executeQuery();
 
-			result = ps.executeUpdate();
+			if (rst.next()) {
+				result = -1;
+			} else {
+				result = 1;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(ps, conn);
 		}
+		if (result == 1) {
+			sql = "INSERT INTO lpocket2(pocketId, aWriteId) VALUES(?,?)";
+			conn = JDBCUtil.getConnection();
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, pocketId);
+				ps.setInt(2, id);
 
+				result = ps.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(ps, conn);
+			}
+		}
 		System.out.println(" result : " + result);
 
 		return result;
@@ -213,7 +232,7 @@ public class AWriteDAO {
 
 		ArrayList<AWriteVO> list = new ArrayList<AWriteVO>();
 		String sql = "select * from awrite order by indate desc";
-		String str="";
+		String str = "";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -230,12 +249,12 @@ public class AWriteDAO {
 				vo.setImageUrl3(rst.getString("imageUrl3"));
 				vo.setImageUrl4(rst.getString("imageUrl4"));
 				vo.setCost(rst.getInt("cost"));
-				try{
-					str=rst.getString("hashtag");
-					str=str.replace(","," #");
-					str="#"+str;
-				}catch(Exception e){
-					
+				try {
+					str = rst.getString("hashtag");
+					str = str.replace(",", " #");
+					str = "#" + str;
+				} catch (Exception e) {
+
 				}
 				vo.setHashtag(str);
 				list.add(vo);

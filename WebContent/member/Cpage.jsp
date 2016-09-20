@@ -68,27 +68,21 @@
  _________________________________________________________ -->
 					<div class="panel panel-default sidebar-menu">
 
-						<div class="panel-heading">
-							<h3 class="panel-title">카테고리</h3>
+						<div id="category" class="panel-heading">
+							<h3 class="panel-title">Category</h3>
 						</div>
 
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li><a href="category.jsp">티셔츠 </a>
-									<ul>
-										<li><a href="category.jsp">반팔 티셔츠</a></li>
-										<li><a href="category.jsp">긴팔 티셔츠</a></li>
-									</ul></li>
-								<li><a href="category.jsp">맨투맨</a>
-									<ul>
-										<li><a href="category.jsp">긴팔 맨투맨</a></li>
-										<li><a href="category.jsp">반팔 맨투맨</a></li>
-									</ul></li>
-								<li><a href="category.jsp">가방</a>
-									<ul>
-										<li><a href="category.jsp">에코백</a></li>
-										<li><a href="category.jsp">크로스백</a></li>
-									</ul></li>
+								<li id="t-shirt"><a href="category.jsp">T-Shirt</a></li>
+								<ul>
+									<li id="short-sleeve"><a href="category.jsp">short-sleeve</a></li>
+									<li id="long-sleeve"><a href="category.jsp">long-sleeve</a></li>
+								</ul>
+
+								<li id="bottom"><a href="category.jsp">bottom</a></li>
+								<li id="bags"><a href="category.jsp">bags</a></li>
+
 							</ul>
 
 						</div>
@@ -196,8 +190,8 @@
 							<div class="col-md-2 col-sm-6">
 								<div class="product">
 									<div class="flip-container">
-										<div class="flipper" >
-											<a
+										<div class="flipper">
+											<a type="button"
 												href="../SidServlet?command=read_cpage&num=${cpage.cWriteId }">
 												<img src="${cpage.imageUrl }" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px"
@@ -207,10 +201,17 @@
 										<div class="text">
 											<a href="#">${cpage.hashtag }</a>
 											<p class="price">${cpage.cost}원</p>
-											<p class="text-center buttons" >
-												<a type="button" id="toCart" onclick="toCart(${cpage.cWriteId})" > <img
-													class="cart" src="icon/cart.png">
+											<p class="text-center buttons">
+												<a type="button" id="toCart"
+													onclick="toCart(${cpage.cWriteId})"> <img class="cart"
+													src="icon/cart.png">
 												</a>
+												<c:if
+													test="${sessionScope.email eq cpage.userEmail || sessionScope.admin eq 2 }">
+													<a type="button"
+														href="SidServlet?command=cpage_delete&num=${cpage.cWriteId }"><i
+														class="fa fa-trash-o"></i></a>
+												</c:if>
 											</p>
 										</div>
 

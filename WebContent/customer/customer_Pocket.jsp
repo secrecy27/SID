@@ -79,7 +79,7 @@
 											</a>
 										</div>
 										<div class="text">
-											<p></p>
+											<p><c:forEach items="${hlist }" var="hashtag"> #${hashtag.hashtag }</c:forEach></p>
 											<p class="buttons">
 												<a href="" class="btn btn-default"></a>
 											</p>

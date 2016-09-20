@@ -58,6 +58,7 @@ import com.sid.controller.bpage.BpageDeleteAction;
 import com.sid.controller.bpage.BpageListAction;
 import com.sid.controller.bpage.BpageReadAction;
 import com.sid.controller.cpage.CItemToCartAction;
+import com.sid.controller.cpage.CpageDeleteAction;
 import com.sid.controller.cpage.CpageListAction;
 import com.sid.controller.cpage.CpageReadAction;
 import com.sid.controller.cpage.CpageWriteAction;
@@ -175,6 +176,8 @@ public class ActionFactory {
 			action = new CpageListAction();
 		} else if (command.equals("read_cpage")) {
 			action = new CpageReadAction();
+		} else if (command.equals("cpage_delete")) {
+			action = new CpageDeleteAction();
 		} else if (command.equals("hpage_upload")) {
 			action = new HpageUploadAction();
 		} else if (command.equals("cItemtoCart")) {

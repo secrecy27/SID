@@ -41,12 +41,10 @@
 </head>
 <style>
 .cart, .pocket {
-	display:inline;
+	display: inline;
 	width: 30px;
 	height: 30px;
 }
-
-
 </style>
 <body>
 
@@ -68,21 +66,19 @@
 					<div id="menu" class="panel panel-default sidebar-menu">
 
 						<div id="category" class="panel-heading">
-							<h3 class="panel-title"></h3>
+							<h3 class="panel-title">Category</h3>
 						</div>
 
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked category-menu">
-								<li id="t-shirt"><a href="category.jsp"></a></li>
+								<li id="t-shirt"><a href="category.jsp">T-Shirt</a></li>
 								<ul>
-									<li id="short-sleeve"><a href="category.jsp"></a></li>
-									<li id="long-sleeve"><a href="category.jsp"></a></li>
+									<li id="short-sleeve"><a href="category.jsp">short-sleeve</a></li>
+									<li id="long-sleeve"><a href="category.jsp">long-sleeve</a></li>
 								</ul>
 
-								<ul>
-									<li id="bottom"><a href="category.jsp"></a></li>
-									<li id="bags"><a href="category.jsp"></a></li>
-								</ul>
+								<li id="bottom"><a href="category.jsp">bottom</a></li>
+								<li id="bags"><a href="category.jsp">bags</a></li>
 
 							</ul>
 
@@ -203,20 +199,21 @@
 											<a herf="#">${apage.hashtag }</a>
 											<p class="price">${apage.cost}원</p>
 											<p class="text-center buttons">
-												<a type="button" id="toCart" 
+												<a type="button" id="toCart"
 													onclick="toCart(${apage.aWriteId})" href="#"> <img
 													class="cart" src="icon/cart.png">
-												</a>
-												<a type="button" id="toLPocket" 
+												</a> <a type="button" id="toLPocket"
 													onclick="toLPocket(${apage.aWriteId})" href="#"> <img
 													class="pocket" src="icon/pocket.png">
 												</a>
 												<%
-												if(session.getAttribute("admin").equals(2)){
+													if (session.getAttribute("admin").equals(2)) {
 												%>
-												<a href="SidServlet?command=admin_apage_delete&num=${apage.aWriteId }" ><i class="fa fa-trash-o"></i></a>
+												<a
+													href="SidServlet?command=admin_apage_delete&num=${apage.aWriteId }"><i
+													class="fa fa-trash-o"></i></a>
 												<%
-												}
+													}
 												%>
 											</p>
 										</div>
@@ -270,7 +267,7 @@
 		function toCart(id) {
 			$.ajax({
 				type : "POST",
-				url : "../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id="+id,
+				url : "../SidServlet?command=aItemtoCart&email=${sessionScope.email }&id=" + id,
 				success : function(result) {
 					if (result == 1) {
 						alert("담기 성공")
@@ -292,7 +289,7 @@
 		function toLPocket(id) {
 			$.ajax({
 				type : "POST",
-				url : "../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id="+id,
+				url : "../SidServlet?command=aItemtoLpocket&email=${sessionScope.email }&id=" + id,
 				success : function(result) {
 					if (result == 1) {
 						alert("담기 성공")

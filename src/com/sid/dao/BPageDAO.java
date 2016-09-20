@@ -113,7 +113,7 @@ public class BPageDAO {
 	}
 
 	public int addToRPocket(String email, int id) {
-		int result = -1;
+		int result = -2;
 		String sql = "SELECT pocketId FROM rpocket where email=?";
 		Connection conn = null;
 		conn = JDBCUtil.getConnection();
@@ -135,19 +135,42 @@ public class BPageDAO {
 			JDBCUtil.close(ps, conn);
 		}
 
-		sql = "INSERT INTO rpocket2(pocketId, bwriteId) VALUES(?,?)";
+		sql = "SELECT bwriteId FROM rpocket2 where bwriteId=? and pocketId=?";
 		conn = JDBCUtil.getConnection();
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, pocketId);
-			ps.setInt(2, id);
-
-			result = ps.executeUpdate();
+			ps.setInt(1, id);
+			ps.setInt(2, pocketId);
+			rst = ps.executeQuery();
+			System.out.println("a : "+pocketId);
+			
+			if (rst.next()) {
+				result = -1;
+			} else {
+				result = 1;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(ps, conn);
+		}
+		
+		if (result == 1) {
+			sql = "INSERT INTO rpocket2(pocketId, bwriteId) VALUES(?,?)";
+			conn = JDBCUtil.getConnection();
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, pocketId);
+				ps.setInt(2, id);
+				System.out.println("afdsdsf");
+				result = ps.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(ps, conn);
+			}
 		}
 
 		System.out.println("addtocart result : " + result);
@@ -183,11 +206,12 @@ public class BPageDAO {
 
 		return list;
 	}
+
 	public ArrayList<BWriteVO> listAll() {
 
 		ArrayList<BWriteVO> list = new ArrayList<BWriteVO>();
 		String sql = "select * from bwrite order by postDate desc";
-		String str="";
+		String str = "";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rst = null;
@@ -203,11 +227,11 @@ public class BPageDAO {
 				vo.setCost(rst.getInt("cost"));
 				vo.setExpl(rst.getString("expl"));
 				vo.setUserEmail(rst.getString("userEmail"));
-			
+
 				try {
-					str=rst.getString("hashtag");
-					str=str.replace(",", " #");
-					str="#"+str;
+					str = rst.getString("hashtag");
+					str = str.replace(",", " #");
+					str = "#" + str;
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -222,7 +246,7 @@ public class BPageDAO {
 		}
 		return list;
 	}
-	
+
 	public void deleteProduct(int num) {
 		String sql = "delete from bwrite where bWriteId=?";
 		Connection conn = null;

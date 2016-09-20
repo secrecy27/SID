@@ -27,8 +27,6 @@ public class ApageReadAction implements Action {
 		
 		aVo=aDao.readItem(Integer.parseInt(request.getParameter("num")));
 		list=aDao.readHashtag(Integer.parseInt(request.getParameter("num")));
-		System.out.println(request.getParameter("num"));
-		System.out.println(list);
 		
 		request.setAttribute("apage", aVo);
 		request.setAttribute("hashtag", list);

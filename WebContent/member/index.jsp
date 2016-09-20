@@ -16,9 +16,9 @@
 </style>
 <body>
 	<div id="all">
-		<div  class="container">
+		<div class="container">
 			<div class="col-md-12">
-				<div id="main-slider" style="width:100%">
+				<div id="main-slider" style="width: 100%">
 					<div class="item">
 						<img src="../img/main-slider1.jpg" alt="" class="img-responsive">
 					</div>
@@ -63,6 +63,8 @@
 												class="cart" src="icon/cart.png"> </a> <a type="button"
 												id="toLPocket" onclick="toLPocket(${apage.aWriteId})"
 												href="#"><img class="pocket" src="icon/pocket.png"></a>
+												
+											
 										</p>
 									</div>
 									<!-- /.text -->
@@ -101,7 +103,8 @@
 										<a href="#">${bpage.hashtag }</a>
 										<p class="price">${bpage.cost}원</p>
 										<p class="text-center buttons">
-											<a type="button" id="toRPocket" onclick="toRPocket(${bpage.bWriteId})"> <img
+											<a type="button" id="toRPocket"
+												onclick="toRPocket(${bpage.bWriteId})"> <img
 												class="pocket" src="icon/pocket.png">
 											</a>
 										</p>

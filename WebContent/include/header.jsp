@@ -20,11 +20,16 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100'
 	rel='stylesheet' type='text/css'>
-<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/animate.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.carousel.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/owl.theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/font-awesome.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/animate.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.carousel.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/owl.theme.css"
+	rel="stylesheet">
 
 <!-- theme stylesheet -->
 <link href="${pageContext.request.contextPath}/css/style.default.css"
@@ -49,6 +54,13 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-hover-dropdown.js"></script>
 <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/front.js"></script>
+<style>  
+ .dropdown-toggle {  
+	width: 120px;  
+	font-size: 20px;  
+	text-align:center;  
+ }  
+</style>
 <body>
 	<div id="top">
 		<div class="container">
@@ -81,11 +93,10 @@
 						} else if (session.getAttribute("admin").equals(2)) {
 					%>
 					<li><a href="../admin/main.jsp">관리자 페이지</a> <%
- 						}
-					%>
-					<%
-						}
-					%>
+ 	}
+ %> <%
+ 	}
+ %>
 					<li><a href="../member/contact.jsp">Contact</a></li>
 				</ul>
 			</div>
@@ -170,8 +181,9 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand home"
-					style="padding: 2px; padding-right: 0px" href="../SidServlet?command=index">
-					<img src="../img/SIDlogo.png" alt="Obaju logo"
+					style="padding: 2px; padding-right: 0px"
+					href="../SidServlet?command=index"> <img
+					src="../img/SIDlogo.png" alt="Obaju logo"
 					style="width: 120px; max-height: 100%;"> <span
 					class="sr-only">Snow In Dawn</span>
 				</a>
@@ -180,20 +192,34 @@
 
 			<div class="navbar-collapse collapse" style="padding-left: 0px"
 				id="navigation">
-				
+
 				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/board/boardList.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../BoardServlet?command=board_list">INFO</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Cpage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=cpage_list"
-						class="dropdown-toggle">완성옷</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Bpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../SidServlet?command=list_bpage" class="dropdown-toggle">프린트</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Apage.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=admin_apage_list"
-						class="dropdown-toggle">기본옷</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/Dpage.jsp")){%> active<%} %>"><a data-hover="dropdown"
-						href="../SidServlet?command=list_dpage" class="dropdown-toggle">스케치</a></li>
-					<li class="dropdown yamm-fw<%if(request.getRequestURI().equals("/member/sss.jsp")){%> active<%} %>"><a data-hover="dropdown" href="../SidServlet?command=list_hpage"
-						class="dropdown-toggle">만들기</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/board/boardList.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown" href="../BoardServlet?command=board_list"
+						class="dropdown-toggle">INFO</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Cpage.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown" href="../SidServlet?command=cpage_list"
+						class="dropdown-toggle">DESIGN</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Bpage.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown" href="../SidServlet?command=list_bpage"
+						class="dropdown-toggle">IMAGE</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Apage.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown"
+						href="../SidServlet?command=admin_apage_list"
+						class="dropdown-toggle">FRAME</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/Dpage.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown" href="../SidServlet?command=list_dpage"
+						class="dropdown-toggle">PROXY</a></li>
+					<li
+						class="dropdown yamm-fw<%if (request.getRequestURI().equals("/member/sss.jsp")) {%> active<%}%>"><a
+						data-hover="dropdown" href="../SidServlet?command=list_hpage"
+						class="dropdown-toggle">MIX</a></li>
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

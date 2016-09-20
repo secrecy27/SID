@@ -53,25 +53,25 @@
 							<c:forEach items="${list}" var="bpage">
 								<!-- a href 버튼 -->
 								<div class="col-md-2 col-sm-6">
-									<div class="product">
+									<div class="product" >
 
 										<div style="max-width: 100%; width: 100%;">
-											<a
+											<a type="button"
 												href="../SidServlet?command=read_bpage&num=${bpage.bWriteId}">
 												<img src="${bpage.imageUrl}" id="imageFile"
 												style="max-width: 100%; width: 100%; height: 150px;">
 												<!-- ${dpage.imageUrl} -->
 											</a>
 										</div>
-										<div class="text">
-											<a herf="#">${bpage.hashtag}</a>
+										<div class="text" style=" width: 100%; height:100%">
+											<div style=""><a herf="#" >${bpage.hashtag}</a></div>
 											<p>${bpage.cost}원</p>
 											<p class="text-center buttons">
-												<a type="button" id="toRPocket"
+												<a type="button" id="toRPocket" href="#"
 													onclick="toRPocket(${bpage.bWriteId})"> <img
 													class="pocket" src="icon/pocket.png">
 												</a>
-												<c:if test="${sessionScope.email eq bpage.userEmail }">
+												<c:if test="${sessionScope.email eq bpage.userEmail  || sessionScope.admin eq 2 }">
 												<a href="SidServlet?command=bpage_delete&num=${bpage.bWriteId }" ><i class="fa fa-trash-o"></i></a>
 												</c:if>
 											</p> 
