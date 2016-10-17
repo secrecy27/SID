@@ -38,6 +38,7 @@ public class ListLPocketAction implements Action {
 			alist.add(aDao.readItem(llist.get(i)));
 			hlist.addAll(aDao.readHashtag(a.get(i)));
 		}
+		
 		request.setAttribute("alist", alist);
 		request.setAttribute("hlist", hlist);
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
